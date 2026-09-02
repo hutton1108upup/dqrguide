@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DQR.GG — Dungeon Quest Reborn Wiki, Tier List & Drop Tables</title>
+<meta name="description" content="Dungeon Quest Reborn quick reference: meta tier list, dungeon drop tables, active codes and trading values — verified daily against the live Northern Lands build.">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ============ DESIGN TOKENS (from Plan A) ============ */
+  :root{
+    --background:#0B1020;
+    --surface:#131B2E;
+    --surface-hover:#19243C;
+    --border:#293653;
+    --text-primary:#F3F6FC;
+    --text-secondary:#AAB6CC;
+    --accent-gold:#F2C14E;
+    --accent-blue:#68C8FF;
+    --accent-purple:#A87BFF;
+    --success:#55D68B;
+    --warning:#FFB454;
+    --danger:#FF6B6B;
+    /* rarity */
+    --r-common:#8A93A6; --r-uncommon:#55D68B; --r-rare:#5EB8FF;
+    --r-epic:#A87BFF; --r-legendary:#F2C14E; --r-ultimate:#FF5C5C;
+    /* tier grades share the rarity scale */
+    --t-s:#F2C14E; --t-a:#A87BFF; --t-b:#5EB8FF; --t-c:#55D68B; --t-d:#8A93A6;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--background);color:var(--text-primary);font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.55}
+  h1,h2,.font-display{font-family:Cinzel,serif;letter-spacing:.5px}
+  h3{font-weight:700}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 18px}
+
+  /* ============ TOP NAV ============ */
+  .topbar{position:sticky;top:0;z-index:20;background:rgba(11,16,32,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+  .topbar-in{display:flex;align-items:center;gap:14px;height:58px}
+  .logo{display:flex;align-items:center;gap:10px;font-family:Cinzel,serif;font-weight:700;font-size:17px;letter-spacing:1px}
+  .nav{display:flex;gap:2px;margin-left:6px}
+  .nav a{padding:6px 11px;border-radius:7px;color:var(--text-secondary);font-size:13.5px;font-weight:500}
+  .nav a:hover,.nav a.active{background:var(--surface-hover);color:var(--text-primary)}
+  .search{margin-left:auto;display:flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px 12px;color:var(--text-secondary);width:230px;font-size:13px}
+  .search kbd{margin-left:auto;font-size:10.5px;border:1px solid var(--border);border-radius:4px;padding:1px 5px;background:var(--background);font-family:Inter}
+
+  /* ============ HERO (Plan B element, restrained) ============ */
+  .hero{border-bottom:1px solid var(--border);background:
+    radial-gradient(700px 260px at 50% -60px,rgba(242,193,78,.07),transparent 70%),
+    linear-gradient(180deg,#0E1730 0%,var(--background) 100%);
+    padding:40px 0 30px;text-align:center}
+  .gate{width:64px;height:64px;margin:0 auto 14px;display:block}
+  .hero .version{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:1.5px;color:var(--accent-blue);border:1px solid rgba(104,200,255,.35);background:rgba(104,200,255,.07);padding:5px 14px;border-radius:999px;margin-bottom:16px}
+  .hero h1{font-size:32px;margin-bottom:8px}
+  .hero h1 .gold{color:var(--accent-gold)}
+  .hero p{color:var(--text-secondary);font-size:14.5px;max-width:600px;margin:0 auto}
+  .hero .fresh{margin-top:14px;display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--text-secondary)}
+  .hero .fresh .dot{width:7px;height:7px;border-radius:50%;background:var(--success);box-shadow:0 0 8px rgba(85,214,139,.6)}
+  .hero .fresh b{color:var(--success);font-weight:600}
+
+  /* ============ TLDR (Plan C core) ============ */
+  .tldr{margin:26px 0 8px;border:1px solid rgba(242,193,78,.4);background:linear-gradient(120deg,rgba(242,193,78,.08),transparent 55%),var(--surface);border-radius:14px;padding:22px 24px}
+  .tldr .tag{font-size:11px;font-weight:800;letter-spacing:1.5px;color:var(--accent-gold)}
+  .tldr h2{font-size:21px;margin:8px 0 10px;font-family:Inter;font-weight:800;letter-spacing:0}
+  .tldr p{color:var(--text-secondary);font-size:14.5px;max-width:780px}
+  .tldr p b{color:var(--text-primary)}
+  .tldr .answers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+  .ans{background:var(--background);border:1px solid var(--border);border-radius:10px;padding:11px 14px;font-size:13px}
+  .ans .q{color:var(--text-secondary);font-size:10.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:3px}
+  .ans .a{font-weight:700}
+  .ans .a em{font-style:normal;color:var(--accent-gold)}
+
+  /* ============ HOT TILES ============ */
+  .tiles{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:20px 0 4px}
+  .tile{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:14px 8px;text-align:center;font-size:12.5px;font-weight:600;transition:.15s}
+  .tile:hover{background:var(--surface-hover);border-color:#3a4c74}
+  .tile .ic{font-size:20px;display:block;margin-bottom:6px}
+
+  /* ============ SECTION HEADERS ============ */
+  .sec-title{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:36px 0 14px}
+  .sec-title h2{font-size:19px}
+  .sec-title .meta{font-size:12px;color:var(--text-secondary);white-space:nowrap}
+  .sec-title .meta b{color:var(--success);font-weight:600}
+  .sec-title .meta a{color:var(--accent-blue)}
+
+  /* ============ TIER BOARD ============ */
+  .tierboard{display:flex;flex-direction:column;gap:10px}
+  .trow{display:grid;grid-template-columns:60px 1fr;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 16px;align-items:center}
+  .tgrade{font-family:Cinzel,serif;font-size:26px;font-weight:700;text-align:center;border-radius:10px;padding:8px 0}
+  .g-s{color:#1a1405;background:linear-gradient(135deg,var(--t-s),#d9a832)}
+  .g-a{color:#fff;background:linear-gradient(135deg,var(--t-a),#7c5ce0)}
+  .g-b{color:#08131f;background:linear-gradient(135deg,var(--t-b),#3f9be0)}
+  .titems{display:flex;gap:8px;flex-wrap:wrap}
+  .tchip{display:inline-flex;align-items:center;gap:7px;background:var(--background);border:1px solid var(--border);border-radius:8px;padding:7px 12px;font-size:13px;font-weight:600;transition:.15s}
+  .tchip:hover{background:var(--surface-hover);border-color:#3a4c74}
+  .tchip i{width:8px;height:8px;border-radius:2px;transform:rotate(45deg);flex:none}
+  .tchip small{color:var(--text-secondary);font-weight:500}
+  /* rarity = border only */
+  .r-ultimate{border-color:rgba(255,92,92,.55)} .r-ultimate i{background:var(--r-ultimate)}
+  .r-legendary{border-color:rgba(242,193,78,.55)} .r-legendary i{background:var(--r-legendary)}
+  .r-epic{border-color:rgba(168,123,255,.5)} .r-epic i{background:var(--r-epic)}
+
+  /* ============ DUNGEON LADDER ============ */
+  .dgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .dcard{display:flex;align-items:center;gap:13px;background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:13px 16px;transition:.15s}
+  .dcard:hover{background:var(--surface-hover)}
+  .dcard .num{font-family:Cinzel,serif;font-size:15px;font-weight:700;color:var(--text-secondary);width:24px}
+  .dcard h3{font-size:14.5px}
+  .dcard .sub{font-size:12px;color:var(--text-secondary);margin-top:1px}
+  .dcard .lv{margin-left:auto;font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;background:var(--background);border:1px solid var(--border);color:var(--text-secondary);white-space:nowrap}
+  .dcard .lv.new{color:var(--accent-gold);border-color:rgba(242,193,78,.45)}
+
+  /* ============ CODES STRIP ============ */
+  .codes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .code-chip{display:flex;justify-content:space-between;align-items:center;background:var(--surface);border:1px dashed var(--border);border-radius:10px;padding:12px 16px;font-size:14px}
+  .code-chip b{color:var(--accent-gold);font-family:ui-monospace,'Cascadia Code',monospace;letter-spacing:1px}
+  .code-chip .st{font-size:10px;font-weight:800;letter-spacing:.6px;color:var(--success)}
+  .copy{font-size:11.5px;font-weight:600;color:var(--accent-blue);border:1px solid var(--border);border-radius:6px;padding:4px 10px;cursor:pointer;background:var(--background)}
+  .copy:hover{background:var(--surface-hover)}
+
+  /* ============ CHANGELOG ============ */
+  .log{border:1px solid var(--border);border-radius:12px;background:var(--surface);padding:6px 20px}
+  .log-item{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--border);font-size:13.5px;align-items:baseline}
+  .log-item:last-child{border-bottom:none}
+  .log-item .d{color:var(--text-secondary);font-size:12px;flex:none;width:60px;font-variant-numeric:tabular-nums}
+  .log-badge{font-size:10px;font-weight:800;letter-spacing:.6px;padding:2px 8px;border-radius:5px;flex:none}
+  .lb-new{color:#1a1405;background:var(--accent-gold)}
+  .lb-fix{color:#c9e8ff;background:rgba(94,184,255,.18)}
+  .lb-data{color:#d9ffe9;background:rgba(85,214,139,.15)}
+
+  /* ============ MEDIA: video facade & image slots ============ */
+  .featured{display:grid;grid-template-columns:1.4fr 1fr;gap:14px;align-items:stretch}
+  .video-facade{position:relative;border-radius:12px;border:1px solid var(--border);overflow:hidden;aspect-ratio:16/9;
+    background:radial-gradient(400px 200px at 30% 20%,rgba(168,123,255,.18),transparent 70%),linear-gradient(135deg,#17203a,#0e1528);
+    display:flex;align-items:center;justify-content:center;cursor:pointer}
+  .video-facade .play{width:58px;height:58px;border-radius:50%;background:rgba(242,193,78,.95);display:flex;align-items:center;justify-content:center;font-size:20px;color:#1a1405;box-shadow:0 4px 24px rgba(242,193,78,.35)}
+  .video-facade .cap{position:absolute;left:14px;bottom:12px;right:14px;font-size:12.5px}
+  .video-facade .cap b{display:block;font-size:13.5px}
+  .video-facade .cap span{color:var(--text-secondary)}
+  .video-facade .dur{position:absolute;top:10px;right:10px;font-size:11px;background:rgba(11,16,32,.8);border:1px solid var(--border);border-radius:5px;padding:2px 7px;color:var(--text-secondary)}
+  .featured-side{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;justify-content:center}
+  .featured-side h3{font-size:15px;margin-bottom:6px}
+  .featured-side p{font-size:13px;color:var(--text-secondary);margin-bottom:10px}
+  .featured-side a{color:var(--accent-blue);font-size:13px;font-weight:600}
+  .art-slot{border:1px dashed var(--border);border-radius:10px;background:var(--background);aspect-ratio:5/2;display:flex;align-items:center;justify-content:center;color:var(--text-secondary);font-size:11.5px;margin-bottom:12px}
+
+  /* ============ AD SLOTS ============ */
+  .adslot{border:1px dashed #3a4c74;border-radius:10px;min-height:96px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--text-secondary);margin:26px 0 4px;background:rgba(19,27,46,.5)}
+  .adslot .lbl{font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#5c6a8a}
+  .adslot .sz{font-size:12px}
+
+  /* ============ FOOTER ============ */
+  footer{border-top:1px solid var(--border);margin-top:52px;padding:28px 0 40px;color:var(--text-secondary);font-size:12px}
+  .foot-in{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .foot-links{display:flex;gap:18px}
+  .foot-links a:hover{color:var(--text-primary)}
+  .disclaimer{margin-top:14px;max-width:640px}
+
+  /* ============ RESPONSIVE (mobile first rules) ============ */
+  @media(max-width:880px){
+    .nav{display:none}
+    .search{width:160px}
+    .tiles{grid-template-columns:repeat(3,1fr)}
+    .tldr .answers{grid-template-columns:1fr}
+    .dgrid{grid-template-columns:1fr}
+    .codes{grid-template-columns:1fr}
+    .hero h1{font-size:25px}
+    .trow{grid-template-columns:48px 1fr;gap:10px;padding:12px}
+    .tgrade{font-size:21px}
+    .featured{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<div class="topbar">
+  <div class="wrap topbar-in">
+    <a class="logo" href="#">
+      <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-label="DQR.GG logo">
+        <path d="M6 28V14C6 8 10 4 16 4s10 4 10 10v14" stroke="#F2C14E" stroke-width="2.4"/>
+        <path d="M12 28V16c0-3 1.8-5 4-5s4 2 4 5v12" stroke="#68C8FF" stroke-width="2"/>
+        <path d="M16 4l2.4 3L16 9.6 13.6 7 16 4z" fill="#A87BFF"/>
+      </svg>
+      DQR.GG
+    </a>
+    <nav class="nav">
+      <a href="#" class="active">Home</a>
+      <a href="#">Tier List</a>
+      <a href="#">Dungeons</a>
+      <a href="#">Weapons</a>
+      <a href="#">Spells</a>
+      <a href="#">Codes</a>
+      <a href="#">Trading</a>
+    </nav>
+    <div class="search">🔍 Search items, dungeons… <kbd>Ctrl K</kbd></div>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <svg class="gate" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+      <path d="M12 56V28C12 16 20 8 32 8s20 8 20 20v28" stroke="#F2C14E" stroke-width="3"/>
+      <path d="M22 56V32c0-6 4-10 10-10s10 4 10 10v24" stroke="#68C8FF" stroke-width="2.4"/>
+      <path d="M32 8l5 6-5 6-5-6 5-6z" fill="#A87BFF"/>
+    </svg>
+    <div class="version">❄ NORTHERN LANDS · CURRENT VERSION</div>
+    <h1>Dungeon Quest <span class="gold">Reborn</span> Wiki</h1>
+    <p>Tier lists, drop tables, codes and trading values for the Voldex-licensed remake — built for quick answers between runs.</p>
+    <div class="fresh"><span class="dot"></span> Last verified <b>&nbsp;Sep 2, 2026&nbsp;</b> against the live build</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ============ TLDR ============ -->
+  <section class="tldr" aria-label="Quick answers">
+    <div class="tag">⚡ TL;DR — START HERE</div>
+    <h2>What's best in Northern Lands right now</h2>
+    <p><b>Voidspire &amp; Abyssal Veil</b> is the Mage ceiling (832M base), <b>Hofund</b> tops Warrior, and <b>Enhanced Inner Rage / Focus</b> are mandatory at Insane+ — they drop in every Nightmare dungeon and double as trade currency.</p>
+    <div class="answers">
+      <div class="ans"><div class="q">Best weapon</div><div class="a"><em>Voidspire</em> (Mage) · <em>Hofund</em> (Warrior)</div></div>
+      <div class="ans"><div class="q">Best farming dungeon</div><div class="a">Enchanted Forest <em>(Nightmare)</em></div></div>
+      <div class="ans"><div class="q">New player path</div><div class="a">Desert Temple → Winter Outpost <em>Lv 1–55</em></div></div>
+    </div>
+  </section>
+
+  <!-- ============ HOT TILES ============ -->
+  <nav class="tiles" aria-label="Popular pages">
+    <a class="tile" href="#"><span class="ic">🏆</span>Tier List</a>
+    <a class="tile" href="#"><span class="ic">🎁</span>Codes</a>
+    <a class="tile" href="#"><span class="ic">💎</span>Drop Tables</a>
+    <a class="tile" href="#"><span class="ic">🔄</span>Trading Values</a>
+    <a class="tile" href="#"><span class="ic">✨</span>Spell Guide</a>
+    <a class="tile" href="#"><span class="ic">🗺️</span>All Dungeons</a>
+  </nav>
+
+  <!-- ============ TIER BOARD ============ -->
+  <div class="sec-title">
+    <h2>Meta Tier List</h2>
+    <span class="meta"><b>● Fresh</b> · re-ranked Sep 2 · <a href="#">full list →</a></span>
+  </div>
+  <section class="tierboard" aria-label="Weapons and abilities tier list">
+    <div class="trow">
+      <div class="tgrade g-s">S</div>
+      <div class="titems">
+        <a class="tchip r-ultimate" href="#"><i></i>Voidspire &amp; Abyssal Veil <small>832M</small></a>
+        <a class="tchip r-ultimate" href="#"><i></i>Hofund <small>Northern Lands</small></a>
+        <a class="tchip r-legendary" href="#"><i></i>Enhanced Inner Rage <small>EIR</small></a>
+        <a class="tchip r-legendary" href="#"><i></i>Enhanced Inner Focus <small>EIF</small></a>
+      </div>
+    </div>
+    <div class="trow">
+      <div class="tgrade g-a">A</div>
+      <div class="titems">
+        <a class="tchip r-legendary" href="#"><i></i>Mjolnir <small>66.6M</small></a>
+        <a class="tchip r-legendary" href="#"><i></i>Gungnir <small>66.6M</small></a>
+        <a class="tchip r-legendary" href="#"><i></i>Sea King's Greatstaff</a>
+        <a class="tchip r-epic" href="#"><i></i>Universal Heal</a>
+        <a class="tchip r-epic" href="#"><i></i>Whirlwind</a>
+      </div>
+    </div>
+    <div class="trow">
+      <div class="tgrade g-b">B</div>
+      <div class="titems">
+        <a class="tchip r-legendary" href="#"><i></i>Sakura Katana</a>
+        <a class="tchip r-epic" href="#"><i></i>Lightning Strikes</a>
+        <a class="tchip r-epic" href="#"><i></i>Berserk</a>
+        <a class="tchip r-epic" href="#"><i></i>Piercing Rain</a>
+        <a class="tchip r-epic" href="#"><i></i>Phantom Flames</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURED VIDEO + ART SLOT ============ -->
+  <div class="sec-title">
+    <h2>Featured Guide</h2>
+    <span class="meta">video loads on click · facade only</span>
+  </div>
+  <section class="featured" aria-label="Featured video guide">
+    <div class="video-facade" role="button" aria-label="Play Northern Lands boss guide video">
+      <span class="dur">08:42</span>
+      <div class="play">▶</div>
+      <div class="cap"><b>Odin Reincarnation — Full Boss Mechanics</b><span>by @CommunityCreator · embedded with permission</span></div>
+    </div>
+    <div class="featured-side">
+      <div class="art-slot">Dungeon banner art slot · 400×160 WebP · AI-generated, ice theme</div>
+      <h3>Northern Lands: written route guide</h3>
+      <p>Prefer text? The full room-by-room route with drop tables and req-level gear check.</p>
+      <a href="#">Read the guide →</a>
+    </div>
+  </section>
+
+  <!-- ============ AD SLOT 1 ============ -->
+  <div class="adslot" aria-hidden="true">
+    <span class="lbl">Advertisement</span>
+    <span class="sz">ad-infeed-1 · responsive · 未接网络时整槽不渲染</span>
+  </div>
+
+  <!-- ============ DUNGEON LADDER ============ -->
+  <div class="sec-title">
+    <h2>Dungeon Ladder</h2>
+    <span class="meta">what to run at your level · <a href="#">all 12 →</a></span>
+  </div>
+  <section class="dgrid" aria-label="Dungeon list">
+    <a class="dcard" href="#"><span class="num">12</span><div><h3>Northern Lands</h3><div class="sub">Hofund · Gungnir · Odin Reincarnation</div></div><span class="lv new">Lv 200+ NEW</span></a>
+    <a class="dcard" href="#"><span class="num">11</span><div><h3>Abyssal Void</h3><div class="sub">Voidspire · Voidfallen's Edict</div></div><span class="lv">Lv 216</span></a>
+    <a class="dcard" href="#"><span class="num">10</span><div><h3>Enchanted Forest</h3><div class="sub">EIR / EIF farming</div></div><span class="lv">Lv 170+</span></a>
+    <a class="dcard" href="#"><span class="num">09</span><div><h3>Ghastly Harbor</h3><div class="sub">Phantom Blades · Phantom Striker</div></div><span class="lv">Lv 120+</span></a>
+    <a class="dcard" href="#"><span class="num">08</span><div><h3>Samurai Palace</h3><div class="sub">Sakura Katana · Sakura Greatstaff</div></div><span class="lv">Lv 90+</span></a>
+    <a class="dcard" href="#"><span class="num">02</span><div><h3>Winter Outpost</h3><div class="sub">Crystalized Greatsword · Aura of Life</div></div><span class="lv">Lv 33–55</span></a>
+  </section>
+
+  <!-- ============ CODES ============ -->
+  <div class="sec-title">
+    <h2>Active Codes</h2>
+    <span class="meta"><b>● Verified</b> Sep 2 · <a href="#">all codes →</a></span>
+  </div>
+  <section class="codes" aria-label="Active codes">
+    <div class="code-chip"><b>NORTHERN</b><span class="st">ACTIVE</span><span class="copy">Copy</span></div>
+    <div class="code-chip"><b>REBORN2X</b><span class="st">ACTIVE</span><span class="copy">Copy</span></div>
+    <div class="code-chip"><b>VOIDLUCK</b><span class="st">ACTIVE</span><span class="copy">Copy</span></div>
+  </section>
+
+  <!-- ============ UPDATE LOG ============ -->
+  <div class="sec-title">
+    <h2>Update Log</h2>
+    <span class="meta">every page carries a verified date</span>
+  </div>
+  <section class="log" aria-label="Update log">
+    <div class="log-item"><span class="d">Sep 02</span><span class="log-badge lb-new">NEW</span><span>Northern Lands drop rates re-verified; Hofund stat conflict note published</span></div>
+    <div class="log-item"><span class="d">Aug 31</span><span class="log-badge lb-data">DATA</span><span>Trading value list updated — EIF exchange range 2–6</span></div>
+    <div class="log-item"><span class="d">Aug 30</span><span class="log-badge lb-fix">FIX</span><span>Tier list re-ranked after the balance patch</span></div>
+    <div class="log-item"><span class="d">Aug 28</span><span class="log-badge lb-data">DATA</span><span>Codes page: NORTHERN confirmed working, 2 expired codes removed</span></div>
+  </section>
+
+  <!-- ============ AD SLOT 2 ============ -->
+  <div class="adslot" aria-hidden="true">
+    <span class="lbl">Advertisement</span>
+    <span class="sz">ad-infeed-2 · responsive · 页脚前最后槽位</span>
+  </div>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-in">
+      <div class="foot-links">
+        <a href="#">About</a><a href="#">Contact</a><a href="#">Discord</a><a href="#">Privacy</a>
+      </div>
+      <div>DQR.GG — fan-made quick reference for Dungeon Quest Reborn</div>
+    </div>
+    <p class="disclaimer">DQR.GG is an unofficial fan site. Not affiliated with or endorsed by Roblox Corporation, Voldex, or Delta Quarters OG. All game names, data and assets are property of their respective owners.</p>
+  </div>
+</footer>
+
+</body>
+</html>

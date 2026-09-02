@@ -1,0 +1,11 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" rx="36" fill="#0B1020"/>
+  <rect x="56" y="56" width="1088" height="518" rx="28" fill="#131B2E" stroke="#293653" stroke-width="2"/>
+  <path d="M190 420V248C190 171 247 114 324 114C401 114 458 171 458 248V420" stroke="#F2C14E" stroke-width="20"/>
+  <path d="M258 420V286C258 247 286 219 324 219C362 219 390 247 390 286V420" stroke="#68C8FF" stroke-width="16"/>
+  <path d="M324 108L352 144L324 180L296 144L324 108Z" fill="#A87BFF"/>
+  <text x="536" y="236" fill="#68C8FF" font-family="Georgia, serif" font-size="28" letter-spacing="3">NORTHERN LANDS · VERIFIED-FIRST FAN WIKI</text>
+  <text x="536" y="318" fill="#F3F6FC" font-family="Georgia, serif" font-size="72" font-weight="700">Dungeon Quest</text>
+  <text x="536" y="396" fill="#F2C14E" font-family="Georgia, serif" font-size="72" font-weight="700">Reborn | DQR.GG</text>
+  <text x="536" y="470" fill="#AAB6CC" font-family="Arial, sans-serif" font-size="28">Guides, drop routes, status pages, and evidence labels built for fast review.</text>
+</svg>

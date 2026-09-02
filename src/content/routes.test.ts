@@ -1,0 +1,45 @@
+import { describe, expect, it } from "vitest";
+
+import {
+  CORE_PATHS,
+  getIndexablePages,
+  getPageByPath,
+  isEvidenceLevel,
+  sitePages
+} from "./routes";
+
+describe("site page registry", () => {
+  it("contains every core MVP route and keeps all paths unique", () => {
+    const paths = sitePages.map((page) => page.path);
+
+    expect(new Set(paths).size).toBe(paths.length);
+    for (const path of CORE_PATHS) {
+      expect(paths).toContain(path);
+    }
+  });
+
+  it("normalizes slash variants when resolving pages", () => {
+    expect(getPageByPath("spells")?.path).toBe("/spells/");
+    expect(getPageByPath("/spells")?.path).toBe("/spells/");
+    expect(getPageByPath("/spells/")?.path).toBe("/spells/");
+  });
+
+  it("only accepts the four documented evidence levels", () => {
+    expect(isEvidenceLevel("Official")).toBe(true);
+    expect(isEvidenceLevel("In-game Verified")).toBe(true);
+    expect(isEvidenceLevel("Community Confirmed")).toBe(true);
+    expect(isEvidenceLevel("Legacy / Unconfirmed")).toBe(true);
+    expect(isEvidenceLevel("Verified by vibes")).toBe(false);
+  });
+
+  it("excludes review-only pages from indexable output", () => {
+    const indexablePages = getIndexablePages();
+
+    expect(indexablePages.length).toBeGreaterThan(0);
+    expect(indexablePages.every((page) => page.indexable)).toBe(true);
+    expect(indexablePages.some((page) => page.path === "/")).toBe(true);
+    expect(indexablePages).not.toContainEqual(
+      expect.objectContaining({ indexable: false })
+    );
+  });
+});
