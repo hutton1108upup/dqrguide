@@ -13,6 +13,10 @@
 # testing
 /coverage
 /.worktrees/
+/qa-artifacts/
+
+# local agent workspace
+/.workbuddy/
 
 # next.js
 /.next/
