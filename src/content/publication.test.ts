@@ -49,9 +49,10 @@ describe("publication gates", () => {
       evidenceLevel: "Legacy / Unconfirmed"
     });
     expect(sitePages.find((page) => page.path === "/trello/")).toMatchObject({
-      indexable: true,
+      indexable: false,
       evidenceLevel: "Legacy / Unconfirmed"
     });
+    expect(sitePages.find((page) => page.path === "/trello/")?.nextScheduledCheck).toBe("2026-09-10");
   });
 
   it("does not turn mockup tiers into published rankings", () => {
@@ -80,6 +81,17 @@ describe("publication gates", () => {
     expect(sitePages.find((page) => page.path === "/codes/")?.dataState).toBe("not_collected");
   });
 
+  it("schedules the first dungeon evidence batch for the next weekly review", () => {
+    expect(sitePages.find((page) => page.path === "/dungeons/")).toMatchObject({
+      indexable: false,
+      nextScheduledCheck: "2026-09-10"
+    });
+    expect(sitePages.find((page) => page.path === "/dungeons/northern-lands/")).toMatchObject({
+      indexable: false,
+      nextScheduledCheck: "2026-09-10"
+    });
+  });
+
   it("keeps every core route useful even when it is not yet indexable", () => {
     for (const page of sitePages) {
       expect(page.sections.length).toBeGreaterThanOrEqual(3);
@@ -92,7 +104,7 @@ describe("publication gates", () => {
     const page = sitePages.find((item) => item.path === "/differences/")!;
 
     expect(page.publicationStatus).toBe("published");
-    expect(page.indexable).toBe(false);
+    expect(page.indexable).toBe(true);
     expect(page.differenceRows.length).toBeGreaterThanOrEqual(8);
     expect(page.differenceRows.every((row) => row.sourceURL && row.evidenceNote && row.lastChecked && row.claimStatus && row.verifiedForVersion !== undefined)).toBe(true);
   });
