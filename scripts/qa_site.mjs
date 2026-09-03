@@ -56,15 +56,35 @@ try {
   assert(canonical === new URL("/", siteUrl).toString(), `home canonical=${canonical}`);
   const homeOg = await page.locator('meta[property="og:image"]').getAttribute("content");
   assert(homeOg === new URL("/og/?path=%2F", siteUrl).toString(), `home og=${homeOg}`);
-  assert(await page.getByRole("navigation", { name: "Guide sections" }).count() === 1, "guide silo navigation missing");
-  assert(await page.getByRole("link", { name: "Weapons", exact: true }).count() === 1, "database navigation missing");
-  assert(await page.getByRole("link", { name: "Mage build", exact: true }).count() === 1, "build navigation missing");
+  assert(await page.getByRole("navigation", { name: "Guide sections" }).count() === 0, "persistent guide navigation still rendered");
+  const primaryNavigation = page.getByRole("navigation", { name: "Primary navigation" });
+  assert(await primaryNavigation.count() === 1, "primary navigation missing");
+  const headerBox = await page.locator(".site-header").boundingBox();
+  assert(headerBox && headerBox.height <= 66, { label: "desktop-header-height", headerBox });
+  const desktopLogoFits = await page.locator(".site-logo-full").evaluate((element) => element.scrollWidth <= element.clientWidth + 1);
+  assert(desktopLogoFits, "desktop logo is truncated");
+  await primaryNavigation.getByRole("button", { name: "Dungeons", exact: true }).click();
+  assert(await primaryNavigation.getByRole("link", { name: "Northern Lands", exact: true }).count() === 1, "Dungeons menu did not open");
+  await primaryNavigation.getByRole("button", { name: "Builds", exact: true }).click();
+  assert(await primaryNavigation.getByRole("link", { name: "Northern Lands", exact: true }).count() === 0, "previous desktop menu remained open");
+  assert(await primaryNavigation.getByRole("link", { name: "Mage Build", exact: true }).count() === 1, "Builds menu did not open");
+  await page.waitForTimeout(180);
+  await page.screenshot({ path: path.join(artifactDir, "home-desktop-menu.png"), fullPage: false });
+  await page.keyboard.press("Escape");
+  assert(await page.locator(".desktop-nav-panel").count() === 0, "desktop menu remained open after Escape");
   await page.screenshot({ path: path.join(artifactDir, "home-desktop.png"), fullPage: true });
   await page.keyboard.press("Control+K");
   const search = page.getByPlaceholder("Try “where does an item drop”");
   await search.waitFor();
   await search.fill("codes");
   await page.getByRole("link", { name: /Codes/ }).waitFor();
+  await page.keyboard.press("Escape");
+
+  await page.goto(`${baseUrl}/builds/mage/`, { waitUntil: "networkidle" });
+  const buildsButton = primaryNavigation.getByRole("button", { name: "Builds", exact: true });
+  assert((await buildsButton.getAttribute("class"))?.includes("active"), "Builds group active state missing");
+  await buildsButton.click();
+  assert(await primaryNavigation.getByRole("link", { name: "Mage Build", exact: true }).getAttribute("aria-current") === "page", "Mage Build active state missing");
   await page.keyboard.press("Escape");
 
   await page.goto(`${baseUrl}/codes/`, { waitUntil: "networkidle" });
@@ -122,13 +142,40 @@ try {
   assert(legacyHostResponse.status() === 308, `legacy host status=${legacyHostResponse.status()}`);
   assert(legacyHostResponse.headers().location === "https://dqr.gg/spells/?role=mage", legacyHostResponse.headers());
 
+  const tablet = await context.newPage();
+  await tablet.setViewportSize({ width: 1024, height: 768 });
+  await tablet.goto(baseUrl, { waitUntil: "networkidle" });
+  await assertNoOverflow(tablet, "home-tablet");
+  const tabletHeaderBox = await tablet.locator(".site-header").boundingBox();
+  assert(tabletHeaderBox && tabletHeaderBox.height <= 66, { label: "tablet-header-height", tabletHeaderBox });
+  const tabletLogoFits = await tablet.locator(".site-logo-full").evaluate((element) => element.scrollWidth <= element.clientWidth + 1);
+  assert(tabletLogoFits, "tablet logo is truncated");
+  assert(await tablet.getByRole("navigation", { name: "Primary navigation" }).isVisible(), "tablet primary navigation hidden");
+  assert(!(await tablet.locator(".search-trigger span").isVisible()), "tablet search label did not collapse");
+  await tablet.screenshot({ path: path.join(artifactDir, "home-tablet.png"), fullPage: true });
+  await tablet.close();
+
   const mobile = await browser.newPage({ viewport: { width: 375, height: 812 } });
   await mobile.goto(baseUrl, { waitUntil: "networkidle" });
   await assertNoOverflow(mobile, "home-mobile");
+  assert(!(await mobile.getByRole("navigation", { name: "Primary navigation" }).isVisible()), "desktop navigation visible on mobile");
+  const mobileLogoFits = await mobile.locator(".site-logo-short").evaluate((element) => (
+    getComputedStyle(element).display !== "none" && element.scrollWidth <= element.clientWidth + 1
+  ));
+  assert(mobileLogoFits, "mobile short logo is hidden or truncated");
   const navToggle = mobile.getByRole("button", { name: "Open navigation" });
   await navToggle.click();
-  await mobile.locator("#mobile-navigation").getByRole("link", { name: "Codes", exact: true }).click();
-  await mobile.waitForURL(`${baseUrl}/codes/`);
+  const mobileNavigation = mobile.getByRole("navigation", { name: "Mobile navigation" });
+  const mobileNavigationBox = await mobileNavigation.boundingBox();
+  assert(
+    mobileNavigationBox && mobileNavigationBox.x >= 0 && mobileNavigationBox.x + mobileNavigationBox.width <= 375,
+    { label: "mobile-navigation-viewport", mobileNavigationBox }
+  );
+  await mobileNavigation.getByRole("button", { name: "Gear", exact: true }).click();
+  assert(await mobileNavigation.getByRole("link", { name: "Cosmetics", exact: true }).count() === 1, "mobile Gear accordion did not open");
+  await mobile.screenshot({ path: path.join(artifactDir, "home-mobile-menu.png"), fullPage: false });
+  await mobileNavigation.getByRole("link", { name: "Weapons", exact: true }).click();
+  await mobile.waitForURL(`${baseUrl}/weapons/`);
   assert(await mobile.getByRole("button", { name: "Open navigation" }).getAttribute("aria-expanded") === "false", "mobile menu remained open");
   await mobile.goto(baseUrl, { waitUntil: "networkidle" });
   await mobile.screenshot({ path: path.join(artifactDir, "home-mobile.png"), fullPage: true });
@@ -142,7 +189,7 @@ try {
 
   assert(consoleErrors.length === 0, { consoleErrors, badResponses });
   assert(pageErrors.length === 0, { pageErrors });
-  process.stdout.write(`PASS routes=${routes.length} screenshots=6 media=lazy search=ok redirects=${redirects.size} noindex=ok mobile-nav=ok\n`);
+  process.stdout.write(`PASS routes=${routes.length} screenshots=9 media=lazy search=ok redirects=${redirects.size} noindex=ok desktop-nav=ok tablet-nav=ok mobile-nav=ok\n`);
 } finally {
   await browser.close();
 }

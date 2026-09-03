@@ -16,7 +16,8 @@ export function SiteLogo() {
   return (
     <Link href="/" className="site-logo" aria-label="Dungeon Quest Reborn Guide home">
       <GateMark compact />
-      <span>Dungeon Quest Reborn Guide</span>
+      <span className="site-logo-full">Dungeon Quest Reborn Guide</span>
+      <span className="site-logo-short" aria-hidden="true">DQR Guide</span>
     </Link>
   );
 }
