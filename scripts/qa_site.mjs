@@ -6,6 +6,7 @@ const baseUrl = process.env.TEST_BASE || "http://127.0.0.1:3000";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000/";
 const manifest = JSON.parse(fs.readFileSync(path.join(process.cwd(), "src", "content", "publishing-manifest.json"), "utf8"));
 const routes = manifest.pages.filter((page) => page.publicationStatus === "published").map((page) => page.path);
+const indexableRoutes = manifest.pages.filter((page) => page.publicationStatus === "published" && page.indexable).map((page) => page.path);
 const reviewRoutes = manifest.pages.filter((page) => page.publicationStatus === "review").map((page) => page.path);
 const redirects = new Map([
   ["/wiki/", "/"],
@@ -53,6 +54,8 @@ try {
   await page.goto(baseUrl, { waitUntil: "networkidle" });
   const canonical = await page.locator('link[rel="canonical"]').getAttribute("href");
   assert(canonical === new URL("/", siteUrl).toString(), `home canonical=${canonical}`);
+  const homeOg = await page.locator('meta[property="og:image"]').getAttribute("content");
+  assert(homeOg === new URL("/og/?path=%2F", siteUrl).toString(), `home og=${homeOg}`);
   assert(await page.getByRole("navigation", { name: "Guide sections" }).count() === 1, "guide silo navigation missing");
   assert(await page.getByRole("link", { name: "Weapons", exact: true }).count() === 1, "database navigation missing");
   assert(await page.getByRole("link", { name: "Mage build", exact: true }).count() === 1, "build navigation missing");
@@ -67,6 +70,22 @@ try {
   await page.goto(`${baseUrl}/codes/`, { waitUntil: "networkidle" });
   assert((await page.locator("body").innerText()).includes("No active code is published"), "codes empty state missing");
   assert(await page.getByRole("button", { name: /Copy/i }).count() === 0, "unexpected code copy button");
+
+  const robotsResponse = await context.request.get(`${baseUrl}/robots.txt`);
+  const robotsText = await robotsResponse.text();
+  assert(robotsResponse.status() === 200, `robots status=${robotsResponse.status()}`);
+  assert(robotsText.includes("Sitemap: https://dqr.gg/sitemap.xml"), `robots body=${robotsText}`);
+  assert(!robotsText.includes("//sitemap.xml"), `robots body=${robotsText}`);
+  const sitemapResponse = await context.request.get(`${baseUrl}/sitemap.xml`);
+  const sitemapText = await sitemapResponse.text();
+  assert(sitemapResponse.status() === 200, `sitemap status=${sitemapResponse.status()}`);
+  assert((sitemapText.match(/<loc>/g) ?? []).length === indexableRoutes.length, `sitemap locations=${sitemapText}`);
+  for (const route of indexableRoutes) {
+    assert(sitemapText.includes(new URL(route, siteUrl).toString()), { route, sitemapText });
+  }
+  const ogResponse = await context.request.get(`${baseUrl}/og/?path=%2Fspells%2F`);
+  assert(ogResponse.status() === 200, `og status=${ogResponse.status()}`);
+  assert(ogResponse.headers()["content-type"]?.includes("image/png"), `og type=${ogResponse.headers()["content-type"]}`);
 
   await page.goto(`${baseUrl}/dungeons/northern-lands/`, { waitUntil: "networkidle" });
   const northernImage = page.getByRole("img", { name: /party facing a horned arena boss/i });
@@ -96,6 +115,12 @@ try {
     const location = response.headers().location;
     assert([destination, `${baseUrl}${destination}`].includes(location), { source, location, destination });
   }
+  const legacyHostResponse = await context.request.get(`${baseUrl}/spells/?role=mage`, {
+    maxRedirects: 0,
+    headers: { host: "dungeonquestrebornguide.wiki" }
+  });
+  assert(legacyHostResponse.status() === 308, `legacy host status=${legacyHostResponse.status()}`);
+  assert(legacyHostResponse.headers().location === "https://dqr.gg/spells/?role=mage", legacyHostResponse.headers());
 
   const mobile = await browser.newPage({ viewport: { width: 375, height: 812 } });
   await mobile.goto(baseUrl, { waitUntil: "networkidle" });

@@ -7,8 +7,17 @@ export function absoluteUrl(path = "/") {
   return new URL(path, siteConfig.url).toString();
 }
 
+export function getOpenGraphImagePath(pagePath: string): string {
+  const normalized = pagePath === "/"
+    ? "/"
+    : `/${pagePath.replace(/^\/+|\/+$/g, "")}/`;
+
+  return `/og/?path=${encodeURIComponent(normalized)}`;
+}
+
 export function createPageMetadata(page: Pick<SitePage, "path" | "title" | "description" | "indexable">): Metadata {
   const canonical = absoluteUrl(page.path);
+  const socialImage = absoluteUrl(getOpenGraphImagePath(page.path));
 
   return {
     title: page.title,
@@ -28,10 +37,10 @@ export function createPageMetadata(page: Pick<SitePage, "path" | "title" | "desc
       siteName: siteConfig.name,
       images: [
         {
-          url: absoluteUrl("/og.png"),
+          url: socialImage,
           width: 1200,
           height: 630,
-          alt: `${siteConfig.name} preview`
+          alt: `${page.title} preview`
         }
       ]
     },
@@ -39,7 +48,7 @@ export function createPageMetadata(page: Pick<SitePage, "path" | "title" | "desc
       card: "summary_large_image",
       title: page.title,
       description: page.description,
-      images: [absoluteUrl("/og.png")]
+      images: [socialImage]
     }
   };
 }

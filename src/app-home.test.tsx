@@ -20,6 +20,14 @@ describe("homepage", () => {
     expect(screen.queryByText(/2026-09-02T23:30:02/)).not.toBeInTheDocument();
   });
 
+  it("explains the evidence boundary before asking players to act", () => {
+    render(<HomePage />);
+
+    expect(screen.getByRole("heading", { name: "How to use this Dungeon Quest Reborn wiki" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "What is verified right now" })).toBeInTheDocument();
+    expect(screen.getByText(/Unknown values stay out of the database/i)).toBeInTheDocument();
+  });
+
   it("links directly to the main player tasks", () => {
     render(<HomePage />);
 
