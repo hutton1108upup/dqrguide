@@ -16,6 +16,5 @@ describe("route social image", () => {
 
     expect(screen.getByText("Gameplay details in review")).toBeInTheDocument();
     expect(screen.getByText("dungeonquestrebornguide.wiki")).toBeInTheDocument();
-    expect(screen.queryByText("dqr.gg")).not.toBeInTheDocument();
   });
 });

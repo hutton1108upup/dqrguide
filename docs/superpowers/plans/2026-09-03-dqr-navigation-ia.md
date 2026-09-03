@@ -1,4 +1,4 @@
-# DQR.GG Single-Row Navigation Implementation Plan
+# dungeonquestrebornguide.wiki Single-Row Navigation Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
@@ -297,7 +297,7 @@ git commit -m "feat: add responsive categorized mobile navigation"
 Run:
 
 ```powershell
-$env:NEXT_PUBLIC_SITE_URL='https://dqr.gg'
+$env:NEXT_PUBLIC_SITE_URL='https://dungeonquestrebornguide.wiki'
 npm.cmd run build
 ```
 
@@ -343,7 +343,7 @@ Expected: HTTP 200, no route loss, trust pages remain footer-accessible, and sit
 Run:
 
 ```powershell
-$env:NEXT_PUBLIC_SITE_URL='https://dqr.gg'
+$env:NEXT_PUBLIC_SITE_URL='https://dungeonquestrebornguide.wiki'
 npm.cmd run verify
 ```
 

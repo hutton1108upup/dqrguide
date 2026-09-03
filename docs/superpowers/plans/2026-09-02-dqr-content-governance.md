@@ -1,4 +1,4 @@
-# DQR.GG P0-P1 Content Governance Implementation Plan
+# dungeonquestrebornguide.wiki P0-P1 Content Governance Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
@@ -216,7 +216,7 @@
 - [ ] Run the targeted QA test and verify it fails against the current fixed-port/fixed-domain assumptions.
 - [ ] Implement cross-platform child-process cleanup for the task-owned Next production server and fail fast with the failed command/output.
 - [ ] Make browser QA use the same route registry expectations as content/config checks without hard-coding stale page counts.
-- [ ] Run `npm run verify` with `NEXT_PUBLIC_SITE_URL=https://dqr.gg` and record every command's exit status.
+- [ ] Run `npm run verify` with `NEXT_PUBLIC_SITE_URL=https://dungeonquestrebornguide.wiki` and record every command's exit status.
 - [ ] Fix only task-related failures and rerun the complete verification command.
 
 ### Task 9: Final review evidence

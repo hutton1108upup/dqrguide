@@ -2,7 +2,7 @@
 
 ## Scope
 
-This note records demand signals used to prioritize DQR.GG content. Official Roblox surfaces support factual identity and metadata claims. Reddit posts and YouTube videos identify questions players are asking; they are not treated as proof of game mechanics, prices, drop rates, or transfer behavior.
+This note records demand signals used to prioritize dungeonquestrebornguide.wiki content. Official Roblox surfaces support factual identity and metadata claims. Reddit posts and YouTube videos identify questions players are asking; they are not treated as proof of game mechanics, prices, drop rates, or transfer behavior.
 
 ## First-party baseline
 

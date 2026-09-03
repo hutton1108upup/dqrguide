@@ -1,7 +1,6 @@
 const CANONICAL_ORIGIN = "https://dungeonquestrebornguide.wiki";
 const CANONICAL_ALIASES = new Set([
-  "dqr.gg",
-  "www.dqr.gg"
+  "www.dungeonquestrebornguide.wiki"
 ]);
 
 export function getCanonicalHostRedirect(host: string | null, pathname: string, search: string): string | null {
