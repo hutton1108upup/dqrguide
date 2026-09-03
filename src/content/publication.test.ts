@@ -74,7 +74,7 @@ describe("publication gates", () => {
   it("records editorial modification dates without rewriting unchanged trust pages", () => {
     expect(sitePages.find((page) => page.path === "/gamepasses/")?.dateModified).toBe("2026-09-03");
     expect(sitePages.find((page) => page.path === "/dungeons/northern-lands/")?.dateModified).toBe("2026-09-03");
-    expect(sitePages.find((page) => page.path === "/privacy/")?.dateModified).toBe("2026-09-02");
+    expect(sitePages.find((page) => page.path === "/privacy/")?.dateModified).toBe("2026-09-04");
   });
 
   it("keeps the codes status as not collected until the live redemption UI is checked", () => {

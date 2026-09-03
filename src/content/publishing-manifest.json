@@ -27,7 +27,7 @@
     { "path": "/builds/tank/", "publicationStatus": "published", "indexable": false, "contentType": "guide", "lastVerified": "2026-09-02", "dateModified": "2026-09-03", "verifiedForVersion": null, "nextScheduledCheck": "2026-12-01", "dataState": "not_collected" },
     { "path": "/builds/healer/", "publicationStatus": "published", "indexable": false, "contentType": "guide", "lastVerified": "2026-09-02", "dateModified": "2026-09-03", "verifiedForVersion": null, "nextScheduledCheck": "2026-12-01", "dataState": "not_collected" },
     { "path": "/scripts-macros/", "publicationStatus": "published", "indexable": false, "contentType": "guide", "lastVerified": "2026-09-03", "dateModified": "2026-09-03", "verifiedForVersion": null, "nextScheduledCheck": "2026-12-01", "dataState": "not_collected" },
-    { "path": "/privacy/", "publicationStatus": "published", "indexable": false, "contentType": "trust", "lastVerified": "2026-09-02", "verifiedForVersion": null, "nextScheduledCheck": "2026-12-01" },
+    { "path": "/privacy/", "publicationStatus": "published", "indexable": false, "contentType": "trust", "lastVerified": "2026-09-02", "dateModified": "2026-09-04", "verifiedForVersion": null, "nextScheduledCheck": "2026-12-01" },
     { "path": "/contact/", "publicationStatus": "published", "indexable": false, "contentType": "trust", "lastVerified": "2026-09-02", "verifiedForVersion": null, "nextScheduledCheck": "2026-12-01" },
     { "path": "/source-policy/", "publicationStatus": "published", "indexable": false, "contentType": "trust", "lastVerified": "2026-09-02", "dateModified": "2026-09-03", "verifiedForVersion": null, "nextScheduledCheck": "2026-12-01" }
   ]
