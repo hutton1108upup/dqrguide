@@ -15,7 +15,7 @@ export function SiteHeader() {
         <DesktopNav groups={groups} directItems={directItems} />
         <div className="header-actions">
           <SearchDialog />
-          <MobileNav />
+          <MobileNav groups={groups} directItems={directItems} />
         </div>
       </div>
     </header>
