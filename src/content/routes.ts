@@ -56,11 +56,11 @@ const pageSeed: PageSeed[] = [
     kind: "hub",
     title: "Dungeon Quest Reborn Wiki: Spells, Drops & Guides",
     description:
-      "An evidence-labelled Dungeon Quest Reborn wiki for dungeon progression, spells, drops, tier lists, codes, and update status.",
+      "A source-checked Dungeon Quest Reborn hub for progression questions, dungeons, spells, drops, codes, community links, and update status.",
     h1: "Dungeon Quest Reborn Wiki & Progression Guide",
     eyebrow: "Field guide / evidence first",
     summary:
-      "Use this independent field guide to move from a question to the right dungeon, drop table, spell page, or status check without wading through a long introduction.",
+      "Pick the question you have now—where to progress, what to farm, which role to build, or whether a link is current—and go straight to the matching guide.",
     quickAnswer:
       "Start with your current progression question: choose Dungeons to find the next run, Drops to trace an item source, or Codes, Trello, and Discord for a source-checked status.",
     indexable: true,
@@ -69,13 +69,13 @@ const pageSeed: PageSeed[] = [
   {
     path: "/differences/",
     kind: "guide",
-    title: "Dungeon Quest Reborn vs Original: All Differences",
+    title: "Dungeon Quest Reborn vs Original: What Is Confirmed",
     description:
-      "A source-aware comparison checklist for Dungeon Quest Reborn and the original experience, including data transfer, progression, ownership, and systems.",
+      "Compare official Roblox identity records and see which transfer, progression, item, purchase, and system questions still need an in-game check.",
     h1: "Dungeon Quest Reborn vs Original Dungeon Quest",
     eyebrow: "Returner briefing",
     summary:
-      "This page separates what is officially documented from what still needs an in-game check before a returning player acts on old information.",
+      "Reborn and the original use different Roblox universes. The table shows what the public records confirm and where returning players still need to check inside the game.",
     quickAnswer:
       "Treat Reborn-specific data as a separate dataset. Do not assume that an original-game level, item, route, purchase, or account state carries over unless an official source says so.",
     indexable: true,
@@ -84,13 +84,13 @@ const pageSeed: PageSeed[] = [
   {
     path: "/gamepasses/",
     kind: "status",
-    title: "Dungeon Quest Reborn Gamepasses: Costs & Best Order",
+    title: "Dungeon Quest Reborn Gamepasses: Gold Price Status",
     description:
-      "A verification-led DQR gamepass and boost guide that separates confirmed current effects and currencies from unverified legacy claims.",
+      "See the current Roblox Game Pass API records, the reported Gold purchase screen, and what to record before comparing prices or effects.",
     h1: "Dungeon Quest Reborn Gamepasses",
     eyebrow: "Purchase data under review",
     summary:
-      "Gamepass names, price, currency, effect, and value can change. This release shows the decision framework and withholds any value that has not been checked in the current experience.",
+      "The public API exposes technical pass records but not enough storefront detail to name a best purchase. Use the capture checklist before spending Gold or Robux.",
     quickAnswer:
       "Do not buy from an old tier list alone. Confirm the current price, currency, exact effect, and whether the benefit removes your actual progression bottleneck.",
     indexable: false,
@@ -99,10 +99,10 @@ const pageSeed: PageSeed[] = [
   {
     path: "/spells/",
     kind: "hub",
-    title: "Dungeon Quest Reborn Spells & Skills: Full List",
+    title: "Dungeon Quest Reborn Spells: Roles & Source Checks",
     description:
       "Browse DQR spells and skills by class, role, source, best use, and visible verification status without invented damage values.",
-    h1: "All Dungeon Quest Reborn Spells & Skills",
+    h1: "Dungeon Quest Reborn Spells & Skills",
     eyebrow: "Spell database",
     summary:
       "The spell index is built around use case and acquisition source. Unknown damage, cooldown, or scaling values remain explicitly unverified.",
@@ -114,7 +114,7 @@ const pageSeed: PageSeed[] = [
   {
     path: "/spell-tier-list/",
     kind: "guide",
-    title: "Dungeon Quest Reborn Spell Tier List: Best Skills",
+    title: "Dungeon Quest Reborn Spell Tier List: Review Status",
     description:
       "A transparent DQR spell-ranking framework for clearing, bosses, solo, and parties, with uncertainty shown instead of guessed tiers.",
     h1: "Dungeon Quest Reborn Spell Tier List",
@@ -122,20 +122,20 @@ const pageSeed: PageSeed[] = [
     summary:
       "Rankings only become useful when the use case, weakness, source, alternative, and tested version are visible beside the letter grade.",
     quickAnswer:
-      "There is no evidence-ready global ranking in this build yet. Use the role matrix while current-version performance samples are collected.",
+      "No global ranking is ready yet. Use the role checklist to compare room clear, boss damage, support, survival, and acquisition before trusting a letter grade.",
     indexable: false,
     verifiedForVersion: null
   },
   {
     path: "/trading/",
     kind: "guide",
-    title: "How to Trade in Dungeon Quest Reborn: Full Guide",
+    title: "How Trading Works in Dungeon Quest Reborn: Safety Checklist",
     description:
       "A safe DQR trading checklist covering access, trade flow, item eligibility, common failures, value evidence, and scam prevention.",
     h1: "How to Trade in Dungeon Quest Reborn",
     eyebrow: "Trade desk",
     summary:
-      "This guide focuses on safe process and evidence. It does not publish a static value list without real accepted-trade samples.",
+      "Use the observed trade flow to check the player and every offer slot. Item eligibility and market values still need repeatable current-game evidence.",
     quickAnswer:
       "Before accepting, verify the other player, re-check every item after any change, and treat asking prices as offers—not proof of market value.",
     indexable: false,
@@ -144,10 +144,10 @@ const pageSeed: PageSeed[] = [
   {
     path: "/dungeons/",
     kind: "hub",
-    title: "Dungeon Quest Reborn Dungeons: Order, Levels & Drops",
+    title: "Dungeon Quest Reborn Dungeons: Progression Checklist",
     description:
       "Find the right DQR dungeon by progression need, with level, difficulty, boss, notable drop, and verification fields kept separate.",
-    h1: "All Dungeon Quest Reborn Dungeons",
+    h1: "Dungeon Quest Reborn Dungeon Progression",
     eyebrow: "Progression map",
     summary:
       "The dungeon hub answers what to run next without hard-coding a total count that may change with updates.",
@@ -159,13 +159,13 @@ const pageSeed: PageSeed[] = [
   {
     path: "/dungeons/winter-outpost/",
     kind: "guide",
-    title: "Dungeon Quest Reborn Winter Outpost Guide & Drops",
+    title: "Dungeon Quest Reborn Winter Outpost: Route Check",
     description:
       "A source-labelled Winter Outpost planning page for requirements, route, bosses, drops, builds, and the decision to move on.",
-    h1: "Winter Outpost Guide",
+    h1: "Dungeon Quest Reborn Winter Outpost",
     eyebrow: "Dungeon dossier 01",
     summary:
-      "This dossier preserves the route and farming decisions players need while leaving unverified requirements and loot entries blank.",
+      "Use this page to review current community footage and record the exact difficulty, route, boss tells, and reward screen before changing your farm.",
     quickAnswer:
       "Use this page as a run checklist, not a copied original-game loot table; current Reborn requirements and drops still need direct verification.",
     indexable: false,
@@ -174,15 +174,15 @@ const pageSeed: PageSeed[] = [
   {
     path: "/dungeons/northern-lands/",
     kind: "guide",
-    title: "Dungeon Quest Reborn Northern Lands Guide & Drops",
+    title: "Dungeon Quest Reborn Northern Lands: Route Evidence",
     description:
-      "A current-source Northern Lands dossier for access, boss mechanics, drops, builds, farming priorities, and version changes.",
-    h1: "Northern Lands Guide",
+      "Review current Northern Lands footage, route observations, boss-telegraph questions, and the evidence still needed for requirements and drops.",
+    h1: "Dungeon Quest Reborn Northern Lands",
     eyebrow: "Current-content dossier",
     summary:
-      "The page is structured for a quick route and gear decision, with every current-version field showing whether it has actually been checked.",
+      "Northern Lands is the current experience label. Community runs show the route, while exact requirements, boss values, and loot data still need in-game capture.",
     quickAnswer:
-      "The mockup's level, boss, drop, and stat values are not treated as evidence. Use the verification panel to see what is safe to act on.",
+      "Watch the dated route footage before queueing, then confirm the difficulty and access requirement in your own lobby. Do not rely on uncited level or drop numbers.",
     indexable: false,
     verifiedForVersion: null,
     evidenceLevel: "Official",
@@ -191,10 +191,10 @@ const pageSeed: PageSeed[] = [
   {
     path: "/drops/",
     kind: "hub",
-    title: "Dungeon Quest Reborn Drops: Loot Tables by Dungeon",
+    title: "Dungeon Quest Reborn Drops: Source & Rate Checks",
     description:
       "Trace DQR items back to source dungeons while keeping official rates, community observations, and unknown rates distinct.",
-    h1: "Dungeon Quest Reborn Drop Tables",
+    h1: "Dungeon Quest Reborn Drop Sources",
     eyebrow: "Reverse lookup",
     summary:
       "Drops starts with the target item; Dungeons starts with the run. Keeping those intents separate makes the answer faster and the evidence easier to audit.",
@@ -206,7 +206,7 @@ const pageSeed: PageSeed[] = [
   {
     path: "/codes/",
     kind: "status",
-    title: "Dungeon Quest Reborn Codes: Current Status & Rewards",
+    title: "Are There Any Dungeon Quest Reborn Codes? Current Status",
     description:
       "Check whether DQR has a confirmed redemption system, active codes, source checks, and a clear warning about wrong-game code lists.",
     h1: "Dungeon Quest Reborn Codes — Current Status",
@@ -214,7 +214,7 @@ const pageSeed: PageSeed[] = [
     summary:
       "Codes is maintained as a status check. It never borrows codes from Dungeon Lootr or another experience and never shows a copy button for an unconfirmed code.",
     quickAnswer:
-      "No active code is published in this build because a current official code and redemption path have not yet been confirmed from a first-party source.",
+      "No working DQR code or redemption menu was confirmed on the official Roblox page or public game API checked on September 3, 2026.",
     indexable: true,
     verifiedForVersion: "[Northern Lands] title snapshot",
     evidenceLevel: "Legacy / Unconfirmed",
@@ -231,7 +231,7 @@ const pageSeed: PageSeed[] = [
     summary:
       "A board is not official because search results call it official. This page records the direct verification path and safer alternatives.",
     quickAnswer:
-      "No Trello URL is labelled official in this build until a first-party DQR or publisher channel links to it directly.",
+      "No official Trello link was visible on the checked Roblox experience or creator surfaces. Treat boards found only through search as unofficial.",
     indexable: true,
     verifiedForVersion: "[Northern Lands] title snapshot",
     evidenceLevel: "Legacy / Unconfirmed",
@@ -240,7 +240,7 @@ const pageSeed: PageSeed[] = [
   {
     path: "/discord/",
     kind: "status",
-    title: "Dungeon Quest Reborn Discord: Server Link & Guide",
+    title: "Dungeon Quest Reborn Discord: Invite Status & Safety",
     description:
       "A cautious DQR Discord status guide covering invite verification, server identity, channel use, party finding, and scam prevention.",
     h1: "Dungeon Quest Reborn Discord Server Guide",
@@ -255,7 +255,7 @@ const pageSeed: PageSeed[] = [
   {
     path: "/tier-list/",
     kind: "guide",
-    title: "Dungeon Quest Reborn Tier List: Spells, Weapons & Builds",
+    title: "Dungeon Quest Reborn Tier List: Ranking Method",
     description:
       "A progression-based DQR tier framework for spells, weapons, and builds with evidence, use cases, and version status beside every conclusion.",
     h1: "Dungeon Quest Reborn Tier List",
@@ -263,20 +263,20 @@ const pageSeed: PageSeed[] = [
     summary:
       "The overview separates early, mid, late, and endgame needs. It links to detailed data instead of duplicating the entire spell ranking.",
     quickAnswer:
-      "No current item is assigned a launch tier without repeatable evidence. The board shows the evaluation criteria and pending verification queue.",
+      "No item has a site ranking yet. Compare the stated use case, progression stage, acquisition cost, weakness, and tested version before using any tier claim.",
     indexable: false,
     verifiedForVersion: null
   },
   {
     path: "/updates/",
     kind: "update",
-    title: "Dungeon Quest Reborn Updates & Patch Notes",
+    title: "Dungeon Quest Reborn Update Status & Roblox Signals",
     description:
-      "Track first-party DQR updates and see which guide pages changed, with source date, verification date, and affected content kept explicit.",
+      "Track the latest Roblox metadata timestamp and dated guide changes without treating a platform signal as a gameplay patch note.",
     h1: "Dungeon Quest Reborn Updates",
     eyebrow: "Verification ledger",
     summary:
-      "This ledger changes only when a source or site record changes. Build and deployment dates never masquerade as editorial updates.",
+      "The latest public API timestamp confirms that the Roblox experience changed, but it does not say which gameplay systems changed.",
     quickAnswer:
       "Use this page to trace why a guide changed. No patch note is copied into the ledger without a direct source and affected-page links.",
     indexable: true,
@@ -291,7 +291,7 @@ const pageSeed: PageSeed[] = [
     h1: "Dungeon Quest Reborn Beginner Guide",
     eyebrow: "First run briefing",
     summary:
-      "A first-pass route for new players: choose a role, build a repeatable upgrade loop, and keep every recommendation tied to the current evidence queue.",
+      "Start with the decisions that repeatedly appear in player questions: role choice, stat focus, reliable clears, upgrades, daily rewards, and when to ask a party for help.",
     quickAnswer:
       "Start with a survivable role and a repeatable dungeon route. Do not spend or copy a build until its current Reborn source, version, and use case are verified.",
     indexable: false,
@@ -300,7 +300,7 @@ const pageSeed: PageSeed[] = [
   {
     path: "/weapons/",
     kind: "hub",
-    title: "Dungeon Quest Reborn Weapons: Stats, Drops & Tiers",
+    title: "Dungeon Quest Reborn Weapons: Upgrade Checklist",
     description:
       "Browse DQR weapons by class, dungeon, difficulty, rarity, level, and current tier, with verified source pages and upgrade comparisons.",
     h1: "Dungeon Quest Reborn Weapons Database",
@@ -315,13 +315,13 @@ const pageSeed: PageSeed[] = [
   {
     path: "/armor/",
     kind: "hub",
-    title: "Dungeon Quest Reborn Armor: Stats, Sets & Sources",
+    title: "Dungeon Quest Reborn Armor: Upgrade Checklist",
     description:
       "Track DQR armor by slot, class, dungeon, rarity, level, set role, trade status, and current verification state.",
     h1: "Dungeon Quest Reborn Armor Database",
     eyebrow: "Equipment database",
     summary:
-      "Armor entries will be added as Reborn-specific evidence arrives. The first-pass page defines the comparison fields so an old-game set cannot quietly become a current recommendation.",
+      "Compare slot, role, source, requirement, and availability before using an armor recommendation. Old-game set names are not treated as current Reborn data.",
     quickAnswer:
       "Prioritise the armor slot that fixes your current failure point, then compare source dungeon, requirement, and role fit before rarity or set claims.",
     indexable: false,
@@ -330,7 +330,7 @@ const pageSeed: PageSeed[] = [
   {
     path: "/cosmetics/",
     kind: "hub",
-    title: "Dungeon Quest Reborn Cosmetics: Full List & Sources",
+    title: "Dungeon Quest Reborn Cosmetics: Source & Availability",
     description:
       "Browse DQR armor, weapon, enchant, title, and event cosmetics with source dungeon, availability, trade status, and last verification date.",
     h1: "Dungeon Quest Reborn Cosmetics",
@@ -345,13 +345,13 @@ const pageSeed: PageSeed[] = [
   {
     path: "/builds/",
     kind: "hub",
-    title: "Dungeon Quest Reborn Builds: Mage, Warrior, Tank & Healer",
+    title: "Dungeon Quest Reborn Builds: Role Planning Guide",
     description:
       "Find current DQR Mage, Warrior, Tank, and Healer builds with stat priorities, recommended spells, gear goals, progression stages, and alternatives.",
-    h1: "Best Dungeon Quest Reborn Builds",
+    h1: "Dungeon Quest Reborn Build Planning",
     eyebrow: "Role decision desk",
     summary:
-      "The build hub splits recommendations by role and progression stage. Role pages are structured now; individual spell, weapon, and stat claims wait for current evidence.",
+      "Choose a job for the problem your party or solo run has now, then verify each spell and item before turning that outline into a fixed build.",
     quickAnswer:
       "Choose a role based on the way you clear dungeons, then connect spells, weapons, armor, and alternatives to a verified source instead of copying an old meta build.",
     indexable: false,
@@ -360,9 +360,9 @@ const pageSeed: PageSeed[] = [
   {
     path: "/builds/mage/",
     kind: "guide",
-    title: "Dungeon Quest Reborn Mage Build: Spells, Gear & Stats",
+    title: "Dungeon Quest Reborn Mage Build Planning Guide",
     description:
-      "A first-pass DQR Mage build framework for spell roles, gear goals, stat priorities, progression stages, and evidence-backed alternatives.",
+      "Plan a DQR Mage loadout around room clear, boss damage, or support while current spell and gear details are still being checked.",
     h1: "Dungeon Quest Reborn Mage Build",
     eyebrow: "Build sheet / Mage",
     summary:
@@ -375,9 +375,9 @@ const pageSeed: PageSeed[] = [
   {
     path: "/builds/warrior/",
     kind: "guide",
-    title: "Dungeon Quest Reborn Warrior Build: Spells, Gear & Stats",
+    title: "Dungeon Quest Reborn Warrior Build Planning Guide",
     description:
-      "A first-pass DQR Warrior build framework for frontline role, gear goals, stat priorities, progression stages, and evidence-backed alternatives.",
+      "Plan a DQR Warrior loadout around the damage and survivability needed for the next repeatable dungeon clear.",
     h1: "Dungeon Quest Reborn Warrior Build",
     eyebrow: "Build sheet / Warrior",
     summary:
@@ -390,9 +390,9 @@ const pageSeed: PageSeed[] = [
   {
     path: "/builds/tank/",
     kind: "guide",
-    title: "Dungeon Quest Reborn Tank Build: Defense, Gear & Team Role",
+    title: "Dungeon Quest Reborn Tank Role Planning Guide",
     description:
-      "A first-pass DQR Tank build framework for defense priorities, team utility, gear goals, progression stages, and evidence-backed alternatives.",
+      "Define the party damage and mechanic a defensive role must handle before choosing stats, gear, or utility skills.",
     h1: "Dungeon Quest Reborn Tank Build",
     eyebrow: "Build sheet / Tank",
     summary:
@@ -405,9 +405,9 @@ const pageSeed: PageSeed[] = [
   {
     path: "/builds/healer/",
     kind: "guide",
-    title: "Dungeon Quest Reborn Healer Build: Spells, Gear & Team Role",
+    title: "Dungeon Quest Reborn Healer Role Planning Guide",
     description:
-      "A first-pass DQR Healer build framework for recovery, support role, gear goals, progression stages, and evidence-backed alternatives.",
+      "Define when and why the party needs recovery or support before choosing spells, stats, and gear.",
     h1: "Dungeon Quest Reborn Healer Build",
     eyebrow: "Build sheet / Healer",
     summary:
@@ -439,8 +439,8 @@ const pageSeed: PageSeed[] = [
     description: "Privacy boundaries for the independent Dungeon Quest Reborn reference site.",
     h1: "Dungeon Quest Reborn Guide Privacy",
     eyebrow: "Trust page",
-    summary: "What this local MVP collects, what it does not collect, and which future capabilities are outside this release.",
-    quickAnswer: "This MVP has no accounts, comments, payments, market, or advertising system; do not enter credentials or private game data here.",
+    summary: "What the current site collects, what it does not collect, and which possible future features would require a policy update.",
+    quickAnswer: "The current site has no accounts, comments, payments, marketplace, or player-data upload. Never enter Roblox credentials or private game data here.",
     indexable: false,
     verifiedForVersion: null
   },
@@ -451,8 +451,8 @@ const pageSeed: PageSeed[] = [
     description: "Contact and correction boundaries for the independent Dungeon Quest Reborn reference site.",
     h1: "Contact Dungeon Quest Reborn Guide",
     eyebrow: "Trust page",
-    summary: "How to understand the current correction boundary before a public support channel is configured.",
-    quickAnswer: "This local MVP does not operate a public inbox or community support system; source corrections are documented through the source-policy workflow before publication.",
+    summary: "How corrections are handled while the site does not yet operate a public support inbox.",
+    quickAnswer: "There is no public inbox yet. Check the source policy to see what a correction needs: the page, claim, direct source, version, and date.",
     indexable: false,
     verifiedForVersion: null
   },
@@ -494,8 +494,8 @@ function makePage(seed: (typeof pageSeed)[number]): SitePage {
     nextScheduledCheck: policy.nextScheduledCheck,
     dataState: policy.dataState,
     verifiedForVersion: policy.verifiedForVersion,
-    evidenceLevel: seed.evidenceLevel ?? (seed.indexable ? "Official" : "Legacy / Unconfirmed"),
-    confidence: seed.confidence ?? (seed.indexable ? "High" : "Low"),
+    evidenceLevel: seed.evidenceLevel ?? "Legacy / Unconfirmed",
+    confidence: seed.confidence ?? "Low",
     claims: content.claims ?? [],
     differenceRows: content.differenceRows ?? [],
     updates: content.updates ?? [],
@@ -538,6 +538,13 @@ export function getPublishedPages(): SitePage[] {
 
 export function getVisiblePages(environment: RuntimeEnvironment = getRuntimeEnvironment()): SitePage[] {
   return sitePages.filter((page) => isPageAvailable(page, environment));
+}
+
+export function getPlayerFacingStatus(page: SitePage): "Source checked" | "Gameplay details in review" | "Source check incomplete" | "Site information" {
+  if (page.kind === "trust") return "Site information";
+  if (page.dataState === "fetch_failed") return "Source check incomplete";
+  if (page.dataState === "not_collected" || !page.verifiedForVersion) return "Gameplay details in review";
+  return "Source checked";
 }
 
 export function isEvidenceLevel(value: string): value is EvidenceLevel {

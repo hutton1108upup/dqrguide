@@ -1,10 +1,11 @@
 type OgImageProps = {
   title: string;
   eyebrow: string;
-  evidence: string;
+  status: string;
+  siteHost: string;
 };
 
-export function OgImage({ title, eyebrow, evidence }: OgImageProps) {
+export function OgImage({ title, eyebrow, status, siteHost }: OgImageProps) {
   return (
     <div
       style={{
@@ -28,8 +29,8 @@ export function OgImage({ title, eyebrow, evidence }: OgImageProps) {
         <div style={{ fontFamily: "Georgia, serif", fontSize: 58, lineHeight: 1.08, fontWeight: 700 }}>{title}</div>
       </div>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid #293653", paddingTop: "18px", color: "#AAB6CC", fontSize: 20 }}>
-        <span>{evidence}</span>
-        <span style={{ color: "#F2C14E", fontWeight: 700 }}>dqr.gg</span>
+        <span>{status}</span>
+        <span style={{ color: "#F2C14E", fontWeight: 700 }}>{siteHost}</span>
       </div>
     </div>
   );

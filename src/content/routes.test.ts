@@ -6,6 +6,7 @@ import {
   getVisiblePages,
   getIndexablePages,
   getPageByPath,
+  getPlayerFacingStatus,
   isEvidenceLevel,
   sitePages
 } from "./routes";
@@ -88,5 +89,15 @@ describe("site page registry", () => {
   it("uses the current public site name throughout route copy", () => {
     expect(siteConfig.name).toBe("Dungeon Quest Reborn Guide");
     expect(JSON.stringify(sitePages)).not.toContain("DQR.GG");
+  });
+
+  it("describes content readiness without exposing SEO index state", () => {
+    expect(getPlayerFacingStatus(getPageByPath("/")!)).toBe("Source checked");
+    expect(getPlayerFacingStatus(getPageByPath("/dungeons/northern-lands/")!)).toBe("Gameplay details in review");
+    expect(getPlayerFacingStatus(getPageByPath("/privacy/")!)).toBe("Site information");
+
+    for (const page of sitePages) {
+      expect(getPlayerFacingStatus(page)).not.toMatch(/index|noindex|preview/i);
+    }
   });
 });

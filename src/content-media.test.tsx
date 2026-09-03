@@ -72,8 +72,8 @@ describe("evidence media on content pages", () => {
   it("keeps weak-source and safety pages useful without unsafe embeds", () => {
     const checks = [
       ["/cosmetics/", "Why Glitch Videos Are Excluded"],
-      ["/builds/tank/", "Role Page, Not a Confirmed Class"],
-      ["/builds/healer/", "Role Page, Not a Confirmed Class"],
+      ["/builds/tank/", "A Party Job, Not a Confirmed Class"],
+      ["/builds/healer/", "A Party Job, Not a Confirmed Class"],
       ["/source-policy/", "Evidence Ladder"]
     ] as const;
 
