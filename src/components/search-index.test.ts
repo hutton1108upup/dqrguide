@@ -1,10 +1,19 @@
 import { describe, expect, it } from "vitest";
 
+import { CORE_PATHS } from "@/content/routes";
+
 import { buildSearchItems, searchSite } from "./search-index";
 
 describe("site search index", () => {
   it("includes every published core route", () => {
-    expect(buildSearchItems()).toHaveLength(15);
+    const hrefs = new Set(buildSearchItems("production").map((item) => item.href));
+
+    for (const path of CORE_PATHS) {
+      expect(hrefs).toContain(path);
+    }
+    expect(hrefs).toContain("/beginner-guide/");
+    expect(hrefs).toContain("/builds/mage/");
+    expect(hrefs).not.toContain("/privacy/");
   });
 
   it("finds a route by title, path, or intent phrase", () => {
@@ -15,5 +24,11 @@ describe("site search index", () => {
 
   it("returns an empty state for an unrelated query", () => {
     expect(searchSite("tax filing calculator")).toEqual([]);
+  });
+
+  it("keeps the first-pass pages searchable while trust pages stay out", () => {
+    expect(buildSearchItems("production").some((item) => item.href === "/updates/")).toBe(true);
+    expect(searchSite("updates", 7, "production").some((item) => item.href === "/updates/")).toBe(true);
+    expect(searchSite("privacy", 7, "production").some((item) => item.href === "/privacy/")).toBe(false);
   });
 });

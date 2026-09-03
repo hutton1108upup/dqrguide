@@ -11,7 +11,13 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "qa": "node scripts/qa_site.mjs"
+    "qa": "node scripts/qa_site.mjs",
+    "refresh:audit": "node scripts/refresh-audit.mjs",
+    "check-content": "node scripts/check-content.mjs",
+    "check-links": "node scripts/check-links.mjs",
+    "check-sources": "node scripts/check-sources.mjs",
+    "check-config": "node scripts/check-config.mjs",
+    "verify": "node scripts/verify.mjs"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",

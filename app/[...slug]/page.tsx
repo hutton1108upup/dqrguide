@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { ContentPage } from "@/components/content-page";
-import { getPageByPath, sitePages } from "@/content/routes";
+import { getPageByPath, getRuntimeEnvironment, getVisiblePages, isPageAvailable } from "@/content/routes";
 import { createPageMetadata } from "@/lib/seo";
 
 type Props = {
@@ -14,7 +14,7 @@ function slugToPath(slug: string[]) {
 }
 
 export async function generateStaticParams() {
-  return sitePages
+  return getVisiblePages(getRuntimeEnvironment())
     .filter((page) => page.path !== "/")
     .map((page) => ({
       slug: page.path.split("/").filter(Boolean)
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const page = getPageByPath(slugToPath(slug));
 
-  if (!page) {
+  if (!page || !isPageAvailable(page, getRuntimeEnvironment())) {
     return {};
   }
 
@@ -36,7 +36,7 @@ export default async function StaticCatchAllPage({ params }: Props) {
   const { slug } = await params;
   const page = getPageByPath(slugToPath(slug));
 
-  if (!page) {
+  if (!page || !isPageAvailable(page, getRuntimeEnvironment())) {
     notFound();
   }
 

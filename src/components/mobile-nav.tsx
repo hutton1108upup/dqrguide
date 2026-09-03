@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
-import { NAV_ITEMS } from "./site-nav";
+import { getNavigationItems } from "./site-nav";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -22,7 +22,7 @@ export function MobileNav() {
       </button>
       {open ? (
         <nav id="mobile-navigation" aria-label="Mobile navigation">
-          {NAV_ITEMS.map(([label, href]) => (
+          {getNavigationItems().map(([label, href]) => (
             <Link href={href} key={href} onClick={() => setOpen(false)}>{label}</Link>
           ))}
         </nav>

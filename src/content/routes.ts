@@ -1,4 +1,5 @@
-import { EVIDENCE_LEVELS, type Confidence, type EvidenceLevel, type SitePage } from "./types";
+import publishingManifest from "./publishing-manifest.json";
+import { EVIDENCE_LEVELS, type Confidence, type ContentType, type DataState, type EvidenceLevel, type PublicationStatus, type SitePage } from "./types";
 import { LAST_RESEARCHED } from "./game-data";
 import { pageContentByPath } from "./page-content";
 
@@ -21,6 +22,18 @@ export const CORE_PATHS = [
 ] as const;
 
 const published = "2026-09-02";
+const policies = publishingManifest.pages as Array<{
+  path: string;
+  publicationStatus: PublicationStatus;
+  indexable: boolean;
+  contentType: ContentType;
+  lastVerified: string;
+  dateModified?: string;
+  verifiedForVersion: string | null;
+  nextScheduledCheck: string | null;
+  dataState?: DataState;
+}>;
+const policyByPath = new Map(policies.map((policy) => [policy.path, policy]));
 
 type PageSeed =
   Pick<
@@ -268,6 +281,192 @@ const pageSeed: PageSeed[] = [
       "Use this page to trace why a guide changed. No patch note is copied into the ledger without a direct source and affected-page links.",
     indexable: true,
     verifiedForVersion: "[Northern Lands] title snapshot"
+  },
+  {
+    path: "/beginner-guide/",
+    kind: "guide",
+    title: "Dungeon Quest Reborn Beginner Guide: Progress Faster",
+    description:
+      "Start DQR with the right class, stats, dungeon route, upgrade priorities, gold use, spell choices, and mistakes to avoid during early progression.",
+    h1: "Dungeon Quest Reborn Beginner Guide",
+    eyebrow: "First run briefing",
+    summary:
+      "A first-pass route for new players: choose a role, build a repeatable upgrade loop, and keep every recommendation tied to the current evidence queue.",
+    quickAnswer:
+      "Start with a survivable role and a repeatable dungeon route. Do not spend or copy a build until its current Reborn source, version, and use case are verified.",
+    indexable: false,
+    verifiedForVersion: null
+  },
+  {
+    path: "/weapons/",
+    kind: "hub",
+    title: "Dungeon Quest Reborn Weapons: Stats, Drops & Tiers",
+    description:
+      "Browse DQR weapons by class, dungeon, difficulty, rarity, level, and current tier, with verified source pages and upgrade comparisons.",
+    h1: "Dungeon Quest Reborn Weapons Database",
+    eyebrow: "Equipment database",
+    summary:
+      "The weapon index is ready for verified rows. Until Reborn-specific names, sources, and values are checked, it exposes the fields and decision paths rather than guessed stats.",
+    quickAnswer:
+      "Choose a weapon by the dungeon you can clear consistently and the role you are building for. A high rarity label alone is not a current-version recommendation.",
+    indexable: false,
+    verifiedForVersion: null
+  },
+  {
+    path: "/armor/",
+    kind: "hub",
+    title: "Dungeon Quest Reborn Armor: Stats, Sets & Sources",
+    description:
+      "Track DQR armor by slot, class, dungeon, rarity, level, set role, trade status, and current verification state.",
+    h1: "Dungeon Quest Reborn Armor Database",
+    eyebrow: "Equipment database",
+    summary:
+      "Armor entries will be added as Reborn-specific evidence arrives. The first-pass page defines the comparison fields so an old-game set cannot quietly become a current recommendation.",
+    quickAnswer:
+      "Prioritise the armor slot that fixes your current failure point, then compare source dungeon, requirement, and role fit before rarity or set claims.",
+    indexable: false,
+    verifiedForVersion: null
+  },
+  {
+    path: "/cosmetics/",
+    kind: "hub",
+    title: "Dungeon Quest Reborn Cosmetics: Full List & Sources",
+    description:
+      "Browse DQR armor, weapon, enchant, title, and event cosmetics with source dungeon, availability, trade status, and last verification date.",
+    h1: "Dungeon Quest Reborn Cosmetics",
+    eyebrow: "Collection index",
+    summary:
+      "Cosmetics are separated from progression stats until a current source confirms what is visual, obtainable, tradable, or event-limited.",
+    quickAnswer:
+      "Treat a cosmetic as unverified until its Reborn source and availability window are checked. Do not infer tradability or event status from an original-game listing.",
+    indexable: false,
+    verifiedForVersion: null
+  },
+  {
+    path: "/builds/",
+    kind: "hub",
+    title: "Dungeon Quest Reborn Builds: Mage, Warrior, Tank & Healer",
+    description:
+      "Find current DQR Mage, Warrior, Tank, and Healer builds with stat priorities, recommended spells, gear goals, progression stages, and alternatives.",
+    h1: "Best Dungeon Quest Reborn Builds",
+    eyebrow: "Role decision desk",
+    summary:
+      "The build hub splits recommendations by role and progression stage. Role pages are structured now; individual spell, weapon, and stat claims wait for current evidence.",
+    quickAnswer:
+      "Choose a role based on the way you clear dungeons, then connect spells, weapons, armor, and alternatives to a verified source instead of copying an old meta build.",
+    indexable: false,
+    verifiedForVersion: null
+  },
+  {
+    path: "/builds/mage/",
+    kind: "guide",
+    title: "Dungeon Quest Reborn Mage Build: Spells, Gear & Stats",
+    description:
+      "A first-pass DQR Mage build framework for spell roles, gear goals, stat priorities, progression stages, and evidence-backed alternatives.",
+    h1: "Dungeon Quest Reborn Mage Build",
+    eyebrow: "Build sheet / Mage",
+    summary:
+      "Use this role sheet to organise a Mage build while current spell names, weapon records, and performance samples are collected.",
+    quickAnswer:
+      "Build around the Mage job you need—room clear, boss damage, or support—and verify each spell and gear source for Reborn before treating it as a recommendation.",
+    indexable: false,
+    verifiedForVersion: null
+  },
+  {
+    path: "/builds/warrior/",
+    kind: "guide",
+    title: "Dungeon Quest Reborn Warrior Build: Spells, Gear & Stats",
+    description:
+      "A first-pass DQR Warrior build framework for frontline role, gear goals, stat priorities, progression stages, and evidence-backed alternatives.",
+    h1: "Dungeon Quest Reborn Warrior Build",
+    eyebrow: "Build sheet / Warrior",
+    summary:
+      "Use this role sheet to organise a Warrior build while current item records and repeatable clear evidence are collected.",
+    quickAnswer:
+      "Start with the survivability and damage balance your next dungeon demands; do not turn an original-game Warrior setup into a Reborn answer without a current source.",
+    indexable: false,
+    verifiedForVersion: null
+  },
+  {
+    path: "/builds/tank/",
+    kind: "guide",
+    title: "Dungeon Quest Reborn Tank Build: Defense, Gear & Team Role",
+    description:
+      "A first-pass DQR Tank build framework for defense priorities, team utility, gear goals, progression stages, and evidence-backed alternatives.",
+    h1: "Dungeon Quest Reborn Tank Build",
+    eyebrow: "Build sheet / Tank",
+    summary:
+      "Use this role sheet to define what a Tank must survive and enable before a current-version gear recommendation is published.",
+    quickAnswer:
+      "Define the hit or mechanic the Tank must survive, then verify defensive effects, team utility, and the source dungeon for each recommended item.",
+    indexable: false,
+    verifiedForVersion: null
+  },
+  {
+    path: "/builds/healer/",
+    kind: "guide",
+    title: "Dungeon Quest Reborn Healer Build: Spells, Gear & Team Role",
+    description:
+      "A first-pass DQR Healer build framework for recovery, support role, gear goals, progression stages, and evidence-backed alternatives.",
+    h1: "Dungeon Quest Reborn Healer Build",
+    eyebrow: "Build sheet / Healer",
+    summary:
+      "Use this role sheet to organise recovery and support priorities while current Reborn spell effects and gear sources are collected.",
+    quickAnswer:
+      "Choose support tools around the damage your party actually takes, and verify every healing or buff claim in the current Reborn experience before publishing a build.",
+    indexable: false,
+    verifiedForVersion: null
+  },
+  {
+    path: "/scripts-macros/",
+    kind: "guide",
+    title: "Dungeon Quest Reborn Scripts & Macros: Safety Guide",
+    description:
+      "A safety-first DQR guide explaining why scripts, macros, executors, account risks, and unofficial downloads are not progression advice.",
+    h1: "Dungeon Quest Reborn Scripts & Macros Safety Guide",
+    eyebrow: "Safety boundary",
+    summary:
+      "This page exists to answer the search intent without distributing exploit instructions, executors, or downloads that can put a Roblox account at risk.",
+    quickAnswer:
+      "Do not download executors, paste scripts, or share session credentials for a shortcut. Use in-game controls and verified guides instead.",
+    indexable: false,
+    verifiedForVersion: null
+  },
+  {
+    path: "/privacy/",
+    kind: "trust",
+    title: "DQR.GG Privacy",
+    description: "Privacy boundaries for the independent Dungeon Quest Reborn reference site.",
+    h1: "DQR.GG Privacy",
+    eyebrow: "Trust page",
+    summary: "What this local MVP collects, what it does not collect, and which future capabilities are outside this release.",
+    quickAnswer: "This MVP has no accounts, comments, payments, market, or advertising system; do not enter credentials or private game data here.",
+    indexable: false,
+    verifiedForVersion: null
+  },
+  {
+    path: "/contact/",
+    kind: "trust",
+    title: "Contact DQR.GG",
+    description: "Contact and correction boundaries for the independent Dungeon Quest Reborn reference site.",
+    h1: "Contact DQR.GG",
+    eyebrow: "Trust page",
+    summary: "How to understand the current correction boundary before a public support channel is configured.",
+    quickAnswer: "This local MVP does not operate a public inbox or community support system; source corrections are documented through the source-policy workflow before publication.",
+    indexable: false,
+    verifiedForVersion: null
+  },
+  {
+    path: "/source-policy/",
+    kind: "trust",
+    title: "DQR.GG Source & Verification Policy",
+    description: "The evidence, confidence, version, date, and publication rules used by DQR.GG.",
+    h1: "Source & Verification Policy",
+    eyebrow: "Trust page",
+    summary: "A compact explanation of how page-level sources and claim-level evidence are kept separate.",
+    quickAnswer: "A source can establish one fact without proving every fact on a page; each critical claim must show its own status, confidence, version, source, note, and checked date.",
+    indexable: false,
+    verifiedForVersion: null
   }
 ];
 
@@ -278,19 +477,45 @@ function makePage(seed: (typeof pageSeed)[number]): SitePage {
     throw new Error(`Missing page content for ${seed.path}`);
   }
 
+  const policy = policyByPath.get(seed.path);
+  if (!policy) {
+    throw new Error(`Missing publication policy for ${seed.path}`);
+  }
+
   return {
     ...seed,
-    published: true,
+    indexable: policy.indexable,
+    publicationStatus: policy.publicationStatus,
+    published: policy.publicationStatus === "published",
+    contentType: policy.contentType,
     datePublished: published,
-    dateModified: published,
-    lastVerified: LAST_RESEARCHED,
+    dateModified: policy.dateModified ?? published,
+    lastVerified: policy.lastVerified ?? LAST_RESEARCHED,
+    nextScheduledCheck: policy.nextScheduledCheck,
+    dataState: policy.dataState,
+    verifiedForVersion: policy.verifiedForVersion,
     evidenceLevel: seed.evidenceLevel ?? (seed.indexable ? "Official" : "Legacy / Unconfirmed"),
     confidence: seed.confidence ?? (seed.indexable ? "High" : "Low"),
+    claims: content.claims ?? [],
+    differenceRows: content.differenceRows ?? [],
+    updates: content.updates ?? [],
     ...content
   };
 }
 
 export const sitePages: SitePage[] = pageSeed.map(makePage);
+
+export type RuntimeEnvironment = "development" | "preview" | "production";
+
+export function getRuntimeEnvironment(): RuntimeEnvironment {
+  if (process.env.NEXT_PUBLIC_CONTENT_PREVIEW === "1") return "preview";
+  return process.env.NODE_ENV === "production" ? "production" : "development";
+}
+
+export function isPageAvailable(page: SitePage, environment: RuntimeEnvironment): boolean {
+  if (page.publicationStatus === "published") return true;
+  return page.publicationStatus === "review" && environment !== "production";
+}
 
 export function normalizePath(path: string): string {
   if (!path || path === "/") return "/";
@@ -304,7 +529,15 @@ export function getPageByPath(path: string): SitePage | undefined {
 }
 
 export function getIndexablePages(): SitePage[] {
-  return sitePages.filter((page) => page.published && page.indexable);
+  return getPublishedPages().filter((page) => page.indexable);
+}
+
+export function getPublishedPages(): SitePage[] {
+  return sitePages.filter((page) => page.publicationStatus === "published");
+}
+
+export function getVisiblePages(environment: RuntimeEnvironment = getRuntimeEnvironment()): SitePage[] {
+  return sitePages.filter((page) => isPageAvailable(page, environment));
 }
 
 export function isEvidenceLevel(value: string): value is EvidenceLevel {

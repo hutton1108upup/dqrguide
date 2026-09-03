@@ -7,7 +7,37 @@ export const EVIDENCE_LEVELS = [
 
 export type EvidenceLevel = (typeof EVIDENCE_LEVELS)[number];
 export type Confidence = "High" | "Medium" | "Low";
-export type PageKind = "hub" | "guide" | "status" | "update";
+export type PageKind = "hub" | "guide" | "status" | "update" | "trust";
+export type PublicationStatus = "draft" | "review" | "published";
+export type ClaimStatus = "confirmed" | "reported" | "not_collected" | "fetch_failed";
+export type ContentType = "codes" | "tier" | "update" | "dungeon" | "guide" | "trust";
+export type DataState = "observed_zero" | "not_collected" | "fetch_failed";
+
+export interface FactClaim {
+  id: string;
+  topic: string;
+  claim: string;
+  value: string;
+  claimStatus: ClaimStatus;
+  confidence: Confidence;
+  verifiedForVersion: string | null;
+  sourceURL: string | null;
+  evidenceNote: string;
+  lastChecked: string;
+}
+
+export interface DifferenceRow extends FactClaim {
+  originalValue: string;
+  rebornValue: string;
+}
+
+export interface UpdateRecord extends FactClaim {
+  versionTitle: string;
+  publishedDate: string;
+  actualChanges: string;
+  affectedPaths: string[];
+  recordType: "patch_note" | "metadata_signal" | "editorial";
+}
 
 export interface SourceRecord {
   title: string;
@@ -17,11 +47,34 @@ export interface SourceRecord {
   lastChecked: string;
 }
 
+export interface ApiSnapshot {
+  endpoint: string;
+  fetchedAt: string;
+  responseSummary: string;
+}
+
+export interface PageMedia {
+  id: string;
+  type: "image" | "youtube";
+  src?: string;
+  videoId?: string;
+  title: string;
+  alt: string;
+  caption: string;
+  sourceURL: string;
+  evidenceLevel: EvidenceLevel;
+  claimIds: string[];
+  capturedAt: string;
+  verifiedForVersion: string | null;
+  startSeconds?: number;
+}
+
 export interface PageSection {
   id: string;
   title: string;
   paragraphs: string[];
   bullets?: string[];
+  media?: PageMedia[];
 }
 
 export interface FaqItem {
@@ -45,7 +98,11 @@ export interface SitePage {
   summary: string;
   quickAnswer: string;
   indexable: boolean;
+  publicationStatus: PublicationStatus;
   published: boolean;
+  contentType: ContentType;
+  nextScheduledCheck: string | null;
+  dataState?: DataState;
   datePublished: string;
   dateModified: string;
   lastVerified: string | null;
@@ -56,5 +113,7 @@ export interface SitePage {
   faq: FaqItem[];
   related: RelatedLink[];
   sources: SourceRecord[];
+  claims: FactClaim[];
+  differenceRows: DifferenceRow[];
+  updates: UpdateRecord[];
 }
-

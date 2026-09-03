@@ -33,4 +33,23 @@ describe("technical SEO", () => {
     const schema = buildPageSchema(getPageByPath("/dungeons/")!);
     expect(schema.some((item) => item["@type"] === "ItemList")).toBe(true);
   });
+
+  it("uses the fixed-size PNG for social previews", () => {
+    const metadata = createPageMetadata(getPageByPath("/")!);
+    const images = metadata.openGraph?.images;
+    const openGraphImage = Array.isArray(images) ? images[0] : images;
+    expect(openGraphImage).toMatchObject({ url: expect.stringContaining("/og.png"), width: 1200, height: 630 });
+    expect(metadata.twitter?.images).toEqual([expect.stringContaining("/og.png")]);
+  });
+
+  it("keeps trust pages accessible but out of the content sitemap", () => {
+    for (const path of ["/privacy/", "/contact/", "/source-policy/"]) {
+      expect(getPageByPath(path)?.publicationStatus).toBe("published");
+      expect(getPageByPath(path)?.indexable).toBe(false);
+    }
+    const urls = sitemap().map((entry) => entry.url);
+    expect(urls.some((url) => url.includes("/privacy"))).toBe(false);
+    expect(urls.some((url) => url.includes("/contact"))).toBe(false);
+    expect(urls.some((url) => url.includes("/source-policy"))).toBe(false);
+  });
 });

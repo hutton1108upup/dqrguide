@@ -2,6 +2,8 @@ import { describe, expect, it } from "vitest";
 
 import {
   CORE_PATHS,
+  getPublishedPages,
+  getVisiblePages,
   getIndexablePages,
   getPageByPath,
   isEvidenceLevel,
@@ -41,5 +43,44 @@ describe("site page registry", () => {
     expect(indexablePages).not.toContainEqual(
       expect.objectContaining({ indexable: false })
     );
+  });
+
+  it("requires an explicit publication status for every core route", () => {
+    expect(sitePages.length).toBeGreaterThanOrEqual(CORE_PATHS.length);
+    expect(CORE_PATHS.every((path) => sitePages.some((page) => page.path === path))).toBe(true);
+    expect(sitePages.every((page) => ["draft", "review", "published"].includes(page.publicationStatus))).toBe(true);
+  });
+
+  it("keeps review pages out of production-visible routes while showing them in development", () => {
+    const published = getPublishedPages();
+    const production = getVisiblePages("production");
+    const development = getVisiblePages("development");
+
+    expect(production.map((page) => page.path)).toEqual(published.map((page) => page.path));
+    expect(CORE_PATHS.every((path) => getPageByPath(path)?.publicationStatus === "published")).toBe(true);
+    expect(production.some((page) => page.path === "/dungeons/")).toBe(true);
+    expect(production.some((page) => page.path === "/updates/")).toBe(true);
+    expect(development.length).toBe(production.length);
+    expect(production.every((page) => page.publicationStatus === "published")).toBe(true);
+  });
+
+  it("includes the planned first-pass P1 hubs and role build routes", () => {
+    for (const path of [
+      "/beginner-guide/",
+      "/weapons/",
+      "/armor/",
+      "/cosmetics/",
+      "/builds/",
+      "/builds/mage/",
+      "/builds/warrior/",
+      "/builds/tank/",
+      "/builds/healer/",
+      "/scripts-macros/"
+    ]) {
+      expect(getPageByPath(path)).toMatchObject({
+        publicationStatus: "published",
+        indexable: false
+      });
+    }
   });
 });

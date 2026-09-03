@@ -28,7 +28,7 @@ export function createPageMetadata(page: Pick<SitePage, "path" | "title" | "desc
       siteName: siteConfig.name,
       images: [
         {
-          url: absoluteUrl("/og.svg"),
+          url: absoluteUrl("/og.png"),
           width: 1200,
           height: 630,
           alt: `${siteConfig.name} preview`
@@ -39,7 +39,7 @@ export function createPageMetadata(page: Pick<SitePage, "path" | "title" | "desc
       card: "summary_large_image",
       title: page.title,
       description: page.description,
-      images: [absoluteUrl("/og.svg")]
+      images: [absoluteUrl("/og.png")]
     }
   };
 }
