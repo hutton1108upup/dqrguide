@@ -60,7 +60,7 @@ Sources:
 ### P1 — Reborn versus the original
 
 - Players repeatedly ask whether Reborn is a remake, how the original creator is involved, what is actually new, and why progression feels different.
-- Product implication: keep the comparison page noindex until it can distinguish official identity facts from reported gameplay impressions. Use a row-by-row evidence table instead of an “all differences” claim.
+- Product implication: the comparison page now separates official identity facts from reported gameplay impressions with a row-by-row evidence table, so it is eligible for indexable status without turning open gameplay questions into confirmed differences.
 
 Sources:
 

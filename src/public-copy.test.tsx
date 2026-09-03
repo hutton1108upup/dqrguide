@@ -32,7 +32,6 @@ describe("player-facing copy", () => {
 
   it("does not promise complete data on pages that are still noindex", () => {
     const forbiddenTitleFragments: Record<string, RegExp> = {
-      "/differences/": /All Differences/i,
       "/gamepasses/": /Costs & Best Order/i,
       "/spells/": /Full List/i,
       "/spell-tier-list/": /Best Skills/i,

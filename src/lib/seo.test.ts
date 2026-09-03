@@ -21,6 +21,8 @@ describe("technical SEO", () => {
 
     expect(urls).toContain(absoluteUrl("/"));
     expect(urls).toContain(absoluteUrl("/codes/"));
+    expect(urls).toContain(absoluteUrl("/differences/"));
+    expect(urls).not.toContain(absoluteUrl("/trello/"));
     expect(urls).not.toContain(absoluteUrl("/tier-list/"));
     expect(urls.some((url) => url.includes("enhanced-inner-rage"))).toBe(false);
   });
