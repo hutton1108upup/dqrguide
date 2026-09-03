@@ -12,7 +12,7 @@ const cinzel = Cinzel({ subsets: ["latin"], variable: "--font-cinzel", display: 
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: { default: "Dungeon Quest Reborn Wiki: Spells, Drops & Guides", template: "%s | DQR.GG" },
+  title: { default: "Dungeon Quest Reborn Wiki: Spells, Drops & Guides", template: `%s | ${siteConfig.name}` },
   description: siteConfig.description,
   applicationName: siteConfig.name,
   category: "games",

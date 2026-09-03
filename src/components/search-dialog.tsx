@@ -26,7 +26,7 @@ export function SearchDialog() {
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
-        <button className="search-trigger" type="button" aria-label="Search DQR.GG">
+        <button className="search-trigger" type="button" aria-label="Search Dungeon Quest Reborn Guide">
           <Search size={16} aria-hidden="true" />
           <span>Search guides</span>
           <kbd>Ctrl K</kbd>

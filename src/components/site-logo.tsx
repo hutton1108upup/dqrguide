@@ -14,10 +14,9 @@ export function GateMark({ compact = false }: { compact?: boolean }) {
 
 export function SiteLogo() {
   return (
-    <Link href="/" className="site-logo" aria-label="DQR.GG home">
+    <Link href="/" className="site-logo" aria-label="Dungeon Quest Reborn Guide home">
       <GateMark compact />
-      <span>DQR.GG</span>
+      <span>Dungeon Quest Reborn Guide</span>
     </Link>
   );
 }
-

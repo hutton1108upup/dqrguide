@@ -1,4 +1,4 @@
-# DQR.GG MVP Design
+# Dungeon Quest Reborn Guide MVP Design
 
 ## Product outcome
 
@@ -73,4 +73,3 @@ Only published, canonical, indexable, HTTP-200 routes enter `sitemap.xml`. Robot
 - The production build must exit successfully and enumerate the core routes.
 - Local HTTP checks must return 200 for the homepage and representative hub/detail/status routes, and 308/301-compatible responses for legacy redirects.
 - Visual review covers desktop and 375px layouts, search keyboard flow, focus states, overflow, and the absence of mock data presented as fact.
-

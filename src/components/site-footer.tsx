@@ -26,7 +26,7 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="shell footer-grid">
         <div>
-          <p className="footer-brand">DQR.GG <span>/ field notes, not folklore</span></p>
+          <p className="footer-brand">{siteConfig.name} <span>/ field notes, not folklore</span></p>
           <p className="footer-disclaimer">{siteConfig.disclaimer}</p>
         </div>
         <nav aria-label="Footer navigation">

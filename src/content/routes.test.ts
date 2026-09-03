@@ -9,6 +9,7 @@ import {
   isEvidenceLevel,
   sitePages
 } from "./routes";
+import { siteConfig } from "./site";
 
 describe("site page registry", () => {
   it("contains every core MVP route and keeps all paths unique", () => {
@@ -82,5 +83,10 @@ describe("site page registry", () => {
         indexable: false
       });
     }
+  });
+
+  it("uses the current public site name throughout route copy", () => {
+    expect(siteConfig.name).toBe("Dungeon Quest Reborn Guide");
+    expect(JSON.stringify(sitePages)).not.toContain("DQR.GG");
   });
 });

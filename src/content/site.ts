@@ -7,8 +7,8 @@ const environment: SiteEnvironment = process.env.NODE_ENV === "production"
     : "development";
 
 export const siteConfig = {
-  name: "DQR.GG",
-  fullName: "Dungeon Quest Reborn Wiki",
+  name: "Dungeon Quest Reborn Guide",
+  fullName: "Dungeon Quest Reborn Guide Wiki",
   description:
     "Evidence-labelled guides for Dungeon Quest Reborn dungeons, spells, drops, progression, and status checks.",
   url: parseSiteUrl(process.env.NEXT_PUBLIC_SITE_URL, environment).toString(),

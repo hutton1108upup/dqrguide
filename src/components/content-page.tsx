@@ -254,7 +254,7 @@ export function ContentPage({ page }: { page: SitePage }) {
     <>
       <JsonLd data={buildPageSchema(page)} />
       <main className="shell page-stack">
-        <nav className="breadcrumbs" aria-label="Breadcrumb"><Link href="/">DQR.GG</Link><span>/</span><span>{page.h1}</span></nav>
+        <nav className="breadcrumbs" aria-label="Breadcrumb"><Link href="/">{siteConfig.name}</Link><span>/</span><span>{page.h1}</span></nav>
         <header className="page-hero">
           <p className="eyebrow">{page.eyebrow}</p>
           <h1>{page.h1}</h1>

@@ -79,9 +79,9 @@ export const pageContentByPath: Record<string, PageContent> = {
     ],
     faq: [
       {
-        question: "Is DQR.GG an official site?",
+        question: "Is Dungeon Quest Reborn Guide an official site?",
         answer:
-          "No. DQR.GG is an independent fan reference and is not affiliated with Roblox, Voldex, or Delta Quarters OG."
+          "No. Dungeon Quest Reborn Guide is an independent fan reference and is not affiliated with Roblox, Voldex, or Delta Quarters OG."
       },
       {
         question: "Can original Dungeon Quest data be used here?",
@@ -421,7 +421,7 @@ export const pageContentByPath: Record<string, PageContent> = {
     ],
     faq: [
       { question: "Why is trading not working?", answer: "Possible causes include an unmet current requirement, an ineligible item, a full slot, or a disabled system; the exact rule still needs an in-game check." },
-      { question: "Does DQR.GG sell or broker items?", answer: "No. This fan guide does not operate a market or request account access." }
+      { question: "Does Dungeon Quest Reborn Guide sell or broker items?", answer: "No. This fan guide does not operate a market or request account access." }
     ],
     related: [
       link("/drops/", "Drop sources", "Check where an item is known to come from."),
@@ -735,7 +735,7 @@ export const pageContentByPath: Record<string, PageContent> = {
     ],
     faq: [
       { question: "Does DQR have an official Trello?", answer: "No first-party board URL was confirmed in the sources checked for this release." },
-      { question: "Where should I check updates?", answer: "Start with the Roblox experience page and the DQR.GG update ledger's direct sources." }
+      { question: "Where should I check updates?", answer: "Start with the Roblox experience page and this guide's update ledger direct sources." }
     ],
     related: [
       link("/updates/", "Updates", "See the verified timestamp without invented patch notes."),
@@ -850,7 +850,7 @@ export const pageContentByPath: Record<string, PageContent> = {
       },
       {
         id: "change-log",
-        title: "What Changed on DQR.GG",
+        title: "What Changed on Dungeon Quest Reborn Guide",
         paragraphs: ["September 2, 2026 — created the official experience snapshot, separated Reborn from legacy data, and opened verification queues for codes, social links, passes, dungeons, spells, and tiers."]
       },
       {
@@ -1120,7 +1120,7 @@ export const pageContentByPath: Record<string, PageContent> = {
       { id: "publication-rule", title: "Why the Page Is Still Useful", paragraphs: ["A safety page can answer a high-intent search without turning into a download directory. The boundary is explicit now; any future tools discussion must remain within Roblox rules and carry a direct, current source."] }
     ],
     [
-      { question: "Can DQR.GG provide a working script or executor?", answer: "No. This site does not provide exploit code, executors, macro downloads, or account-bypass instructions." },
+      { question: "Can Dungeon Quest Reborn Guide provide a working script or executor?", answer: "No. This site does not provide exploit code, executors, macro downloads, or account-bypass instructions." },
       { question: "What should I do with a suspicious macro link?", answer: "Do not download it or enter credentials. Use ordinary in-game controls and treat the link as untrusted." }
     ],
     [link("/beginner-guide/", "Beginner guide", "Use a safe progression route."), link("/source-policy/", "Source policy", "See how claims are verified."), link("/codes/", "Codes status", "Avoid copied strings from unrelated games.")],
@@ -1133,7 +1133,7 @@ export const pageContentByPath: Record<string, PageContent> = {
       { id: "future-boundary", title: "Future Capability Boundary", paragraphs: ["If analytics, advertising, forms, or community features are added later, their collection and retention rules must be documented before those features ship. This release makes no such production promise."] }
     ],
     faq: [
-      { question: "Does DQR.GG need my Roblox login?", answer: "No. This MVP has no login or account connection flow." },
+      { question: "Does Dungeon Quest Reborn Guide need my Roblox login?", answer: "No. This MVP has no login or account connection flow." },
       { question: "Does this page promise ad or analytics privacy for a future release?", answer: "No. Future collection must be documented before it is introduced; this page describes only the current MVP boundary." }
     ],
     related: [link("/source-policy/", "Source policy", "See how editorial evidence is recorded."), link("/contact/", "Contact boundary", "Check how corrections are handled in this local release.")],

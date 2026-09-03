@@ -92,7 +92,7 @@ function renderMarkdown(report) {
     ? report.sitemapGaps.map((gap) => `- ${gap.type}: ${gap.path}`).join("\n")
     : report.sitemapChecked ? "- None" : "- Not checked (pass --sitemap-file after build)";
   return [
-    "# DQR.GG Refresh Audit",
+    "# Dungeon Quest Reborn Guide Refresh Audit",
     "",
     `- As of (Singapore): ${report.asOf}`,
     `- Current version: ${report.currentVersion}`,

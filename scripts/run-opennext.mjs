@@ -2,7 +2,7 @@ import { spawnSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const DEFAULT_SITE_URL = "https://dqr.gg";
+const DEFAULT_SITE_URL = "https://dungeonquestrebornguide.wiki";
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const args = process.argv.slice(2);
 const command = process.execPath;

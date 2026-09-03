@@ -80,4 +80,20 @@ describe("content gates", () => {
     expect(result.status).not.toBe(0);
     expect(`${result.stdout}\n${result.stderr}`).toMatch(/NEXT_PUBLIC_SITE_URL/i);
   });
+
+  it("uses the current custom domain for Cloudflare build fallback", () => {
+    const script = fs.readFileSync(path.join(root, "scripts", "run-opennext.mjs"), "utf8");
+
+    expect(script).toContain("https://dungeonquestrebornguide.wiki");
+    expect(script).not.toContain("https://dqr.gg");
+  });
+
+  it("keeps the npm package identity aligned with the public domain", () => {
+    const pkg = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
+    const lockfile = JSON.parse(fs.readFileSync(path.join(root, "package-lock.json"), "utf8"));
+
+    expect(pkg.name).toBe("dungeonquestrebornguide-wiki");
+    expect(lockfile.name).toBe(pkg.name);
+    expect(lockfile.packages[""].name).toBe(pkg.name);
+  });
 });
