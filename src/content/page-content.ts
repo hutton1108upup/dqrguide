@@ -1131,16 +1131,17 @@ export const pageContentByPath: Record<string, PageContent> = {
   ),
   "/privacy/": {
     sections: [
-      { id: "what-is-collected", title: "What the Current Site Collects", paragraphs: ["The current site serves guide content and source links. It does not provide accounts, comments, payments, market transactions, or a player-data upload form."] },
+      { id: "analytics", title: "Microsoft Clarity Analytics", paragraphs: ["This site uses Microsoft Clarity to understand page views and interactions such as clicks, scrolling, page visibility, and performance. Clarity may also provide session playback; Microsoft states that text in privacy-sensitive input fields is masked."] },
+      { id: "what-is-collected", title: "What the Site Does Not Collect Directly", paragraphs: ["The site serves guide content and source links. It does not provide accounts, comments, payments, market transactions, or a player-data upload form, and it does not ask for a Roblox login."] },
       { id: "what-not-to-share", title: "What Not to Share", paragraphs: ["Do not enter Roblox passwords, session tokens, private messages, payment details, or personal account exports into this site. Public source links should contain only information already intended for public viewing."] },
-      { id: "future-boundary", title: "Future Capability Boundary", paragraphs: ["If analytics, advertising, forms, or community features are added later, their collection and retention rules must be documented before those features ship. The current policy covers only features that exist today."] }
+      { id: "cookies-and-consent", title: "Cookies and Consent", paragraphs: ["Clarity can use cookies and pseudonymous identifiers to connect page views and produce aggregated analytics. Cookie use and session continuity can vary with browser choices, regional consent requirements, and the Clarity project's consent settings."] }
     ],
     faq: [
       { question: "Does Dungeon Quest Reborn Guide need my Roblox login?", answer: "No. The site has no login or account connection flow." },
-      { question: "Does this cover future ads or analytics?", answer: "No. Any future collection must be documented before it is introduced; this page covers the current site only." }
+      { question: "What analytics service does this site use?", answer: "Microsoft Clarity measures page views, interactions, performance signals, and session playback so the site can identify usability problems." }
     ],
     related: [link("/source-policy/", "Source policy", "See how editorial evidence is recorded."), link("/contact/", "Contact boundary", "Check how corrections are handled in this local release.")],
-    sources: []
+    sources: [{ title: "Microsoft Clarity data collection", url: "https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-data", evidenceLevel: "Official", evidenceNote: "Microsoft's field-level summary of Clarity analytics and playback data.", lastChecked: "2026-09-04" }]
   },
   "/contact/": {
     sections: [

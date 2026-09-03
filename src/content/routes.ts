@@ -439,8 +439,8 @@ const pageSeed: PageSeed[] = [
     description: "Privacy boundaries for the independent Dungeon Quest Reborn reference site.",
     h1: "Dungeon Quest Reborn Guide Privacy",
     eyebrow: "Trust page",
-    summary: "What the current site collects, what it does not collect, and which possible future features would require a policy update.",
-    quickAnswer: "The current site has no accounts, comments, payments, marketplace, or player-data upload. Never enter Roblox credentials or private game data here.",
+    summary: "How the site uses Microsoft Clarity analytics, what it does not collect directly, and what visitors should never share.",
+    quickAnswer: "The site has no accounts, comments, payments, marketplace, or player-data upload. Microsoft Clarity measures page views and interactions; never enter Roblox credentials or private game data here.",
     indexable: false,
     verifiedForVersion: null
   },

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Cinzel, Inter } from "next/font/google";
 
+import { MicrosoftClarity } from "@/components/microsoft-clarity";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { siteConfig } from "@/content/site";
@@ -23,5 +24,5 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { themeColor: "#0B1020", colorScheme: "dark" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" className={`${inter.variable} ${cinzel.variable}`}><body><a className="skip-link" href="#main-content">Skip to content</a><SiteHeader /><div id="main-content">{children}</div><SiteFooter /></body></html>;
+  return <html lang="en" className={`${inter.variable} ${cinzel.variable}`}><body><a className="skip-link" href="#main-content">Skip to content</a><SiteHeader /><div id="main-content">{children}</div><SiteFooter /><MicrosoftClarity /></body></html>;
 }
