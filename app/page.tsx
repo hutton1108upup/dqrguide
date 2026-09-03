@@ -85,6 +85,86 @@ export default function HomePage() {
             </div>
           </section>
 
+          <section className="home-explainer" aria-labelledby="guide-use-title">
+            <div className="section-heading">
+              <div>
+                <span>00 / FIELD NOTES</span>
+                <h2 id="guide-use-title">How to use this Dungeon Quest Reborn wiki</h2>
+              </div>
+              <p>Read the status before the recommendation</p>
+            </div>
+            <div className="explainer-lead">
+              <p>
+                Dungeon Quest Reborn answers are easiest to use when the player task, the current version, and the evidence behind each claim stay together. This guide is organised around the decision you are trying to make: choose a run, find an item source, understand a spell role, check a live-status question, or decide whether an old-game tip is safe to reuse.
+              </p>
+              <p>
+                Open the matching route first, then scan the quick answer and the checked date. A page can be useful without pretending that every value is known. The database keeps confirmed identity facts, current observations, community reports, legacy leads, and collection gaps visibly separate so a player can act on the first category and investigate the rest.
+              </p>
+            </div>
+            <div className="explainer-grid">
+              <article className="explainer-card">
+                <span>01 / VERIFIED</span>
+                <h3>What is verified right now</h3>
+                <p>
+                  The official Roblox experience record identifies the current title as [Northern Lands] Dungeon Quest Reborn, gives the experience a stable universe and root place, and names Delta Quarters OG as the creator. Those facts establish which experience this guide is about; they do not automatically prove a dungeon order, spell effect, drop rate, or player-transfer rule.
+                </p>
+                <p>
+                  The home page also records the public platform update timestamp as a metadata signal. It is displayed with its UTC time and is deliberately not rewritten as a patch note. When a page uses a community run, video, Reddit discussion, or public invite, the source card explains what that material can show and what it cannot establish.
+                </p>
+                <ul>
+                  <li>Official identity and public metadata</li>
+                  <li>Source date and current-version label</li>
+                  <li>Claim-level confidence and limits</li>
+                </ul>
+              </article>
+              <article className="explainer-card">
+                <span>02 / WORKFLOW</span>
+                <h3>Start from the decision you need</h3>
+                <p>
+                  Use <Link href="/dungeons/">Dungeons</Link> when the question is “what should I run next?” Use <Link href="/drops/">Drops</Link> when the item is already known and the missing answer is its source. Use <Link href="/spells/">Spells &amp; skills</Link> to compare roles and evidence fields, not to copy an untested tier list. The <Link href="/beginner-guide/">beginner route</Link> is a checklist for building a repeatable loop, not a promise that one class or loadout is universally best.
+                </p>
+                <p>
+                  After choosing a page, check whether its label says Indexable or Public / noindex. That label is a publishing signal, not a judgment that the page is useless. Public noindex pages are available because their method, questions, and links help with research while their changing data is still being collected.
+                </p>
+                <ul>
+                  <li>Question first, database second</li>
+                  <li>Source and version beside the answer</li>
+                  <li>Related route for the next decision</li>
+                </ul>
+              </article>
+              <article className="explainer-card">
+                <span>03 / DATA BOUNDARY</span>
+                <h3>Unknown values stay out of the database</h3>
+                <p>
+                  A blank rate, price, level, damage value, or requirement is not permission to fill the cell from the original Dungeon Quest or a search snippet. This release keeps those fields as Not yet verified, Not collected, or another explicit state until a Reborn-specific source supports them. That is why the <Link href="/spells/">spell table</Link> and <Link href="/dungeons/">dungeon hub</Link> may show their comparison fields without presenting placeholder rows as facts.
+                </p>
+                <p>
+                  The same boundary applies to codes, Trello, Discord, gamepasses, builds, and trading. A working community link can be useful without being official. A video can reveal a visible route without proving a universal fastest route. An API can return a technical record without confirming how the feature behaves during a player session.
+                </p>
+                <ul>
+                  <li>No copied code without a confirmed redemption path</li>
+                  <li>No ranking without a repeatable current-version test</li>
+                  <li>No legacy value promoted as Reborn data</li>
+                </ul>
+              </article>
+              <article className="explainer-card">
+                <span>04 / REFRESH</span>
+                <h3>How an answer becomes publishable</h3>
+                <p>
+                  A useful update starts with a direct source, a clear claim, the version it applies to, and a check date. The editorial record then explains whether the item is confirmed, reported, not collected, or blocked by a failed fetch. This makes a later correction traceable: a player can see what changed, why it changed, and which route should be rechecked next.
+                </p>
+                <p>
+                  Visit <Link href="/source-policy/">Source policy</Link> for the evidence ladder and <Link href="/updates/">Updates</Link> for the verification ledger. If the current official experience changes its public identity or exposes a new source, the affected page can be refreshed without turning a build date into a gameplay claim. If a page is still thin, it stays reachable for review but does not compete in the search index before it can answer a searcher well.
+                </p>
+                <ul>
+                  <li>Direct source, claim, version, and date</li>
+                  <li>Visible limits instead of hidden uncertainty</li>
+                  <li>Freshness check before indexability</li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
           <section aria-labelledby="start-title">
             <div className="section-heading"><div><span>01 / ROUTES</span><h2 id="start-title">Start with the player task</h2></div><p>Six fast doors into the database</p></div>
             <div className="task-grid">
