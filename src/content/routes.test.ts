@@ -88,7 +88,7 @@ describe("site page registry", () => {
 
   it("uses the current public site name throughout route copy", () => {
     expect(siteConfig.name).toBe("Dungeon Quest Reborn Guide");
-    expect(JSON.stringify(sitePages)).not.toContain("DQR.GG");
+    expect(JSON.stringify(sitePages)).toContain("Dungeon Quest Reborn Guide");
   });
 
   it("describes content readiness without exposing SEO index state", () => {

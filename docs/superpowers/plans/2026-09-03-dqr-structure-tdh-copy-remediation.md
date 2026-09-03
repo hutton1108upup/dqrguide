@@ -16,7 +16,7 @@
 - Official Roblox pages/APIs support factual identity and metadata; forum/social material stays `reported` unless independently reproduced.
 - Published and indexable remain separate. Thin pages stay reachable and noindex.
 - Do not publish guessed levels, prices, drop rates, codes, tiers, transfer rules, or patch notes.
-- Canonical host remains `https://dungeonquestrebornguide.wiki`; `dqr.gg` remains a redirect alias.
+- Canonical host remains `https://dungeonquestrebornguide.wiki`; the `www` alias redirects to the canonical host.
 - Do not deploy, push, merge externally, or alter unrelated untracked files.
 
 ---

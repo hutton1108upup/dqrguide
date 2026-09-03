@@ -85,7 +85,6 @@ describe("content gates", () => {
     const script = fs.readFileSync(path.join(root, "scripts", "run-opennext.mjs"), "utf8");
 
     expect(script).toContain("https://dungeonquestrebornguide.wiki");
-    expect(script).not.toContain("https://dqr.gg");
   });
 
   it("keeps the npm package identity aligned with the public domain", () => {

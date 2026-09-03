@@ -3,20 +3,20 @@ import { describe, expect, it } from "vitest";
 import { getCanonicalHostRedirect } from "./host-redirect";
 
 describe("canonical host redirect", () => {
-  it("redirects the dqr.gg host while preserving path and query", () => {
-    expect(getCanonicalHostRedirect("dqr.gg", "/spells/", "?role=mage")).toBe(
+  it("redirects the www canonical alias while preserving path and query", () => {
+    expect(getCanonicalHostRedirect("www.dungeonquestrebornguide.wiki", "/spells/", "?role=mage")).toBe(
       "https://dungeonquestrebornguide.wiki/spells/?role=mage"
     );
   });
 
-  it("redirects the www dqr.gg host", () => {
-    expect(getCanonicalHostRedirect("www.dqr.gg", "/", "")).toBe(
+  it("redirects the www canonical alias", () => {
+    expect(getCanonicalHostRedirect("www.dungeonquestrebornguide.wiki", "/", "")).toBe(
       "https://dungeonquestrebornguide.wiki/"
     );
   });
 
   it("accepts a canonical alias with a development port", () => {
-    expect(getCanonicalHostRedirect("dqr.gg:3000", "/codes/", "")).toBe(
+    expect(getCanonicalHostRedirect("www.dungeonquestrebornguide.wiki:3000", "/codes/", "")).toBe(
       "https://dungeonquestrebornguide.wiki/codes/"
     );
   });
