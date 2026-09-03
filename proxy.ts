@@ -1,9 +1,9 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-import { getLegacyHostRedirect } from "@/lib/host-redirect";
+import { getCanonicalHostRedirect } from "@/lib/host-redirect";
 
 export function proxy(request: NextRequest) {
-  const target = getLegacyHostRedirect(
+  const target = getCanonicalHostRedirect(
     request.headers.get("host"),
     request.nextUrl.pathname,
     request.nextUrl.search
