@@ -1,10 +1,10 @@
-const CANONICAL_ORIGIN = "https://dqr.gg";
-const LEGACY_HOSTS = new Set([
-  "dungeonquestrebornguide.wiki",
-  "www.dungeonquestrebornguide.wiki"
+const CANONICAL_ORIGIN = "https://dungeonquestrebornguide.wiki";
+const CANONICAL_ALIASES = new Set([
+  "dqr.gg",
+  "www.dqr.gg"
 ]);
 
-export function getLegacyHostRedirect(host: string | null, pathname: string, search: string): string | null {
+export function getCanonicalHostRedirect(host: string | null, pathname: string, search: string): string | null {
   if (!host) return null;
 
   let hostname: string;
@@ -14,7 +14,7 @@ export function getLegacyHostRedirect(host: string | null, pathname: string, sea
     return null;
   }
 
-  if (!LEGACY_HOSTS.has(hostname)) return null;
+  if (!CANONICAL_ALIASES.has(hostname)) return null;
 
   const target = new URL(pathname.startsWith("/") ? pathname : `/${pathname}`, CANONICAL_ORIGIN);
   target.search = search.startsWith("?") ? search : search ? `?${search}` : "";

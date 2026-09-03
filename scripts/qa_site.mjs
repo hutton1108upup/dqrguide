@@ -94,7 +94,7 @@ try {
   const robotsResponse = await context.request.get(`${baseUrl}/robots.txt`);
   const robotsText = await robotsResponse.text();
   assert(robotsResponse.status() === 200, `robots status=${robotsResponse.status()}`);
-  assert(robotsText.includes("Sitemap: https://dqr.gg/sitemap.xml"), `robots body=${robotsText}`);
+  assert(robotsText.includes(`Sitemap: ${new URL("/sitemap.xml", siteUrl).toString()}`), `robots body=${robotsText}`);
   assert(!robotsText.includes("//sitemap.xml"), `robots body=${robotsText}`);
   const sitemapResponse = await context.request.get(`${baseUrl}/sitemap.xml`);
   const sitemapText = await sitemapResponse.text();
@@ -135,12 +135,11 @@ try {
     const location = response.headers().location;
     assert([destination, `${baseUrl}${destination}`].includes(location), { source, location, destination });
   }
-  const legacyHostResponse = await context.request.get(`${baseUrl}/spells/?role=mage`, {
+  const currentHostResponse = await context.request.get(`${baseUrl}/spells/?role=mage`, {
     maxRedirects: 0,
     headers: { host: "dungeonquestrebornguide.wiki" }
   });
-  assert(legacyHostResponse.status() === 308, `legacy host status=${legacyHostResponse.status()}`);
-  assert(legacyHostResponse.headers().location === "https://dqr.gg/spells/?role=mage", legacyHostResponse.headers());
+  assert(currentHostResponse.status() === 200, `current host status=${currentHostResponse.status()}`);
 
   const tablet = await context.newPage();
   await tablet.setViewportSize({ width: 1024, height: 768 });
