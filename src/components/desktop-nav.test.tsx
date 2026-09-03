@@ -36,6 +36,7 @@ describe("desktop navigation", () => {
     expect(dungeons).toHaveAttribute("aria-expanded", "false");
     expect(screen.queryByRole("link", { name: "Northern Lands" })).not.toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Mage Build" })).toHaveAttribute("aria-current", "page");
+    expect(screen.getByRole("link", { name: "Builds Overview" })).not.toHaveAttribute("aria-current");
 
     await user.keyboard("{Escape}");
     expect(builds).toHaveAttribute("aria-expanded", "false");

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { isNavigationPathActive } from "./navigation-path";
+import { isNavigationItemCurrent, isNavigationPathActive } from "./navigation-path";
 import type { NavGroup, NavItem } from "./site-nav";
 
 type MobileNavProps = {
@@ -57,7 +57,7 @@ export function MobileNav({ groups, directItems }: MobileNavProps) {
         <nav id="mobile-navigation" aria-label="Mobile navigation">
           <div className="mobile-nav-direct">
             {directItems.map(([label, href]) => {
-              const isActive = isNavigationPathActive(pathname, href);
+              const isActive = isNavigationItemCurrent(pathname, href);
               return (
                 <Link
                   href={href}
@@ -91,7 +91,7 @@ export function MobileNav({ groups, directItems }: MobileNavProps) {
                 {isExpanded ? (
                   <div id={groupId} className="mobile-nav-group-links">
                     {group.items.map(([label, href]) => {
-                      const itemActive = isNavigationPathActive(pathname, href);
+                      const itemActive = isNavigationItemCurrent(pathname, href);
                       return (
                         <Link
                           href={href}

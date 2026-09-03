@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
-import { isNavigationPathActive } from "./navigation-path";
+import { isNavigationItemCurrent, isNavigationPathActive } from "./navigation-path";
 import type { NavGroup, NavItem } from "./site-nav";
 
 type DesktopNavProps = {
@@ -59,7 +59,7 @@ export function DesktopNav({ groups, directItems }: DesktopNavProps) {
               <div id={groupId} className="desktop-nav-panel" role="group" aria-label={`${group.label} links`}>
                 <span className="desktop-nav-panel-label">{group.label}</span>
                 {group.items.map(([label, href]) => {
-                  const itemActive = isNavigationPathActive(pathname, href);
+                  const itemActive = isNavigationItemCurrent(pathname, href);
                   return (
                     <Link
                       href={href}
@@ -81,8 +81,8 @@ export function DesktopNav({ groups, directItems }: DesktopNavProps) {
         <Link
           href={href}
           key={href}
-          className={isNavigationPathActive(pathname, href) ? "active" : undefined}
-          aria-current={isNavigationPathActive(pathname, href) ? "page" : undefined}
+          className={isNavigationItemCurrent(pathname, href) ? "active" : undefined}
+          aria-current={isNavigationItemCurrent(pathname, href) ? "page" : undefined}
         >
           {label}
         </Link>

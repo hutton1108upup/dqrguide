@@ -11,3 +11,7 @@ export function isNavigationPathActive(pathname: string, href: string) {
   if (targetPath === "/") return currentPath === "/";
   return currentPath === targetPath || currentPath.startsWith(targetPath);
 }
+
+export function isNavigationItemCurrent(pathname: string, href: string) {
+  return normalizePath(pathname) === normalizePath(href);
+}
