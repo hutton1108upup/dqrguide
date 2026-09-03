@@ -35,9 +35,30 @@ describe("technical SEO", () => {
     expect(JSON.stringify(homeMetadata)).not.toContain("SearchAction");
   });
 
-  it("adds an ItemList to hub schema using visible related links", () => {
+  it("uses real direct child pages for hub ItemLists", () => {
     const schema = buildPageSchema(getPageByPath("/dungeons/")!);
-    expect(schema.some((item) => item["@type"] === "ItemList")).toBe(true);
+    const itemList = schema.find((item) => item["@type"] === "ItemList")!;
+    const items = itemList.itemListElement as Array<{ url: string }>;
+
+    expect(items.map((item) => item.url)).toEqual([
+      absoluteUrl("/dungeons/winter-outpost/"),
+      absoluteUrl("/dungeons/northern-lands/")
+    ]);
+
+    const spellsSchema = buildPageSchema(getPageByPath("/spells/")!);
+    expect(spellsSchema.some((item) => item["@type"] === "ItemList")).toBe(false);
+  });
+
+  it("emits the full route hierarchy for nested-page breadcrumbs", () => {
+    const schema = buildPageSchema(getPageByPath("/dungeons/northern-lands/")!);
+    const breadcrumbs = schema.find((item) => item["@type"] === "BreadcrumbList")!;
+    const items = breadcrumbs.itemListElement as Array<{ position: number; name: string; item: string }>;
+
+    expect(items).toEqual([
+      { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+      { "@type": "ListItem", position: 2, name: "Dungeon Quest Reborn Dungeon Progression", item: absoluteUrl("/dungeons/") },
+      { "@type": "ListItem", position: 3, name: "Dungeon Quest Reborn Northern Lands", item: absoluteUrl("/dungeons/northern-lands/") }
+    ]);
   });
 
   it("uses route-specific fixed-size social previews", () => {

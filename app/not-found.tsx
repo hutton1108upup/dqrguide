@@ -6,7 +6,7 @@ export default function NotFound() {
       <section className="surface-card">
         <span className="eyebrow">404</span>
         <h1>Route not found</h1>
-        <p>This MVP only publishes pages that have a clear search intent and enough evidence to be useful.</p>
+        <p>This page is not available. Return to the guide hub or use search to find the closest current route.</p>
         <Link href="/" className="related-link-card">
           <strong>Return to the homepage</strong>
           <span>Open the route hub and search from there.</span>

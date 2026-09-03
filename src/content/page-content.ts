@@ -1,4 +1,4 @@
-import { LAST_RESEARCHED, sources } from "./game-data";
+import { LAST_RESEARCHED, officialGameSnapshot, sources } from "./game-data";
 import type { DifferenceRow, FactClaim, FaqItem, PageSection, RelatedLink, SourceRecord, UpdateRecord } from "./types";
 
 export interface PageContent {
@@ -31,6 +31,9 @@ const update = (input: Omit<UpdateRecord, "lastChecked">): UpdateRecord => ({
   ...input,
   lastChecked: LAST_RESEARCHED
 });
+
+const officialUpdatedDate = officialGameSnapshot.robloxUpdatedAt.split("T", 1)[0];
+const officialUpdatedTime = officialGameSnapshot.robloxUpdatedAt.split("T")[1]?.replace("Z", "").split(".", 1)[0] ?? "time not recorded";
 
 const firstPass = (
   sections: PageSection[],
@@ -127,7 +130,7 @@ export const pageContentByPath: Record<string, PageContent> = {
         id: "transfer-boundary",
         title: "What Still Needs an In-Game Check",
         paragraphs: [
-          "The public sources checked for this MVP do not state that original levels, inventories, gamepasses, purchases, or cosmetics transfer. They also do not publish a system-by-system balance comparison.",
+          "The checked public sources do not state that original levels, inventories, gamepasses, purchases, or cosmetics transfer. They also do not publish a system-by-system balance comparison.",
           "Until a first-party statement or current in-game observation answers those questions, the safe working rule is no assumed transfer."
         ]
       },
@@ -157,7 +160,7 @@ export const pageContentByPath: Record<string, PageContent> = {
       {
         question: "Do original levels and items transfer to Reborn?",
         answer:
-          "Not confirmed by the first-party sources reviewed for this release. Check in the current experience before planning around a transfer."
+          "Not confirmed by the checked first-party sources. Open the current experience before planning around a transfer."
       },
       {
         question: "Is Reborn officially licensed?",
@@ -267,7 +270,7 @@ export const pageContentByPath: Record<string, PageContent> = {
         id: "explained",
         title: "Spells, Skills and Abilities Explained",
         paragraphs: [
-          "The official experience description confirms that players unlock abilities, but it does not provide a public spell list. The database therefore starts with a schema and verification queue instead of copying an original-game table."
+          "The official experience description says players unlock abilities, but it does not provide a public spell list. Start with the role and source checklist below instead of copying an original-game table."
         ]
       },
       {
@@ -327,7 +330,7 @@ export const pageContentByPath: Record<string, PageContent> = {
       {
         id: "summary",
         title: "Tier List Summary",
-        paragraphs: ["The ranking board is intentionally empty while current-version samples are collected. The S, A, and B rows shown in the supplied visual mockup were design examples, not evidence."]
+        paragraphs: ["No ability has earned a site tier yet. A letter grade needs a current name, source, use case, weakness, alternative, and repeatable result."]
       },
       {
         id: "method",
@@ -364,7 +367,7 @@ export const pageContentByPath: Record<string, PageContent> = {
       }
     ],
     faq: [
-      { question: "What is the best DQR spell right now?", answer: "No evidence-ready overall winner is published in this release." },
+      { question: "What is the best DQR spell right now?", answer: "No overall winner has enough current evidence to publish yet." },
       { question: "Can a support spell rank highly?", answer: "Yes. Grades are use-case specific and can reflect party utility rather than raw damage." }
     ],
     related: [
@@ -393,7 +396,7 @@ export const pageContentByPath: Record<string, PageContent> = {
       {
         id: "value-evidence",
         title: "How to Check an Item's Value",
-        paragraphs: ["A future value range must include accepted trades, sample size, date window, and confidence. This MVP does not publish a static list because offers and quoted prices are not the same as completed trades."]
+        paragraphs: ["A useful value range needs accepted trades, sample size, date window, and confidence. This page does not publish a static list because asking prices and screenshots are not completed trades."]
       },
       {
         id: "blocked-trade",
@@ -494,7 +497,7 @@ export const pageContentByPath: Record<string, PageContent> = {
       {
         id: "quick-facts",
         title: "Quick Facts",
-        paragraphs: ["Winter Outpost is retained as a requested research target, but its Reborn access, difficulties, bosses, and drops have not passed a current first-party or in-game verification in this release."]
+        paragraphs: ["Winter Outpost remains a high-priority player question, but its Reborn access, difficulties, bosses, and drops still need a current first-party source or repeatable in-game capture."]
       },
       {
         id: "run-checklist",
@@ -559,7 +562,7 @@ export const pageContentByPath: Record<string, PageContent> = {
       {
         id: "farming-decision",
         title: "Is Northern Lands Worth Farming?",
-        paragraphs: ["That decision remains under review. A useful answer needs clear consistency, progression value, and verified rewards—not the item names and stat values used as placeholders in the mockup."]
+        paragraphs: ["Do not call Northern Lands a good farm from one clear. Compare clear consistency, progression value, and captured rewards across repeated runs before changing your route."]
       },
       {
         id: "route-verification",
@@ -602,7 +605,7 @@ export const pageContentByPath: Record<string, PageContent> = {
     ],
     faq: [
       { question: "Is Northern Lands current content?", answer: "Yes as a current official experience label; detailed dungeon mechanics and drops are still being verified." },
-      { question: "Are the mockup's item values confirmed?", answer: "No. They were visual examples and are not published as game data." }
+      { question: "Are exact Northern Lands item values confirmed?", answer: "No. Exact values stay off the page until a current item card or first-party source can be checked." }
     ],
     related: [
       link("/dungeons/", "Dungeon hub", "Compare the progression evidence needed for every run."),
@@ -696,7 +699,7 @@ export const pageContentByPath: Record<string, PageContent> = {
       }
     ],
     faq: [
-      { question: "Are there any active DQR codes?", answer: "None are confirmed from a first-party source in this release." },
+      { question: "Are there any active DQR codes?", answer: "None were confirmed on the official Roblox page or public game API checked on September 3, 2026." },
       { question: "When will this page change?", answer: "When a first-party announcement or a verifiable current redemption flow provides evidence." }
     ],
     related: [
@@ -734,7 +737,7 @@ export const pageContentByPath: Record<string, PageContent> = {
       }
     ],
     faq: [
-      { question: "Does DQR have an official Trello?", answer: "No first-party board URL was confirmed in the sources checked for this release." },
+      { question: "Does DQR have an official Trello?", answer: "No first-party board URL was visible in the checked Roblox experience or creator sources." },
       { question: "Where should I check updates?", answer: "Start with the Roblox experience page and this guide's update ledger direct sources." }
     ],
     related: [
@@ -808,7 +811,7 @@ export const pageContentByPath: Record<string, PageContent> = {
       {
         id: "meta-summary",
         title: "Overall Meta Summary",
-        paragraphs: ["No weapon, spell, or build receives a launch tier in this evidence-gated MVP. The example S/A/B chips in the supplied mockup remain visual references only."]
+        paragraphs: ["No weapon, spell, or build has earned a site tier yet. A grade needs a named use case, weakness, obtainable source, alternative, version, and repeatable result."]
       },
       {
         id: "progression",
@@ -818,7 +821,7 @@ export const pageContentByPath: Record<string, PageContent> = {
       },
       {
         id: "publication-gate",
-        title: "Ranking Publication Gate",
+        title: "When a Ranking Is Ready",
         paragraphs: ["Every conclusion needs a named use case, weakness, source, alternative, version, and evidence level. The overall page summarises verified results and links to detail; it does not duplicate the spell board."]
       },
       {
@@ -846,12 +849,12 @@ export const pageContentByPath: Record<string, PageContent> = {
       {
         id: "latest-signal",
         title: "Latest Verified Update Signal",
-        paragraphs: ["Roblox public game metadata returned an updated timestamp of September 2, 2026 at 23:30:02 UTC and the current name [Northern Lands] Dungeon Quest Reborn.", "This proves a platform metadata update and a current title; it does not identify the gameplay changes inside that update."]
+        paragraphs: [`Roblox public game metadata currently reports ${officialGameSnapshot.robloxUpdatedAt} for ${officialGameSnapshot.name}.`, "This confirms a platform metadata change and the current title; it does not identify the gameplay changes inside that update."]
       },
       {
         id: "change-log",
         title: "What Changed on Dungeon Quest Reborn Guide",
-        paragraphs: ["September 2, 2026 — created the official experience snapshot, separated Reborn from legacy data, and opened verification queues for codes, social links, passes, dungeons, spells, and tiers."]
+        paragraphs: ["September 2, 2026 — recorded the first official experience snapshot, separated Reborn from legacy data, and marked unanswered questions for codes, social links, passes, dungeons, spells, and tiers."]
       },
       {
         id: "editorial-rules",
@@ -881,8 +884,8 @@ export const pageContentByPath: Record<string, PageContent> = {
       }
     ],
     faq: [
-      { question: "Was Northern Lands added on September 2?", answer: "The metadata confirms the current title and update timestamp, not the exact release contents." },
-      { question: "Why are there no copied patch notes?", answer: "No first-party patch-note body was available in the sources verified for this release." }
+      { question: "Was Northern Lands added at this API update time?", answer: "The metadata confirms the current title and update timestamp, not the exact release contents." },
+      { question: "Why are there no copied patch notes?", answer: "No first-party patch-note body was available in the checked public sources." }
     ],
     related: [
       link("/dungeons/northern-lands/", "Northern Lands", "See what the current label proves and what remains unknown."),
@@ -891,13 +894,13 @@ export const pageContentByPath: Record<string, PageContent> = {
     ],
     sources: [sources.officialGameApi, sources.officialExperience, sources.officialThumbnailApi, sources.northernLandsVideo, sources.northernLandsWalkthrough],
     claims: [
-      fact({ id: "updates-metadata-signal", topic: "Platform signal", claim: "Roblox metadata changed on September 2, 2026", value: "2026-09-02T23:30:02Z", claimStatus: "confirmed", confidence: "High", verifiedForVersion: "[Northern Lands] title snapshot", sourceURL: sources.officialGameApi.url, evidenceNote: "The API timestamp is a source-backed platform signal only; no gameplay change is inferred." }),
+      fact({ id: "updates-metadata-signal", topic: "Platform signal", claim: `Roblox metadata changed on ${officialUpdatedDate}`, value: officialGameSnapshot.robloxUpdatedAt, claimStatus: "confirmed", confidence: "High", verifiedForVersion: "[Northern Lands] title snapshot", sourceURL: sources.officialGameApi.url, evidenceNote: `The API reports ${officialUpdatedTime} UTC; it does not identify a gameplay change.` }),
       fact({ id: "updates-patch-notes", topic: "Patch notes", claim: "A first-party patch-note body is available", value: "Not collected", claimStatus: "not_collected", confidence: "Low", verifiedForVersion: null, sourceURL: sources.officialExperience.url, evidenceNote: "No first-party patch-note body was found in the checked public surfaces." }),
       fact({ id: "updates-community-video", topic: "Community demonstration", claim: "Current videos demonstrate Northern Lands gameplay", value: "Reported observation source", claimStatus: "reported", confidence: "Medium", verifiedForVersion: "[Northern Lands] community video snapshot", sourceURL: sources.northernLandsVideo.url, evidenceNote: "This supports an affected-guide research queue, not a developer-authored patch-note body." })
     ],
     updates: [
-      update({ id: "update-metadata-2026-09-02", topic: "Roblox metadata signal", claim: "The public Reborn metadata changed", value: "Current title [Northern Lands] Dungeon Quest Reborn; updated 2026-09-02T23:30:02Z", versionTitle: "[Northern Lands] Dungeon Quest Reborn", publishedDate: "2026-09-02", actualChanges: "The public API reports the current title and an updated timestamp. No gameplay change, dungeon change, spell change, or patch-note body is stated.", sourceURL: sources.officialGameApi.url, claimStatus: "confirmed", confidence: "High", verifiedForVersion: "[Northern Lands] title snapshot", evidenceNote: "This record is deliberately a metadata signal, not a patch note. No affected game pages are inferred.", affectedPaths: [], recordType: "metadata_signal" }),
-      update({ id: "update-patch-notes-2026-09-02", topic: "First-party patch notes", claim: "A public first-party gameplay update body is available", value: "Not collected", versionTitle: "No patch-note version published", publishedDate: "2026-09-02", actualChanges: "No actual gameplay changes can be listed until a first-party patch-note body or current in-game change record is available.", sourceURL: sources.officialExperience.url, claimStatus: "not_collected", confidence: "Low", verifiedForVersion: null, evidenceNote: "The page remains review-only and noindex so a metadata timestamp cannot be mistaken for a patch summary.", affectedPaths: [], recordType: "metadata_signal" })
+      update({ id: `update-metadata-${officialUpdatedDate}`, topic: "Roblox metadata signal", claim: "The public Reborn metadata changed", value: `Current title ${officialGameSnapshot.name}; updated ${officialGameSnapshot.robloxUpdatedAt}`, versionTitle: officialGameSnapshot.name, publishedDate: officialUpdatedDate, actualChanges: "The public API reports the current title and an updated timestamp. No gameplay change, dungeon change, spell change, or patch-note body is stated.", sourceURL: sources.officialGameApi.url, claimStatus: "confirmed", confidence: "High", verifiedForVersion: "[Northern Lands] title snapshot", evidenceNote: "This is a metadata signal, not a patch note. No affected game pages are inferred.", affectedPaths: [], recordType: "metadata_signal" }),
+      update({ id: "update-patch-notes-2026-09-02", topic: "First-party patch notes", claim: "A public first-party gameplay update body is available", value: "Not collected", versionTitle: "No patch-note version published", publishedDate: "2026-09-02", actualChanges: "No actual gameplay changes can be listed until a first-party patch-note body or current in-game change record is available.", sourceURL: sources.officialExperience.url, claimStatus: "not_collected", confidence: "Low", verifiedForVersion: null, evidenceNote: "No patch summary is shown because a metadata timestamp does not identify gameplay changes.", affectedPaths: [], recordType: "metadata_signal" })
     ]
   },
   "/beginner-guide/": firstPass(
@@ -959,7 +962,7 @@ export const pageContentByPath: Record<string, PageContent> = {
     [
       { id: "weapon-index", title: "What the Weapon Index Will Answer", paragraphs: ["The database is designed to answer which class uses a weapon, where it comes from, what requirement it has, and whether it is useful for a stated progression stage. Empty fields stay empty until a Reborn source is checked."], bullets: ["Name and class", "Source dungeon and difficulty", "Requirement, rarity, tier, and last verified version"] },
       { id: "compare-upgrades", title: "Compare an Upgrade", paragraphs: ["A meaningful upgrade compares the current weapon with the next obtainable option, not with an isolated rarity label. The published row will show the source and the reason the replacement changes a real run."], bullets: ["Can you obtain it now?", "Does it solve damage, clear speed, or survivability?", "Is the comparison from Reborn rather than the original game?"] },
-      { id: "entity-pipeline", title: "How Weapon Entries Enter the Site", paragraphs: ["A weapon receives a detail URL only after its name and source are verified, its use is independently useful, its version and check date are recorded, and at least two relevant internal links are ready. Until then it belongs in this collection queue."] },
+      { id: "entity-pipeline", title: "What Is Still Missing", paragraphs: ["A useful weapon entry needs a current name and item card, an obtainable source, the version and check date, and a clear reason to compare it with another option. Those details have not been collected yet."] },
       {
         id: "weapon-showcase",
         title: "Community Weapon Showcase",
@@ -990,7 +993,7 @@ export const pageContentByPath: Record<string, PageContent> = {
     [
       { id: "armor-fields", title: "Armor Fields", paragraphs: ["Each armor row will separate slot, class, source dungeon, rarity, requirement, set role, trade status, version, and last verification. This prevents an original-game set name from silently becoming current Reborn data."], bullets: ["Slot and role", "Source and availability", "Requirement and trade status", "Version and evidence state"] },
       { id: "survivability-first", title: "Choose Armor by the Failure You Need to Fix", paragraphs: ["The useful armor question is not simply which set has the highest label. It is which verified option fixes the failure that blocks your next consistent clear, and what alternative is obtainable before it."], bullets: ["Survive the mechanic you currently miss.", "Prefer a reachable source over a copied endgame target.", "Record the alternative when the primary drop is uncertain."] },
-      { id: "publication-queue", title: "Armor Publication Queue", paragraphs: ["Rows will be added from direct Reborn evidence. A standalone armor page waits for a clear search object, verified source, independent use, two internal links, version, and check date."] },
+      { id: "publication-queue", title: "What Is Still Missing", paragraphs: ["A useful armor row needs the current item card, source, requirement, role, version, and check date. A standalone page also needs enough distinct information to help with a real equipment decision."] },
       { id: "armor-capture-set", title: "Screenshot Set Required", paragraphs: ["A useful armor record needs the full item card, the equipped comparison, and the dungeon reward or trade context that produced it. A cropped stat number or video narration cannot establish the armor name, slot, source, role, or current version."], bullets: ["Full item card", "Equipped before-and-after comparison", "Reward or trade source", "Difficulty and date", "No inferred set bonus"] }
     ],
     [
@@ -1003,7 +1006,7 @@ export const pageContentByPath: Record<string, PageContent> = {
     [
       { id: "cosmetic-scope", title: "What Counts as a Cosmetic", paragraphs: ["The collection will distinguish visual armor, weapon appearance, enchant effect, title, and event cosmetic rather than grouping every named item under progression gear."], bullets: ["Type and visual purpose", "Source or event", "Availability and trade status", "Last verified date"] },
       { id: "availability-check", title: "Availability Needs Its Own Check", paragraphs: ["A cosmetic can be visible without being obtainable, tradable, or currently available. The final row will keep those states separate and show the source used to confirm them."], bullets: ["Obtainable now", "Event or limited window", "Tradable status", "Source not yet confirmed"] },
-      { id: "no-legacy-copy", title: "No Legacy Cosmetic Copy", paragraphs: ["Old Dungeon Quest collection lists may be useful leads, but they are not current Reborn evidence. The first-pass page holds the schema and links while verified entries are collected."] },
+      { id: "no-legacy-copy", title: "Check the Source and Availability", paragraphs: ["Old Dungeon Quest collection lists may suggest what to look for, but they do not prove that a cosmetic exists in Reborn. Record the current acquisition screen, availability, trade state, version, and date before relying on a listing."] },
       { id: "exclude-glitches", title: "Why Glitch Videos Are Excluded", paragraphs: ["Current video search results are dominated by guaranteed, unlimited, and glitch claims. This page does not embed or reproduce those methods. A cosmetic row needs a normal acquisition screen, availability state, trade state, version, and check date before publication."] }
     ],
     [
@@ -1016,8 +1019,8 @@ export const pageContentByPath: Record<string, PageContent> = {
     [
       { id: "choose-role", title: "Choose a Role Before a Build", paragraphs: ["Mage, Warrior, Tank, and Healer are decision paths, not promises that a fixed meta loadout already exists. Start with the way your party clears and the failure you need to solve."], bullets: ["Mage — damage, room clear, or utility", "Warrior — frontline damage and consistency", "Tank — survivability and team space", "Healer — recovery and support"] },
       { id: "stage-by-stage", title: "Builds Will Be Stage-Based", paragraphs: ["A beginner alternative can be more useful than an endgame target when it is obtainable and repeatable. Each role page will separate early, mid, late, and endgame goals once current items and spells are verified."], bullets: ["Stat priorities", "Recommended spells", "Weapon and armor goals", "A reachable alternative"] },
-      { id: "evidence-before-meta", title: "Evidence Before Meta", paragraphs: ["No named item receives a current build recommendation from the supplied mockup alone. The build pipeline links every recommendation back to a spell, weapon, armor, dungeon, or update record."] },
-      { id: "role-class-boundary", title: "Role Labels vs Confirmed Classes", paragraphs: ["Mage and Warrior are common community descriptions of Spell- and Physical-focused paths. Tank and Healer are treated here as possible party jobs, not confirmed Reborn class IDs. A separate role page stays noindex until current UI, items, abilities, and repeatable party use justify it."] }
+      { id: "evidence-before-meta", title: "Check the Item Before the Build", paragraphs: ["A build recommendation needs the current spell or item card, its source, the run it is meant to improve, and a dated result. A familiar old-game name is not enough."] },
+      { id: "role-class-boundary", title: "Role Labels vs Confirmed Classes", paragraphs: ["Mage and Warrior are common community descriptions of Spell- and Physical-focused paths. Tank and Healer are treated here as possible party jobs, not confirmed Reborn class IDs. Use those pages as planning checklists until current UI, items, abilities, and repeatable party use support stronger recommendations."] }
     ],
     [
       { question: "Which DQR build is best?", answer: "No single current winner is published yet. The useful first decision is which role and progression stage match your next dungeon." },
@@ -1092,7 +1095,7 @@ export const pageContentByPath: Record<string, PageContent> = {
       { id: "tank-job", title: "Define the Tank Job", paragraphs: ["A Tank build begins with the mechanic or hit the player must survive and the team space that survival creates. This keeps defense recommendations tied to a run rather than a vague role label."] },
       { id: "tank-loadout", title: "Tank Loadout Fields", paragraphs: ["The future sheet will record defensive priority, team utility, spell role, gear sources, progression stage, alternative, version, and evidence state. Unsupported mitigation numbers remain unlisted."], bullets: ["Survival requirement", "Team utility", "Reachable gear goal", "Fallback when the primary source is unavailable"] },
       { id: "tank-check", title: "Tank Verification Checklist", paragraphs: ["A publishable recommendation needs a current Reborn source and a repeatable test showing the setup helps the intended party clear. It must not rely on the original game's numbers."] },
-      { id: "tank-role-boundary", title: "Role Page, Not a Confirmed Class", paragraphs: ["The official Reborn description does not publish a Tank class roster, and current search did not find stable Tank-specific DQR evidence. This page therefore treats Tank as a party job and remains noindex until current UI and repeatable party evidence support a separate class-style guide."] }
+      { id: "tank-role-boundary", title: "A Party Job, Not a Confirmed Class", paragraphs: ["The official Reborn description does not publish a Tank class roster, and current searches did not find stable Tank-specific DQR evidence. Treat Tank as a party job and confirm the current UI and defensive effects before following a class-style build."] }
     ],
     [
       { question: "Should every party use a Tank?", answer: "That depends on the current run and group. This page will publish a role recommendation only when its use case and evidence are clear." },
@@ -1105,11 +1108,11 @@ export const pageContentByPath: Record<string, PageContent> = {
       { id: "healer-job", title: "Define the Healer Job", paragraphs: ["A Healer build should state what damage pattern or party failure it addresses, whether the role is recovery or support, and what the player can obtain at the current stage."] },
       { id: "healer-loadout", title: "Healer Loadout Fields", paragraphs: ["The future sheet will connect recovery or buff role, spell source, gear goal, stage, alternative, version, and evidence state. No healing value is inferred from an old listing."], bullets: ["Recovery or support goal", "Primary and alternative spell", "Reachable gear path", "Party limitation and version"] },
       { id: "healer-check", title: "Healer Verification Checklist", paragraphs: ["A named Healer setup needs a current Reborn source and a repeatable party-use explanation. It will link back to the spell, dungeon, and equipment records that support it."] },
-      { id: "healer-role-boundary", title: "Role Page, Not a Confirmed Class", paragraphs: ["The official Reborn description does not publish a Healer class roster, and current search did not find stable Healer-specific DQR evidence. This page treats healing as a party job and remains noindex until current abilities and party tests justify a separate guide."] }
+      { id: "healer-role-boundary", title: "A Party Job, Not a Confirmed Class", paragraphs: ["The official Reborn description does not publish a Healer class roster, and current searches did not find stable Healer-specific DQR evidence. Treat healing as a party job and confirm current ability cards and party results before following a class-style build."] }
     ],
     [
       { question: "What should a Healer build prioritise?", answer: "Prioritise the recovery or support problem your party actually has, then verify the relevant spell and gear source in Reborn." },
-      { question: "Are healing values confirmed here?", answer: "No. Unsupported values stay out of the first-pass build sheet." }
+      { question: "Are healing values confirmed here?", answer: "No. Exact values need a current ability card and a dated party test." }
     ],
     [link("/spells/", "Spell database", "Track support and recovery fields."), link("/builds/", "All builds", "Compare role decisions."), link("/dungeons/", "Dungeon progression", "Tie support to a real run.")]
   ),
@@ -1128,22 +1131,22 @@ export const pageContentByPath: Record<string, PageContent> = {
   ),
   "/privacy/": {
     sections: [
-      { id: "what-is-collected", title: "What This MVP Collects", paragraphs: ["This local MVP renders public editorial content and source links. It does not provide accounts, comments, payment flows, market transactions, or a private player-data upload surface."] },
+      { id: "what-is-collected", title: "What the Current Site Collects", paragraphs: ["The current site serves guide content and source links. It does not provide accounts, comments, payments, market transactions, or a player-data upload form."] },
       { id: "what-not-to-share", title: "What Not to Share", paragraphs: ["Do not enter Roblox passwords, session tokens, private messages, payment details, or personal account exports into this site. Public source links should contain only information already intended for public viewing."] },
-      { id: "future-boundary", title: "Future Capability Boundary", paragraphs: ["If analytics, advertising, forms, or community features are added later, their collection and retention rules must be documented before those features ship. This release makes no such production promise."] }
+      { id: "future-boundary", title: "Future Capability Boundary", paragraphs: ["If analytics, advertising, forms, or community features are added later, their collection and retention rules must be documented before those features ship. The current policy covers only features that exist today."] }
     ],
     faq: [
-      { question: "Does Dungeon Quest Reborn Guide need my Roblox login?", answer: "No. This MVP has no login or account connection flow." },
-      { question: "Does this page promise ad or analytics privacy for a future release?", answer: "No. Future collection must be documented before it is introduced; this page describes only the current MVP boundary." }
+      { question: "Does Dungeon Quest Reborn Guide need my Roblox login?", answer: "No. The site has no login or account connection flow." },
+      { question: "Does this cover future ads or analytics?", answer: "No. Any future collection must be documented before it is introduced; this page covers the current site only." }
     ],
     related: [link("/source-policy/", "Source policy", "See how editorial evidence is recorded."), link("/contact/", "Contact boundary", "Check how corrections are handled in this local release.")],
     sources: []
   },
   "/contact/": {
     sections: [
-      { id: "current-channel", title: "Current Contact Channel", paragraphs: ["This local MVP does not operate a public support inbox, community server, or correction form. It therefore does not present an unconfigured address as if it were monitored."] },
+      { id: "current-channel", title: "Current Contact Channel", paragraphs: ["The site does not yet operate a public support inbox, community server, or correction form, so it does not display an address that nobody monitors."] },
       { id: "correction-format", title: "What a Useful Correction Contains", paragraphs: ["A correction should name the route, quote the exact claim, include a direct public source or current-game capture, identify the version, and explain what should change. The source-policy page describes the evidence fields used for review."] },
-      { id: "before-publication", title: "Before a Public Channel Exists", paragraphs: ["Until a monitored channel is configured, review pages stay out of production routes and indexable pages stay limited to claims with a visible evidence trail."] }
+      { id: "before-publication", title: "Before a Public Channel Exists", paragraphs: ["Until a monitored channel exists, use the source policy to understand what a correction needs and check the cited source directly."] }
     ],
     faq: [
       { question: "Can I send account credentials for a correction?", answer: "No. Never send passwords, session tokens, payment details, or private account exports." },
@@ -1156,12 +1159,12 @@ export const pageContentByPath: Record<string, PageContent> = {
     sections: [
       { id: "source-level", title: "Page-Level Source", paragraphs: ["A page-level source explains where the page was researched. It does not make every sentence on the page official. Source records show the URL, evidence level, evidence note, and last checked date."] },
       { id: "claim-level", title: "Claim-Level Evidence", paragraphs: ["Each critical fact carries its own claim status, confidence, verified version, source URL, evidence note, and checked date. A missing value is marked Not collected or Not yet verified instead of being inferred from an older game."] },
-      { id: "publication-gate", title: "Publication and Refresh Gate", paragraphs: ["The site structure can publish a useful first-pass page while it is still noindex. Indexable pages need a direct answer, useful sections, internal links, and source records; thin or incomplete pages remain publicly accessible but clearly labelled Public / noindex. Freshness checks use Singapore dates and show the next scheduled check."] },
+      { id: "publication-gate", title: "When a Guide Is Ready", paragraphs: ["A guide needs a direct answer, useful sections, working internal links, and dated sources before it is promoted as a complete result. Thin pages remain accessible with a clear content-status label while their changing details are checked. Freshness dates use Singapore time." ] },
       { id: "evidence-ladder", title: "Evidence Ladder", paragraphs: ["Official sources establish identity and explicit developer statements. Current in-game captures establish visible UI and values. Multiple independent community observations can support a reported pattern. Legacy or unconfirmed material remains a research lead. Moving up one level never proves unrelated claims on the same page."], bullets: ["Official — direct Roblox or developer statement", "In-game Verified — current screenshot or controlled reproduction", "Community Confirmed — multiple independent observations with limits", "Legacy / Unconfirmed — old-game material or a single report"] }
     ],
     faq: [
       { question: "Does an Official badge confirm every fact on a page?", answer: "No. The badge describes the page source level; the claim table describes each fact separately." },
-      { question: "What happens when evidence is missing?", answer: "The fact remains labelled Not collected or Not yet verified, and the page stays review-only or noindex until the publication gate is met." }
+      { question: "What happens when evidence is missing?", answer: "The fact stays labelled Not collected or Not yet verified, and the page tells readers that gameplay details are still being checked." }
     ],
     related: [link("/differences/", "Reborn differences", "Inspect row-level comparison evidence."), link("/updates/", "Update ledger", "See why metadata signals are not patch notes."), link("/privacy/", "Privacy", "Review the data boundary for this site.")],
     sources: []

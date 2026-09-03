@@ -106,4 +106,12 @@ describe("publication gates", () => {
     expect(page.updates.every((update) => update.versionTitle && update.publishedDate && update.actualChanges && update.sourceURL && update.affectedPaths)).toBe(true);
     expect(page.updates.some((update) => update.recordType === "patch_note")).toBe(false);
   });
+
+  it("builds the update page from the current official snapshot", () => {
+    const page = sitePages.find((item) => item.path === "/updates/")!;
+    const copy = JSON.stringify({ sections: page.sections, claims: page.claims, updates: page.updates });
+
+    expect(copy).toContain(officialGameSnapshot.robloxUpdatedAt);
+    expect(copy).not.toContain("2026-09-02T23:30:02");
+  });
 });

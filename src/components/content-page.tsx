@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { gamePassSnapshot, knownUniversePlaces, officialGameSnapshot, statusChecks, tierReview } from "@/content/game-data";
 import { getFreshnessStatus, getSingaporeDate } from "@/content/freshness.mjs";
-import { getPageByPath, getRuntimeEnvironment, isPageAvailable } from "@/content/routes";
+import { getPageByPath, getPlayerFacingStatus, getRuntimeEnvironment, getVisiblePages, isPageAvailable } from "@/content/routes";
 import { siteConfig } from "@/content/site";
 import type { SitePage } from "@/content/types";
 
@@ -28,10 +28,8 @@ const firstPassFields: Record<string, string[]> = {
 
 export function buildPageSchema(page: SitePage) {
   const url = new URL(page.path, siteConfig.url).toString();
-  const visibleRelated = page.related.filter((item) => {
-    const linkedPage = getPageByPath(item.href);
-    return linkedPage ? isPageAvailable(linkedPage, getRuntimeEnvironment()) : true;
-  });
+  const childPages = getDirectChildPages(page);
+  const breadcrumbItems = buildBreadcrumbItems(page);
   const schemas: Array<Record<string, unknown>> = [
     {
       "@context": "https://schema.org",
@@ -46,10 +44,7 @@ export function buildPageSchema(page: SitePage) {
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
-        { "@type": "ListItem", position: 2, name: page.h1, item: url }
-      ]
+      itemListElement: breadcrumbItems
     }
   ];
 
@@ -65,20 +60,43 @@ export function buildPageSchema(page: SitePage) {
     });
   }
 
-  if (page.kind === "hub") {
+  if (page.kind === "hub" && childPages.length) {
     schemas.push({
       "@context": "https://schema.org",
       "@type": "ItemList",
-      itemListElement: visibleRelated.map((item, index) => ({
+      itemListElement: childPages.map((item, index) => ({
         "@type": "ListItem",
         position: index + 1,
-        name: item.label,
-        url: new URL(item.href, siteConfig.url).toString()
+        name: item.h1,
+        url: new URL(item.path, siteConfig.url).toString()
       }))
     });
   }
 
   return schemas;
+}
+
+function getDirectChildPages(page: SitePage): SitePage[] {
+  return getVisiblePages(getRuntimeEnvironment()).filter((candidate) => {
+    if (candidate.path === page.path || !candidate.path.startsWith(page.path)) return false;
+    return candidate.path.slice(page.path.length).split("/").filter(Boolean).length === 1;
+  });
+}
+
+export function buildBreadcrumbItems(page: SitePage) {
+  const items: Array<{ "@type": "ListItem"; position: number; name: string; item: string }> = [
+    { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", siteConfig.url).toString() }
+  ];
+  const segments = page.path.split("/").filter(Boolean);
+  if (segments.length > 1) {
+    const parentPath = `/${segments.slice(0, -1).join("/")}/`;
+    const parent = getPageByPath(parentPath);
+    if (parent && isPageAvailable(parent, getRuntimeEnvironment())) {
+      items.push({ "@type": "ListItem", position: items.length + 1, name: parent.h1, item: new URL(parent.path, siteConfig.url).toString() });
+    }
+  }
+  items.push({ "@type": "ListItem", position: items.length + 1, name: page.h1, item: new URL(page.path, siteConfig.url).toString() });
+  return items;
 }
 
 function DataPanel({ page }: { page: SitePage }) {
@@ -139,32 +157,70 @@ function DataPanel({ page }: { page: SitePage }) {
   if (page.path === "/tier-list/" || page.path === "/spell-tier-list/") {
     return (
       <section className="surface-card" aria-labelledby="ranking-panel-title">
-        <div className="pending-board"><div className="pending-grade">?</div><div><span>{tierReview.state}</span><h2 id="ranking-panel-title">The board is deliberately empty</h2><p>Named chips and grades from the visual brief are not current-game evidence.</p></div></div>
+        <div className="pending-board"><div className="pending-grade">?</div><div><span>{tierReview.state}</span><h2 id="ranking-panel-title">No ranking yet</h2><p>Every grade needs a current source, use case, weakness, alternative, and repeatable result.</p></div></div>
         <div className="criteria-list">{tierReview.criteria.map((item) => <span key={item}>{item}</span>)}</div>
       </section>
     );
   }
 
-  if (page.path === "/dungeons/" || page.path.startsWith("/dungeons/")) {
+  if (page.path === "/dungeons/") {
     return (
       <section className="surface-card" aria-labelledby="dossier-title">
         <div className="card-heading"><span>DOSSIER STATUS</span><h2 id="dossier-title">Current route evidence</h2></div>
         <div className="dossier-grid">
           <Link href="/dungeons/northern-lands/" className="dossier-card"><div><b>Northern Lands</b><EvidenceBadge level="Official" /></div><p>Confirmed as a current official experience label. Requirements and drops remain under review.</p></Link>
-          <Link href="/dungeons/winter-outpost/" className="dossier-card"><div><b>Winter Outpost</b><EvidenceBadge level="Legacy / Unconfirmed" /></div><p>Requested dossier route; current Reborn facts have not passed the publication gate.</p></Link>
+          <Link href="/dungeons/winter-outpost/" className="dossier-card"><div><b>Winter Outpost</b><EvidenceBadge level="Legacy / Unconfirmed" /></div><p>Current Reborn access, route, boss, and drop details still need direct evidence.</p></Link>
         </div>
-        {page.path === "/dungeons/" ? <p className="table-note">No fixed dungeon count is published until the live sequence is verified.</p> : null}
+        <p className="table-note">No fixed dungeon count is published until the live sequence is verified.</p>
+      </section>
+    );
+  }
+
+  if (page.path === "/dungeons/northern-lands/") {
+    return (
+      <section className="surface-card" aria-labelledby="northern-snapshot-title">
+        <div className="card-heading"><span>CURRENT SOURCE SNAPSHOT</span><h2 id="northern-snapshot-title">Northern Lands source snapshot</h2></div>
+        <div className="fact-grid">
+          <article><span>Official title</span><b>Northern Lands confirmed</b></article>
+          <article><span>Route footage</span><b>Two current community runs</b></article>
+          <article><span>Exact requirements</span><b>Not collected</b></article>
+          <article><span>Complete loot table</span><b>Not collected</b></article>
+        </div>
+        <p className="table-note">Use the videos to learn the visible route and telegraphs. Confirm difficulty, access, scaling, and rewards in the current client.</p>
+      </section>
+    );
+  }
+
+  if (page.path === "/dungeons/winter-outpost/") {
+    return (
+      <section className="surface-card" aria-labelledby="winter-snapshot-title">
+        <div className="card-heading"><span>CURRENT SOURCE SNAPSHOT</span><h2 id="winter-snapshot-title">Winter Outpost source snapshot</h2></div>
+        <div className="fact-grid">
+          <article><span>Community footage</span><b>Manual review candidate</b></article>
+          <article><span>Exact requirements</span><b>Not collected</b></article>
+          <article><span>Boss details</span><b>Not collected</b></article>
+          <article><span>Complete loot table</span><b>Not collected</b></article>
+        </div>
       </section>
     );
   }
 
   const fields = firstPassFields[page.path];
   if (fields) {
+    const checklistTitle = page.path === "/spells/"
+      ? "What to verify on an ability card"
+      : ["/weapons/", "/armor/", "/cosmetics/", "/drops/"].includes(page.path)
+        ? "What to verify on an item card"
+        : page.path === "/beginner-guide/"
+          ? "What to check on your first run"
+          : page.path.startsWith("/builds/") || page.path === "/builds/"
+            ? "What to test in a build"
+            : "What to check before trusting a tool";
     return (
       <section className="surface-card" aria-labelledby="data-gate-title">
-        <div className="card-heading"><span>DATABASE GATE</span><h2 id="data-gate-title">Required fields before publication</h2></div>
+        <div className="card-heading"><span>PLAYER CHECKLIST</span><h2 id="data-gate-title">{checklistTitle}</h2></div>
         <div className="field-strip">{fields.map((field) => <span key={field}>{field}</span>)}</div>
-        <div className="empty-state"><ShieldAlert size={19} aria-hidden="true" /><div><b>No placeholder rows published</b><p>Records stay off the public table until a Reborn-specific name and source pass review.</p></div></div>
+        <div className="empty-state"><ShieldAlert size={19} aria-hidden="true" /><div><b>No verified rows yet</b><p>Check the current Reborn name, source, version, and use case before treating a row as game data.</p></div></div>
       </section>
     );
   }
@@ -181,7 +237,7 @@ function DataPanel({ page }: { page: SitePage }) {
           <div className="table-scroll"><table><thead><tr><th>Version / date</th><th>Actual change</th><th>Status</th><th>Affected pages</th><th>Source</th></tr></thead><tbody>
             {page.updates.map((update) => <tr key={update.id}><td><b>{update.versionTitle}</b><small className="claim-note">{update.publishedDate}</small></td><td>{update.actualChanges}</td><td><span className={`claim-status ${update.claimStatus}`}>{update.claimStatus.replaceAll("_", " ")}</span><small className="claim-note">{update.evidenceNote}</small></td><td>{update.affectedPaths.length ? update.affectedPaths.map((href) => <Link href={href} key={href}>{href}</Link>) : "None — no gameplay relationship inferred"}</td><td><a href={update.sourceURL ?? undefined} target="_blank" rel="noreferrer">Open source <ExternalLink size={11} aria-hidden="true" /></a></td></tr>)}
           </tbody></table></div>
-          <p className="table-note">A metadata signal is not a patch note. This page stays review-only until a first-party update body identifies actual gameplay changes and affected dungeon or spell pages.</p>
+          <p className="table-note">A metadata signal is not a patch note. No gameplay summary is shown until a first-party update body identifies the actual changes and affected pages.</p>
         </section>
       </>
     );
@@ -221,7 +277,7 @@ function ClaimEvidencePanel({ page }: { page: SitePage }) {
 
   return (
     <section className="surface-card claim-evidence" aria-labelledby="claim-evidence-title">
-      <div className="card-heading"><span>CLAIM-LEVEL EVIDENCE</span><h2 id="claim-evidence-title">What each fact means</h2></div>
+      <div className="card-heading"><span>SOURCE CHECK</span><h2 id="claim-evidence-title">What the sources confirm</h2></div>
       <div className="table-scroll">
         <table>
           <thead><tr><th>Topic</th><th>Fact</th><th>Status</th><th>Version</th><th>Source</th></tr></thead>
@@ -245,26 +301,38 @@ function ClaimEvidencePanel({ page }: { page: SitePage }) {
 export function ContentPage({ page }: { page: SitePage }) {
   const freshness = getFreshnessStatus(page, getSingaporeDate());
   const showRefreshBanner = freshness.state !== "current";
+  const refreshTitle = freshness.state === "not_collected"
+    ? "Gameplay details still needed"
+    : freshness.state === "fetch_failed"
+      ? "Source check incomplete"
+      : freshness.state === "version_gap"
+        ? "Current-version check needed"
+        : "Page check due";
   const visibleRelated = page.related.filter((item) => {
     const linkedPage = getPageByPath(item.href);
     return linkedPage ? isPageAvailable(linkedPage, getRuntimeEnvironment()) : true;
   });
+  const breadcrumbItems = buildBreadcrumbItems(page);
 
   return (
     <>
       <JsonLd data={buildPageSchema(page)} />
       <main className="shell page-stack">
-        <nav className="breadcrumbs" aria-label="Breadcrumb"><Link href="/">{siteConfig.name}</Link><span>/</span><span>{page.h1}</span></nav>
+        <nav className="breadcrumbs" aria-label="Breadcrumb">
+          {breadcrumbItems.map((item, index) => index === breadcrumbItems.length - 1
+            ? <span key={item.item}>{item.name}</span>
+            : <span className="breadcrumb-link" key={item.item}><Link href={new URL(item.item).pathname}>{index === 0 ? siteConfig.name : item.name}</Link><span>/</span></span>)}
+        </nav>
         <header className="page-hero">
           <p className="eyebrow">{page.eyebrow}</p>
           <h1>{page.h1}</h1>
           <p>{page.summary}</p>
-          <div className="meta-strip"><EvidenceBadge level={page.evidenceLevel} /><span>Checked {page.lastVerified}</span><span>Version: {page.verifiedForVersion ?? "Not yet verified"}</span>{page.indexable ? <span className="index-state index">Indexable</span> : <span className="index-state">{page.publicationStatus === "published" ? "Public / noindex" : "Review preview / noindex"}</span>}</div>
+          <div className="meta-strip"><span className="content-state">{getPlayerFacingStatus(page)}</span><span>Checked {page.lastVerified}</span><span>Version: {page.verifiedForVersion ?? "Not yet verified"}</span></div>
         </header>
 
-        {showRefreshBanner ? <aside className={`refresh-banner ${freshness.state}`} role="status"><b>Source refresh needed</b><span>{freshness.reason}</span><small>Last checked {page.lastVerified ?? "not recorded"} · Next check {page.nextScheduledCheck ?? "not scheduled"}</small></aside> : null}
+        {showRefreshBanner ? <aside className={`refresh-banner ${freshness.state}`} role="status"><b>{refreshTitle}</b><span>{freshness.reason}</span><small>Last checked {page.lastVerified ?? "not recorded"} · Next check {page.nextScheduledCheck ?? "not scheduled"}</small></aside> : null}
 
-        <section className="quick-answer" aria-labelledby="quick-answer-heading"><span>QUICK ANSWER</span><h2 id="quick-answer-heading">What you can safely act on</h2><p>{page.quickAnswer}</p></section>
+        <section className="quick-answer" aria-labelledby="quick-answer-heading"><span>QUICK ANSWER</span><h2 id="quick-answer-heading">What to do now</h2><p>{page.quickAnswer}</p></section>
 
         <nav className="toc" aria-label="On this page"><span>ON THIS PAGE</span>{page.sections.map((section) => <a href={`#${section.id}`} key={section.id}>{section.title}</a>)}</nav>
 

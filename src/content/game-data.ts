@@ -1,4 +1,5 @@
 import type { ApiSnapshot, EvidenceLevel, SourceRecord } from "./types";
+import officialSnapshot from "./official-snapshot.json";
 
 export const LAST_RESEARCHED = "2026-09-03";
 
@@ -222,26 +223,26 @@ export const sources = {
 } satisfies Record<string, SourceRecord>;
 
 export const officialGameSnapshot = {
-  name: "[Northern Lands] Dungeon Quest Reborn",
-  universeId: 9931749389,
-  rootPlaceId: 77649408247578,
-  creatorName: "Delta Quarters OG",
-  creatorId: 496909722,
+  name: officialSnapshot.game.name,
+  universeId: officialSnapshot.game.universeId,
+  rootPlaceId: officialSnapshot.game.rootPlaceId,
+  creatorName: officialSnapshot.game.creatorName,
+  creatorId: officialSnapshot.game.creatorId,
   licensedBy: "Voldex",
-  robloxUpdatedAt: "2026-09-02T23:30:02.2977668Z",
+  robloxUpdatedAt: officialSnapshot.game.updatedAt,
   evidenceLevel: "Official" as EvidenceLevel,
   source: sources.officialGameApi,
   apiSnapshot: {
     endpoint: sources.officialGameApi.url,
-    fetchedAt: "2026-09-03T00:43:14.5008776Z",
-    responseSummary: "GET returned 1 record: universe 9931749389, root place 77649408247578, current name [Northern Lands] Dungeon Quest Reborn, creator Delta Quarters OG, updated 2026-09-02T23:30:02.2977668Z."
+    fetchedAt: officialSnapshot.fetchedAt,
+    responseSummary: `GET returned 1 record: universe ${officialSnapshot.game.universeId}, root place ${officialSnapshot.game.rootPlaceId}, current name ${officialSnapshot.game.name}, creator ${officialSnapshot.game.creatorName}, updated ${officialSnapshot.game.updatedAt}.`
   } satisfies ApiSnapshot
 } as const;
 
 export const officialGamePassSnapshot = {
   endpoint: sources.officialPassesApi.url,
-  fetchedAt: "2026-09-03T00:43:14.5008776Z",
-  responseSummary: "GET returned 7 game-pass records: hi, DailyRefresh, and Gold1 through Gold5; every record was not for sale and exposed no public price in the response."
+  fetchedAt: officialSnapshot.fetchedAt,
+  responseSummary: `GET returned ${officialSnapshot.gamePasses.length} game-pass records: ${officialSnapshot.gamePasses.map((pass) => pass.name).join(", ")}; every record was not for sale and exposed no public price in the response.`
 } satisfies ApiSnapshot;
 
 export const knownUniversePlaces = [
@@ -250,15 +251,7 @@ export const knownUniversePlaces = [
   { id: 115445507767090, name: "100+ Lobby" }
 ] as const;
 
-export const gamePassSnapshot = [
-  { name: "hi", isForSale: false, price: null },
-  { name: "DailyRefresh", isForSale: false, price: null },
-  { name: "Gold1", isForSale: false, price: null },
-  { name: "Gold2", isForSale: false, price: null },
-  { name: "Gold3", isForSale: false, price: null },
-  { name: "Gold4", isForSale: false, price: null },
-  { name: "Gold5", isForSale: false, price: null }
-] as const;
+export const gamePassSnapshot = officialSnapshot.gamePasses;
 
 export type CodeStatus = "Officially confirmed" | "Unverified";
 export interface CodeRecord {

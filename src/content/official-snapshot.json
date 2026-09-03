@@ -1,0 +1,48 @@
+{
+  "fetchedAt": "2026-09-03T10:51:07.231Z",
+  "game": {
+    "universeId": 9931749389,
+    "rootPlaceId": 77649408247578,
+    "name": "[Northern Lands] Dungeon Quest Reborn",
+    "creatorId": 496909722,
+    "creatorName": "Delta Quarters OG",
+    "updatedAt": "2026-09-03T05:19:40.3008179Z"
+  },
+  "gamePasses": [
+    {
+      "name": "DailyRefresh",
+      "isForSale": false,
+      "price": null
+    },
+    {
+      "name": "Gold1",
+      "isForSale": false,
+      "price": null
+    },
+    {
+      "name": "Gold2",
+      "isForSale": false,
+      "price": null
+    },
+    {
+      "name": "Gold3",
+      "isForSale": false,
+      "price": null
+    },
+    {
+      "name": "Gold4",
+      "isForSale": false,
+      "price": null
+    },
+    {
+      "name": "Gold5",
+      "isForSale": false,
+      "price": null
+    },
+    {
+      "name": "hi",
+      "isForSale": false,
+      "price": null
+    }
+  ]
+}

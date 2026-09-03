@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import type { NextRequest } from "next/server";
 
 import { OgImage } from "@/components/og-image";
-import { getPageByPath, getRuntimeEnvironment, isPageAvailable } from "@/content/routes";
+import { getPageByPath, getPlayerFacingStatus, getRuntimeEnvironment, isPageAvailable } from "@/content/routes";
 import { siteConfig } from "@/content/site";
 
 const imageSize = { width: 1200, height: 630 } as const;
@@ -16,7 +16,8 @@ export async function GET(request: NextRequest) {
     <OgImage
       title={visiblePage?.h1 ?? siteConfig.fullName}
       eyebrow={visiblePage?.eyebrow ?? "Evidence-labelled field guide"}
-      evidence={visiblePage?.indexable ? "Indexable guide" : "Public / noindex"}
+      status={visiblePage ? getPlayerFacingStatus(visiblePage) : "Source checked"}
+      siteHost={new URL(siteConfig.url).hostname}
     />,
     imageSize
   );
