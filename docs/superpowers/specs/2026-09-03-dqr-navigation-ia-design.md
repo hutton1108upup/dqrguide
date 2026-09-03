@@ -94,7 +94,7 @@
 Logo | Dungeons v | Gear v | Builds v | Guides v | Codes | Updates | Search
 ```
 
-全局导航中的每个页面只出现一次。
+除首页入口外，每个内容页面在当前视口的全局导航中只出现一次。桌面由 Logo 承担首页入口；移动抽屉额外显示一个明确的 Home 链接，方便抽屉内返回首页。
 
 ### Dungeons
 
@@ -163,7 +163,7 @@ Logo | Dungeons v | Gear v | Builds v | Guides v | Codes | Updates | Search
 
 - 隐藏桌面导航，显示搜索图标和汉堡按钮。
 - 汉堡打开右侧或顶部对齐的导航抽屉。
-- 四个分类使用 accordion；Codes 与 Updates 使用直接链接。
+- 四个分类使用 accordion；Home、Codes 与 Updates 使用直接链接。
 - 抽屉包含与桌面相同的全部 25 个非 trust 页面入口。
 - 移除现有第二导航的横向滚动区域。
 
