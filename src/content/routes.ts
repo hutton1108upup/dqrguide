@@ -2,6 +2,7 @@ import publishingManifest from "./publishing-manifest.json";
 import { EVIDENCE_LEVELS, type Confidence, type ContentType, type DataState, type EvidenceLevel, type PublicationStatus, type SitePage } from "./types";
 import { LAST_RESEARCHED } from "./game-data";
 import { pageContentByPath } from "./page-content";
+import { playerGuides } from "./player-guides";
 
 export const CORE_PATHS = [
   "/",
@@ -28,6 +29,7 @@ const policies = publishingManifest.pages as Array<{
   indexable: boolean;
   contentType: ContentType;
   lastVerified: string;
+  datePublished?: string;
   dateModified?: string;
   verifiedForVersion: string | null;
   nextScheduledCheck: string | null;
@@ -51,6 +53,20 @@ type PageSeed =
   > & { evidenceLevel?: EvidenceLevel; confidence?: Confidence };
 
 const pageSeed: PageSeed[] = [
+  ...["/spells/phantom-flames/", "/spells/infernal-orbs/"].map((path): PageSeed => ({
+    path,
+    kind: "guide",
+    title: playerGuides[path].meta.title!,
+    description: playerGuides[path].meta.summary!,
+    h1: playerGuides[path].meta.h1!,
+    eyebrow: "Ability guide",
+    summary: playerGuides[path].meta.summary!,
+    quickAnswer: playerGuides[path].meta.quickAnswer!,
+    indexable: playerGuides[path].indexable,
+    verifiedForVersion: playerGuides[path].meta.verifiedForVersion!,
+    evidenceLevel: "Community Confirmed",
+    confidence: "Medium"
+  })),
   {
     path: "/",
     kind: "hub",
@@ -484,18 +500,20 @@ function makePage(seed: (typeof pageSeed)[number]): SitePage {
 
   return {
     ...seed,
+    ...playerGuides[seed.path]?.meta,
+    description: playerGuides[seed.path]?.meta.summary ?? seed.description,
     indexable: policy.indexable,
     publicationStatus: policy.publicationStatus,
     published: policy.publicationStatus === "published",
     contentType: policy.contentType,
-    datePublished: published,
+    datePublished: policy.datePublished ?? published,
     dateModified: policy.dateModified ?? published,
     lastVerified: policy.lastVerified ?? LAST_RESEARCHED,
     nextScheduledCheck: policy.nextScheduledCheck,
     dataState: policy.dataState,
     verifiedForVersion: policy.verifiedForVersion,
-    evidenceLevel: seed.evidenceLevel ?? "Legacy / Unconfirmed",
-    confidence: seed.confidence ?? "Low",
+    evidenceLevel: playerGuides[seed.path] && seed.path !== "/trello/" ? "Community Confirmed" : seed.evidenceLevel ?? "Legacy / Unconfirmed",
+    confidence: playerGuides[seed.path] && seed.path !== "/trello/" ? "Medium" : seed.confidence ?? "Low",
     claims: content.claims ?? [],
     differenceRows: content.differenceRows ?? [],
     updates: content.updates ?? [],

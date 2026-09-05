@@ -30,10 +30,10 @@ const tasks = [
   { href: "/trading/", label: "Trading safety", note: "How do I avoid a bad trade?", icon: Scale }
 ] as const;
 const demandQuestions = [
-  { href: "/beginner-guide/", label: "Start without wasting upgrades", note: "First-run choices, stat focus, reliable clears, and what to change when progress stops.", icon: BookOpen },
-  { href: "/dungeons/northern-lands/", label: "Learn the Northern Lands route", note: "Current community runs, visible boss tells, solo context, and the details still being checked.", icon: Map },
-  { href: "/gamepasses/", label: "Understand changing Gold prices", note: "What the public API shows and what to capture before comparing a player-reported price.", icon: Gift },
-  { href: "/differences/", label: "Compare Reborn with the original", note: "Separate official Roblox identity records from transfer, balance, and progression questions.", icon: Scale }
+  { href: "/spells/", label: "Find a spell and how to use it", note: "Ten named abilities, practical roles, and timestamped creator explanations.", icon: Sparkles },
+  { href: "/dungeons/northern-lands/", label: "Learn the Northern Lands route", note: "Seven route stages, Bob's orb explanation, Odin positioning and failure fixes.", icon: Map },
+  { href: "/drops/", label: "Look up an item source", note: "Three reported ability locations, with unknown difficulty and rates clearly marked.", icon: Box },
+  { href: "/trello/", label: "Find the Trello status and useful links", note: "A dated status answer and direct routes to game information.", icon: BookOpen }
 ] as const;
 
 export function getHomeTasks(environment: RuntimeEnvironment = getRuntimeEnvironment()) {
@@ -92,7 +92,7 @@ export default function HomePage() {
           </section>
 
           <section className="demand-section" aria-labelledby="demand-title">
-            <div className="section-heading"><div><span>01 / PLAYER QUESTIONS</span><h2 id="demand-title">Most asked player questions</h2></div><p>Prioritized from current forum and video searches</p></div>
+            <div className="section-heading"><div><span>01 / PLAYER QUESTIONS</span><h2 id="demand-title">Most asked player questions</h2></div><p>Spells, item locations, Northern Lands and Trello</p></div>
             <div className="demand-grid">
               {demandQuestions.map(({ href, label, note, icon: Icon }) => (
                 <HomeLink href={href} className="demand-card" key={href}>
@@ -213,10 +213,10 @@ export default function HomePage() {
             <div className="section-heading"><div><span>03 / PROGRESSION</span><h2 id="dungeon-title">Dungeon routes being checked</h2></div><HomeLink href="/dungeons/" className="text-link">Open progression hub <ArrowRight size={14} /></HomeLink></div>
             <div className="dungeon-grid">
               <HomeLink href="/dungeons/northern-lands/" className="dungeon-card current">
-                <span className="dungeon-index">NL</span><span><b>Northern Lands</b><small>Confirmed in the current official experience title</small></span><EvidenceBadge level="Official" />
+                <span className="dungeon-index">NL</span><span><b>Northern Lands</b><small>Timestamped solo-route companion and boss tactics</small></span><EvidenceBadge level="Community Confirmed" />
               </HomeLink>
               <HomeLink href="/dungeons/winter-outpost/" className="dungeon-card">
-                <span className="dungeon-index">WO</span><span><b>Winter Outpost</b><small>Requirements, route, and drops still need a Reborn check</small></span><EvidenceBadge level="Legacy / Unconfirmed" />
+                <span className="dungeon-index">WO</span><span><b>Winter Outpost</b><small>Warrior and Mage video chapters; current values unverified</small></span><EvidenceBadge level="Legacy / Unconfirmed" />
               </HomeLink>
             </div>
           </section>

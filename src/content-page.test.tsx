@@ -16,22 +16,22 @@ describe("core content page", () => {
   it("renders source evidence and related routes for a review-only guide", () => {
     render(<ContentPage page={getPageByPath("/dungeons/northern-lands/")!} />);
     expect(screen.getByRole("heading", { name: "Dungeon Quest Reborn Northern Lands" })).toBeInTheDocument();
-    expect(screen.getByText("Official title")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Before you enter" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Source notes" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Roblox Games API/i })).toBeInTheDocument();
   });
 
   it("keeps the Northern Lands detail panel focused on that dungeon", () => {
     render(<ContentPage page={getPageByPath("/dungeons/northern-lands/")!} />);
-    expect(screen.getByRole("heading", { name: "Northern Lands source snapshot" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Room-by-Room Verification Plan" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Fix the part that ends your run" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Room-by-room route" })).toBeInTheDocument();
     expect(screen.queryByRole("link", { name: /Winter Outpost/i })).not.toBeInTheDocument();
   });
 
-  it("shows the refresh state for content that needs evidence collection", () => {
+  it("retains collection warnings on incomplete drop data", () => {
     render(<ContentPage page={getPageByPath("/dungeons/northern-lands/")!} />);
-    expect(screen.getByRole("status")).toHaveTextContent(/gameplay details still needed/i);
-    expect(screen.getByText(/not been collected/i)).toBeInTheDocument();
+    expect(screen.queryByRole("status")).not.toBeInTheDocument();
+    expect(getPageByPath("/drops/")?.dataState).toBe("not_collected");
   });
 
   it("renders the source policy trust page", () => {

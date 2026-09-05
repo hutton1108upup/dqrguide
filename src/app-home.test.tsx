@@ -47,9 +47,9 @@ describe("homepage", () => {
     const demandHeading = screen.getByRole("heading", { name: "Most asked player questions" });
     const evidenceHeading = screen.getByRole("heading", { name: "How to use this Dungeon Quest Reborn wiki" });
     expect(demandHeading.compareDocumentPosition(evidenceHeading) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-    expect(screen.getByRole("link", { name: /Start without wasting upgrades/i })).toHaveAttribute("href", "/beginner-guide");
+    expect(screen.getByRole("link", { name: /Find a spell and how to use it/i })).toHaveAttribute("href", "/spells");
     expect(screen.getByRole("link", { name: /Learn the Northern Lands route/i })).toHaveAttribute("href", "/dungeons/northern-lands");
-    expect(screen.getByRole("link", { name: /Understand changing Gold prices/i })).toHaveAttribute("href", "/gamepasses");
-    expect(screen.getByRole("link", { name: /Compare Reborn with the original/i })).toHaveAttribute("href", "/differences");
+    expect(screen.getByRole("link", { name: /Look up an item source/i })).toHaveAttribute("href", "/drops");
+    expect(screen.getByRole("link", { name: /Find the Trello status and useful links/i })).toHaveAttribute("href", "/trello");
   });
 });
