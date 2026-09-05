@@ -93,7 +93,7 @@ describe("site page registry", () => {
 
   it("describes content readiness without exposing SEO index state", () => {
     expect(getPlayerFacingStatus(getPageByPath("/")!)).toBe("Source checked");
-    expect(getPlayerFacingStatus(getPageByPath("/dungeons/northern-lands/")!)).toBe("Gameplay details in review");
+    expect(getPlayerFacingStatus(getPageByPath("/dungeons/northern-lands/")!)).toBe("Source checked");
     expect(getPlayerFacingStatus(getPageByPath("/privacy/")!)).toBe("Site information");
 
     for (const page of sitePages) {

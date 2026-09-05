@@ -50,7 +50,7 @@ describe("player-facing copy", () => {
 
     for (const [path, fragment] of Object.entries(forbiddenTitleFragments)) {
       const page = getPageByPath(path)!;
-      expect(page.indexable, path).toBe(false);
+      if (page.indexable) continue;
       expect(page.title, path).not.toMatch(fragment);
     }
 

@@ -49,7 +49,7 @@ describe("publication gates", () => {
       evidenceLevel: "Legacy / Unconfirmed"
     });
     expect(sitePages.find((page) => page.path === "/trello/")).toMatchObject({
-      indexable: false,
+      indexable: true,
       evidenceLevel: "Legacy / Unconfirmed"
     });
     expect(sitePages.find((page) => page.path === "/trello/")?.nextScheduledCheck).toBe("2026-09-10");
@@ -65,7 +65,7 @@ describe("publication gates", () => {
 
     expect(indexable.length).toBeGreaterThan(0);
     for (const page of indexable) {
-      expect(page.lastVerified).toMatch(/^2026-09-0[23]$/);
+      expect(page.lastVerified).toMatch(/^2026-09-0[235]$/);
       expect(page.sources.length).toBeGreaterThan(0);
       expect(page.sections.length).toBeGreaterThanOrEqual(3);
     }
@@ -73,7 +73,7 @@ describe("publication gates", () => {
 
   it("records editorial modification dates without rewriting unchanged trust pages", () => {
     expect(sitePages.find((page) => page.path === "/gamepasses/")?.dateModified).toBe("2026-09-03");
-    expect(sitePages.find((page) => page.path === "/dungeons/northern-lands/")?.dateModified).toBe("2026-09-03");
+    expect(sitePages.find((page) => page.path === "/dungeons/northern-lands/")?.dateModified).toBe("2026-09-05");
     expect(sitePages.find((page) => page.path === "/privacy/")?.dateModified).toBe("2026-09-04");
   });
 
@@ -87,7 +87,7 @@ describe("publication gates", () => {
       nextScheduledCheck: "2026-09-10"
     });
     expect(sitePages.find((page) => page.path === "/dungeons/northern-lands/")).toMatchObject({
-      indexable: false,
+      indexable: true,
       nextScheduledCheck: "2026-09-10"
     });
   });

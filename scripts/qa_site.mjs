@@ -108,9 +108,7 @@ try {
   assert(ogResponse.headers()["content-type"]?.includes("image/png"), `og type=${ogResponse.headers()["content-type"]}`);
 
   await page.goto(`${baseUrl}/dungeons/northern-lands/`, { waitUntil: "networkidle" });
-  const northernImage = page.getByRole("img", { name: /party facing a horned arena boss/i });
-  await northernImage.waitFor();
-  assert(await northernImage.evaluate((image) => image.complete && image.naturalWidth > 0), "Northern Lands official artwork did not load");
+  assert(await page.getByRole("table", { name: "Room-by-room route", exact: true }).count() === 1, "Northern Lands route table missing");
   assert(await page.getByRole("button", { name: /play Northern Lands solo route/i }).count() === 1, "Northern Lands video facade missing");
   assert(await page.locator('iframe[title="Northern Lands solo route"]').count() === 0, "YouTube iframe loaded before a click");
   await page.screenshot({ path: path.join(artifactDir, "northern-lands-desktop.png"), fullPage: true });
@@ -185,6 +183,72 @@ try {
   await assertNoOverflow(mobile, "northern-media-mobile");
   assert(await mobile.getByRole("button", { name: /play Northern Lands solo route/i }).count() === 1, "Northern Lands mobile video facade missing");
   await mobile.screenshot({ path: path.join(artifactDir, "northern-media-mobile.png"), fullPage: true });
+
+  const changedRoutes = ["/trello/", "/spells/", "/drops/", "/dungeons/", "/dungeons/winter-outpost/", "/dungeons/northern-lands/", "/spells/phantom-flames/", "/spells/infernal-orbs/"];
+  for (const route of changedRoutes) {
+    for (const [surface, label] of [[page, "desktop"], [mobile, "mobile"]]) {
+      await surface.goto(`${baseUrl}${route}`, { waitUntil: "networkidle" });
+      await assertNoOverflow(surface, `${route}-${label}`);
+      assert(await surface.locator("iframe").count() === 0, `eager iframe on ${route}`);
+      const expectedIndex = indexableRoutes.includes(route);
+      const directive = await surface.locator('meta[name="robots"]').getAttribute("content");
+      assert(directive === (expectedIndex ? "index, follow" : "noindex, follow"), { route, directive });
+      for (const table of await surface.locator(".editorial-section table").all()) {
+        const columns = await table.locator("thead th").count();
+        for (const row of await table.locator("tbody tr").all()) {
+          assert(await row.locator("th, td").count() === columns, `table columns do not match ${route}`);
+        }
+      }
+      await surface.screenshot({ path: path.join(artifactDir, `${route.split("/").filter(Boolean).join("-")}-${label}.png`), fullPage: true });
+    }
+  }
+
+  // Check facade activation without depending on third-party player availability.
+  await page.route("https://www.youtube-nocookie.com/**", route => route.fulfill({ status: 200, contentType: "text/html", body: "<title>QA player stub</title>" }));
+  await page.goto(`${baseUrl}/spells/phantom-flames/`, { waitUntil: "networkidle" });
+  await page.getByRole("button", { name: /play Phantom Flames explanation/i }).click();
+  const player = page.getByTitle("Phantom Flames explanation");
+  assert((await player.getAttribute("src"))?.includes("start=283"), "ability video lost its timestamp");
+  await page.keyboard.press("Escape");
+  assert(await page.locator("iframe").count() === 0, "video keeps running after close");
+  assert(await page.getByRole("button", { name: /play Phantom Flames explanation/i }).evaluate(element => element === document.activeElement), "video focus did not return to trigger");
+
+  await page.goto(`${baseUrl}/spells/`, { waitUntil: "networkidle" });
+  const abilitySearch = page.getByRole("searchbox", { name: "Find an ability" });
+  await abilitySearch.fill("Phantom");
+  assert(await page.getByText("1 of 10 abilities", { exact: true }).isVisible(), "ability name filtering failed");
+  await page.getByRole("combobox", { name: "Use case", exact: true }).selectOption("Recovery");
+  assert(await page.getByText("No abilities match these filters.", { exact: true }).isVisible(), "combined filters failed");
+  await page.getByRole("button", { name: "Clear filters", exact: true }).click();
+  assert(await abilitySearch.inputValue() === "", "clear filters left query behind");
+  assert(await page.getByText("10 of 10 abilities", { exact: true }).isVisible(), "clear filters did not restore list");
+
+  await mobile.goto(`${baseUrl}/spells/`, { waitUntil: "networkidle" });
+  await mobile.getByRole("searchbox", { name: "Find an ability" }).fill("Phantom");
+  const card = mobile.locator(".lookup-card").filter({ hasText: "Phantom Flames" });
+  assert(await card.isVisible(), "mobile ability card is missing");
+  const cardBox = await card.boundingBox();
+  assert(cardBox && cardBox.x >= 0 && cardBox.x + cardBox.width <= 375, "mobile card exceeds viewport");
+  await card.getByText("Use & video", { exact: true }).click();
+  assert(await card.getByText(/demonstrates reach against dummies/).isVisible(), "mobile card did not expand");
+  await mobile.screenshot({ path: path.join(artifactDir, "mvp-spells-mobile-expanded.png"), fullPage: true });
+
+  await page.goto(`${baseUrl}/dungeons/northern-lands/`, { waitUntil: "networkidle" });
+  await page.getByRole("navigation", { name: "Where are you stuck?" }).getByRole("link", { name: "Bob", exact: true }).click();
+  assert(new URL(page.url()).hash === "#bob-orbs", "boss shortcut missed its section");
+  const sourceTrigger = page.getByRole("link", { name: /Bob's explanation/ });
+  await sourceTrigger.scrollIntoViewIfNeeded();
+  const sourceScroll = await page.evaluate(() => scrollY);
+  await sourceTrigger.click();
+  assert((await page.getByRole("dialog").locator("iframe").getAttribute("src"))?.includes("start=409"), "source link lost its time");
+  await page.getByRole("button", { name: "Close video", exact: true }).click();
+  assert(Math.abs((await page.evaluate(() => scrollY)) - sourceScroll) < 3, "video close lost reading position");
+  await mobile.goto(`${baseUrl}/dungeons/northern-lands/`, { waitUntil: "networkidle" });
+  await mobile.getByRole("navigation", { name: "Where are you stuck?" }).getByRole("link", { name: "Odin", exact: true }).click();
+  await mobile.waitForFunction(() => { const box = document.getElementById("route-odin")?.getBoundingClientRect(); return box && box.y >= 60 && box.y < 400; }, null, { timeout: 5000 });
+  const odin = await mobile.locator("#route-odin").boundingBox();
+  assert(odin && odin.y >= 60 && odin.y < 400, "mobile Odin shortcut did not reveal its advice");
+  await assertNoOverflow(mobile, "mobile-odin-route");
 
   assert(consoleErrors.length === 0, { consoleErrors, badResponses });
   assert(pageErrors.length === 0, { pageErrors });

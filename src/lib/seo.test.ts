@@ -22,7 +22,7 @@ describe("technical SEO", () => {
     expect(urls).toContain(absoluteUrl("/"));
     expect(urls).toContain(absoluteUrl("/codes/"));
     expect(urls).toContain(absoluteUrl("/differences/"));
-    expect(urls).not.toContain(absoluteUrl("/trello/"));
+    expect(urls).toContain(absoluteUrl("/trello/"));
     expect(urls).not.toContain(absoluteUrl("/tier-list/"));
     expect(urls.some((url) => url.includes("enhanced-inner-rage"))).toBe(false);
   });
@@ -48,7 +48,7 @@ describe("technical SEO", () => {
     ]);
 
     const spellsSchema = buildPageSchema(getPageByPath("/spells/")!);
-    expect(spellsSchema.some((item) => item["@type"] === "ItemList")).toBe(false);
+    expect(spellsSchema.find((item) => item["@type"] === "ItemList")?.itemListElement).toEqual(expect.arrayContaining([expect.objectContaining({ url: absoluteUrl("/spells/phantom-flames/") }), expect.objectContaining({ url: absoluteUrl("/spells/infernal-orbs/") })]));
   });
 
   it("emits the full route hierarchy for nested-page breadcrumbs", () => {

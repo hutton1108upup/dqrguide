@@ -2,7 +2,7 @@
 
 import { ExternalLink, Play } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { VideoDialog } from "./video-dialog";
 
 import type { PageMedia } from "@/content/types";
 
@@ -42,26 +42,15 @@ function EvidenceImage({ item }: { item: PageMedia }) {
 }
 
 function YouTubeEvidence({ item }: { item: PageMedia }) {
-  const [playing, setPlaying] = useState(false);
   if (!item.videoId) return null;
-
-  const embedURL = new URL(`https://www.youtube-nocookie.com/embed/${item.videoId}`);
-  embedURL.searchParams.set("rel", "0");
-  if (item.startSeconds) embedURL.searchParams.set("start", String(item.startSeconds));
+  const sourceURL = new URL(item.sourceURL);
+  if (item.startSeconds) sourceURL.searchParams.set("t", `${item.startSeconds}s`);
 
   return (
     <figure className="evidence-media video-evidence">
       <div className="video-frame">
-        {playing ? (
-          <iframe
-            src={embedURL.toString()}
-            title={item.title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-            referrerPolicy="strict-origin-when-cross-origin"
-          />
-        ) : (
-          <button type="button" onClick={() => setPlaying(true)} aria-label={`Play ${item.title}`}>
+        <VideoDialog url={sourceURL.toString()} title={item.title}>
+          <button type="button" aria-label={`Play ${item.title}`}>
             {/* YouTube keeps ownership and delivery of its preview image. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -74,7 +63,7 @@ function YouTubeEvidence({ item }: { item: PageMedia }) {
             />
             <span className="video-play"><Play size={19} fill="currentColor" aria-hidden="true" /> Play community video</span>
           </button>
-        )}
+        </VideoDialog>
       </div>
       <EvidenceLine item={item} />
     </figure>

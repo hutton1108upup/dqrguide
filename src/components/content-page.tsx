@@ -10,6 +10,8 @@ import type { SitePage } from "@/content/types";
 import { EvidenceBadge } from "./evidence-badge";
 import { ContentMedia } from "./content-media";
 import { JsonLd } from "./json-ld";
+import { GuideTable } from "./guide-table";
+import { VideoLink } from "./video-dialog";
 
 const firstPassFields: Record<string, string[]> = {
   "/spells/": ["Spell", "Class", "Role", "Source dungeon", "Difficulty", "Required level", "Best for", "Tier", "Verified"],
@@ -103,6 +105,8 @@ function DataPanel({ page }: { page: SitePage }) {
   const [robloxUpdatedDate, robloxUpdatedTime = ""] = officialGameSnapshot.robloxUpdatedAt.split("T");
   const robloxUpdatedClock = robloxUpdatedTime.replace("Z", "").split(".", 1)[0];
   if (page.kind === "trust") return null;
+  // Enriched guides put their actual lookup or route first, not an empty checklist.
+  if (page.sections.some(section => section.table)) return null;
 
   if (page.path === "/differences/") {
     return (
@@ -326,9 +330,19 @@ export function ContentPage({ page }: { page: SitePage }) {
         <header className="page-hero">
           <p className="eyebrow">{page.eyebrow}</p>
           <h1>{page.h1}</h1>
-          <p>{page.summary}</p>
+          {page.path !== "/spells/" && page.path !== "/drops/" && !page.path.startsWith("/spells/") ? <p>{page.summary}</p> : null}
           <div className="meta-strip"><span className="content-state">{getPlayerFacingStatus(page)}</span><span>Checked {page.lastVerified}</span><span>Version: {page.verifiedForVersion ?? "Not yet verified"}</span></div>
         </header>
+
+        {page.path === "/spells/" || page.path === "/drops/" || page.path.startsWith("/spells/") ? <nav className="quick-jumps" aria-label="Quick lookup">
+          <a href={page.path === "/spells/" ? "#ability-list" : page.path === "/drops/" ? "#reported-locations" : "#ability-overview"}>Quick lookup</a>
+          <a href={page.path === "/spells/" ? "#source-dungeons" : page.path === "/drops/" ? "#reported-locations" : "#where-to-get"}>Find a source</a>
+          {page.path !== "/drops/" ? <a href={page.path === "/spells/" ? "#ability-walkthrough" : "#demonstration"}>Watch a demo</a> : null}
+        </nav> : null}
+
+        {page.path === "/dungeons/northern-lands/" ? <nav className="quick-jumps boss-jumps" aria-label="Where are you stuck?">
+          <span>Where are you stuck?</span><a href="#route-opening">Opening rooms</a><a href="#route-champion">First boss</a><a href="#bob-orbs">Bob</a><a href="#route-odin">Odin</a>
+        </nav> : null}
 
         {showRefreshBanner ? <aside className={`refresh-banner ${freshness.state}`} role="status"><b>{refreshTitle}</b><span>{freshness.reason}</span><small>Last checked {page.lastVerified ?? "not recorded"} · Next check {page.nextScheduledCheck ?? "not scheduled"}</small></aside> : null}
 
@@ -339,15 +353,30 @@ export function ContentPage({ page }: { page: SitePage }) {
         <div className="content-layout">
           <div className="article-column">
             <DataPanel page={page} />
-            <ClaimEvidencePanel page={page} />
             {page.sections.map((section) => (
               <section className="surface-card editorial-section" id={section.id} key={section.id}>
                 <h2>{section.title}</h2>
-                {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                {section.id === "ability-list" ? <>
+                  <p>Community-reported ability uses. Exact values and drop conditions remain unverified.</p>
+                  <details className="lookup-notes"><summary>Source & coverage notes</summary>{section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</details>
+                </> : section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                 {section.bullets ? <ul>{section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul> : null}
+                {section.table ? <GuideTable table={section.table} title={section.title}
+                  variant={page.path === "/spells/" && section.id === "ability-list" ? "spells" : page.path === "/drops/" && section.id === "reported-locations" ? "drops" : undefined}
+                  detailLinks={Object.fromEntries(section.table.rows.flatMap(row => {
+                    const path = `/spells/${row.cells[0].toLowerCase().replaceAll(" ", "-")}/`;
+                    const detail = getPageByPath(path);
+                    return detail && isPageAvailable(detail, getRuntimeEnvironment()) ? [[row.cells[0], path]] : [];
+                  }))}
+                  rowIds={section.id === "room-route" ? { "Opening groups": "route-opening", "Midgardian Champion": "route-champion", "Odin": "route-odin" } : undefined}
+                /> : null}
+                {section.links ? <div className="section-links">{section.links.map(item => item.href.startsWith("/")
+                  ? <Link key={item.href} href={item.href}><b>{item.label}</b><small>{item.description}</small><ArrowRight size={14} aria-hidden="true" /></Link>
+                  : <VideoLink key={item.href} url={item.href} title={item.label}><b>{item.label}</b><small>{item.description}</small><ExternalLink size={14} aria-hidden="true" /></VideoLink>)}</div> : null}
                 {section.media ? <ContentMedia items={section.media} /> : null}
               </section>
             ))}
+            <ClaimEvidencePanel page={page} />
           </div>
 
           <aside className="sidebar-column">

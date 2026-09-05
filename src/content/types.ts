@@ -75,6 +75,11 @@ export interface PageSection {
   paragraphs: string[];
   bullets?: string[];
   media?: PageMedia[];
+  table?: {
+    columns: string[];
+    rows: { cells: string[]; sourceURL?: string; sourceLabel?: string }[];
+  };
+  links?: RelatedLink[];
 }
 
 export interface FaqItem {

@@ -1,3 +1,4 @@
+import { playerGuides } from "./player-guides";
 import { LAST_RESEARCHED, officialGameSnapshot, sources } from "./game-data";
 import type { DifferenceRow, FactClaim, FaqItem, PageSection, RelatedLink, SourceRecord, UpdateRecord } from "./types";
 
@@ -48,6 +49,8 @@ const firstPass = (
 });
 
 export const pageContentByPath: Record<string, PageContent> = {
+  "/spells/phantom-flames/": playerGuides["/spells/phantom-flames/"].content,
+  "/spells/infernal-orbs/": playerGuides["/spells/infernal-orbs/"].content,
   "/": {
     sections: [
       {
@@ -264,67 +267,7 @@ export const pageContentByPath: Record<string, PageContent> = {
       fact({ id: "gamepasses-dynamic-price", topic: "Price behavior", claim: "The displayed Gold price rises with account progression", value: "Single player report", claimStatus: "reported", confidence: "Low", verifiedForVersion: null, sourceURL: sources.gamePassPriceReport.url, evidenceNote: "A single report defines a testable question and does not establish a formula or universal behavior." })
     ]
   },
-  "/spells/": {
-    sections: [
-      {
-        id: "explained",
-        title: "Spells, Skills and Abilities Explained",
-        paragraphs: [
-          "The official experience description says players unlock abilities, but it does not provide a public spell list. Start with the role and source checklist below instead of copying an original-game table."
-        ]
-      },
-      {
-        id: "roles",
-        title: "Choose by Role",
-        paragraphs: [
-          "Every published ability will be tagged for room clear, boss damage, buff, heal, defense, or movement. A role tag describes a use case; it does not imply a damage tier."
-        ],
-        bullets: ["Room Clear", "Boss Damage", "Buff", "Heal", "Defense", "Movement"]
-      },
-      {
-        id: "verification",
-        title: "Spell Data Verification",
-        paragraphs: [
-          "Name, class, rarity, source dungeon, difficulty, required level, best use, and version must be checked before an entity page is published. Unknown DPS, scaling, and cooldown values display Not yet verified."
-        ]
-      },
-      {
-        id: "ability-review-queue",
-        title: "Ability review queue",
-        paragraphs: [
-          "Recent community guides provide candidate ability names and visible demonstrations across early and mid progression. They are useful for deciding which item cards to capture next, but a narration or title cannot fill the database row.",
-          "For each candidate, capture the complete current card first, then record a short clip showing placement, range, movement commitment, cooldown display, and one repeatable use. Leave every missing field blank rather than borrowing an original-game description."
-        ],
-        media: [{
-          id: "spells-review-video",
-          type: "youtube",
-          videoId: "FzogFp907JM",
-          title: "Ability review queue",
-          alt: "Video preview for a Dungeon Quest Reborn ability guide",
-          caption: "Community ability overview used to select capture targets. Its rankings and values are not published as database facts.",
-          sourceURL: sources.spellsVideo.url,
-          evidenceLevel: "Community Confirmed",
-          claimIds: ["spells-list"],
-          capturedAt: LAST_RESEARCHED,
-          verifiedForVersion: null
-        }]
-      }
-    ],
-    faq: [
-      { question: "Why is the spell list not filled with original-game abilities?", answer: "Because a familiar name is not proof that the same source or balance applies to Reborn." },
-      { question: "What does Not yet verified mean?", answer: "The field has not passed a current Reborn source or in-game check and should not guide a build yet." }
-    ],
-    related: [
-      link("/spell-tier-list/", "Spell tier method", "See how verified abilities will be ranked."),
-      link("/drops/", "Drop lookup", "Trace a verified spell back to its source."),
-      link("/dungeons/", "Dungeon hub", "Move from an ability source to the run plan.")
-    ],
-    sources: [sources.officialExperience, sources.spellsVideo],
-    claims: [
-      fact({ id: "spells-abilities", topic: "Abilities", claim: "The experience description says players unlock abilities", value: "High-level ability system mentioned; spell list not published", claimStatus: "confirmed", confidence: "High", verifiedForVersion: "[Northern Lands] title snapshot", sourceURL: sources.officialExperience.url, evidenceNote: "The official description supports the existence of abilities but gives no names, numbers, sources, or balance." }),
-      fact({ id: "spells-list", topic: "Spell database", claim: "A current Reborn spell list is available", value: "Not collected", claimStatus: "not_collected", confidence: "Low", verifiedForVersion: null, sourceURL: sources.officialExperience.url, evidenceNote: "No current public spell list was found in the checked first-party source." })
-    ]
-  },
+  "/spells/": playerGuides["/spells/"].content,
   "/spell-tier-list/": {
     sections: [
       {
@@ -438,242 +381,10 @@ export const pageContentByPath: Record<string, PageContent> = {
       fact({ id: "trading-safety", topic: "Trade safety", claim: "Re-checking the final offer is a safe process recommendation", value: "Process guidance only", claimStatus: "reported", confidence: "Medium", verifiedForVersion: null, sourceURL: sources.officialExperience.url, evidenceNote: "This is editorial safety guidance, not a claim about a specific game mechanic." })
     ]
   },
-  "/dungeons/": {
-    sections: [
-      {
-        id: "progression-order",
-        title: "Dungeon Progression Order",
-        paragraphs: ["The official description confirms cooperative dungeons and bosses but does not publish a complete current order. This hub avoids a fixed total until the live sequence is checked."]
-      },
-      {
-        id: "run-selector",
-        title: "Choose the Next Run",
-        paragraphs: ["Use access requirement, reliable clear time, survivability, target drops, and the next unlock as separate signals. The highest accessible dungeon is not automatically the best farm if clears are inconsistent."],
-        bullets: ["Can you enter?", "Can you clear consistently?", "Does the reward advance the build?", "Is solo or party more reliable?", "What unlock follows?"]
-      },
-      {
-        id: "verification",
-        title: "Dungeon Data Verification",
-        paragraphs: ["A published row needs a Reborn-specific name, requirement, difficulty set, boss, notable drop, next-dungeon link, and last-verified date. Legacy rows stay outside the public table."]
-      },
-      {
-        id: "progression-map",
-        title: "Build the Progression Map",
-        paragraphs: [
-          "The next useful artifact is a current dungeon-selector capture, not a copied legacy list. One screenshot should preserve the displayed dungeon name, difficulty, access requirement, Hardcore state, and neighboring progression choices.",
-          "Official artwork can show the visual range of the experience, but it cannot identify a dungeon or boss unless the first-party API or live UI supplies that label. The hub will add one row at a time as selector and reward evidence arrive."
-        ],
-        media: [{
-          id: "dungeons-official-golem-art",
-          type: "image",
-          src: "/images/dqr/official-stone-golem.png",
-          title: "Official Dungeon Quest Reborn golem artwork",
-          alt: "Stone golem in a rocky canyon with a red gate and pink trees",
-          caption: "Official experience artwork used as neutral dungeon atmosphere. The API does not identify this dungeon, enemy, or boss by name.",
-          sourceURL: sources.officialThumbnailApi.url,
-          evidenceLevel: "Official",
-          claimIds: ["dungeons-order"],
-          capturedAt: LAST_RESEARCHED,
-          verifiedForVersion: "[Northern Lands] title snapshot"
-        }]
-      }
-    ],
-    faq: [
-      { question: "How many dungeons are in Reborn?", answer: "This page does not publish a fixed count until the current live sequence is verified." },
-      { question: "Should I always run the newest dungeon I can enter?", answer: "No. Consistent clears and useful drops can make an earlier run more efficient." }
-    ],
-    related: [
-      link("/dungeons/winter-outpost/", "Winter Outpost", "Review the legacy-named dossier and its verification gaps."),
-      link("/dungeons/northern-lands/", "Northern Lands", "Open the current-content dossier."),
-      link("/drops/", "Drop lookup", "Start from the reward instead of the run.")
-    ],
-    sources: [sources.officialExperience, sources.officialThumbnailApi],
-    claims: [
-      fact({ id: "dungeons-order", topic: "Dungeon order", claim: "A complete current Reborn dungeon sequence is published by the first-party source", value: "Not collected", claimStatus: "not_collected", confidence: "Low", verifiedForVersion: null, sourceURL: sources.officialExperience.url, evidenceNote: "The experience description mentions dungeons but does not list their current order or requirements." })
-    ]
-  },
-  "/dungeons/winter-outpost/": {
-    sections: [
-      {
-        id: "quick-facts",
-        title: "Quick Facts",
-        paragraphs: ["Winter Outpost remains a high-priority player question, but its Reborn access, difficulties, bosses, and drops still need a current first-party source or repeatable in-game capture."]
-      },
-      {
-        id: "run-checklist",
-        title: "Route and Build Checklist",
-        paragraphs: ["Before a route is published, record room order, dangerous telegraphs, clear-time bottlenecks, and separate Mage and Warrior observations. A copied original-game route is not accepted as current evidence."]
-      },
-      {
-        id: "move-on",
-        title: "When Should You Move On?",
-        paragraphs: ["Move when the next verified dungeon is accessible, current clears are stable, and its rewards meaningfully improve the build. A numeric cutoff will appear only after live requirements are confirmed."]
-      },
-      {
-        id: "walkthrough-coverage",
-        title: "Community Walkthrough Coverage",
-        paragraphs: [
-          "A Reborn-specific community video shows Winter Outpost runs across several displayed difficulties and separates Warrior and Mage attempts. It is a promising route reference, but subtitle retrieval was rate-limited during research and the run has not been reproduced for this site.",
-          "Use the video to identify the room and boss moments that need manual capture. Do not publish its narrated values, level gates, or drops until the current client shows them directly."
-        ],
-        media: [{
-          id: "winter-outpost-video",
-          type: "youtube",
-          videoId: "qDPjeoLcmn8",
-          title: "Winter Outpost multi-difficulty solo guide",
-          alt: "Video preview for a Dungeon Quest Reborn Winter Outpost guide",
-          caption: "Manual-review candidate. The video is Reborn-specific, but subtitle access was rate-limited and no route value has been promoted to fact.",
-          sourceURL: sources.winterOutpostVideo.url,
-          evidenceLevel: "Community Confirmed",
-          claimIds: ["winter-outpost-identity"],
-          capturedAt: LAST_RESEARCHED,
-          verifiedForVersion: null,
-          startSeconds: 19
-        }]
-      }
-    ],
-    faq: [
-      { question: "What level is Winter Outpost in Reborn?", answer: "Not yet verified for the current Reborn experience." },
-      { question: "Are original Winter Outpost drops the same?", answer: "Do not assume so; each drop needs a Reborn-specific source." }
-    ],
-    related: [
-      link("/dungeons/", "All dungeons", "Return to the evidence-gated progression hub."),
-      link("/drops/", "Drop lookup", "See how unknown rates and sources are labelled."),
-      link("/differences/", "Original vs Reborn", "Understand why old route data is isolated.")
-    ],
-    sources: [sources.officialExperience, sources.winterOutpostVideo],
-    claims: [
-      fact({ id: "winter-outpost-identity", topic: "Winter Outpost", claim: "Winter Outpost is a current Reborn dungeon with published access and loot details", value: "Not collected", claimStatus: "not_collected", confidence: "Low", verifiedForVersion: null, sourceURL: sources.officialExperience.url, evidenceNote: "The first-party page does not name Winter Outpost or provide a current route, boss, or drop table." })
-    ]
-  },
-  "/dungeons/northern-lands/": {
-    sections: [
-      {
-        id: "quick-facts",
-        title: "Quick Facts",
-        paragraphs: ["Northern Lands appears in the current official experience name, which makes it a confirmed current content label. The public metadata does not supply its level requirement, dungeon route, boss roster, or loot table."]
-      },
-      {
-        id: "run-prep",
-        title: "Before You Queue",
-        paragraphs: ["Confirm the live access requirement, note the room sequence, capture boss telegraphs, and log drops with difficulty and date. Separate a successful clear from a repeatable farming recommendation."],
-        bullets: ["Access confirmed in game", "Difficulty recorded", "Boss mechanics observed", "Drop source captured", "Clear repeated before recommendation"]
-      },
-      {
-        id: "farming-decision",
-        title: "Is Northern Lands Worth Farming?",
-        paragraphs: ["Do not call Northern Lands a good farm from one clear. Compare clear consistency, progression value, and captured rewards across repeated runs before changing your route."]
-      },
-      {
-        id: "route-verification",
-        title: "Room-by-Room Verification Plan",
-        paragraphs: [
-          "Two independent current community videos show a multi-room Northern Lands run and several boss encounters. They are strong enough to map what should be tested, but not to publish exact requirements, health values, drop rates, or a guaranteed strategy.",
-          "Start each note with the room or boss order visible in the current run. Record the pull that starts the encounter, the telegraph before damage, a safe movement response, whether the behavior repeats, and the difficulty shown on screen. Keep a separate log for party scaling and rewards."
-        ],
-        bullets: ["Room order and pull trigger", "Telegraph and safe response", "Difficulty and party size", "Clear result and repeat count", "Reward screen and item-card capture"],
-        media: [
-          {
-            id: "northern-lands-official-art",
-            type: "image",
-            src: "/images/dqr/official-party-boss-arena.png",
-            title: "Official Dungeon Quest Reborn party battle artwork",
-            alt: "Dungeon Quest Reborn party facing a horned arena boss",
-            caption: "Official experience artwork does not identify the dungeon or boss by name. It is used as neutral current-game art, not mechanic evidence.",
-            sourceURL: sources.officialThumbnailApi.url,
-            evidenceLevel: "Official",
-            claimIds: ["northern-lands-label"],
-            capturedAt: LAST_RESEARCHED,
-            verifiedForVersion: "[Northern Lands] title snapshot"
-          },
-          {
-            id: "northern-lands-route-video",
-            type: "youtube",
-            videoId: "3pHhZpt-b-U",
-            title: "Northern Lands solo route",
-            alt: "Video preview for a Northern Lands solo route",
-            caption: "Community route demonstration published September 2, 2026. Begin at the first-room setup; exact mechanics and rewards remain pending current in-game reproduction.",
-            sourceURL: sources.northernLandsVideo.url,
-            evidenceLevel: "Community Confirmed",
-            claimIds: ["northern-lands-route-video", "northern-lands-mechanics"],
-            capturedAt: LAST_RESEARCHED,
-            verifiedForVersion: "[Northern Lands] community video snapshot",
-            startSeconds: 94
-          }
-        ]
-      }
-    ],
-    faq: [
-      { question: "Is Northern Lands current content?", answer: "Yes as a current official experience label; detailed dungeon mechanics and drops are still being verified." },
-      { question: "Are exact Northern Lands item values confirmed?", answer: "No. Exact values stay off the page until a current item card or first-party source can be checked." }
-    ],
-    related: [
-      link("/dungeons/", "Dungeon hub", "Compare the progression evidence needed for every run."),
-      link("/drops/", "Drop tables", "See the source and rate status model."),
-      link("/updates/", "Update ledger", "Trace the official platform update timestamp.")
-    ],
-    sources: [sources.officialExperience, sources.officialGameApi, sources.officialThumbnailApi, sources.northernLandsVideo, sources.northernLandsWalkthrough],
-    claims: [
-      fact({ id: "northern-lands-label", topic: "Northern Lands", claim: "Northern Lands appears in the current official experience name", value: "Confirmed label; detailed dungeon data not collected", claimStatus: "confirmed", confidence: "High", verifiedForVersion: "[Northern Lands] title snapshot", sourceURL: sources.officialGameApi.url, evidenceNote: "The first-party API and experience page both name the current experience [Northern Lands] Dungeon Quest Reborn." }),
-      fact({ id: "northern-lands-mechanics", topic: "Northern Lands mechanics", claim: "Current access, bosses, drops, and farming values are published", value: "Not collected", claimStatus: "not_collected", confidence: "Low", verifiedForVersion: null, sourceURL: sources.officialExperience.url, evidenceNote: "The public description does not contain the detailed dungeon fields required for a guide." }),
-      fact({ id: "northern-lands-route-video", topic: "Community route coverage", claim: "Two independent current videos demonstrate Northern Lands runs", value: "Reported route and telegraph coverage", claimStatus: "reported", confidence: "Medium", verifiedForVersion: "[Northern Lands] community video snapshot", sourceURL: sources.northernLandsVideo.url, evidenceNote: "The videos support a reproduction queue; they do not establish exact access, health, drops, rates, or developer intent." })
-    ]
-  },
-  "/drops/": {
-    sections: [
-      {
-        id: "how-drops-work",
-        title: "How DQR Drops Work",
-        paragraphs: ["The official description confirms weapons, armor, legendary loot, and dungeon rewards at a high level. It does not publish an item-by-item source table or exact rates."]
-      },
-      {
-        id: "rate-status",
-        title: "Drop Rate Status",
-        paragraphs: ["Every future rate is classified as Officially Confirmed, Community Observed, or Unknown. A community observation must retain its sample context and is never formatted as an official percentage."],
-        bullets: ["Officially Confirmed — first-party rate", "Community Observed — sample with limitations", "Unknown — source or rate not established"]
-      },
-      {
-        id: "reverse-lookup",
-        title: "Build the Lookup from Evidence",
-        paragraphs: ["A publishable row needs item name, type, class, rarity, source dungeon, difficulty, requirement, trade status, rate status, and last verification. No placeholder row is exposed as loot data."]
-      },
-      {
-        id: "drop-proof-bundle",
-        title: "Proof Bundle for One Drop Row",
-        paragraphs: [
-          "One reward screenshot is not enough to establish a rate. A usable row pairs the dungeon and difficulty selector, completed-run reward screen, full item card, capture date, and a note explaining which field is direct evidence and which remains unknown.",
-          "Promotional artwork belongs beside the explanation only. It cannot prove that the pictured weapon, armor, ability, or enemy is obtainable from a particular dungeon."
-        ],
-        bullets: ["Dungeon and difficulty", "Completed reward screen", "Full item or ability card", "Source URL or local capture ID", "Rate state: Official, Observed, or Unknown"],
-        media: [{
-          id: "drops-official-boss-art",
-          type: "image",
-          src: "/images/dqr/official-fire-boss.png",
-          title: "Official Dungeon Quest Reborn boss battle artwork",
-          alt: "Armored player facing a glowing orange boss in a red arena",
-          caption: "Official promotional artwork, not drop evidence. No item, dungeon, boss, or probability is inferred from this scene.",
-          sourceURL: sources.officialThumbnailApi.url,
-          evidenceLevel: "Official",
-          claimIds: ["drop-table"],
-          capturedAt: LAST_RESEARCHED,
-          verifiedForVersion: "[Northern Lands] title snapshot"
-        }]
-      }
-    ],
-    faq: [
-      { question: "Are exact DQR drop rates known?", answer: "No exact rate is published here without an official source or clearly labelled observation." },
-      { question: "Why is Drops separate from Dungeons?", answer: "Drops starts with an item target; Dungeons starts with a progression decision." }
-    ],
-    related: [
-      link("/dungeons/", "Dungeon progression", "Start from the run instead of the reward."),
-      link("/spells/", "Spell database", "Review the fields required before a spell source is published."),
-      link("/trading/", "Trading safety", "Do not turn an unknown drop rate into a value claim.")
-    ],
-    sources: [sources.officialExperience, sources.officialThumbnailApi],
-    claims: [
-      fact({ id: "drop-table", topic: "Drop lookup", claim: "A current item-by-item Reborn drop table and exact rates are published", value: "Not collected", claimStatus: "not_collected", confidence: "Low", verifiedForVersion: null, sourceURL: sources.officialExperience.url, evidenceNote: "The official description mentions loot at a high level but does not provide item rows or rates." })
-    ]
-  },
+  "/dungeons/": playerGuides["/dungeons/"].content,
+  "/dungeons/winter-outpost/": playerGuides["/dungeons/winter-outpost/"].content,
+  "/dungeons/northern-lands/": playerGuides["/dungeons/northern-lands/"].content,
+  "/drops/": playerGuides["/drops/"].content,
   "/codes/": {
     sections: [
       {
@@ -713,43 +424,7 @@ export const pageContentByPath: Record<string, PageContent> = {
       fact({ id: "codes-redemption", topic: "Redemption system", claim: "The current redemption flow is documented", value: "Not collected", claimStatus: "not_collected", confidence: "Low", verifiedForVersion: null, sourceURL: sources.officialExperience.url, evidenceNote: "No current public first-party redemption instructions were available." })
     ]
   },
-  "/trello/": {
-    sections: [
-      {
-        id: "current-status",
-        title: "Current Trello Status",
-        paragraphs: ["No Trello board is labelled official here. The first-party experience page available during this review did not expose a directly verifiable Trello URL."]
-      },
-      {
-        id: "official-sources",
-        title: "Verified Official Update Sources",
-        paragraphs: ["Use the Roblox experience page and public Roblox game metadata as the current first-party baseline. The metadata update timestamp is useful as a change signal, but it is not a patch note."]
-      },
-      {
-        id: "fake-boards",
-        title: "How to Identify an Unverified Board",
-        paragraphs: ["A search result, copied logo, or board title does not prove ownership. Look for a direct link from the current experience or creator channel and compare dates before trusting a roadmap claim."]
-      },
-      {
-        id: "status-change",
-        title: "What Would Change This Status",
-        paragraphs: ["This page will publish a board URL only after the current Roblox experience, creator community, or another first-party channel links to it directly. The record must include the board owner, direct source URL, visible purpose, and last verification date. Until then, copied boards remain outside the roadmap and update pages."]
-      }
-    ],
-    faq: [
-      { question: "Does DQR have an official Trello?", answer: "No first-party board URL was visible in the checked Roblox experience or creator sources." },
-      { question: "Where should I check updates?", answer: "Start with the Roblox experience page and this guide's update ledger direct sources." }
-    ],
-    related: [
-      link("/updates/", "Updates", "See the verified timestamp without invented patch notes."),
-      link("/discord/", "Discord", "Understand the same direct-link verification rule."),
-      link("/codes/", "Codes", "Review another status page built around evidence limits.")
-    ],
-    sources: [sources.officialExperience, sources.officialGameApi],
-    claims: [
-      fact({ id: "trello-status", topic: "Official Trello", claim: "A first-party Trello URL is published for Reborn", value: "Not confirmed", claimStatus: "not_collected", confidence: "Low", verifiedForVersion: "[Northern Lands] title snapshot", sourceURL: sources.officialExperience.url, evidenceNote: "No directly linked Trello URL was visible in the first-party surface checked." })
-    ]
-  },
+  "/trello/": playerGuides["/trello/"].content,
   "/discord/": {
     sections: [
       {
