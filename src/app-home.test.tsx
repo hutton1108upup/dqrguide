@@ -18,8 +18,8 @@ describe("homepage", () => {
   it("explains the evidence boundary before asking players to act", () => {
     render(<HomePage />);
     expect(screen.getByRole("heading", { name: "How to use this Dungeon Quest Reborn wiki" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "What is verified right now" })).toBeInTheDocument();
-    expect(screen.getByText(/Unknown values stay out of the database/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "More guides to explore" })).toBeInTheDocument();
+    expect(screen.getByText(/Unknown requirements and drop rates stay marked/i)).toBeInTheDocument();
   });
 
   it("links directly to the main player tasks", () => {

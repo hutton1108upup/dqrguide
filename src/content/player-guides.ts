@@ -6,28 +6,15 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
   "/trello/": {
     "indexable": true,
     "meta": {
-      "title": "Dungeon Quest Reborn Trello: Link Status & Useful Sources",
+      "title": "Dungeon Quest Reborn Trello: Board Status, Wiki & Useful Guide Links",
       "eyebrow": "Trello & information links",
-      "summary": "Check the board status, open the correct Roblox experience, or jump to spells, item locations and Northern Lands help.",
-      "quickAnswer": "No official Trello link was verified on the public Roblox page and API checked September 6, 2026. Open the game below or choose the guide matching what you wanted from the board.",
-      "verifiedForVersion": "Public sources checked September 5, 2026"
+      "summary": "Check the Dungeon Quest Reborn Trello link status, then find spells, reported drops and Northern Lands guides with dated sources.",
+      "quickAnswer": "No official Dungeon Quest Reborn Trello link was verified in the public Roblox sources checked September 6, 2026. For skills and loot, use the spell list and reported drop locations below.",
+      "verifiedForVersion": "Public sources checked September 5, 2026",
+      "description": "Check the Dungeon Quest Reborn Trello link status, then find spells, reported drops and Northern Lands guides with dated sources."
     },
     "content": {
       "sections": [
-        {
-          "id": "current-status",
-          "title": "Is there an official DQR Trello?",
-          "paragraphs": [
-            "No directly verifiable board URL appeared in the accessible Roblox experience page or public game metadata. This does not prove that no board exists: private announcements and age-gated social links were outside this check."
-          ],
-          "links": [
-            {
-              "href": "https://www.roblox.com/games/77649408247578/Dungeon-Quest-Reborn",
-              "label": "Open Dungeon Quest Reborn on Roblox",
-              "description": "The Reborn experience by Delta Quarters OG; check its current social links."
-            }
-          ]
-        },
         {
           "id": "find-your-answer",
           "title": "Find the information you came for",
@@ -54,6 +41,20 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
               "href": "/updates/",
               "label": "Check game updates",
               "description": "Dated platform and guide changes."
+            }
+          ]
+        },
+        {
+          "id": "current-status",
+          "title": "Is there an official DQR Trello?",
+          "paragraphs": [
+            "No directly verifiable board URL appeared in the accessible Roblox experience page or public game metadata. This does not prove that no board exists: private announcements and age-gated social links were outside this check."
+          ],
+          "links": [
+            {
+              "href": "https://www.roblox.com/games/77649408247578/Dungeon-Quest-Reborn",
+              "label": "Open Dungeon Quest Reborn on Roblox",
+              "description": "The Reborn experience by Delta Quarters OG; check its current social links."
             }
           ]
         },
@@ -130,6 +131,10 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
         {
           "question": "Can I use a community wiki?",
           "answer": "Yes. Prefer dated sources and distinguish creator advice from current item cards and developer announcements."
+        },
+        {
+          "question": "Where can I find spell and drop information without Trello?",
+          "answer": "Use the Spells page to compare abilities and the Drops page to check reported acquisition locations. Both link their sources and mark missing information."
         }
       ],
       "related": [
@@ -184,11 +189,12 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
   "/spells/": {
     "indexable": true,
     "meta": {
-      "title": "Dungeon Quest Reborn Spells & Abilities: Uses and Source Reports",
+      "title": "Dungeon Quest Reborn Spells: Ability Uses, Locations & Player Guides",
       "eyebrow": "Spells & abilities",
-      "summary": "Compare twelve named abilities and source reports, including Fire Bomb and Enhanced Inner Focus. Exact card values and acquisition conditions remain separately labelled.",
-      "quickAnswer": "Compare Ice Needles for frequent casts, Phantom Flames for ranged damage, Infernal Orbs for damage over time, and recovery abilities for party support. These are dated community descriptions, not a tested tier list.",
-      "verifiedForVersion": "August 28, 2026 ability walkthrough"
+      "summary": "Browse 12 Dungeon Quest Reborn spells and abilities by use and reported location. Open skill guides for casting tips, source videos and unconfirmed drop details.",
+      "quickAnswer": "Search the 12 spells and abilities by name, use, class report or location. Each row includes acquisition status, difficulty and equip level. Unknown means unverified; a recommended class is not an equip restriction.",
+      "verifiedForVersion": "August 28, 2026 ability walkthrough",
+      "description": "Browse 12 Dungeon Quest Reborn spells and abilities by use and reported location. Open skill guides for casting tips, source videos and unconfirmed drop details."
     },
     "content": {
       "sections": [
@@ -196,140 +202,9 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
           "id": "ability-list",
           "title": "Abilities by use case",
           "paragraphs": [
-            "Community reports: ten descriptions come from the August 28 walkthrough; two additional entries use separately dated sources. This is not a complete roster or tested tier list. Numeric fields remain omitted where no readable current card was checked.",
-            "The source column contains acquisition reports, not confirmed rewards. The table order is not a progression ladder or power ranking."
-          ],
-          "table": {
-            "columns": [
-              "Ability",
-              "Use case",
-              "How to use it",
-              "Source status",
-              "Explanation"
-            ],
-            "rows": [
-              {
-                "cells": [
-                  "Ice Needles",
-                  "Early damage",
-                  "The creator discusses alternating two copies for frequent casts.",
-                  "Unknown"
-                ],
-                "sourceURL": "https://www.youtube.com/watch?v=FzogFp907JM&t=72s",
-                "sourceLabel": "1:12 · Aug 28"
-              },
-              {
-                "cells": [
-                  "Aura of Life",
-                  "Group recovery",
-                  "Discussed for healing yourself and nearby teammates.",
-                  "Unknown"
-                ],
-                "sourceURL": "https://www.youtube.com/watch?v=FzogFp907JM&t=90s",
-                "sourceLabel": "1:30 · Aug 28"
-              },
-              {
-                "cells": [
-                  "Universal Heal",
-                  "Party recovery",
-                  "Described as helping teammates at a distance; exact range unverified.",
-                  "Unknown"
-                ],
-                "sourceURL": "https://www.youtube.com/watch?v=FzogFp907JM&t=105s",
-                "sourceLabel": "1:45 · Aug 28"
-              },
-              {
-                "cells": [
-                  "Battle Shout",
-                  "Melee buff",
-                  "Compare the current buff tooltip with your equipped attacks.",
-                  "Unknown"
-                ],
-                "sourceURL": "https://www.youtube.com/watch?v=FzogFp907JM&t=133s",
-                "sourceLabel": "2:13 · Aug 28"
-              },
-              {
-                "cells": [
-                  "Holy Circle",
-                  "Placed recovery",
-                  "A healing area; useful while you can stay in its coverage.",
-                  "Unknown"
-                ],
-                "sourceURL": "https://www.youtube.com/watch?v=FzogFp907JM&t=168s",
-                "sourceLabel": "2:48 · Aug 28"
-              },
-              {
-                "cells": [
-                  "Ghostly Cannon Barrage",
-                  "Area damage",
-                  "A placed damaging area; keep enemies within it while moving.",
-                  "Pirate Island — community report"
-                ],
-                "sourceURL": "https://www.youtube.com/watch?v=FzogFp907JM&t=177s",
-                "sourceLabel": "2:57 · Aug 28"
-              },
-              {
-                "cells": [
-                  "Phantom Flames",
-                  "Ranged damage",
-                  "The creator demonstrates reach against dummies; leave space to dodge.",
-                  "Pirate Island — community report"
-                ],
-                "sourceURL": "https://www.youtube.com/watch?v=FzogFp907JM&t=283s",
-                "sourceLabel": "4:43 · Aug 28"
-              },
-              {
-                "cells": [
-                  "Gale Slice",
-                  "Warrior damage",
-                  "Described as forward slices; align enemies before casting.",
-                  "Unknown"
-                ],
-                "sourceURL": "https://www.youtube.com/watch?v=FzogFp907JM&t=371s",
-                "sourceLabel": "6:11 · Aug 28"
-              },
-              {
-                "cells": [
-                  "Infernal Orbs",
-                  "Damage over time",
-                  "Apply the effect, then move or use your other ability.",
-                  "The Underworld — community report"
-                ],
-                "sourceURL": "https://www.youtube.com/watch?v=FzogFp907JM&t=477s",
-                "sourceLabel": "7:57 · Aug 28"
-              },
-              {
-                "cells": [
-                  "Ice Totem",
-                  "Placed damage",
-                  "Stationary damage with limited coverage; moving enemies can leave it.",
-                  "Unknown"
-                ],
-                "sourceURL": "https://www.youtube.com/watch?v=FzogFp907JM&t=558s",
-                "sourceLabel": "9:18 · Aug 28"
-              },
-              {
-                "cells": [
-                  "Fire Bomb",
-                  "Mage damage",
-                  "A Winter Outpost progression option in the September 4 editorial table; exact card effect unverified.",
-                  "Winter Outpost — recommendation, not verified drop"
-                ],
-                "sourceURL": "https://www.destructoid.com/best-spells-and-abilities-in-dungeon-quest-reborn/",
-                "sourceLabel": "Sep 4 editorial"
-              },
-              {
-                "cells": [
-                  "Enhanced Inner Focus",
-                  "Buff",
-                  "Distinguish the enhanced skill from the ordinary Inner Focus demonstration.",
-                  "Enchanted Forest reward clip — difficulty unverified"
-                ],
-                "sourceURL": "https://www.youtube.com/watch?v=eTmKGYKOFYI",
-                "sourceLabel": "Aug 14 reward reference"
-              }
-            ]
-          }
+            "Compare the skill’s use first, then check its acquisition status. Class labels describe the cited recommendation or report; they do not establish an exclusive equip requirement.",
+            "Damage attributes, difficulty and equip levels remain Unknown where the reviewed sources do not verify them. Fire Bomb’s Winter Outpost recommendation is not a drop report."
+          ]
         },
         {
           "id": "source-dungeons",
@@ -451,6 +326,10 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
         {
           "question": "Where do Phantom Flames and Infernal Orbs drop?",
           "answer": "The creator reports Pirate Island and The Underworld respectively. Difficulty and rates remain unverified; each detail page links the statement."
+        },
+        {
+          "question": "Are spells and abilities different lists?",
+          "answer": "This page groups the skills players search for as spells and abilities. Use the exact name and category on your current skill card when choosing equipment."
         }
       ],
       "related": [
@@ -526,11 +405,12 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
   "/drops/": {
     "indexable": false,
     "meta": {
-      "title": "Dungeon Quest Reborn Drops: Reported Item Locations",
+      "title": "Dungeon Quest Reborn Drops: Item Locations, Reports & Farming Notes",
       "eyebrow": "Item-source lookup",
-      "summary": "Start with a target item. Check its reported dungeon, what remains unknown and the original explanation before planning a farming session.",
-      "quickAnswer": "Start from the exact item name. Pirate Island and The Underworld have three creator source reports; Winter Outpost has a Fire Bomb recommendation and EIF has a dated reward reference. None establishes a universal drop rate.",
-      "verifiedForVersion": "August 28, 2026 acquisition reports"
+      "summary": "Find reported Dungeon Quest Reborn item locations by name or dungeon. Compare player reports with unconfirmed leads before choosing where to farm.",
+      "quickAnswer": "Search four player-reported item locations below. Fire Bomb’s Winter Outpost recommendation is listed separately because it does not confirm a drop. Difficulty and drop chances remain unknown.",
+      "verifiedForVersion": "August 28, 2026 acquisition reports",
+      "description": "Find reported Dungeon Quest Reborn item locations by name or dungeon. Compare player reports with unconfirmed leads before choosing where to farm."
     },
     "content": {
       "sections": [
@@ -538,69 +418,22 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
           "id": "reported-locations",
           "title": "Reported item locations",
           "paragraphs": [
-            "Community reports and editorial leads are listed separately below. No row is a complete current reward pool or a probability guarantee."
+            "These four locations come from player narration or a reward video. They are reports, not a complete loot table; the cited sources do not confirm difficulty or drop chance."
+          ]
+        },
+        {
+          "id": "unconfirmed-leads",
+          "title": "Unconfirmed drop leads",
+          "paragraphs": [
+            "Fire Bomb appears in Destructoid’s Winter Outpost progression recommendations. That tells you when the author recommends using it, not which reward pool contains it."
           ],
-          "table": {
-            "columns": [
-              "Item",
-              "Reported dungeon",
-              "Difficulty / probability",
-              "Evidence",
-              "Explanation"
-            ],
-            "rows": [
-              {
-                "cells": [
-                  "Ghostly Cannon Barrage",
-                  "Pirate Island",
-                  "Difficulty unknown · Rate unknown",
-                  "Creator narration; reward proof pending"
-                ],
-                "sourceURL": "https://www.youtube.com/watch?v=FzogFp907JM&t=177s",
-                "sourceLabel": "2:57 · Aug 28"
-              },
-              {
-                "cells": [
-                  "Phantom Flames",
-                  "Pirate Island",
-                  "Difficulty unknown · Rate unknown",
-                  "Creator narration; reward proof pending"
-                ],
-                "sourceURL": "https://www.youtube.com/watch?v=FzogFp907JM&t=345s",
-                "sourceLabel": "5:45 · Aug 28"
-              },
-              {
-                "cells": [
-                  "Infernal Orbs",
-                  "The Underworld",
-                  "Difficulty unknown · Rate unknown",
-                  "Creator narration; reward proof pending"
-                ],
-                "sourceURL": "https://www.youtube.com/watch?v=FzogFp907JM&t=477s",
-                "sourceLabel": "7:57 · Aug 28"
-              },
-              {
-                "cells": [
-                  "Fire Bomb",
-                  "Winter Outpost",
-                  "Difficulty unknown · Rate unknown",
-                  "Editorial recommendation; not a captured drop"
-                ],
-                "sourceURL": "https://www.destructoid.com/best-spells-and-abilities-in-dungeon-quest-reborn/",
-                "sourceLabel": "Sep 4 editorial"
-              },
-              {
-                "cells": [
-                  "Enhanced Inner Focus",
-                  "Enchanted Forest encounter reference",
-                  "Difficulty unknown · Rate unknown",
-                  "Video title and post-fight frames; card text incomplete"
-                ],
-                "sourceURL": "https://www.youtube.com/watch?v=eTmKGYKOFYI",
-                "sourceLabel": "Aug 14 clip"
-              }
-            ]
-          }
+          "links": [
+            {
+              "href": "/spells/fire-bomb/",
+              "label": "Fire Bomb: what is known",
+              "description": "Read the recommendation and remaining questions."
+            }
+          ]
         },
         {
           "id": "choose-target",
@@ -706,12 +539,16 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
       ],
       "faq": [
         {
-          "question": "Is this a complete drop table?",
-          "answer": "No. It contains five explicitly labelled source reports or leads, not a complete loot table. Current difficulties and probabilities remain unknown."
+          "question": "Where do spells drop in Dungeon Quest Reborn?",
+          "answer": "Players report Phantom Flames and Ghostly Cannon Barrage from Pirate Island, and Infernal Orbs from The Underworld. An EIF video reports an Enchanted Forest reward. Exact difficulties remain unconfirmed."
         },
         {
-          "question": "Does a borrowed weapon prove a dungeon drop?",
-          "answer": "No. A borrowed-item showcase cannot establish the original reward conditions."
+          "question": "Is this a complete drop table?",
+          "answer": "No. Four item-location reports are listed, with the Fire Bomb recommendation kept separately as a lead."
+        },
+        {
+          "question": "Does a missing drop chance mean zero?",
+          "answer": "No. It means the probability has not been verified. A reported item drop does not establish its rate."
         }
       ],
       "related": [
@@ -787,14 +624,44 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
   "/dungeons/northern-lands/": {
     "indexable": true,
     "meta": {
-      "title": "Dungeon Quest Reborn Northern Lands: Bosses & Solo Route",
+      "title": "Dungeon Quest Reborn Northern Lands: Boss Route & Bonus Fight Guide",
       "eyebrow": "Northern Lands walkthrough",
-      "summary": "Read the September 2 normal-route companion, then the September 6 Odin Reincarnation bonus-boss guide. The older teaching run uses Nightmare equipment in Insane.",
-      "quickAnswer": "Learn the sidestep-and-circle pull, save movement for the first boss's slam, guide Bob's orb into its matching rock, and keep distance from Odin. These are the creator's narrated tactics; the Insane teaching run uses Nightmare gear.",
-      "verifiedForVersion": "September 2, 2026 solo-guide narration"
+      "summary": "Follow the Northern Lands route, find Bob’s orb explanation and compare regular Odin with Odin Reincarnation. Includes dated videos and unconfirmed entry details.",
+      "quickAnswer": "Start with the regular Northern Lands route, jump to Bob’s orb mechanic if you are stuck, or open the separate Odin Reincarnation guide for the bonus fight. The September 2 teaching run uses Nightmare gear in Insane.",
+      "verifiedForVersion": "September 2, 2026 solo-guide narration",
+      "description": "Follow the Northern Lands route, find Bob’s orb explanation and compare regular Odin with Odin Reincarnation. Includes dated videos and unconfirmed entry details."
     },
     "content": {
       "sections": [
+        {
+          "id": "choose-guide",
+          "title": "Which Northern Lands fight do you need?",
+          "paragraphs": [
+            "The regular route and the Odin Reincarnation bonus encounter have separate guides. Choose the fight you are trying to clear."
+          ],
+          "links": [
+            {
+              "href": "#room-route",
+              "label": "Regular route and Odin",
+              "description": "Follow the September 2 route companion."
+            },
+            {
+              "href": "#bob-orbs",
+              "label": "Bob’s orb mechanic",
+              "description": "Find the matching-rock explanation."
+            },
+            {
+              "href": "/dungeons/northern-lands/odin-reincarnation/",
+              "label": "Odin Reincarnation bonus fight",
+              "description": "Entry prompt and arena warnings from September 6."
+            },
+            {
+              "href": "#rewards",
+              "label": "Northern Lands drops",
+              "description": "Keep regular and bonus rewards separate."
+            }
+          ]
+        },
         {
           "id": "run-context",
           "title": "Before you enter",
@@ -1010,6 +877,21 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
               "capturedAt": "2026-09-05",
               "verifiedForVersion": "Dated community guide",
               "startSeconds": 94
+            }
+          ]
+        },
+        {
+          "id": "entry-requirements",
+          "title": "Northern Lands entry requirements and gear",
+          "paragraphs": [
+            "The exact current entry level is unconfirmed. Check the dungeon selector for access and difficulty requirements. The teaching video uses Nightmare equipment in an Insane run, so its gear is not a minimum requirement.",
+            "When comparing loot reports, record whether the reward followed the regular clear or Odin Reincarnation. A complete reward list for either encounter is not yet verified."
+          ],
+          "links": [
+            {
+              "href": "/drops/",
+              "label": "Search reported item locations",
+              "description": "Find the acquisition reports available so far."
             }
           ]
         }

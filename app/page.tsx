@@ -1,3 +1,4 @@
+import { HomeSearch } from "@/components/home-search";
 import { ArrowRight, BookOpen, Box, Gift, Map, Scale, ShieldCheck, Sparkles } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -30,9 +31,9 @@ const tasks = [
   { href: "/trading/", label: "Trading safety", note: "How do I avoid a bad trade?", icon: Scale }
 ] as const;
 const demandQuestions = [
-  { href: "/spells/", label: "Find a spell and how to use it", note: "Ten named abilities, practical roles, and timestamped creator explanations.", icon: Sparkles },
+  { href: "/spells/", label: "Find a spell and how to use it", note: "Twelve named abilities, use filters and linked skill guides.", icon: Sparkles },
   { href: "/dungeons/northern-lands/", label: "Learn the Northern Lands route", note: "Seven route stages, Bob's orb explanation, Odin positioning and failure fixes.", icon: Map },
-  { href: "/drops/", label: "Look up an item source", note: "Three reported ability locations, with unknown difficulty and rates clearly marked.", icon: Box },
+  { href: "/drops/", label: "Look up an item source", note: "Four item-location reports, with uncertain leads listed separately.", icon: Box },
   { href: "/trello/", label: "Find the Trello status and useful links", note: "A dated status answer and direct routes to game information.", icon: BookOpen }
 ] as const;
 
@@ -72,7 +73,8 @@ export default function HomePage() {
             <div className="version-pill"><span /> Current official title: {officialGameSnapshot.name}</div>
             <p className="eyebrow">{home.eyebrow}</p>
             <h1>{home.h1}</h1>
-            <p className="hero-copy">Fast answers for dungeons, drops, spells, and live-status questions—each separated by what is official, checked, observed, or still unknown.</p>
+            <p className="hero-copy">Find Dungeon Quest Reborn spells, reported item drops and dungeon walkthroughs. Start with the item you want or the boss stopping your run.</p>
+            <HomeSearch />
             <div className="verification-line">
               <ShieldCheck size={16} aria-hidden="true" /> Official Roblox metadata checked <b>{home.lastVerified}</b><span>Universe {officialGameSnapshot.universeId}</span>
             </div>
@@ -105,82 +107,18 @@ export default function HomePage() {
           </section>
 
           <section className="home-explainer" aria-labelledby="guide-use-title">
-            <div className="section-heading">
-              <div>
-                <span>00 / FIELD NOTES</span>
-                <h2 id="guide-use-title">How to use this Dungeon Quest Reborn wiki</h2>
-              </div>
-              <p>Read the status before the recommendation</p>
-            </div>
+            <div className="section-heading"><div><span>WIKI GUIDE</span><h2 id="guide-use-title">How to use this Dungeon Quest Reborn wiki</h2></div></div>
             <div className="explainer-lead">
-              <p>
-                Dungeon Quest Reborn answers are easiest to use when the player task, the current version, and the evidence behind each claim stay together. This guide is organised around the decision you are trying to make: choose a run, find an item source, understand a spell role, check a live-status question, or decide whether an old-game tip is safe to reuse.
-              </p>
-              <p>
-                Open the matching route first, then scan the quick answer and the checked date. A page can be useful without pretending that every value is known. The database keeps confirmed identity facts, current observations, community reports, legacy leads, and collection gaps visibly separate so a player can act on the first category and investigate the rest.
-              </p>
+              <p>Looking for a skill? Open <Link href="/spells/">Spells</Link> to compare uses, then follow its guide to the reported source. If you already know the item name, start with <Link href="/drops/">Drops</Link>.</p>
+              <p>This fan wiki covers the Roblox experience by Delta Quarters OG. If you searched for “[Northern Lands] Dungeon Quest Reborn,” the <Link href="/dungeons/northern-lands/">Northern Lands walkthrough</Link> covers the regular route. <Link href="/dungeons/northern-lands/odin-reincarnation/">Odin Reincarnation</Link> has a separate bonus-fight guide.</p>
+              <p>Guides link dated player videos and official records. Unknown requirements and drop rates stay marked; check the source date before planning a long farming session.</p>
             </div>
-            <div className="explainer-grid">
-              <article className="explainer-card">
-                <span>01 / VERIFIED</span>
-                <h3>What is verified right now</h3>
-                <p>
-                  The official Roblox experience record identifies the current title as {officialGameSnapshot.name}, gives the experience a stable universe and root place, and names Delta Quarters OG as the creator. Those facts establish which experience this guide is about; they do not automatically prove a dungeon order, spell effect, drop rate, or player-transfer rule.
-                </p>
-                <p>
-                  The home page also records the public platform update timestamp as a metadata signal. It is displayed with its UTC time and is deliberately not rewritten as a patch note. When a page uses a community run, video, Reddit discussion, or public invite, the source card explains what that material can show and what it cannot establish.
-                </p>
-                <ul>
-                  <li>Official identity and public metadata</li>
-                  <li>Source date and current-version label</li>
-                  <li>Claim-level confidence and limits</li>
-                </ul>
-              </article>
-              <article className="explainer-card">
-                <span>02 / WORKFLOW</span>
-                <h3>Start from the decision you need</h3>
-                <p>
-                  Use <Link href="/dungeons/">Dungeons</Link> when the question is “what should I run next?” Use <Link href="/drops/">Drops</Link> when the item is already known and the missing answer is its source. Use <Link href="/spells/">Spells &amp; skills</Link> to compare roles and evidence fields, not to copy an untested tier list. The <Link href="/beginner-guide/">beginner route</Link> is a checklist for building a repeatable loop, not a promise that one class or loadout is universally best.
-                </p>
-                <p>
-                  After choosing a page, check its date and content status. “Source checked” means the cited public source was reviewed; “Gameplay details in review” means you should confirm changing values inside the current game before acting on them.
-                </p>
-                <ul>
-                  <li>Question first, database second</li>
-                  <li>Source and version beside the answer</li>
-                  <li>Related route for the next decision</li>
-                </ul>
-              </article>
-              <article className="explainer-card">
-                <span>03 / DATA BOUNDARY</span>
-                <h3>Unknown values stay out of the database</h3>
-                <p>
-                  A missing rate, price, level, damage value, or requirement cannot be filled from the original Dungeon Quest or a search snippet. Those fields stay marked Not yet verified or Not collected until a Reborn-specific source supports them. The <Link href="/spells/">spell page</Link> and <Link href="/dungeons/">dungeon hub</Link> therefore show what to check without pretending that an empty field is a fact.
-                </p>
-                <p>
-                  The same boundary applies to codes, Trello, Discord, gamepasses, builds, and trading. A working community link can be useful without being official. A video can reveal a visible route without proving a universal fastest route. An API can return a technical record without confirming how the feature behaves during a player session.
-                </p>
-                <ul>
-                  <li>No copied code without a confirmed redemption path</li>
-                  <li>No ranking without a repeatable current-version test</li>
-                  <li>No legacy value promoted as Reborn data</li>
-                </ul>
-              </article>
-              <article className="explainer-card">
-                <span>04 / REFRESH</span>
-                <h3>When to trust an answer</h3>
-                <p>
-                  Trust an answer when you can see the direct source, the exact claim it supports, the version, and the check date. Confirmed, reported, and not collected are different states; keeping them separate makes later corrections easy to follow.
-                </p>
-                <p>
-                  Visit <Link href="/source-policy/">Source policy</Link> for the evidence ladder and <Link href="/updates/">Updates</Link> for dated source changes. A build date never becomes a gameplay claim, and a thin guide stays clearly marked until it can answer the player question with current evidence.
-                </p>
-                <ul>
-                  <li>Direct source, claim, version, and date</li>
-                  <li>Visible limits instead of hidden uncertainty</li>
-                  <li>Check the date before following advice</li>
-                </ul>
-              </article>
+          </section>
+          <section aria-labelledby="recent-guides-title">
+            <div className="section-heading"><div><span>RECENT ADDITIONS</span><h2 id="recent-guides-title">More guides to explore</h2></div></div>
+            <div className="demand-grid">
+              <HomeLink href="/dungeons/northern-lands/odin-reincarnation/" className="demand-card"><Map size={20} aria-hidden="true" /><span><b>Odin Reincarnation</b><small>Bonus boss entry and attack warnings.</small></span><ArrowRight size={16} aria-hidden="true" /></HomeLink>
+              <HomeLink href="/spells/enhanced-inner-focus/" className="demand-card"><Sparkles size={20} aria-hidden="true" /><span><b>Enhanced Inner Focus</b><small>Reported drops and comparison with regular Inner Focus.</small></span><ArrowRight size={16} aria-hidden="true" /></HomeLink>
             </div>
           </section>
 

@@ -421,3 +421,8 @@ tr:last-child td { border-bottom:0; }
   .video-dialog { padding:14px; }
   .video-dialog-head h2 { font-size:17px; }
 }
+
+.home-wiki-search { width: min(100%, 640px); margin: 24px auto; text-align: left; }
+.home-wiki-search label { display: block; margin-bottom: 8px; }
+.home-wiki-search input { width: 100%; padding: 14px; border: 1px solid #586078; border-radius: 8px; background: #101827; color: #fff; }
+.hero-guide-links { display: flex; gap: 24px; justify-content: center; margin-top: 14px; }

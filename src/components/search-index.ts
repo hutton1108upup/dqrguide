@@ -70,7 +70,7 @@ const searchIndex = new Fuse(buildSearchItems(defaultEnvironment), {
 });
 
 export function searchSite(query: string, limit = 7, environment: RuntimeEnvironment = getRuntimeEnvironment()): SearchItem[] {
-  const clean = query.trim();
+  const clean = query.trim().replace(/\bdgr\b/gi, "dungeon quest reborn").replace(/\bdqr\b/gi, "dungeon quest reborn");
   if (!clean) return buildSearchItems(environment).slice(0, limit);
   const index = environment === defaultEnvironment ? searchIndex : new Fuse(buildSearchItems(environment), {
     keys: [
