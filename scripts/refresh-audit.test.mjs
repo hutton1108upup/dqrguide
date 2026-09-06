@@ -29,7 +29,7 @@ describe("refresh audit", () => {
     const report = JSON.parse(fs.readFileSync(path.join(outputDirectory, "refresh-audit.json"), "utf8"));
     expect(report.asOf).toBe("2026-10-02");
     expect(report.pages.find((page) => page.path === "/codes/")).toMatchObject({ state: "not_collected", priority: "P0" });
-    expect(report.pages.find((page) => page.path === "/tier-list/")).toMatchObject({ state: "version_gap", priority: "P0" });
+    expect(report.pages.find((page) => page.path === "/tier-list/")).toMatchObject({ state: "not_collected", priority: "P0" });
     expect(Array.isArray(report.sitemapGaps)).toBe(true);
     expect(fs.readFileSync(path.join(outputDirectory, "refresh-audit.md"), "utf8")).toContain("/codes/");
   });

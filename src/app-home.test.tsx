@@ -11,7 +11,7 @@ describe("homepage", () => {
     expect(screen.getByText(/No active code is published/i)).toBeInTheDocument();
     expect(screen.getByText(/Ranking under review/i)).toBeInTheDocument();
     expect(screen.queryByText("NORTHERN")).not.toBeInTheDocument();
-    expect(screen.getByText(/Sep 3, 2026 · \d{2}:\d{2} UTC/)).toBeInTheDocument();
+    expect(screen.getByText(/Sep 6, 2026 · \d{2}:\d{2} UTC/)).toBeInTheDocument();
     expect(screen.queryByText(/2026-09-03T05:19:40/)).not.toBeInTheDocument();
   });
 

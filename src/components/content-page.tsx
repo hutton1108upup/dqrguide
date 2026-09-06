@@ -90,8 +90,8 @@ export function buildBreadcrumbItems(page: SitePage) {
     { "@type": "ListItem", position: 1, name: "Home", item: new URL("/", siteConfig.url).toString() }
   ];
   const segments = page.path.split("/").filter(Boolean);
-  if (segments.length > 1) {
-    const parentPath = `/${segments.slice(0, -1).join("/")}/`;
+  for (let depth = 1; depth < segments.length; depth++) {
+    const parentPath = `/${segments.slice(0, depth).join("/")}/`;
     const parent = getPageByPath(parentPath);
     if (parent && isPageAvailable(parent, getRuntimeEnvironment())) {
       items.push({ "@type": "ListItem", position: items.length + 1, name: parent.h1, item: new URL(parent.path, siteConfig.url).toString() });
@@ -234,7 +234,7 @@ function DataPanel({ page }: { page: SitePage }) {
       <>
         <section className="surface-card" aria-labelledby="api-signal-title">
           <div className="card-heading"><span>OFFICIAL API SIGNAL</span><h2 id="api-signal-title">Latest platform timestamp</h2></div>
-          <div className="signal-line"><span>{robloxUpdatedDate}</span><b>{robloxUpdatedClock} UTC</b><p>Metadata updated for the current Northern Lands title. No gameplay patch detail is inferred.</p></div>
+          <div className="signal-line"><span>{robloxUpdatedDate}</span><b>{robloxUpdatedClock} UTC</b><p>Metadata updated for {officialGameSnapshot.name}. No gameplay patch detail is inferred.</p></div>
         </section>
         <section className="surface-card" aria-labelledby="updates-table-title">
           <div className="card-heading"><span>UPDATE LEDGER</span><h2 id="updates-table-title">Version and source records</h2></div>
@@ -331,13 +331,13 @@ export function ContentPage({ page }: { page: SitePage }) {
           <p className="eyebrow">{page.eyebrow}</p>
           <h1>{page.h1}</h1>
           {page.path !== "/spells/" && page.path !== "/drops/" && !page.path.startsWith("/spells/") ? <p>{page.summary}</p> : null}
-          <div className="meta-strip"><span className="content-state">{getPlayerFacingStatus(page)}</span><span>Checked {page.lastVerified}</span><span>Version: {page.verifiedForVersion ?? "Not yet verified"}</span></div>
+          <div className="meta-strip"><span className="content-state">{getPlayerFacingStatus(page)}</span><span>Checked {page.lastVerified}</span><span>Context: {page.verifiedForVersion ?? "Not yet verified"}</span></div>
         </header>
 
         {page.path === "/spells/" || page.path === "/drops/" || page.path.startsWith("/spells/") ? <nav className="quick-jumps" aria-label="Quick lookup">
           <a href={page.path === "/spells/" ? "#ability-list" : page.path === "/drops/" ? "#reported-locations" : "#ability-overview"}>Quick lookup</a>
           <a href={page.path === "/spells/" ? "#source-dungeons" : page.path === "/drops/" ? "#reported-locations" : "#where-to-get"}>Find a source</a>
-          {page.path !== "/drops/" ? <a href={page.path === "/spells/" ? "#ability-walkthrough" : "#demonstration"}>Watch a demo</a> : null}
+          {page.path !== "/drops/" && page.sections.some(section => section.media?.some(item => item.type === "youtube")) ? <a href={page.path === "/spells/" ? "#ability-walkthrough" : "#demonstration"}>Watch a demo</a> : null}
         </nav> : null}
 
         {page.path === "/dungeons/northern-lands/" ? <nav className="quick-jumps boss-jumps" aria-label="Where are you stuck?">
@@ -346,7 +346,7 @@ export function ContentPage({ page }: { page: SitePage }) {
 
         {showRefreshBanner ? <aside className={`refresh-banner ${freshness.state}`} role="status"><b>{refreshTitle}</b><span>{freshness.reason}</span><small>Last checked {page.lastVerified ?? "not recorded"} · Next check {page.nextScheduledCheck ?? "not scheduled"}</small></aside> : null}
 
-        <section className="quick-answer" aria-labelledby="quick-answer-heading"><span>QUICK ANSWER</span><h2 id="quick-answer-heading">What to do now</h2><p>{page.quickAnswer}</p></section>
+        <section className="quick-answer" aria-labelledby="quick-answer-heading"><span>QUICK ANSWER</span><h2 id="quick-answer-heading">Quick answer</h2><p>{page.quickAnswer}</p></section>
 
         <nav className="toc" aria-label="On this page"><span>ON THIS PAGE</span>{page.sections.map((section) => <a href={`#${section.id}`} key={section.id}>{section.title}</a>)}</nav>
 
@@ -381,8 +381,8 @@ export function ContentPage({ page }: { page: SitePage }) {
 
           <aside className="sidebar-column">
             <section className="surface-card"><div className="card-heading"><span>NEXT ROUTES</span><h2>Related pages</h2></div><div className="related-stack">{visibleRelated.map((item) => <Link href={item.href} key={item.href}><b>{item.label}</b><small>{item.description}</small><ArrowRight size={14} aria-hidden="true" /></Link>)}</div></section>
-            <section className="surface-card"><div className="card-heading"><span>VISIBLE FAQ</span><h2>Questions players ask</h2></div><div className="side-faq">{page.faq.map((item) => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</div></section>
-            <section className="surface-card"><div className="card-heading"><span>EVIDENCE</span><h2>Source notes</h2></div><div className="source-stack">{page.sources.map((source) => <a href={source.url} target="_blank" rel="noreferrer" key={source.url}><b>{source.title}</b><small>{source.evidenceNote}</small><span>{source.evidenceLevel} · checked {source.lastChecked} <ExternalLink size={11} /></span></a>)}</div></section>
+            <section className="surface-card"><div className="card-heading"><span>FAQ</span><h2>Questions players ask</h2></div><div className="side-faq">{page.faq.map((item) => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</div></section>
+            <section className="surface-card"><div className="card-heading"><span>EVIDENCE</span><h2>Source notes</h2></div><div className="source-stack">{page.sources.map((source) => <a href={source.url} target="_blank" rel="noreferrer" key={source.url}><b>{source.title}</b><small>{source.evidenceNote}</small><span>{source.evidenceLevel === "Community Confirmed" ? "Community source" : source.evidenceLevel} · checked {source.lastChecked} <ExternalLink size={11} /></span></a>)}</div></section>
           </aside>
         </div>
       </main>

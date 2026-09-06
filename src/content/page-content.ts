@@ -1,5 +1,5 @@
 import { playerGuides } from "./player-guides";
-import { LAST_RESEARCHED, officialGameSnapshot, sources } from "./game-data";
+import { LAST_RESEARCHED, sources } from "./game-data";
 import type { DifferenceRow, FactClaim, FaqItem, PageSection, RelatedLink, SourceRecord, UpdateRecord } from "./types";
 
 export interface PageContent {
@@ -27,14 +27,6 @@ const difference = (input: Omit<DifferenceRow, "lastChecked">): DifferenceRow =>
   ...input,
   lastChecked: LAST_RESEARCHED
 });
-
-const update = (input: Omit<UpdateRecord, "lastChecked">): UpdateRecord => ({
-  ...input,
-  lastChecked: LAST_RESEARCHED
-});
-
-const officialUpdatedDate = officialGameSnapshot.robloxUpdatedAt.split("T", 1)[0];
-const officialUpdatedTime = officialGameSnapshot.robloxUpdatedAt.split("T")[1]?.replace("Z", "").split(".", 1)[0] ?? "time not recorded";
 
 const firstPass = (
   sections: PageSection[],
@@ -194,135 +186,9 @@ export const pageContentByPath: Record<string, PageContent> = {
       difference({ id: "diff-systems", topic: "Systems", claim: "Classes, abilities, cosmetics, and solo/co-op wording", value: "Public descriptions differ", originalValue: "Classes, cosmetics, and Notify/FOLLOW wording", rebornValue: "Unlock abilities, rare weapons/armor/loot, solo or co-op wording", claimStatus: "confirmed", confidence: "High", verifiedForVersion: "2026-09-02 page snapshots", sourceURL: sources.originalExperience.url, evidenceNote: "These are public listing-description differences, not a complete system or balance comparison." })
     ]
   },
-  "/gamepasses/": {
-    sections: [
-      {
-        id: "buy-first",
-        title: "Best Gamepass to Buy First",
-        paragraphs: [
-          "No purchase order is published yet. A recommendation needs the current user-facing name, price, currency, exact effect, sale state, and a measurable progression bottleneck."
-        ]
-      },
-      {
-        id: "api-snapshot",
-        title: "Current Public API Snapshot",
-        paragraphs: [
-          "The official universe game-pass endpoint returned technical records named hi, DailyRefresh, and Gold1 through Gold5 during this check. Every returned entry was marked not for sale and had no public price in that response.",
-          "Those internal-looking labels are not rewritten into polished product names, effects, or value claims."
-        ]
-      },
-      {
-        id: "decision-checklist",
-        title: "Purchase Decision Checklist",
-        paragraphs: [
-          "Before spending, confirm the current storefront inside the experience and ask whether the benefit saves time on the activity you actually repeat. Free players should prioritise stable build and route improvements before treating any paid boost as required."
-        ],
-        bullets: ["Current name and price", "Gold, Robux, or another currency", "Exact effect", "Sale and permanence status", "Best progression stage"]
-      },
-      {
-        id: "changing-gold-price",
-        title: "Why the Gold Price Can Change",
-        paragraphs: [
-          "Community videos show a Gold-facing Gamepass screen, while one Reddit report says the displayed cost increased as the account progressed. Together they make level or progression context a required field for every future price capture; they do not establish a universal scaling formula.",
-          "Before comparing prices, record the account level, current dungeon stage, displayed currency, exact storefront label, server date, and whether the same screen changes after progression. Until two controlled captures reproduce the behavior, the site will not publish a fixed cost or “buy before level X” instruction."
-        ],
-        bullets: ["Capture the same pass at two progression stages", "Record level and unlocked dungeon", "Separate Gold price from Robux-to-Gold purchases", "Do not infer the effect from an API label"],
-        media: [{
-          id: "gamepasses-storefront-video",
-          type: "youtube",
-          videoId: "8ZVfKMwvWoo",
-          title: "Gamepass storefront walkthrough",
-          alt: "Video preview for a Dungeon Quest Reborn Gamepass storefront walkthrough",
-          caption: "Community demonstration, not a current price guarantee. The video is useful for locating the Gold-facing screen; every price and effect still needs an account-context capture.",
-          sourceURL: sources.gamePassVideo.url,
-          evidenceLevel: "Community Confirmed",
-          claimIds: ["gamepasses-gold-screen", "gamepasses-price"],
-          capturedAt: LAST_RESEARCHED,
-          verifiedForVersion: null,
-          startSeconds: 8
-        }]
-      }
-    ],
-    faq: [
-      {
-        question: "Are DQR gamepasses bought with Gold or Robux?",
-        answer: "Not yet verified from a current user-facing purchase screen."
-      },
-      {
-        question: "Why is this page not ranking the passes?",
-        answer:
-          "The public API snapshot does not expose enough current effect and price information to support a responsible purchase order."
-      }
-    ],
-    related: [
-      link("/differences/", "Reborn differences", "Do not assume original purchases transfer."),
-      link("/dungeons/", "Dungeon progression", "Improve the run decision before buying around it."),
-      link("/updates/", "Update ledger", "Watch for source-backed economy changes.")
-    ],
-    sources: [sources.officialPassesApi, sources.officialGameApi, sources.gamePassVideo, sources.gamePassPriceReport],
-    claims: [
-      fact({ id: "gamepasses-api-records", topic: "Gamepasses", claim: "The public API returned technical pass labels", value: "hi, DailyRefresh, Gold1–Gold5", claimStatus: "confirmed", confidence: "High", verifiedForVersion: "[Northern Lands] title snapshot", sourceURL: sources.officialPassesApi.url, evidenceNote: "The API response returned these names with no public price and not-for-sale status; they are not purchase recommendations." }),
-      fact({ id: "gamepasses-price", topic: "Purchase data", claim: "Current user-facing price, currency, and effect are available", value: "Not collected", claimStatus: "not_collected", confidence: "Low", verifiedForVersion: null, sourceURL: sources.officialPassesApi.url, evidenceNote: "The technical response does not supply enough storefront context to publish a buy order." }),
-      fact({ id: "gamepasses-gold-screen", topic: "Community storefront view", claim: "A Gold-facing Gamepass screen appears in current community videos", value: "Reported; account context not reproduced", claimStatus: "reported", confidence: "Medium", verifiedForVersion: null, sourceURL: sources.gamePassVideo.url, evidenceNote: "The video visibly demonstrates the screen, but price, effect, progression context, and persistence still require a controlled in-game capture." }),
-      fact({ id: "gamepasses-dynamic-price", topic: "Price behavior", claim: "The displayed Gold price rises with account progression", value: "Single player report", claimStatus: "reported", confidence: "Low", verifiedForVersion: null, sourceURL: sources.gamePassPriceReport.url, evidenceNote: "A single report defines a testable question and does not establish a formula or universal behavior." })
-    ]
-  },
+  "/gamepasses/": playerGuides["/gamepasses/"].content,
   "/spells/": playerGuides["/spells/"].content,
-  "/spell-tier-list/": {
-    sections: [
-      {
-        id: "summary",
-        title: "Tier List Summary",
-        paragraphs: ["No ability has earned a site tier yet. A letter grade needs a current name, source, use case, weakness, alternative, and repeatable result."]
-      },
-      {
-        id: "method",
-        title: "How We Rank DQR Spells",
-        paragraphs: ["A grade must state its use case, weakness, drop source, progression stage, alternative, and tested version."],
-        bullets: ["Room-clear consistency", "Boss contribution", "Solo survivability", "Party utility", "Acquisition cost", "Current-version evidence"]
-      },
-      {
-        id: "next-review",
-        title: "What Enters the First Review",
-        paragraphs: ["Only abilities with a verified Reborn name and source can enter. Repeatable current-version observations are required before performance claims move beyond community-confirmed status."]
-      },
-      {
-        id: "video-rankings",
-        title: "Why Video Rankings Are Not Final",
-        paragraphs: [
-          "A current video demonstrates named buff abilities and narrates large percentage gains. That makes the names and visible behavior useful research leads, but it does not prove a universal tier, exact current percentage, rarity, source, or performance across every build.",
-          "A publishable grade needs the current ability card, two or more repeatable runs in a named use case, the alternative it replaces, and the version date. Until then, the video remains linked as Community Confirmed context and the tier board stays empty."
-        ],
-        media: [{
-          id: "spell-tier-observation-video",
-          type: "youtube",
-          videoId: "I11sThLGWJs",
-          title: "Inner Focus and Inner Rage demonstration",
-          alt: "Video preview showing two Dungeon Quest Reborn buff abilities",
-          caption: "Community demonstration only. Narrated percentages and “best” claims require current cards and repeatable tests before ranking.",
-          sourceURL: sources.spellTierVideo.url,
-          evidenceLevel: "Community Confirmed",
-          claimIds: ["spell-tier-ranking"],
-          capturedAt: LAST_RESEARCHED,
-          verifiedForVersion: null,
-          startSeconds: 43
-        }]
-      }
-    ],
-    faq: [
-      { question: "What is the best DQR spell right now?", answer: "No overall winner has enough current evidence to publish yet." },
-      { question: "Can a support spell rank highly?", answer: "Yes. Grades are use-case specific and can reflect party utility rather than raw damage." }
-    ],
-    related: [
-      link("/spells/", "Spell database", "Use the objective role and source fields first."),
-      link("/tier-list/", "Overall tier review", "Compare progression categories without duplicating the spell board."),
-      link("/updates/", "Change ledger", "A balance claim needs a traceable version change.")
-    ],
-    sources: [sources.officialExperience, sources.spellTierVideo],
-    claims: [
-      fact({ id: "spell-tier-ranking", topic: "Ranking", claim: "A current global spell ranking is ready to publish", value: "Not collected", claimStatus: "not_collected", confidence: "Low", verifiedForVersion: null, sourceURL: sources.officialExperience.url, evidenceNote: "No repeatable current-version performance sample is available." })
-    ]
-  },
+  "/spell-tier-list/": playerGuides["/spell-tier-list/"].content,
   "/trading/": {
     sections: [
       {
@@ -390,7 +256,7 @@ export const pageContentByPath: Record<string, PageContent> = {
       {
         id: "active-codes",
         title: "Active Dungeon Quest Reborn Codes",
-        paragraphs: ["No active code is published. The first-party experience page and public game metadata reviewed on September 3, 2026 did not provide a confirmed code list or a confirmed redemption path."]
+        paragraphs: ["No active code is published. The first-party experience page and public game metadata reviewed on September 6, 2026 did not provide a confirmed code list or a confirmed redemption path."]
       },
       {
         id: "redemption-system",
@@ -410,7 +276,7 @@ export const pageContentByPath: Record<string, PageContent> = {
       }
     ],
     faq: [
-      { question: "Are there any active DQR codes?", answer: "None were confirmed on the official Roblox page or public game API checked on September 3, 2026." },
+      { question: "Are there any active DQR codes?", answer: "None were confirmed on the official Roblox page or public game API checked on September 6, 2026." },
       { question: "When will this page change?", answer: "When a first-party announcement or a verifiable current redemption flow provides evidence." }
     ],
     related: [
@@ -425,159 +291,9 @@ export const pageContentByPath: Record<string, PageContent> = {
     ]
   },
   "/trello/": playerGuides["/trello/"].content,
-  "/discord/": {
-    sections: [
-      {
-        id: "current-link",
-        title: "Current DQR Discord Link",
-        paragraphs: ["Community candidate: discord.gg/dqr. The public invite currently resolves to a DQR-branded server, but this page does not present it as an official Join button until an eligible first-party Roblox social-link view or developer statement confirms ownership."]
-      },
-      {
-        id: "visibility",
-        title: "Why a Social Link May Not Be Visible",
-        paragraphs: ["Roblox support says experience and community social links can be shown only to eligible, age-checked users aged 16 or older, with availability varying by country. Missing visibility is therefore not proof that no community link exists."]
-      },
-      {
-        id: "safety",
-        title: "Discord Trading Safety",
-        paragraphs: ["Verify the destination from a current first-party surface, keep passwords and session tokens private, and treat direct-message urgency, download links, and middleman claims as risk signals."]
-      },
-      {
-        id: "invite-candidate",
-        title: "Community Invite Candidate",
-        paragraphs: [
-          "The public invite discord.gg/dqr currently resolves to a DQR-branded community, and several independent current videos point to the same vanity code. This confirms a working community destination, but it does not by itself prove developer ownership.",
-          "Roblox limits experience social-link visibility to eligible age-checked users, and the logged-out public endpoint did not expose the destination during this review. The safe status is therefore Community Confirmed / first-party capture pending. Check that the invite preview still names the DQR community before joining."
-        ],
-        bullets: ["Candidate invite: discord.gg/dqr", "Public invite resolves", "First-party Roblox capture still pending", "Never enter a Roblox password or session token"],
-        media: [{
-          id: "discord-official-art",
-          type: "image",
-          src: "/images/dqr/official-game-icon.png",
-          title: "Dungeon Quest Reborn official game icon",
-          alt: "Dungeon Quest Reborn shield game icon",
-          caption: "Official game icon shown only as an identity check. A matching logo does not make a Discord invite official.",
-          sourceURL: sources.officialExperience.url,
-          evidenceLevel: "Official",
-          claimIds: ["discord-link"],
-          capturedAt: LAST_RESEARCHED,
-          verifiedForVersion: "[Northern Lands] title snapshot"
-        }]
-      }
-    ],
-    faq: [
-      { question: "Why is there no Join button?", answer: "The official destination could not be confirmed from a first-party public URL during this check." },
-      { question: "Can social links be age-gated on Roblox?", answer: "Yes. Roblox says eligible age-checked 16+ users may see social links, subject to country eligibility." }
-    ],
-    related: [
-      link("/trello/", "Trello status", "Apply the same direct-source rule to boards."),
-      link("/trading/", "Trading guide", "Use the safety checklist before any item discussion."),
-      link("/updates/", "Updates", "Use first-party change signals while invites are unverified.")
-    ],
-    sources: [sources.officialExperience, sources.robloxSocialLinks, sources.discordInviteApi],
-    claims: [
-      fact({ id: "discord-link", topic: "Official Discord", claim: "A first-party Discord invite is publicly visible", value: "Not confirmed", claimStatus: "not_collected", confidence: "Low", verifiedForVersion: null, sourceURL: sources.officialExperience.url, evidenceNote: "A missing public link is not proof that no community exists; Roblox social links can be age-gated." }),
-      fact({ id: "discord-community-candidate", topic: "Community invite", claim: "discord.gg/dqr resolves to a DQR-branded community", value: "Working community candidate", claimStatus: "reported", confidence: "Medium", verifiedForVersion: null, sourceURL: sources.discordInviteApi.url, evidenceNote: "The public Discord preview confirms the destination works; an eligible first-party Roblox link or developer statement is still required for Official status." }),
-      fact({ id: "discord-visibility", topic: "Social links", claim: "Roblox social links can be age-gated", value: "Eligible age-checked users may see them", claimStatus: "confirmed", confidence: "High", verifiedForVersion: null, sourceURL: sources.robloxSocialLinks.url, evidenceNote: "Roblox Support documents age and country eligibility limits for experience social links." })
-    ]
-  },
-  "/tier-list/": {
-    sections: [
-      {
-        id: "meta-summary",
-        title: "Overall Meta Summary",
-        paragraphs: ["No weapon, spell, or build has earned a site tier yet. A grade needs a named use case, weakness, obtainable source, alternative, version, and repeatable result."]
-      },
-      {
-        id: "progression",
-        title: "Rank by Progression Stage",
-        paragraphs: ["A future overview will separate early, mid, late, and endgame needs. Ease of acquisition and reliable clears matter alongside peak output."],
-        bullets: ["Early — access and consistency", "Mid — upgrade path", "Late — role specialisation", "Endgame — repeatable current-version performance"]
-      },
-      {
-        id: "publication-gate",
-        title: "When a Ranking Is Ready",
-        paragraphs: ["Every conclusion needs a named use case, weakness, source, alternative, version, and evidence level. The overall page summarises verified results and links to detail; it does not duplicate the spell board."]
-      },
-      {
-        id: "roundup-video-boundary",
-        title: "Why Roundup Videos Are Not a Tier List",
-        paragraphs: ["A video title such as “best weapon” or “meta spell” is an opinion tied to one account, build, route, and recording date. This page will not embed roundup videos until the underlying weapon, ability, and build rows can explain where the conclusion applies and where it fails."]
-      }
-    ],
-    faq: [
-      { question: "What is the best weapon in DQR?", answer: "No current weapon winner is published without repeatable evidence." },
-      { question: "Why split tier lists by stage?", answer: "A scarce endgame option may be a poor recommendation for a player who needs reliable early progression." }
-    ],
-    related: [
-      link("/spell-tier-list/", "Spell tiers", "Open the ability-specific method."),
-      link("/spells/", "Spell data", "Check objective fields before a grade."),
-      link("/dungeons/", "Dungeon progression", "Connect recommendations to obtainable sources.")
-    ],
-    sources: [sources.officialExperience],
-    claims: [
-      fact({ id: "tier-ranking", topic: "Tier ranking", claim: "A repeatable current-version weapon, spell, or build ranking is ready", value: "Not collected", claimStatus: "not_collected", confidence: "Low", verifiedForVersion: null, sourceURL: sources.officialExperience.url, evidenceNote: "No current performance sample or complete entity data is available." })
-    ]
-  },
-  "/updates/": {
-    sections: [
-      {
-        id: "latest-signal",
-        title: "Latest Verified Update Signal",
-        paragraphs: [`Roblox public game metadata currently reports ${officialGameSnapshot.robloxUpdatedAt} for ${officialGameSnapshot.name}.`, "This confirms a platform metadata change and the current title; it does not identify the gameplay changes inside that update."]
-      },
-      {
-        id: "change-log",
-        title: "What Changed on Dungeon Quest Reborn Guide",
-        paragraphs: ["September 2, 2026 — recorded the first official experience snapshot, separated Reborn from legacy data, and marked unanswered questions for codes, social links, passes, dungeons, spells, and tiers."]
-      },
-      {
-        id: "editorial-rules",
-        title: "Update Ledger Rules",
-        paragraphs: ["A patch-note entry needs a direct source, source date, affected pages, and an editorial verification date. Build time does not change dateModified, and a metadata timestamp never becomes an invented balance summary."]
-      },
-      {
-        id: "community-demonstrations",
-        title: "Northern Lands Community Demonstrations",
-        paragraphs: [
-          "Current community videos visibly demonstrate Northern Lands runs, so they can support a labelled observation queue for routes and telegraphs. They cannot identify the developer's full change list, release notes, balance intent, or exact drop table.",
-          "The update ledger therefore keeps three layers separate: the official Roblox title and timestamp, any future first-party announcement body, and community demonstrations linked to the affected guide."
-        ],
-        media: [{
-          id: "updates-current-art",
-          type: "image",
-          src: "/images/dqr/official-cavern-boss.png",
-          title: "Official Dungeon Quest Reborn battle artwork",
-          alt: "Armored Dungeon Quest Reborn player facing a large purple cavern creature",
-          caption: "Official promotional artwork from the current experience. The API supplies no dungeon, boss, or update name for this scene.",
-          sourceURL: sources.officialThumbnailApi.url,
-          evidenceLevel: "Official",
-          claimIds: ["updates-metadata-signal"],
-          capturedAt: LAST_RESEARCHED,
-          verifiedForVersion: "[Northern Lands] title snapshot"
-        }]
-      }
-    ],
-    faq: [
-      { question: "Was Northern Lands added at this API update time?", answer: "The metadata confirms the current title and update timestamp, not the exact release contents." },
-      { question: "Why are there no copied patch notes?", answer: "No first-party patch-note body was available in the checked public sources." }
-    ],
-    related: [
-      link("/dungeons/northern-lands/", "Northern Lands", "See what the current label proves and what remains unknown."),
-      link("/codes/", "Codes status", "Track the first-party verification boundary."),
-      link("/trello/", "Trello status", "Use direct sources rather than copied roadmaps.")
-    ],
-    sources: [sources.officialGameApi, sources.officialExperience, sources.officialThumbnailApi, sources.northernLandsVideo, sources.northernLandsWalkthrough],
-    claims: [
-      fact({ id: "updates-metadata-signal", topic: "Platform signal", claim: `Roblox metadata changed on ${officialUpdatedDate}`, value: officialGameSnapshot.robloxUpdatedAt, claimStatus: "confirmed", confidence: "High", verifiedForVersion: "[Northern Lands] title snapshot", sourceURL: sources.officialGameApi.url, evidenceNote: `The API reports ${officialUpdatedTime} UTC; it does not identify a gameplay change.` }),
-      fact({ id: "updates-patch-notes", topic: "Patch notes", claim: "A first-party patch-note body is available", value: "Not collected", claimStatus: "not_collected", confidence: "Low", verifiedForVersion: null, sourceURL: sources.officialExperience.url, evidenceNote: "No first-party patch-note body was found in the checked public surfaces." }),
-      fact({ id: "updates-community-video", topic: "Community demonstration", claim: "Current videos demonstrate Northern Lands gameplay", value: "Reported observation source", claimStatus: "reported", confidence: "Medium", verifiedForVersion: "[Northern Lands] community video snapshot", sourceURL: sources.northernLandsVideo.url, evidenceNote: "This supports an affected-guide research queue, not a developer-authored patch-note body." })
-    ],
-    updates: [
-      update({ id: `update-metadata-${officialUpdatedDate}`, topic: "Roblox metadata signal", claim: "The public Reborn metadata changed", value: `Current title ${officialGameSnapshot.name}; updated ${officialGameSnapshot.robloxUpdatedAt}`, versionTitle: officialGameSnapshot.name, publishedDate: officialUpdatedDate, actualChanges: "The public API reports the current title and an updated timestamp. No gameplay change, dungeon change, spell change, or patch-note body is stated.", sourceURL: sources.officialGameApi.url, claimStatus: "confirmed", confidence: "High", verifiedForVersion: "[Northern Lands] title snapshot", evidenceNote: "This is a metadata signal, not a patch note. No affected game pages are inferred.", affectedPaths: [], recordType: "metadata_signal" }),
-      update({ id: "update-patch-notes-2026-09-02", topic: "First-party patch notes", claim: "A public first-party gameplay update body is available", value: "Not collected", versionTitle: "No patch-note version published", publishedDate: "2026-09-02", actualChanges: "No actual gameplay changes can be listed until a first-party patch-note body or current in-game change record is available.", sourceURL: sources.officialExperience.url, claimStatus: "not_collected", confidence: "Low", verifiedForVersion: null, evidenceNote: "No patch summary is shown because a metadata timestamp does not identify gameplay changes.", affectedPaths: [], recordType: "metadata_signal" })
-    ]
-  },
+  "/discord/": playerGuides["/discord/"].content,
+  "/tier-list/": playerGuides["/tier-list/"].content,
+  "/updates/": playerGuides["/updates/"].content,
   "/beginner-guide/": firstPass(
     [
       {
@@ -703,68 +419,8 @@ export const pageContentByPath: Record<string, PageContent> = {
     ],
     [link("/builds/mage/", "Mage build", "Open the role sheet for ability and gear planning."), link("/builds/warrior/", "Warrior build", "Open the frontline role sheet."), link("/spell-tier-list/", "Spell tier method", "See the evidence required before ranking.")]
   ),
-  "/builds/mage/": firstPass(
-    [
-      { id: "mage-job", title: "Define the Mage Job", paragraphs: ["Choose whether this Mage is solving room clear, boss damage, party utility, or a mix. The final recommendation should explain that job before naming a spell or item."] },
-      { id: "mage-loadout", title: "Mage Loadout Fields", paragraphs: ["A publishable sheet will connect class, spell role, source dungeon, weapon goal, armor goal, stat priority, alternative, version, and evidence state. Values are intentionally not guessed in this first pass."], bullets: ["Primary and alternative spell", "Reachable weapon and armor goal", "Stage and stat priority", "What the build cannot answer yet"] },
-      { id: "mage-check", title: "Mage Verification Checklist", paragraphs: ["Before a named Mage build is promoted, test the stated use case in the current Reborn experience and link the result to the relevant spell, weapon, dungeon, and update pages."] },
-      {
-        id: "mage-video-queue",
-        title: "Mage Video Review Queue",
-        paragraphs: ["A current community Mage guide can identify ability and loadout candidates. Its level label and “meta” wording are not enough to publish a build; each named choice still needs its current card, source, role, alternative, and repeatable result."],
-        media: [{
-          id: "mage-community-video",
-          type: "youtube",
-          videoId: "-jgrSgYx_f8",
-          title: "Level 100+ Mage skills review",
-          alt: "Video preview for a Dungeon Quest Reborn Mage skills guide",
-          caption: "Community review queue only. No named Mage loadout is promoted until its current cards and run result are captured.",
-          sourceURL: sources.mageVideo.url,
-          evidenceLevel: "Community Confirmed",
-          claimIds: [],
-          capturedAt: LAST_RESEARCHED,
-          verifiedForVersion: null
-        }]
-      }
-    ],
-    [
-      { question: "What is the best Mage spell?", answer: "No current Mage winner is assigned until the spell name, source, use case, version, and repeatable result are verified." },
-      { question: "Can Mage use original-game data?", answer: "Only as labelled legacy context, never as current Reborn build evidence." }
-    ],
-    [link("/spells/", "Spell database", "Check the fields required for a current spell row."), link("/builds/", "All builds", "Compare role decisions."), link("/dungeons/", "Dungeon progression", "Tie the build to an obtainable run.")],
-    [sources.officialExperience, sources.mageVideo]
-  ),
-  "/builds/warrior/": firstPass(
-    [
-      { id: "warrior-job", title: "Define the Warrior Job", paragraphs: ["A Warrior sheet starts with the balance between frontline survivability, damage, and clear consistency required by the next run. A label alone is not a build result."] },
-      { id: "warrior-loadout", title: "Warrior Loadout Fields", paragraphs: ["The future row will connect class, weapon and armor source, stat priority, spell role, progression stage, alternative, version, and evidence state. No old-game stat is copied into the current sheet."], bullets: ["Frontline goal", "Reachable damage option", "Survivability fallback", "Version and last check"] },
-      { id: "warrior-check", title: "Warrior Verification Checklist", paragraphs: ["A named setup needs a current Reborn source and a repeatable reason it improves the intended clear. The result will link to the source dungeon and the underlying equipment records."] },
-      {
-        id: "warrior-video-queue",
-        title: "Warrior Video Review Queue",
-        paragraphs: ["A current Warrior skills video can seed candidate ability roles, but it cannot establish a universal loadout. Capture the current ability cards and test the intended room-clear, boss, or survival job before publishing a recommendation."],
-        media: [{
-          id: "warrior-community-video",
-          type: "youtube",
-          videoId: "NSpGO2ioMb4",
-          title: "Warrior skills review",
-          alt: "Video preview for a Dungeon Quest Reborn Warrior skills guide",
-          caption: "Community review queue only. Ability names, sources, values, and build fit still require current evidence.",
-          sourceURL: sources.warriorVideo.url,
-          evidenceLevel: "Community Confirmed",
-          claimIds: [],
-          capturedAt: LAST_RESEARCHED,
-          verifiedForVersion: null
-        }]
-      }
-    ],
-    [
-      { question: "What makes a Warrior build useful?", answer: "It must solve a stated frontline problem in a current Reborn run and show the source, version, and alternative." },
-      { question: "Are old Warrior stats safe to use?", answer: "No. Treat them as legacy context until Reborn-specific evidence confirms the value." }
-    ],
-    [link("/weapons/", "Weapon database", "Track future Warrior equipment rows."), link("/armor/", "Armor database", "Separate slot and survivability evidence."), link("/builds/", "All builds", "Return to role selection.")],
-    [sources.officialExperience, sources.warriorVideo]
-  ),
+  "/builds/mage/": playerGuides["/builds/mage/"].content,
+  "/builds/warrior/": playerGuides["/builds/warrior/"].content,
   "/builds/tank/": firstPass(
     [
       { id: "tank-job", title: "Define the Tank Job", paragraphs: ["A Tank build begins with the mechanic or hit the player must survive and the team space that survival creates. This keeps defense recommendations tied to a run rather than a vague role label."] },

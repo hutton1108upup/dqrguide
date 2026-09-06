@@ -40,7 +40,7 @@ export function GuideTable({ table, title, variant, detailLinks = {}, rowIds = {
       <p className="lookup-count" role="status">{rows.length} of {table.rows.length} abilities</p>
     </> : null}
     {!rows.length ? <p className="lookup-empty">No abilities match these filters.</p> : <>
-      <div className="table-scroll lookup-table" tabIndex={0} role="region" aria-label={`${title} scrollable table`}>
+      <div className={`table-scroll lookup-table ${table.columns.length === 2 ? "two-column" : ""}`} tabIndex={0} role="region" aria-label={`${title} scrollable table`}>
         <table aria-label={title}>
           <thead><tr>{table.columns.map(column => <th key={column} scope="col">{column}</th>)}</tr></thead>
           <tbody>{rows.map(row => <tr key={row.cells[0]} id={rowIds[row.cells[0]]}>

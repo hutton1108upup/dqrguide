@@ -9,7 +9,7 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
       "title": "Dungeon Quest Reborn Trello: Link Status & Useful Sources",
       "eyebrow": "Trello & information links",
       "summary": "Check the board status, open the correct Roblox experience, or jump to spells, item locations and Northern Lands help.",
-      "quickAnswer": "No official Trello link was verified on the public Roblox page and API checked September 5, 2026. Open the game below or choose the guide matching what you wanted from the board.",
+      "quickAnswer": "No official Trello link was verified on the public Roblox page and API checked September 6, 2026. Open the game below or choose the guide matching what you wanted from the board.",
       "verifiedForVersion": "Public sources checked September 5, 2026"
     },
     "content": {
@@ -125,7 +125,7 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
       "faq": [
         {
           "question": "Where is the official Trello link?",
-          "answer": "No link was verified through the accessible Roblox page and API on September 5. Use the game link above to check its current developer-linked channels."
+          "answer": "No link was verified through the accessible Roblox page and API on September 6. Use the game link above to check its current developer-linked channels."
         },
         {
           "question": "Can I use a community wiki?",
@@ -151,18 +151,18 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
       ],
       "sources": [
         {
-          "title": "Dungeon Quest Reborn on Roblox",
+          "title": "Official Roblox experience",
           "url": "https://www.roblox.com/games/77649408247578/Dungeon-Quest-Reborn",
-          "evidenceNote": "Public description checked September 5. No verifiable Trello URL found in this accessible source.",
+          "evidenceNote": "September 6 public listing: [Odin Reincarnation] Dungeon Quest Reborn. No patch mechanics inferred.",
           "evidenceLevel": "Official",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-06"
         },
         {
-          "title": "Roblox Games API — universe 9931749389",
+          "title": "Roblox Games API",
           "url": "https://games.roblox.com/v1/games?universeIds=9931749389",
-          "evidenceNote": "September 5 retrieval: Northern Lands title; updated 2026-09-04T23:40:35.7319187Z. This timestamp supplies no patch details.",
+          "evidenceNote": "Fresh identity snapshot on September 6; update time is not patch-note content.",
           "evidenceLevel": "Official",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-06"
         }
       ],
       "claims": [
@@ -176,7 +176,7 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
           "verifiedForVersion": "Dated creator narration; live values unverified",
           "sourceURL": "https://www.roblox.com/games/77649408247578/Dungeon-Quest-Reborn",
           "evidenceNote": "Public page and API only; not a claim that no board exists.",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-06"
         }
       ]
     }
@@ -186,7 +186,7 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
     "meta": {
       "title": "Dungeon Quest Reborn Spells & Abilities: Uses and Source Reports",
       "eyebrow": "Spells & abilities",
-      "summary": "Compare ten named abilities by use case, then open the relevant moment in the creator's guide. Acquisition reports are separated from unknown difficulty and card data.",
+      "summary": "Compare twelve named abilities and source reports, including Fire Bomb and Enhanced Inner Focus. Exact card values and acquisition conditions remain separately labelled.",
       "quickAnswer": "Compare Ice Needles for frequent casts, Phantom Flames for ranged damage, Infernal Orbs for damage over time, and recovery abilities for party support. These are dated community descriptions, not a tested tier list.",
       "verifiedForVersion": "August 28, 2026 ability walkthrough"
     },
@@ -196,7 +196,7 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
           "id": "ability-list",
           "title": "Abilities by use case",
           "paragraphs": [
-            "Community report: this table summarizes the August 28 ability walkthrough reviewed September 5. It is not a complete roster. Exact damage, cooldown, equip level and rarity are omitted because the cards have not been independently checked.",
+            "Community reports: ten descriptions come from the August 28 walkthrough; two additional entries use separately dated sources. This is not a complete roster or tested tier list. Numeric fields remain omitted where no readable current card was checked.",
             "The source column contains acquisition reports, not confirmed rewards. The table order is not a progression ladder or power ranking."
           ],
           "table": {
@@ -307,6 +307,26 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
                 ],
                 "sourceURL": "https://www.youtube.com/watch?v=FzogFp907JM&t=558s",
                 "sourceLabel": "9:18 · Aug 28"
+              },
+              {
+                "cells": [
+                  "Fire Bomb",
+                  "Mage damage",
+                  "A Winter Outpost progression option in the September 4 editorial table; exact card effect unverified.",
+                  "Winter Outpost — recommendation, not verified drop"
+                ],
+                "sourceURL": "https://www.destructoid.com/best-spells-and-abilities-in-dungeon-quest-reborn/",
+                "sourceLabel": "Sep 4 editorial"
+              },
+              {
+                "cells": [
+                  "Enhanced Inner Focus",
+                  "Buff",
+                  "Distinguish the enhanced skill from the ordinary Inner Focus demonstration.",
+                  "Enchanted Forest reward clip — difficulty unverified"
+                ],
+                "sourceURL": "https://www.youtube.com/watch?v=eTmKGYKOFYI",
+                "sourceLabel": "Aug 14 reward reference"
               }
             ]
           }
@@ -332,6 +352,16 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
               "href": "/drops/",
               "label": "Item-source lookup",
               "description": "Compare acquisition reports."
+            },
+            {
+              "href": "/spells/fire-bomb/",
+              "label": "Fire Bomb guide",
+              "description": "Read the Winter Outpost source limits."
+            },
+            {
+              "href": "/spells/enhanced-inner-focus/",
+              "label": "EIF guide",
+              "description": "Ordinary versus enhanced and acquisition evidence."
             }
           ]
         },
@@ -409,7 +439,7 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
           "title": "What remains unknown?",
           "paragraphs": [
             "Follow the exact category and scaling on your own item. Matching names in an original-game wiki do not establish Reborn values.",
-            "Enhanced Inner Focus acquisition conflicts remain unresolved. It stays outside this source table until a clear Reborn run establishes the conditions."
+            "The EIF detail page separates the ordinary-skill demonstration from an enhanced-skill reward reference. Exact acquisition difficulty and probability remain unresolved."
           ]
         }
       ],
@@ -454,6 +484,27 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
           "evidenceNote": "Public description checked September 5. No verifiable Trello URL found in this accessible source.",
           "evidenceLevel": "Official",
           "lastChecked": "2026-09-05"
+        },
+        {
+          "title": "Gordan Perisic: ability progression — September 4",
+          "url": "https://www.destructoid.com/best-spells-and-abilities-in-dungeon-quest-reborn/",
+          "evidenceNote": "An attributed editorial recommendation table, not independently captured drop conditions. Levels in this article are not treated as equip requirements.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "title": "Enhanced Inner Focus reward clip — August 14",
+          "url": "https://www.youtube.com/watch?v=eTmKGYKOFYI",
+          "evidenceNote": "Description links the exact Reborn game. Storyboard frames show Enchanted Forest Dragon and post-fight rewards; the small item text does not independently establish a full card, difficulty or rate.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "title": "Inner Focus comparison — September 1",
+          "url": "https://www.youtube.com/watch?v=I11sThLGWJs",
+          "evidenceNote": "Captions reviewed. The creator explicitly does not own the enhanced spells; the demonstrated skill is the ordinary Inner Focus. Narrated percentages and probabilities are excluded.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
         }
       ],
       "claims": [
@@ -478,7 +529,7 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
       "title": "Dungeon Quest Reborn Drops: Reported Item Locations",
       "eyebrow": "Item-source lookup",
       "summary": "Start with a target item. Check its reported dungeon, what remains unknown and the original explanation before planning a farming session.",
-      "quickAnswer": "Phantom Flames and Ghostly Cannon Barrage are reported from Pirate Island; Infernal Orbs is reported from The Underworld. These are creator statements, not independently verified rewards. Difficulty and rates are unknown.",
+      "quickAnswer": "Start from the exact item name. Pirate Island and The Underworld have three creator source reports; Winter Outpost has a Fire Bomb recommendation and EIF has a dated reward reference. None establishes a universal drop rate.",
       "verifiedForVersion": "August 28, 2026 acquisition reports"
     },
     "content": {
@@ -487,7 +538,7 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
           "id": "reported-locations",
           "title": "Reported item locations",
           "paragraphs": [
-            "Community report: three acquisition statements from the August 28 walkthrough, reviewed September 5. No location below has been independently confirmed through a continuous reward sequence."
+            "Community reports and editorial leads are listed separately below. No row is a complete current reward pool or a probability guarantee."
           ],
           "table": {
             "columns": [
@@ -527,6 +578,26 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
                 ],
                 "sourceURL": "https://www.youtube.com/watch?v=FzogFp907JM&t=477s",
                 "sourceLabel": "7:57 · Aug 28"
+              },
+              {
+                "cells": [
+                  "Fire Bomb",
+                  "Winter Outpost",
+                  "Difficulty unknown · Rate unknown",
+                  "Editorial recommendation; not a captured drop"
+                ],
+                "sourceURL": "https://www.destructoid.com/best-spells-and-abilities-in-dungeon-quest-reborn/",
+                "sourceLabel": "Sep 4 editorial"
+              },
+              {
+                "cells": [
+                  "Enhanced Inner Focus",
+                  "Enchanted Forest encounter reference",
+                  "Difficulty unknown · Rate unknown",
+                  "Video title and post-fight frames; card text incomplete"
+                ],
+                "sourceURL": "https://www.youtube.com/watch?v=eTmKGYKOFYI",
+                "sourceLabel": "Aug 14 clip"
               }
             ]
           }
@@ -552,6 +623,16 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
               "href": "/spells/",
               "label": "Compare documented abilities",
               "description": "Recovery, damage and placed-area options."
+            },
+            {
+              "href": "/spells/fire-bomb/",
+              "label": "Fire Bomb source details",
+              "description": "Recommendation versus reward proof."
+            },
+            {
+              "href": "/spells/enhanced-inner-focus/",
+              "label": "EIF source details",
+              "description": "Compare the named drop with the ordinary skill."
             }
           ]
         },
@@ -559,13 +640,18 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
           "id": "northern-rewards",
           "title": "What about Northern Lands rewards?",
           "paragraphs": [
-            "The reviewed solo guide explains a route, not a complete named reward pool. Using Nightmare equipment in Insane does not show that the equipment drops there. No Mjolnir source is assigned without a clear reward sequence."
+            "The September 6 title and recording add Odin Reincarnation to the reference set. Record whether a reward follows the normal clear or bonus encounter; do not merge both into one named loot pool."
           ],
           "links": [
             {
               "href": "/dungeons/northern-lands/",
               "label": "Northern Lands route",
               "description": "Learn the encounters before repeating runs."
+            },
+            {
+              "href": "/dungeons/northern-lands/odin-reincarnation/",
+              "label": "Odin Reincarnation",
+              "description": "Read the bonus encounter separately."
             }
           ]
         },
@@ -609,18 +695,19 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
           }
         },
         {
-          "id": "rates",
+          "id": "drop-rates",
           "title": "Why no drop percentages?",
           "paragraphs": [
             "An item appearing once supports an observation under those conditions, not a universal probability. An inventory item might have been traded.",
-            "Rarity color, video titles and percentages copied between guide sites cannot establish a drop rate."
+            "Rarity color, video titles and percentages copied between guide sites cannot establish a drop rate.",
+            "Count completed eligible runs separately from individual reward rolls. Keep difficulty, party conditions and any displayed boost constant when comparing a sample. A short dry streak does not establish a bug, pity system or a changed probability."
           ]
         }
       ],
       "faq": [
         {
           "question": "Is this a complete drop table?",
-          "answer": "No. It contains three dated ability-source reports. Difficulty and probability are unknown."
+          "answer": "No. It contains five explicitly labelled source reports or leads, not a complete loot table. Current difficulties and probabilities remain unknown."
         },
         {
           "question": "Does a borrowed weapon prove a dungeon drop?",
@@ -658,6 +745,27 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
           "evidenceNote": "Captions and chapter metadata reviewed September 5. Insane teaching run uses Nightmare equipment. Tactics are creator advice, not independent gameplay tests.",
           "evidenceLevel": "Community Confirmed",
           "lastChecked": "2026-09-05"
+        },
+        {
+          "title": "Gordan Perisic: ability progression — September 4",
+          "url": "https://www.destructoid.com/best-spells-and-abilities-in-dungeon-quest-reborn/",
+          "evidenceNote": "An attributed editorial recommendation table, not independently captured drop conditions. Levels in this article are not treated as equip requirements.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "title": "Enhanced Inner Focus reward clip — August 14",
+          "url": "https://www.youtube.com/watch?v=eTmKGYKOFYI",
+          "evidenceNote": "Description links the exact Reborn game. Storyboard frames show Enchanted Forest Dragon and post-fight rewards; the small item text does not independently establish a full card, difficulty or rate.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "title": "Odin Reincarnation boss fight — September 6",
+          "url": "https://www.youtube.com/watch?v=zNvSBG2Vp98",
+          "evidenceNote": "Description links Reborn. Storyboard review shows a post-clear Fight prompt, a new boss bar, life icons and overlapping floor warnings. Not a controlled live test.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
         }
       ],
       "claims": [
@@ -681,7 +789,7 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
     "meta": {
       "title": "Dungeon Quest Reborn Northern Lands: Bosses & Solo Route",
       "eyebrow": "Northern Lands walkthrough",
-      "summary": "A timestamped companion to SaltyNub's September 2 solo guide: opening pulls, Midgardian Champion, Bob's orb mechanic and Odin positioning.",
+      "summary": "Read the September 2 normal-route companion, then the September 6 Odin Reincarnation bonus-boss guide. The older teaching run uses Nightmare equipment in Insane.",
       "quickAnswer": "Learn the sidestep-and-circle pull, save movement for the first boss's slam, guide Bob's orb into its matching rock, and keep distance from Odin. These are the creator's narrated tactics; the Insane teaching run uses Nightmare gear.",
       "verifiedForVersion": "September 2, 2026 solo-guide narration"
     },
@@ -691,11 +799,16 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
           "id": "run-context",
           "title": "Before you enter",
           "paragraphs": [
-            "The September 5 official check still names Northern Lands. The tactics below summarize a September 2 community recording, not a live test after the latest platform update.",
+            "The September 6 official title now names Odin Reincarnation. The route table below remains attributed to the September 2 recording and covers its earlier normal-route explanation; it is not the whole current bonus-boss flow.",
             "At 0:26 the creator explains the equipment. The teaching section is Insane with Nightmare gear, followed by a full Nightmare solo run at 17:38. Do not use its damage or clear speed as a minimum-entry requirement.",
             "Exact entry levels, boss health, timer and complete reward pool are unconfirmed here. Check the live selector."
           ],
           "links": [
+            {
+              "href": "/dungeons/northern-lands/odin-reincarnation/",
+              "label": "New: Odin Reincarnation bonus encounter",
+              "description": "September 6 entry prompt and battle observations."
+            },
             {
               "href": "https://www.youtube.com/watch?v=3pHhZpt-b-U&t=26s",
               "label": "Equipment context · 0:26",
@@ -921,6 +1034,11 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
       ],
       "related": [
         {
+          "href": "/dungeons/northern-lands/odin-reincarnation/",
+          "label": "Odin Reincarnation",
+          "description": "Read the separate bonus fight."
+        },
+        {
           "href": "/drops/",
           "label": "Drops",
           "description": "Check acquisition reports."
@@ -957,6 +1075,13 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
           "evidenceNote": "Public description checked September 5. No verifiable Trello URL found in this accessible source.",
           "evidenceLevel": "Official",
           "lastChecked": "2026-09-05"
+        },
+        {
+          "title": "Odin Reincarnation boss fight — September 6",
+          "url": "https://www.youtube.com/watch?v=zNvSBG2Vp98",
+          "evidenceNote": "Description links Reborn. Storyboard review shows a post-clear Fight prompt, a new boss bar, life icons and overlapping floor warnings. Not a controlled live test.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
         }
       ],
       "claims": [
@@ -1344,8 +1469,7 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
         }
       ]
     }
-  }
-,
+  },
   "/dungeons/": {
     "indexable": false,
     "meta": {
@@ -1390,6 +1514,27 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
                   "Three named ability-source reports",
                   "No current difficulty or reward sequence confirmed."
                 ]
+              },
+              {
+                "cells": [
+                  "Steampunk Sewers",
+                  "Nightmare side-entry and movement tips",
+                  "August 29 higher-level gear demonstration."
+                ]
+              },
+              {
+                "cells": [
+                  "Boss Raids",
+                  "Tier 1 Fusion Goliath reference",
+                  "Current unlock/key rules not fully verified."
+                ]
+              },
+              {
+                "cells": [
+                  "Egg Island",
+                  "Selector identity and version check",
+                  "Current function and rewards unknown."
+                ]
               }
             ]
           },
@@ -1408,6 +1553,21 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
               "href": "/drops/",
               "label": "Reported item locations",
               "description": "Start with a target ability."
+            },
+            {
+              "href": "/dungeons/steampunk-sewers/",
+              "label": "Steampunk Sewers",
+              "description": "Dated solo tips."
+            },
+            {
+              "href": "/guides/boss-raids/",
+              "label": "Boss Raids",
+              "description": "Separate encounters and entry reports."
+            },
+            {
+              "href": "/guides/egg-island/",
+              "label": "Egg Island",
+              "description": "Check identity before using an old event guide."
             }
           ]
         },
@@ -1524,7 +1684,7 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
       "title": "Dungeon Quest Reborn Winter Outpost: Difficulty Video Guide",
       "eyebrow": "Winter Outpost video companion",
       "summary": "Jump to Warrior or Mage footage for your chosen difficulty. This July 25 reference has clear chapter markers, but current entry levels and loot remain unverified.",
-      "quickAnswer": "Choose the chapter matching your difficulty and loadout below. The recording labels Warrior and Mage attempts from Easy through Nightmare. Treat it as older route context, not proof of September balance or minimum stats.",
+      "quickAnswer": "Use the difficulty chapters to preview a run, then check the current selector. Fire Bomb, Gale Slice, Arcane Barrage and Ground Slam appear in a September 4 progression article, but its recommended stages are not verified drop conditions.",
       "verifiedForVersion": null
     },
     "content": {
@@ -1637,6 +1797,67 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
           }
         },
         {
+          "id": "drops",
+          "title": "Winter Outpost skill and reward reports",
+          "paragraphs": [
+            "A recommendation table tells you what an author suggests using at a stage; it does not prove which difficulty drops it. Separate the two before committing to a farm."
+          ],
+          "table": {
+            "columns": [
+              "Skill",
+              "Why it is listed",
+              "What is missing"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Fire Bomb",
+                  "Mage progression recommendation",
+                  "Current reward condition and full card."
+                ]
+              },
+              {
+                "cells": [
+                  "Gale Slice",
+                  "Warrior progression recommendation",
+                  "Independent difficulty-specific reward record."
+                ]
+              },
+              {
+                "cells": [
+                  "Arcane Barrage",
+                  "Later Warrior recommendation",
+                  "Current card and reward proof."
+                ]
+              },
+              {
+                "cells": [
+                  "Ground Slam",
+                  "Transition recommendation also mentions Pirate Island",
+                  "Do not assume one exclusive dungeon source."
+                ]
+              }
+            ]
+          },
+          "links": [
+            {
+              "href": "/spells/fire-bomb/",
+              "label": "Fire Bomb guide",
+              "description": "Read the source comparison."
+            },
+            {
+              "href": "https://www.destructoid.com/best-spells-and-abilities-in-dungeon-quest-reborn/",
+              "label": "Read the progression article",
+              "description": "September 4 editorial source."
+            },
+            {
+              "href": "/drops/#drop-rates",
+              "label": "Drop-rate questions",
+              "description": "Why a dry streak is not a measured probability."
+            }
+          ]
+        },
+        {
           "id": "prepare",
           "title": "Before copying a loadout",
           "paragraphs": [
@@ -1688,6 +1909,26 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
               "startSeconds": 19
             }
           ]
+        },
+        {
+          "id": "next-run",
+          "title": "When to move on",
+          "paragraphs": [
+            "Check whether your next route is selectable, then try it with the loadout that already works. If you fail at one warning, practice that encounter before replacing every item.",
+            "The July video is a viewing reference, not proof that all entry gates and boss attacks remain unchanged in September. No complete current boss script is asserted."
+          ],
+          "links": [
+            {
+              "href": "/spells/phantom-flames/",
+              "label": "Phantom Flames",
+              "description": "A later ability use and source report."
+            },
+            {
+              "href": "/dungeons/",
+              "label": "Choose the next run",
+              "description": "Use current access rather than an old level ladder."
+            }
+          ]
         }
       ],
       "faq": [
@@ -1731,6 +1972,13 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
           "evidenceNote": "Public description checked September 5. No verifiable Trello URL found in this accessible source.",
           "evidenceLevel": "Official",
           "lastChecked": "2026-09-05"
+        },
+        {
+          "title": "Gordan Perisic: ability progression — September 4",
+          "url": "https://www.destructoid.com/best-spells-and-abilities-in-dungeon-quest-reborn/",
+          "evidenceNote": "An attributed editorial recommendation table, not independently captured drop conditions. Levels in this article are not treated as equip requirements.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
         }
       ],
       "claims": [
@@ -1748,6 +1996,2054 @@ export const playerGuides: Record<string, { indexable: boolean; meta: Partial<Si
         }
       ]
     }
+  },
+  "/spells/fire-bomb/": {
+    "indexable": false,
+    "meta": {
+      "title": "Dungeon Quest Reborn Fire Bomb: What’s Known",
+      "h1": "Dungeon Quest Reborn Fire Bomb: What’s Known",
+      "eyebrow": "Player guide",
+      "summary": "Fire Bomb’s Winter Outpost recommendation, skill-name checks and unconfirmed drop details.",
+      "quickAnswer": "Destructoid’s September 4 guide recommends Fire Bomb for Mages progressing through Winter Outpost. Its drop difficulty and stats are still unconfirmed.",
+      "verifiedForVersion": "Source review: September 6, 2026"
+    },
+    "content": {
+      "sections": [
+        {
+          "id": "ability-overview",
+          "title": "Fire Bomb at a glance",
+          "paragraphs": [
+            "Check the full name on the skill card. Search results also mention Fireball and Blue Fireball; their names alone do not establish whether they are the same skill."
+          ],
+          "table": {
+            "columns": [
+              "Question",
+              "Current answer"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Role",
+                  "Mage option in the September 4 editorial table."
+                ]
+              },
+              {
+                "cells": [
+                  "Associated dungeon",
+                  "Winter Outpost — attributed recommendation."
+                ]
+              },
+              {
+                "cells": [
+                  "Drop difficulty",
+                  "Unresolved; recommendations are not reward evidence."
+                ]
+              },
+              {
+                "cells": [
+                  "Equip level / cooldown / damage",
+                  "Not independently verified."
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "where-to-get",
+          "title": "Where can you get Fire Bomb?",
+          "paragraphs": [
+            "Destructoid recommends Fire Bomb for the Winter Outpost Hard/Insane stage. The article does not confirm which difficulty drops it, so this recommendation alone is not enough to choose a farming route."
+          ],
+          "links": [
+            {
+              "href": "/dungeons/winter-outpost/#drops",
+              "label": "Winter Outpost source notes",
+              "description": "Compare the reward evidence before farming."
+            },
+            {
+              "href": "https://www.destructoid.com/best-spells-and-abilities-in-dungeon-quest-reborn/",
+              "label": "Read the editorial recommendation",
+              "description": "September 4 Mage progression table."
+            }
+          ]
+        },
+        {
+          "id": "use",
+          "title": "Before changing your loadout",
+          "paragraphs": [
+            "Check the card’s power type and requirements before equipping it. Try a cast against a familiar target to see where it lands and how much ground it covers. Keep your current skill if Fire Bomb makes it harder to dodge."
+          ],
+          "links": [
+            {
+              "href": "/spells/phantom-flames/",
+              "label": "Phantom Flames",
+              "description": "Compare a documented ranged-use report."
+            },
+            {
+              "href": "/spells/",
+              "label": "All documented abilities",
+              "description": "Use the name and role filters."
+            }
+          ]
+        },
+        {
+          "id": "demonstration",
+          "title": "Stats and drop details",
+          "paragraphs": [
+            "Equip level, cooldown, damage and drop chance are unconfirmed."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "question": "Which difficulty drops Fire Bomb?",
+          "answer": "Not confirmed by the material reviewed. The September 4 guide recommends it at the Hard/Insane stage; that does not prove the drop condition."
+        },
+        {
+          "question": "Is Fire Bomb the same as Fireball?",
+          "answer": "Do not assume so. Match the exact current card name and category."
+        }
+      ],
+      "related": [
+        {
+          "href": "/spells/",
+          "label": "Spells",
+          "description": "Compare uses."
+        },
+        {
+          "href": "/drops/",
+          "label": "Drops",
+          "description": "Check reported drop locations."
+        },
+        {
+          "href": "/dungeons/winter-outpost/",
+          "label": "Winter Outpost",
+          "description": "Choose the correct reference."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gordan Perisic: ability progression — September 4",
+          "url": "https://www.destructoid.com/best-spells-and-abilities-in-dungeon-quest-reborn/",
+          "evidenceNote": "An attributed editorial recommendation table, not independently captured drop conditions. Levels in this article are not treated as equip requirements.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "title": "Official Roblox experience",
+          "url": "https://www.roblox.com/games/77649408247578/Dungeon-Quest-Reborn",
+          "evidenceNote": "September 6 public listing: [Odin Reincarnation] Dungeon Quest Reborn. No patch mechanics inferred.",
+          "evidenceLevel": "Official",
+          "lastChecked": "2026-09-06"
+        }
+      ],
+      "claims": [
+        {
+          "id": "source-summary",
+          "topic": "Fire Bomb: Use & Location Reports",
+          "claim": "Source scope",
+          "value": "Destructoid’s September 4 guide recommends Fire Bomb for Mages progressing through Winter Outpost. Its drop difficulty and stats are still unconfirmed.",
+          "claimStatus": "reported",
+          "confidence": "Medium",
+          "verifiedForVersion": "Source review: September 6, 2026",
+          "sourceURL": "https://www.destructoid.com/best-spells-and-abilities-in-dungeon-quest-reborn/",
+          "evidenceNote": "An attributed editorial recommendation table, not independently captured drop conditions. Levels in this article are not treated as equip requirements.",
+          "lastChecked": "2026-09-06"
+        }
+      ]
+    }
+  },
+  "/spells/enhanced-inner-focus/": {
+    "indexable": true,
+    "meta": {
+      "title": "Dungeon Quest Reborn Enhanced Inner Focus (EIF)",
+      "h1": "Dungeon Quest Reborn Enhanced Inner Focus (EIF)",
+      "eyebrow": "Player guide",
+      "summary": "Reported EIF drops, the regular Inner Focus comparison and trade terminology.",
+      "quickAnswer": "EIF stands for Enhanced Inner Focus. An August 14 video reports receiving it after an Enchanted Forest fight, but the difficulty and drop chance are unconfirmed. The September 1 comparison demonstrates regular Inner Focus.",
+      "verifiedForVersion": "Source review: September 6, 2026"
+    },
+    "content": {
+      "sections": [
+        {
+          "id": "ability-overview",
+          "title": "EIF and regular Inner Focus",
+          "paragraphs": [
+            "These similar names matter when reading a build or trade offer."
+          ],
+          "table": {
+            "columns": [
+              "Term",
+              "How to read it"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "EIF",
+                  "Enhanced Inner Focus: the named reward in an August 14 Reborn-labelled clip."
+                ]
+              },
+              {
+                "cells": [
+                  "Inner Focus",
+                  "The ordinary skill demonstrated in the September 1 comparison."
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "where-to-get",
+          "title": "Where can you get EIF?",
+          "paragraphs": [
+            "An August 14 Reborn video shows an Enchanted Forest Dragon fight followed by rewards. The creator names Enhanced Inner Focus in the title, but the reward text is too small to verify the item card or difficulty. This is a player-reported drop location; claims that EIF drops in every dungeon remain unconfirmed."
+          ],
+          "media": [
+            {
+              "id": "eTmKGYKOFYI",
+              "type": "youtube",
+              "videoId": "eTmKGYKOFYI",
+              "title": "Enhanced Inner Focus reward reference",
+              "alt": "Community video: Enhanced Inner Focus reward reference",
+              "caption": "August 14: the creator reports EIF after an Enchanted Forest fight. Difficulty is unconfirmed.",
+              "sourceURL": "https://www.youtube.com/watch?v=eTmKGYKOFYI",
+              "evidenceLevel": "Community Confirmed",
+              "claimIds": [
+                "source-summary"
+              ],
+              "capturedAt": "2026-09-06",
+              "verifiedForVersion": "Dated community source",
+              "startSeconds": 0
+            }
+          ]
+        },
+        {
+          "id": "alternative",
+          "title": "What to use while farming for EIF",
+          "paragraphs": [
+            "The September 1 video shows regular Inner Focus as an alternative. If you own it, compare a buff-and-attack setup with your usual skills on a run you know well. The video does not demonstrate EIF’s effect or confirm its multiplier."
+          ],
+          "links": [
+            {
+              "href": "/builds/mage/",
+              "label": "Mage loadout choices",
+              "description": "Compare a buff slot with a second attack."
+            }
+          ]
+        },
+        {
+          "id": "trade-language",
+          "title": "When EIF appears in a trade quote",
+          "paragraphs": [
+            "If a trade quote uses EIF as a unit of value, confirm the exact items offered. An asking price alone does not tell you what players are paying."
+          ],
+          "links": [
+            {
+              "href": "/trading/",
+              "label": "Trading guide",
+              "description": "Review the actual offer and source limits."
+            }
+          ]
+        },
+        {
+          "id": "demonstration",
+          "title": "Watch the ordinary-skill comparison",
+          "paragraphs": [
+            "The creator distinguishes the unavailable enhanced spells from the ordinary skill near the start. The demonstration begins around 1:10."
+          ],
+          "media": [
+            {
+              "id": "I11sThLGWJs",
+              "type": "youtube",
+              "videoId": "I11sThLGWJs",
+              "title": "Ordinary Inner Focus comparison",
+              "alt": "Community video: Ordinary Inner Focus comparison",
+              "caption": "September 1: regular Inner Focus comparison. The demonstration starts around 1:10.",
+              "sourceURL": "https://www.youtube.com/watch?v=I11sThLGWJs",
+              "evidenceLevel": "Community Confirmed",
+              "claimIds": [
+                "source-summary"
+              ],
+              "capturedAt": "2026-09-06",
+              "verifiedForVersion": "Dated community source",
+              "startSeconds": 70
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "question": "Where can I get Enhanced Inner Focus?",
+          "answer": "An August 14 player video reports it after an Enchanted Forest fight. The difficulty and drop chance are unconfirmed."
+        },
+        {
+          "question": "Does the comparison video show EIF?",
+          "answer": "No. The September 1 comparison shows regular Inner Focus; the creator says they do not own the enhanced version."
+        }
+      ],
+      "related": [
+        {
+          "href": "/spells/",
+          "label": "Spells",
+          "description": "Compare available abilities."
+        },
+        {
+          "href": "/drops/",
+          "label": "Drops",
+          "description": "Read the source and rate limits."
+        },
+        {
+          "href": "/trading/",
+          "label": "Trading",
+          "description": "Interpret offers carefully."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Enhanced Inner Focus reward clip — August 14",
+          "url": "https://www.youtube.com/watch?v=eTmKGYKOFYI",
+          "evidenceNote": "Description links the exact Reborn game. Storyboard frames show Enchanted Forest Dragon and post-fight rewards; the small item text does not independently establish a full card, difficulty or rate.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "title": "Inner Focus comparison — September 1",
+          "url": "https://www.youtube.com/watch?v=I11sThLGWJs",
+          "evidenceNote": "Captions reviewed. The creator explicitly does not own the enhanced spells; the demonstrated skill is the ordinary Inner Focus. Narrated percentages and probabilities are excluded.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        }
+      ],
+      "claims": [
+        {
+          "id": "source-summary",
+          "topic": "Enhanced Inner Focus (EIF)",
+          "claim": "Source scope",
+          "value": "EIF stands for Enhanced Inner Focus. An August 14 video reports receiving it after an Enchanted Forest fight, but the difficulty and drop chance are unconfirmed. The September 1 comparison demonstrates regular Inner Focus.",
+          "claimStatus": "reported",
+          "confidence": "Medium",
+          "verifiedForVersion": "Source review: September 6, 2026",
+          "sourceURL": "https://www.youtube.com/watch?v=eTmKGYKOFYI",
+          "evidenceNote": "Description links the exact Reborn game. Storyboard frames show Enchanted Forest Dragon and post-fight rewards; the small item text does not independently establish a full card, difficulty or rate.",
+          "lastChecked": "2026-09-06"
+        }
+      ]
+    }
+  },
+  "/guides/egg-island/": {
+    "indexable": false,
+    "meta": {
+      "title": "Dungeon Quest Reborn Egg Island: Where to Look",
+      "h1": "Dungeon Quest Reborn Egg Island: Where to Look",
+      "eyebrow": "Player guide",
+      "summary": "Where Egg Island appeared in Reborn’s menu and which details remain unknown.",
+      "quickAnswer": "Egg Island appears in the Play menu in Rexon’s August 27 Reborn video. Check your current menu for the same entry. Its rewards and entry requirements are still unconfirmed.",
+      "verifiedForVersion": "Source review: September 6, 2026"
+    },
+    "content": {
+      "sections": [
+        {
+          "id": "entry",
+          "title": "Find the right destination",
+          "paragraphs": [
+            "Open Play and look for Egg Island. Rexon’s August 27 video shows that menu entry, but its current availability and requirements have not been verified."
+          ],
+          "media": [
+            {
+              "id": "HEsb6IWo5KU",
+              "type": "youtube",
+              "videoId": "HEsb6IWo5KU",
+              "title": "Reborn lobby and progression reference",
+              "alt": "Community video: Reborn lobby and progression reference",
+              "caption": "August 27: Rexon’s Reborn lobby footage includes Egg Island in the Play menu.",
+              "sourceURL": "https://www.youtube.com/watch?v=HEsb6IWo5KU",
+              "evidenceLevel": "Community Confirmed",
+              "claimIds": [
+                "source-summary"
+              ],
+              "capturedAt": "2026-09-06",
+              "verifiedForVersion": "Dated community source",
+              "startSeconds": 0
+            }
+          ]
+        },
+        {
+          "id": "known",
+          "title": "Rewards and availability",
+          "paragraphs": [
+            "The menu footage does not show Egg Island’s purpose, rewards or opening schedule."
+          ]
+        },
+        {
+          "id": "wrong-version",
+          "title": "Avoid an older event walkthrough",
+          "paragraphs": [
+            "The December 2020 Egg Island walkthrough covers the older Dungeon Quest game. It does not confirm how Egg Island works in Reborn."
+          ]
+        },
+        {
+          "id": "next-step",
+          "title": "If you are trying to progress",
+          "paragraphs": [
+            "For progression, check the requirements shown in your current dungeon menu. The routes below provide other places to start."
+          ],
+          "links": [
+            {
+              "href": "/dungeons/winter-outpost/",
+              "label": "Winter Outpost reference",
+              "description": "Difficulty chapters and source reports."
+            },
+            {
+              "href": "/dungeons/",
+              "label": "Dungeon routes",
+              "description": "Choose by access and completion."
+            },
+            {
+              "href": "/discord/",
+              "label": "Community information",
+              "description": "Find a place to ask a specific current-version question."
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "question": "Where is Egg Island?",
+          "answer": "It appears in the Play menu in Rexon’s August 27 video. Check your current menu for availability."
+        },
+        {
+          "question": "Can I use the 2020 Egg Island walkthrough?",
+          "answer": "That walkthrough covers the older game. Its mechanics have not been confirmed for Reborn."
+        }
+      ],
+      "related": [
+        {
+          "href": "/dungeons/",
+          "label": "Dungeons",
+          "description": "Choose a documented route."
+        },
+        {
+          "href": "/cosmetics/",
+          "label": "Cosmetics",
+          "description": "Keep appearance and progression separate."
+        },
+        {
+          "href": "/beginner-guide/",
+          "label": "Beginner guide",
+          "description": "Plan a first run."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Rexon progression guide — August 27",
+          "url": "https://www.youtube.com/watch?v=HEsb6IWo5KU",
+          "evidenceNote": "Original description and storyboard reviewed: lobby Play selector includes Egg Island; shop shows VIP, x2 Gold and Extra Item. Caption retrieval failed, so no narration is assumed.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "title": "Official Roblox experience",
+          "url": "https://www.roblox.com/games/77649408247578/Dungeon-Quest-Reborn",
+          "evidenceNote": "September 6 public listing: [Odin Reincarnation] Dungeon Quest Reborn. No patch mechanics inferred.",
+          "evidenceLevel": "Official",
+          "lastChecked": "2026-09-06"
+        }
+      ],
+      "claims": [
+        {
+          "id": "source-summary",
+          "topic": "Egg Island: Entry & Version Check",
+          "claim": "Source scope",
+          "value": "Egg Island appears in the Play menu in Rexon’s August 27 Reborn video. Check your current menu for the same entry. Its rewards and entry requirements are still unconfirmed.",
+          "claimStatus": "reported",
+          "confidence": "Medium",
+          "verifiedForVersion": "Source review: September 6, 2026",
+          "sourceURL": "https://www.youtube.com/watch?v=HEsb6IWo5KU",
+          "evidenceNote": "Original description and storyboard reviewed: lobby Play selector includes Egg Island; shop shows VIP, x2 Gold and Extra Item. Caption retrieval failed, so no narration is assumed.",
+          "lastChecked": "2026-09-06"
+        }
+      ]
+    }
+  },
+  "/dungeons/northern-lands/odin-reincarnation/": {
+    "indexable": true,
+    "meta": {
+      "title": "Dungeon Quest Reborn Odin Reincarnation: Bonus Boss Guide",
+      "h1": "Dungeon Quest Reborn Odin Reincarnation: Bonus Boss Guide",
+      "eyebrow": "Player guide",
+      "summary": "Bonus-fight entry, visible arena warnings and preparation notes from September 6 community footage.",
+      "quickAnswer": "A September 6 recording shows Odin Reincarnation as a bonus fight after a clear. The player selects “Fight” at the bonus-boss prompt. The footage shows overlapping floor warnings; unlock conditions and rewards remain unconfirmed.",
+      "verifiedForVersion": "Source review: September 6, 2026"
+    },
+    "content": {
+      "sections": [
+        {
+          "id": "entry",
+          "title": "Entering the bonus encounter",
+          "paragraphs": [
+            "After the clear, the video shows a “Stay and fight the bonus boss?” prompt. The player selects Fight, and a separate boss bar names Odin Reincarnation. The clip does not confirm which difficulties offer this encounter."
+          ],
+          "media": [
+            {
+              "id": "zNvSBG2Vp98",
+              "type": "youtube",
+              "videoId": "zNvSBG2Vp98",
+              "title": "Odin Reincarnation entry and fight",
+              "alt": "Community video: Odin Reincarnation entry and fight",
+              "caption": "September 6: bonus-boss prompt followed by the Odin Reincarnation fight.",
+              "sourceURL": "https://www.youtube.com/watch?v=zNvSBG2Vp98",
+              "evidenceLevel": "Community Confirmed",
+              "claimIds": [
+                "source-summary"
+              ],
+              "capturedAt": "2026-09-06",
+              "verifiedForVersion": "Dated community source",
+              "startSeconds": 0
+            }
+          ]
+        },
+        {
+          "id": "patterns",
+          "title": "Read the arena before attacking",
+          "paragraphs": [
+            "The footage shows overlapping circular markers and broad directional warnings. Look for open space before attacking. These tips are based on the linked footage; exact attack timings and safe spots are unconfirmed."
+          ],
+          "table": {
+            "columns": [
+              "What you see",
+              "What to try"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Several marked areas overlap",
+                  "Move toward a visible clear area before committing another cast."
+                ]
+              },
+              {
+                "cells": [
+                  "A broad direction becomes covered",
+                  "Preserve lateral room rather than standing against an edge."
+                ]
+              },
+              {
+                "cells": [
+                  "Effects obscure the character",
+                  "Adjust camera distance and re-establish a readable position."
+                ]
+              },
+              {
+                "cells": [
+                  "Life icons and a timer are displayed",
+                  "Check the remaining lives and timer before your next attempt."
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "loadout",
+          "title": "Prepare for a learning attempt",
+          "paragraphs": [
+            "Use skills whose timing you know. If casting keeps getting you caught in a warning zone, try a skill that gives you more time to move.",
+            "The second video is labelled Nightmare HC by its creator. You can compare the run, but it does not establish minimum stats."
+          ],
+          "links": [
+            {
+              "href": "https://www.youtube.com/watch?v=auyxc4WMzTY",
+              "label": "Full route plus bonus boss reference",
+              "description": "September 6 solo upload."
+            },
+            {
+              "href": "/spells/",
+              "label": "Ability use cases",
+              "description": "Compare movement commitment and reach."
+            }
+          ]
+        },
+        {
+          "id": "rewards",
+          "title": "What does Odin Reincarnation drop?",
+          "paragraphs": [
+            "The reward pool and drop chances are unconfirmed. Keep rewards from the regular Northern Lands bosses separate from bonus-boss rewards when comparing reports."
+          ],
+          "links": [
+            {
+              "href": "/drops/",
+              "label": "Drop-source notes",
+              "description": "Keep encounter, difficulty and reward together."
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is Odin Reincarnation the same fight as Odin?",
+          "answer": "The September 6 recording shows an extra prompt and a separate named fight after a clear. The earlier Odin route alone does not cover it."
+        },
+        {
+          "question": "Is a specific weapon guaranteed?",
+          "answer": "No guaranteed reward or exact drop probability is verified here."
+        }
+      ],
+      "related": [
+        {
+          "href": "/dungeons/northern-lands/",
+          "label": "Northern Lands",
+          "description": "Prepare for the preceding route."
+        },
+        {
+          "href": "/spells/",
+          "label": "Spells",
+          "description": "Compare cast patterns."
+        },
+        {
+          "href": "/updates/",
+          "label": "Updates",
+          "description": "Read the dated title change."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Odin Reincarnation boss fight — September 6",
+          "url": "https://www.youtube.com/watch?v=zNvSBG2Vp98",
+          "evidenceNote": "Description links Reborn. Storyboard review shows a post-clear Fight prompt, a new boss bar, life icons and overlapping floor warnings. Not a controlled live test.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "title": "Northern Lands + bonus boss solo — September 6",
+          "url": "https://www.youtube.com/watch?v=auyxc4WMzTY",
+          "evidenceNote": "Independent creator labels the recording Nightmare HC plus Odin Reincarnation. The title is context, not proof of universal requirements or rewards.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "title": "Official Roblox experience",
+          "url": "https://www.roblox.com/games/77649408247578/Dungeon-Quest-Reborn",
+          "evidenceNote": "September 6 public listing: [Odin Reincarnation] Dungeon Quest Reborn. No patch mechanics inferred.",
+          "evidenceLevel": "Official",
+          "lastChecked": "2026-09-06"
+        }
+      ],
+      "claims": [
+        {
+          "id": "source-summary",
+          "topic": "Odin Reincarnation: Bonus Boss Guide",
+          "claim": "Source scope",
+          "value": "A September 6 recording shows Odin Reincarnation as a bonus fight after a clear. The player selects “Fight” at the bonus-boss prompt. The footage shows overlapping floor warnings; unlock conditions and rewards remain unconfirmed.",
+          "claimStatus": "reported",
+          "confidence": "Medium",
+          "verifiedForVersion": "Source review: September 6, 2026",
+          "sourceURL": "https://www.youtube.com/watch?v=zNvSBG2Vp98",
+          "evidenceNote": "Description links Reborn. Storyboard review shows a post-clear Fight prompt, a new boss bar, life icons and overlapping floor warnings. Not a controlled live test.",
+          "lastChecked": "2026-09-06"
+        }
+      ]
+    }
+  },
+  "/dungeons/steampunk-sewers/": {
+    "indexable": true,
+    "meta": {
+      "title": "Dungeon Quest Reborn Steampunk Sewers: Nightmare Tips",
+      "h1": "Dungeon Quest Reborn Steampunk Sewers: Nightmare Tips",
+      "eyebrow": "Player guide",
+      "summary": "Room-entry and boss tips from an August 29 Nightmare run using Pulse Waves.",
+      "quickAnswer": "The August 29 Nightmare guide recommends moving sideways when entering rooms and watching the boss’s orb before casting. The run uses Pulse Waves and level-160 gear, so it does not show the minimum equipment needed to clear.",
+      "verifiedForVersion": "Source review: September 6, 2026"
+    },
+    "content": {
+      "sections": [
+        {
+          "id": "context",
+          "title": "Watch the Nightmare run",
+          "paragraphs": [
+            "The creator identifies this as Nightmare without Hardcore. The timestamped tips below follow that run."
+          ],
+          "media": [
+            {
+              "id": "x1_Z-xZl23I",
+              "type": "youtube",
+              "videoId": "x1_Z-xZl23I",
+              "title": "Steampunk Sewers narrated attempt",
+              "alt": "Community video: Steampunk Sewers narrated attempt",
+              "caption": "August 29: Nightmare without Hardcore, using Pulse Waves and level-160 gear.",
+              "sourceURL": "https://www.youtube.com/watch?v=x1_Z-xZl23I",
+              "evidenceLevel": "Community Confirmed",
+              "claimIds": [
+                "source-summary"
+              ],
+              "capturedAt": "2026-09-06",
+              "verifiedForVersion": "Dated community source",
+              "startSeconds": 20
+            }
+          ]
+        },
+        {
+          "id": "route",
+          "title": "Room entry and boss tips",
+          "paragraphs": [],
+          "table": {
+            "columns": [
+              "Moment",
+              "Creator advice",
+              "How to apply it"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "1:08",
+                  "Use side-to-side movement; the creator prefers shift lock.",
+                  "Choose camera controls that let you read the warning; mobile controls may differ."
+                ]
+              },
+              {
+                "cells": [
+                  "1:29",
+                  "Watch the boss orb and nearby attack areas.",
+                  "Look for the next clear movement path before casting."
+                ]
+              },
+              {
+                "cells": [
+                  "2:29",
+                  "Review equipment upgrades when beginning the route.",
+                  "Keep a working set and identify the slot causing repeated failure."
+                ]
+              },
+              {
+                "cells": [
+                  "3:35",
+                  "Move toward the side when entering a room.",
+                  "Avoid walking directly into aligned ranged attacks."
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "abilities",
+          "title": "Pulse Waves and alternatives",
+          "paragraphs": [
+            "The run uses Pulse Waves. If you do not have it, try a familiar skill with enough reach and time between casts to dodge. The video does not confirm where Pulse Waves drops or its base cooldown."
+          ],
+          "links": [
+            {
+              "href": "/spells/",
+              "label": "Ability options",
+              "description": "Compare spell options."
+            },
+            {
+              "href": "/builds/mage/",
+              "label": "Mage choices",
+              "description": "Keep the loadout coherent."
+            }
+          ]
+        },
+        {
+          "id": "drops",
+          "title": "Rewards and next steps",
+          "paragraphs": [
+            "Entry levels, rewards and later unlocks are unconfirmed. Check your current dungeon menu for the routes available to your character."
+          ],
+          "links": [
+            {
+              "href": "/drops/",
+              "label": "Drop evidence",
+              "description": "Check what an acquisition report actually proves."
+            },
+            {
+              "href": "/guides/boss-raids/",
+              "label": "Boss Raids",
+              "description": "Compare the separate encounter mode."
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is the video a Hardcore run?",
+          "answer": "No. The creator identifies it as Nightmare without Hardcore."
+        },
+        {
+          "question": "Do I need level-160 gear to clear?",
+          "answer": "The creator uses level-160 gear, but the video does not establish the minimum equipment needed."
+        }
+      ],
+      "related": [
+        {
+          "href": "/dungeons/",
+          "label": "Dungeons",
+          "description": "Choose the next route."
+        },
+        {
+          "href": "/spells/",
+          "label": "Spells",
+          "description": "Compare use cases."
+        },
+        {
+          "href": "/guides/boss-raids/",
+          "label": "Boss Raids",
+          "description": "Read the separate mode guide."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Steampunk Sewers tips — August 29",
+          "url": "https://www.youtube.com/watch?v=x1_Z-xZl23I",
+          "evidenceNote": "Captions directly reviewed. Creator says Nightmare, not Hardcore, with level-160 gear. Pulse Waves advice is personal and does not establish drop conditions or base cooldown.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "title": "Official Roblox experience",
+          "url": "https://www.roblox.com/games/77649408247578/Dungeon-Quest-Reborn",
+          "evidenceNote": "September 6 public listing: [Odin Reincarnation] Dungeon Quest Reborn. No patch mechanics inferred.",
+          "evidenceLevel": "Official",
+          "lastChecked": "2026-09-06"
+        }
+      ],
+      "claims": [
+        {
+          "id": "source-summary",
+          "topic": "Steampunk Sewers: Solo Route Tips",
+          "claim": "Source scope",
+          "value": "The August 29 Nightmare guide recommends moving sideways when entering rooms and watching the boss’s orb before casting. The run uses Pulse Waves and level-160 gear, so it does not show the minimum equipment needed to clear.",
+          "claimStatus": "reported",
+          "confidence": "Medium",
+          "verifiedForVersion": "Source review: September 6, 2026",
+          "sourceURL": "https://www.youtube.com/watch?v=x1_Z-xZl23I",
+          "evidenceNote": "Captions directly reviewed. Creator says Nightmare, not Hardcore, with level-160 gear. Pulse Waves advice is personal and does not establish drop conditions or base cooldown.",
+          "lastChecked": "2026-09-06"
+        }
+      ]
+    }
+  },
+  "/guides/boss-raids/": {
+    "indexable": true,
+    "meta": {
+      "title": "Dungeon Quest Reborn Boss Raids: Fusion Goliath Tips",
+      "h1": "Dungeon Quest Reborn Boss Raids: Fusion Goliath Tips",
+      "eyebrow": "Player guide",
+      "summary": "Fusion Goliath attack warnings, a Tier 1 video and reported raid entry levels.",
+      "quickAnswer": "The linked guide shows a Tier 1 Fusion Goliath fight with overlapping circular and straight attack zones. Players report joining raids around level 130; the current unlock requirement and key rules are unconfirmed.",
+      "verifiedForVersion": "Source review: September 6, 2026"
+    },
+    "content": {
+      "sections": [
+        {
+          "id": "entry",
+          "title": "Access and preparation",
+          "paragraphs": [
+            "Two player guides discuss raids around level 130. Check the current raid menu for the actual entry requirement.",
+            "A progression video shows a Boss Keys inventory category, but does not explain which keys a raid uses or whether joining consumes them."
+          ],
+          "links": [
+            {
+              "href": "/discord/",
+              "label": "Find community information",
+              "description": "Ask about the exact raid, tier and current requirements."
+            },
+            {
+              "href": "/gamepasses/",
+              "label": "Gamepass planning",
+              "description": "Separate raid advice from purchase promises."
+            }
+          ]
+        },
+        {
+          "id": "fusion",
+          "title": "Fusion Goliath: read the marked areas",
+          "paragraphs": [
+            "The August 25 video shows Tier 1 Fusion Goliath with circular and straight warning zones. The gear showcase starts at 0:16; the fight starts at 0:28."
+          ],
+          "table": {
+            "columns": [
+              "Situation",
+              "Decision"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Circular and straight zones overlap",
+                  "Find a clear path before committing a cast."
+                ]
+              },
+              {
+                "cells": [
+                  "The boss closes the gap",
+                  "Keep enough room to change direction instead of backing into an edge."
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "raid-video",
+          "title": "Watch Tier 1 Fusion Goliath",
+          "paragraphs": [
+            "This video covers Fusion Goliath at Tier 1. Other raid bosses and tiers are not covered here."
+          ],
+          "media": [
+            {
+              "id": "ZoCazKucPnI",
+              "type": "youtube",
+              "videoId": "ZoCazKucPnI",
+              "title": "Fusion Goliath raid reference",
+              "alt": "Community video: Fusion Goliath raid reference",
+              "caption": "Tier 1 Fusion Goliath. Gear showcase starts at 0:16; the fight starts at 0:28.",
+              "sourceURL": "https://www.youtube.com/watch?v=ZoCazKucPnI",
+              "evidenceLevel": "Community Confirmed",
+              "claimIds": [
+                "source-summary"
+              ],
+              "capturedAt": "2026-09-06",
+              "verifiedForVersion": "Dated community source",
+              "startSeconds": 28
+            }
+          ]
+        },
+        {
+          "id": "rewards",
+          "title": "Rewards, keys and resets",
+          "paragraphs": [
+            "Key consumption, reset times, ticket limits and the full reward list are unconfirmed. Original Dungeon Quest schedules may not apply to Reborn.",
+            "One creator recommends raids to earn Gold for passes, but gives no verified income per run."
+          ],
+          "links": [
+            {
+              "href": "/drops/",
+              "label": "Drop sources",
+              "description": "Record the exact encounter and reward."
+            },
+            {
+              "href": "/dungeons/",
+              "label": "Regular dungeon routes",
+              "description": "Compare a run you already complete reliably."
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "question": "What level unlocks raids?",
+          "answer": "Creators discuss level 130, but the exact current menu requirement is not independently verified here."
+        },
+        {
+          "question": "Are there daily tickets like the original game?",
+          "answer": "No such current Reborn schedule is established by the reviewed material. Check the raid menu rather than using original-game reset times."
+        }
+      ],
+      "related": [
+        {
+          "href": "/dungeons/",
+          "label": "Dungeons",
+          "description": "Regular routes."
+        },
+        {
+          "href": "/gamepasses/",
+          "label": "Gamepasses",
+          "description": "Evaluate purchases."
+        },
+        {
+          "href": "/discord/",
+          "label": "Discord",
+          "description": "Community entry point."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Fusion Goliath raid guide — August 25",
+          "url": "https://www.youtube.com/watch?v=ZoCazKucPnI",
+          "evidenceNote": "Storyboard review shows Tier 1, Fusion Goliath, life icons and overlapping circular/linear attack zones. Video labels gear at 0:16 and raid at 0:28.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "title": "Level 130–140 Boss Raids — September 4",
+          "url": "https://www.youtube.com/watch?v=zrFyRN1Uads",
+          "evidenceNote": "Dated Reborn-labelled progression upload. Its title supports player context, not a universal unlock rule.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "title": "Gamepass purchase route — August 25",
+          "url": "https://www.youtube.com/watch?v=kG2epjmNzDk",
+          "evidenceNote": "Captions reviewed: creator reports level-130 raids and a purchase order. This is an account-specific strategy, not verified pricing or developer policy.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "title": "Rexon progression guide — August 27",
+          "url": "https://www.youtube.com/watch?v=HEsb6IWo5KU",
+          "evidenceNote": "Original description and storyboard reviewed: lobby Play selector includes Egg Island; shop shows VIP, x2 Gold and Extra Item. Caption retrieval failed, so no narration is assumed.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        }
+      ],
+      "claims": [
+        {
+          "id": "source-summary",
+          "topic": "Boss Raids: Entry & Fusion Goliath",
+          "claim": "Source scope",
+          "value": "The linked guide shows a Tier 1 Fusion Goliath fight with overlapping circular and straight attack zones. Players report joining raids around level 130; the current unlock requirement and key rules are unconfirmed.",
+          "claimStatus": "reported",
+          "confidence": "Medium",
+          "verifiedForVersion": "Source review: September 6, 2026",
+          "sourceURL": "https://www.youtube.com/watch?v=ZoCazKucPnI",
+          "evidenceNote": "Storyboard review shows Tier 1, Fusion Goliath, life icons and overlapping circular/linear attack zones. Video labels gear at 0:16 and raid at 0:28.",
+          "lastChecked": "2026-09-06"
+        }
+      ]
+    }
+  },
+  "/gamepasses/": {
+    "indexable": false,
+    "meta": {
+      "title": "Dungeon Quest Reborn Gamepasses: Gold Purchases & Priorities",
+      "h1": "Dungeon Quest Reborn Gamepasses: Gold Purchases & Priorities",
+      "summary": "Compare observed shop labels, a creator’s purchase order and the original player report about rising Gold prices.",
+      "quickAnswer": "A dated Reborn lobby shows VIP, x2 Gold and Extra Item shop labels. A creator proposes Gold farming through raids and buying x2 Gold first. Treat this as a strategy report: current prices, reset-benefit wording and account scaling still need the live storefront.",
+      "eyebrow": "Player guide",
+      "verifiedForVersion": "September 6 source review; dated observations"
+    },
+    "content": {
+      "sections": [
+        {
+          "id": "shop",
+          "title": "What the shop reference shows",
+          "paragraphs": [],
+          "table": {
+            "columns": [
+              "Benefit",
+              "Evidence",
+              "Before buying"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "VIP",
+                  "Visible in August 27 shop frames",
+                  "Read the current included effects."
+                ]
+              },
+              {
+                "cells": [
+                  "x2 Gold",
+                  "Visible shop label; first in one creator’s order",
+                  "Check what activities it actually affects."
+                ]
+              },
+              {
+                "cells": [
+                  "Extra Item",
+                  "Visible shop label; second in that order",
+                  "Confirm which reward screens receive the extra item."
+                ]
+              },
+              {
+                "cells": [
+                  "Reset benefit",
+                  "Creator says free stat resets",
+                  "Check the exact current name and affected system."
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "buy-order",
+          "title": "A creator’s purchase order",
+          "paragraphs": [
+            "At 0:27 in the August 25 clip, the proposed order is x2 Gold, extra item, VIP, then a reset benefit. This reflects that creator’s repeated farming route, not an independently measured optimum.",
+            "If you cannot reliably finish the activity, a pass is not a replacement for fixing your loadout or routing. Keep enough Gold for the upgrades that let you complete runs."
+          ],
+          "media": [
+            {
+              "id": "kG2epjmNzDk",
+              "type": "youtube",
+              "videoId": "kG2epjmNzDk",
+              "title": "Creator gamepass purchase route",
+              "alt": "Creator gamepass purchase route",
+              "caption": "Dated community reference; read the adjacent source limits.",
+              "sourceURL": "https://www.youtube.com/watch?v=kG2epjmNzDk",
+              "evidenceLevel": "Community Confirmed",
+              "claimIds": [
+                "source-summary"
+              ],
+              "capturedAt": "2026-09-06",
+              "verifiedForVersion": "Dated community reference",
+              "startSeconds": 27
+            }
+          ]
+        },
+        {
+          "id": "changing-gold-price",
+          "title": "Why the Gold Price Can Change",
+          "paragraphs": [
+            "An August 29 player post reports that the displayed Gold price rose as they progressed. A single account report cannot establish a level formula or a universal price.",
+            "Compare the same benefit, currency and account progression before concluding that the price changed unexpectedly. The public pass API’s technical labels do not substitute for the in-game storefront."
+          ],
+          "links": [
+            {
+              "href": "https://www.reddit.com/r/u_MountainSharp1371/comments/1w1ztbr/dungeon_quest_reborn/",
+              "label": "Read the original price question",
+              "description": "Player report, not a pricing formula."
+            }
+          ]
+        },
+        {
+          "id": "raid-route",
+          "title": "Should you farm raids for Gold?",
+          "paragraphs": [
+            "The creator suggests level-130 raids as their funding route. No guaranteed income or number of runs is established. Read the raid menu and compare runs you actually complete."
+          ],
+          "links": [
+            {
+              "href": "/guides/boss-raids/",
+              "label": "Boss Raids",
+              "description": "Entry reports and encounter reference."
+            },
+            {
+              "href": "/dungeons/",
+              "label": "Dungeon choices",
+              "description": "Choose a reliable run."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Rexon progression guide — August 27",
+          "url": "https://www.youtube.com/watch?v=HEsb6IWo5KU",
+          "evidenceNote": "Original description and storyboard reviewed: lobby Play selector includes Egg Island; shop shows VIP, x2 Gold and Extra Item. Caption retrieval failed, so no narration is assumed.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "title": "Gamepass purchase route — August 25",
+          "url": "https://www.youtube.com/watch?v=kG2epjmNzDk",
+          "evidenceNote": "Captions reviewed: creator reports level-130 raids and a purchase order. This is an account-specific strategy, not verified pricing or developer policy.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "title": "Player report: rising Gold pass prices — August 29",
+          "url": "https://www.reddit.com/r/u_MountainSharp1371/comments/1w1ztbr/dungeon_quest_reborn/",
+          "evidenceNote": "A single player describes prices increasing with progress. It motivates a purchase comparison, not a confirmed formula.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "title": "Roblox Games API",
+          "url": "https://games.roblox.com/v1/games?universeIds=9931749389",
+          "evidenceNote": "Fresh identity snapshot on September 6; update time is not patch-note content.",
+          "evidenceLevel": "Official",
+          "lastChecked": "2026-09-06"
+        }
+      ],
+      "related": [
+        {
+          "href": "/guides/boss-raids/",
+          "label": "Boss Raids",
+          "description": "Compare the funding route."
+        },
+        {
+          "href": "/dungeons/",
+          "label": "Dungeons",
+          "description": "Improve reliable completion."
+        },
+        {
+          "href": "/updates/",
+          "label": "Updates",
+          "description": "Check dated changes."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is this a universal recommendation?",
+          "answer": "No. Match the source date, game version and your current loadout before acting."
+        },
+        {
+          "question": "Why are some values missing?",
+          "answer": "Unknown values are not treated as zero or copied from the original game."
+        }
+      ],
+      "claims": []
+    }
+  },
+  "/discord/": {
+    "indexable": true,
+    "meta": {
+      "title": "Dungeon Quest Reborn Discord: Invite & Community Help",
+      "h1": "Dungeon Quest Reborn Discord: Invite & Community Help",
+      "summary": "Open the community invite, prepare a useful question and troubleshoot joining without assuming developer ownership.",
+      "quickAnswer": "The dqr invite preview resolves to a community named dqr in the September 6 check. Reborn creators link it, but a working invite and creator endorsement do not establish developer ownership. Open the preview and check the destination before joining.",
+      "eyebrow": "Player guide",
+      "verifiedForVersion": "September 6 source review; dated observations"
+    },
+    "content": {
+      "sections": [
+        {
+          "id": "invite",
+          "title": "Community invite",
+          "paragraphs": [
+            "Use the dqr invite as a community candidate. This site does not label it an independently verified official developer channel."
+          ],
+          "links": [
+            {
+              "href": "https://discord.gg/dqr",
+              "label": "Open the dqr community invite",
+              "description": "Check the server preview before joining."
+            }
+          ]
+        },
+        {
+          "id": "help",
+          "title": "Ask a question that can be answered",
+          "paragraphs": [],
+          "table": {
+            "columns": [
+              "You need",
+              "Include in your question"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Party help",
+                  "Dungeon, difficulty, role and the encounter blocking you."
+                ]
+              },
+              {
+                "cells": [
+                  "A drop source",
+                  "Exact item name, difficulty and whether it appeared on a reward screen."
+                ]
+              },
+              {
+                "cells": [
+                  "Patch information",
+                  "Announcement link and date, not only a screenshot title."
+                ]
+              },
+              {
+                "cells": [
+                  "Trade context",
+                  "Exact card and upgrade state; never account credentials."
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "join-errors",
+          "title": "If the invite does not open",
+          "paragraphs": [
+            "Try the direct invite in a browser and inspect the error. An expired invite, server restriction and account eligibility issue are different problems. Use a fresh developer-linked invite if one becomes available.",
+            "Do not use a third-party verification tool or send a Roblox password or session cookie to join a community."
+          ]
+        },
+        {
+          "id": "alternatives",
+          "title": "Find an answer without joining",
+          "paragraphs": [
+            "For a quick lookup, start with the relevant guide rather than waiting for a chat response."
+          ],
+          "links": [
+            {
+              "href": "/spells/",
+              "label": "Spells",
+              "description": "Uses and source reports."
+            },
+            {
+              "href": "/dungeons/winter-outpost/",
+              "label": "Winter Outpost",
+              "description": "Difficulty references."
+            },
+            {
+              "href": "/trello/",
+              "label": "Trello status",
+              "description": "Other information routes."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Discord invite preview",
+          "url": "https://discord.com/api/v10/invites/dqr?with_counts=true",
+          "evidenceNote": "September 6 endpoint resolves code dqr to a guild named dqr. Developer ownership is still not established by this preview.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "title": "Rexon progression guide — August 27",
+          "url": "https://www.youtube.com/watch?v=HEsb6IWo5KU",
+          "evidenceNote": "Original description and storyboard reviewed: lobby Play selector includes Egg Island; shop shows VIP, x2 Gold and Extra Item. Caption retrieval failed, so no narration is assumed.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "title": "Official Roblox experience",
+          "url": "https://www.roblox.com/games/77649408247578/Dungeon-Quest-Reborn",
+          "evidenceNote": "September 6 public listing: [Odin Reincarnation] Dungeon Quest Reborn. No patch mechanics inferred.",
+          "evidenceLevel": "Official",
+          "lastChecked": "2026-09-06"
+        }
+      ],
+      "related": [
+        {
+          "href": "/trello/",
+          "label": "Trello",
+          "description": "Information sources."
+        },
+        {
+          "href": "/guides/boss-raids/",
+          "label": "Boss Raids",
+          "description": "Read entry reports."
+        },
+        {
+          "href": "/updates/",
+          "label": "Updates",
+          "description": "Dated source changes."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is discord.gg/dqr official?",
+          "answer": "It resolves and Reborn creators link it, but this review has not established a direct developer-owned connection."
+        },
+        {
+          "question": "Do I have to join to use the wiki?",
+          "answer": "No. All published guides can be read without joining a server."
+        }
+      ],
+      "claims": []
+    }
+  },
+  "/spell-tier-list/": {
+    "indexable": false,
+    "meta": {
+      "title": "Dungeon Quest Reborn Spell choices by situation",
+      "h1": "Dungeon Quest Reborn Spell choices by situation",
+      "summary": "Compare ability jobs and reachable alternatives without a context-free power ranking.",
+      "quickAnswer": "Choose the option that solves your current failure: missed attacks, unsafe cast windows or poor survival. The table is a source-informed comparison, not a measured S-to-F ranking.",
+      "eyebrow": "Player guide",
+      "verifiedForVersion": "September 6 source review; dated observations"
+    },
+    "content": {
+      "sections": [
+        {
+          "id": "choices",
+          "title": "Compare the job before the grade",
+          "paragraphs": [],
+          "table": {
+            "columns": [
+              "Situation",
+              "Candidate or decision",
+              "Limit"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Early repeated casts",
+                  "Ice Needles use report",
+                  "Not a base-cooldown measurement."
+                ]
+              },
+              {
+                "cells": [
+                  "Winter Outpost Mage progression",
+                  "Fire Bomb editorial recommendation",
+                  "Acquisition difficulty unresolved."
+                ]
+              },
+              {
+                "cells": [
+                  "Ranged damage",
+                  "Phantom Flames use report",
+                  "Depends on landing casts and current equipment."
+                ]
+              },
+              {
+                "cells": [
+                  "Damage while moving",
+                  "Infernal Orbs use report",
+                  "No universal DPS result."
+                ]
+              },
+              {
+                "cells": [
+                  "Later buff slot",
+                  "Ordinary Inner Focus versus a second attack",
+                  "The available-skill demo does not measure EIF."
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "test",
+          "title": "Make a fair comparison",
+          "paragraphs": [
+            "Keep dungeon, difficulty and other gear stable. Compare missed casts, deaths and completed runs as well as damage. Record whether a better result comes from an ability or from different equipment.",
+            "Do not rank unavailable rare gear above an obtainable improvement solely because of its rarity."
+          ]
+        },
+        {
+          "id": "paths",
+          "title": "Choose the next guide",
+          "paragraphs": [
+            "Use the detailed source notes before investing in a change."
+          ],
+          "links": [
+            {
+              "href": "/spells/fire-bomb/",
+              "label": "Fire Bomb",
+              "description": "Winter Outpost source limits."
+            },
+            {
+              "href": "/spells/enhanced-inner-focus/",
+              "label": "EIF and ordinary Inner Focus",
+              "description": "Separate the two skills."
+            },
+            {
+              "href": "/builds/mage/",
+              "label": "Mage choices",
+              "description": "Plan the loadout."
+            },
+            {
+              "href": "/builds/warrior/",
+              "label": "Warrior choices",
+              "description": "Match physical-path tools."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gordan Perisic: ability progression — September 4",
+          "url": "https://www.destructoid.com/best-spells-and-abilities-in-dungeon-quest-reborn/",
+          "evidenceNote": "An attributed editorial recommendation table, not independently captured drop conditions. Levels in this article are not treated as equip requirements.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "title": "Inner Focus comparison — September 1",
+          "url": "https://www.youtube.com/watch?v=I11sThLGWJs",
+          "evidenceNote": "Captions reviewed. The creator explicitly does not own the enhanced spells; the demonstrated skill is the ordinary Inner Focus. Narrated percentages and probabilities are excluded.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        }
+      ],
+      "related": [
+        {
+          "href": "/spells/",
+          "label": "Spells",
+          "description": "Objective use cases."
+        },
+        {
+          "href": "/drops/",
+          "label": "Drops",
+          "description": "Acquisition limits."
+        },
+        {
+          "href": "/tier-list/",
+          "label": "Related comparison",
+          "description": "Separate scope."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is this a universal recommendation?",
+          "answer": "No. Match the source date, game version and your current loadout before acting."
+        },
+        {
+          "question": "Why are some values missing?",
+          "answer": "Unknown values are not treated as zero or copied from the original game."
+        }
+      ],
+      "claims": []
+    }
+  },
+  "/tier-list/": {
+    "indexable": false,
+    "meta": {
+      "title": "Dungeon Quest Reborn Build priorities by situation",
+      "h1": "Dungeon Quest Reborn Build priorities by situation",
+      "summary": "Match your next improvement to the part of the run that fails: damage, movement, survival or acquisition.",
+      "quickAnswer": "Choose the option that solves your current failure: missed attacks, unsafe cast windows or poor survival. The table is a source-informed comparison, not a measured S-to-F ranking.",
+      "eyebrow": "Player guide",
+      "verifiedForVersion": "September 6 source review; dated observations"
+    },
+    "content": {
+      "sections": [
+        {
+          "id": "choices",
+          "title": "Compare the job before the grade",
+          "paragraphs": [],
+          "table": {
+            "columns": [
+              "Situation",
+              "Candidate or decision",
+              "Limit"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Early repeated casts",
+                  "Ice Needles use report",
+                  "Not a base-cooldown measurement."
+                ]
+              },
+              {
+                "cells": [
+                  "Winter Outpost Mage progression",
+                  "Fire Bomb editorial recommendation",
+                  "Acquisition difficulty unresolved."
+                ]
+              },
+              {
+                "cells": [
+                  "Ranged damage",
+                  "Phantom Flames use report",
+                  "Depends on landing casts and current equipment."
+                ]
+              },
+              {
+                "cells": [
+                  "Damage while moving",
+                  "Infernal Orbs use report",
+                  "No universal DPS result."
+                ]
+              },
+              {
+                "cells": [
+                  "Later buff slot",
+                  "Ordinary Inner Focus versus a second attack",
+                  "The available-skill demo does not measure EIF."
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "test",
+          "title": "Make a fair comparison",
+          "paragraphs": [
+            "Keep dungeon, difficulty and other gear stable. Compare missed casts, deaths and completed runs as well as damage. Record whether a better result comes from an ability or from different equipment.",
+            "Do not rank unavailable rare gear above an obtainable improvement solely because of its rarity."
+          ]
+        },
+        {
+          "id": "paths",
+          "title": "Choose the next guide",
+          "paragraphs": [
+            "Use the detailed source notes before investing in a change."
+          ],
+          "links": [
+            {
+              "href": "/spells/fire-bomb/",
+              "label": "Fire Bomb",
+              "description": "Winter Outpost source limits."
+            },
+            {
+              "href": "/spells/enhanced-inner-focus/",
+              "label": "EIF and ordinary Inner Focus",
+              "description": "Separate the two skills."
+            },
+            {
+              "href": "/builds/mage/",
+              "label": "Mage choices",
+              "description": "Plan the loadout."
+            },
+            {
+              "href": "/builds/warrior/",
+              "label": "Warrior choices",
+              "description": "Match physical-path tools."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gordan Perisic: ability progression — September 4",
+          "url": "https://www.destructoid.com/best-spells-and-abilities-in-dungeon-quest-reborn/",
+          "evidenceNote": "An attributed editorial recommendation table, not independently captured drop conditions. Levels in this article are not treated as equip requirements.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "title": "Inner Focus comparison — September 1",
+          "url": "https://www.youtube.com/watch?v=I11sThLGWJs",
+          "evidenceNote": "Captions reviewed. The creator explicitly does not own the enhanced spells; the demonstrated skill is the ordinary Inner Focus. Narrated percentages and probabilities are excluded.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        }
+      ],
+      "related": [
+        {
+          "href": "/spells/",
+          "label": "Spells",
+          "description": "Objective use cases."
+        },
+        {
+          "href": "/drops/",
+          "label": "Drops",
+          "description": "Acquisition limits."
+        },
+        {
+          "href": "/spell-tier-list/",
+          "label": "Related comparison",
+          "description": "Separate scope."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is this a universal recommendation?",
+          "answer": "No. Match the source date, game version and your current loadout before acting."
+        },
+        {
+          "question": "Why are some values missing?",
+          "answer": "Unknown values are not treated as zero or copied from the original game."
+        }
+      ],
+      "claims": []
+    }
+  },
+  "/builds/mage/": {
+    "indexable": false,
+    "meta": {
+      "title": "Dungeon Quest Reborn Mage Build: Stage & Ability Choices",
+      "h1": "Dungeon Quest Reborn Mage Build: Stage & Ability Choices",
+      "summary": "Stage-based ability leads, ordinary buff alternatives and practical Spell Power loadout decisions.",
+      "quickAnswer": "Match the card’s Spell Power compatibility, keep a reliable attack and test whether a buff or recovery slot improves completion. Stage recommendations below are attributed guidance, not a fixed best-in-slot list.",
+      "eyebrow": "Player guide",
+      "verifiedForVersion": "September 6 source review; dated observations"
+    },
+    "content": {
+      "sections": [
+        {
+          "id": "stages",
+          "title": "Stage-by-stage choices",
+          "paragraphs": [],
+          "table": {
+            "columns": [
+              "Stage",
+              "Source-informed starting point",
+              "Alternative decision"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Early play",
+                  "Use an ability you can land consistently.",
+                  "Retain recovery when survival limits the run."
+                ]
+              },
+              {
+                "cells": [
+                  "Winter Outpost",
+                  "Fire Bomb appears in the September 4 Mage table.",
+                  "Keep a working ability until its source and card are clear."
+                ]
+              },
+              {
+                "cells": [
+                  "Pirate Island and beyond",
+                  "Compare Phantom Flames and Infernal Orbs use reports.",
+                  "Choose range versus damage-over-time by the encounter."
+                ]
+              },
+              {
+                "cells": [
+                  "Later routes",
+                  "Test ordinary Inner Focus with a damage ability.",
+                  "Do not wait for EIF before improving a working loadout."
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "gear",
+          "title": "Weapon and armor decisions",
+          "paragraphs": [
+            "Match the power axis and equip requirements shown by the current cards. Compare items at similar upgrade states; a fully upgraded showcase is not a base-stat benchmark.",
+            "If one attack repeatedly ends your run, compare survival and positioning before allocating every resource to more damage. No fixed percentage of stat points is asserted."
+          ]
+        },
+        {
+          "id": "rotation",
+          "title": "Plan casts around the warning",
+          "paragraphs": [
+            "Prepare any applicable buff before the safe damage window, aim the attack, then move when the next warning appears. Do not spend every ability merely because its cooldown ended.",
+            "Compare a second attack with utility under the same conditions. The goal is repeatable completion, not a single large hit."
+          ]
+        },
+        {
+          "id": "sources",
+          "title": "Next steps",
+          "paragraphs": [
+            "Use the exact ability or encounter guide to check the source context."
+          ],
+          "links": [
+            {
+              "href": "/spells/",
+              "label": "Ability lookup",
+              "description": "Compare uses and current unknowns."
+            },
+            {
+              "href": "/spell-tier-list/",
+              "label": "Situational spell choices",
+              "description": "Avoid a context-free tier."
+            },
+            {
+              "href": "/dungeons/northern-lands/odin-reincarnation/",
+              "label": "Odin Reincarnation",
+              "description": "Plan for overlapping warnings."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gordan Perisic: ability progression — September 4",
+          "url": "https://www.destructoid.com/best-spells-and-abilities-in-dungeon-quest-reborn/",
+          "evidenceNote": "An attributed editorial recommendation table, not independently captured drop conditions. Levels in this article are not treated as equip requirements.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "title": "Inner Focus comparison — September 1",
+          "url": "https://www.youtube.com/watch?v=I11sThLGWJs",
+          "evidenceNote": "Captions reviewed. The creator explicitly does not own the enhanced spells; the demonstrated skill is the ordinary Inner Focus. Narrated percentages and probabilities are excluded.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        }
+      ],
+      "related": [
+        {
+          "href": "/spells/",
+          "label": "Spells",
+          "description": "Find the ability."
+        },
+        {
+          "href": "/drops/",
+          "label": "Drops",
+          "description": "Check the reported source."
+        },
+        {
+          "href": "/dungeons/",
+          "label": "Dungeons",
+          "description": "Choose a repeatable route."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is this a universal recommendation?",
+          "answer": "No. Match the source date, game version and your current loadout before acting."
+        },
+        {
+          "question": "Why are some values missing?",
+          "answer": "Unknown values are not treated as zero or copied from the original game."
+        }
+      ],
+      "claims": []
+    }
+  },
+  "/builds/warrior/": {
+    "indexable": false,
+    "meta": {
+      "title": "Dungeon Quest Reborn Warrior Build: Stage & Ability Choices",
+      "h1": "Dungeon Quest Reborn Warrior Build: Stage & Ability Choices",
+      "summary": "Physical-path ability leads, equipment comparisons and safe attack windows for a repeatable run.",
+      "quickAnswer": "Match Physical Power compatibility, then choose attacks whose placement you can repeat while dodging. The source recommendations below are starting points, not verified minimum stats.",
+      "eyebrow": "Player guide",
+      "verifiedForVersion": "September 6 source review; dated observations"
+    },
+    "content": {
+      "sections": [
+        {
+          "id": "stages",
+          "title": "Stage-by-stage choices",
+          "paragraphs": [],
+          "table": {
+            "columns": [
+              "Stage",
+              "Source-informed starting point",
+              "Alternative decision"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Early play",
+                  "Battle Shout is described in the August 28 guide.",
+                  "Check whether it affects the attacks you actually use."
+                ]
+              },
+              {
+                "cells": [
+                  "Winter Outpost",
+                  "Gale Slice, Arcane Barrage and Ground Slam are editorial leads.",
+                  "Do not treat stage recommendations as drop proofs."
+                ]
+              },
+              {
+                "cells": [
+                  "Later routes",
+                  "The editorial guide discusses Inner Rage for a physical path.",
+                  "Read the current card; do not substitute the Mage buff."
+                ]
+              },
+              {
+                "cells": [
+                  "Boss pressure",
+                  "Favor attacks you can land within a safe window.",
+                  "Retain useful movement or recovery rather than copying raw damage."
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "gear",
+          "title": "Weapon and armor decisions",
+          "paragraphs": [
+            "Match the power axis and equip requirements shown by the current cards. Compare items at similar upgrade states; a fully upgraded showcase is not a base-stat benchmark.",
+            "If one attack repeatedly ends your run, compare survival and positioning before allocating every resource to more damage. No fixed percentage of stat points is asserted."
+          ]
+        },
+        {
+          "id": "rotation",
+          "title": "Plan casts around the warning",
+          "paragraphs": [
+            "Prepare any applicable buff before the safe damage window, aim the attack, then move when the next warning appears. Do not spend every ability merely because its cooldown ended.",
+            "Compare a second attack with utility under the same conditions. The goal is repeatable completion, not a single large hit."
+          ]
+        },
+        {
+          "id": "sources",
+          "title": "Next steps",
+          "paragraphs": [
+            "Use the exact ability or encounter guide to check the source context."
+          ],
+          "links": [
+            {
+              "href": "/spells/",
+              "label": "Ability lookup",
+              "description": "Compare uses and current unknowns."
+            },
+            {
+              "href": "/spell-tier-list/",
+              "label": "Situational spell choices",
+              "description": "Avoid a context-free tier."
+            },
+            {
+              "href": "/dungeons/northern-lands/odin-reincarnation/",
+              "label": "Odin Reincarnation",
+              "description": "Plan for overlapping warnings."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gordan Perisic: ability progression — September 4",
+          "url": "https://www.destructoid.com/best-spells-and-abilities-in-dungeon-quest-reborn/",
+          "evidenceNote": "An attributed editorial recommendation table, not independently captured drop conditions. Levels in this article are not treated as equip requirements.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "title": "Inner Focus comparison — September 1",
+          "url": "https://www.youtube.com/watch?v=I11sThLGWJs",
+          "evidenceNote": "Captions reviewed. The creator explicitly does not own the enhanced spells; the demonstrated skill is the ordinary Inner Focus. Narrated percentages and probabilities are excluded.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        }
+      ],
+      "related": [
+        {
+          "href": "/spells/",
+          "label": "Spells",
+          "description": "Find the ability."
+        },
+        {
+          "href": "/drops/",
+          "label": "Drops",
+          "description": "Check the reported source."
+        },
+        {
+          "href": "/dungeons/",
+          "label": "Dungeons",
+          "description": "Choose a repeatable route."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is this a universal recommendation?",
+          "answer": "No. Match the source date, game version and your current loadout before acting."
+        },
+        {
+          "question": "Why are some values missing?",
+          "answer": "Unknown values are not treated as zero or copied from the original game."
+        }
+      ],
+      "claims": []
+    }
+  },
+  "/updates/": {
+    "indexable": false,
+    "meta": {
+      "title": "Dungeon Quest Reborn Updates & Guide Changes",
+      "h1": "Dungeon Quest Reborn Updates & Guide Changes",
+      "summary": "Official title changes and website guide updates, with platform signals kept separate from gameplay patch notes.",
+      "quickAnswer": "The official title is now [Odin Reincarnation] Dungeon Quest Reborn. Roblox reports an update at 2026-09-06T03:39:38.6777269Z. A title/timestamp change is a platform signal; the separate September 6 boss recording supplies gameplay context.",
+      "eyebrow": "Player guide",
+      "verifiedForVersion": "September 6 source review; dated observations"
+    },
+    "content": {
+      "sections": [
+        {
+          "id": "current-title",
+          "title": "Current official title",
+          "paragraphs": [],
+          "table": {
+            "columns": [
+              "Field",
+              "September 6 check"
+            ],
+            "rows": [
+              {
+                "cells": [
+                  "Experience",
+                  "[Odin Reincarnation] Dungeon Quest Reborn"
+                ]
+              },
+              {
+                "cells": [
+                  "Updated (UTC)",
+                  "2026-09-06T03:39:38.6777269Z"
+                ]
+              },
+              {
+                "cells": [
+                  "What this proves",
+                  "The title and public platform timestamp changed."
+                ]
+              },
+              {
+                "cells": [
+                  "What it does not prove",
+                  "Exact patch contents, loot odds or universal unlock rules."
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "new-boss",
+          "title": "Odin Reincarnation reference",
+          "paragraphs": [
+            "A September 6 community recording shows a post-clear Fight prompt followed by a separately named boss. Read that guide alongside the earlier Northern Lands route, not as a replacement for all its recorded tactics."
+          ],
+          "links": [
+            {
+              "href": "/dungeons/northern-lands/odin-reincarnation/",
+              "label": "Odin Reincarnation guide",
+              "description": "Entry and visual warning observations."
+            },
+            {
+              "href": "/dungeons/northern-lands/",
+              "label": "Earlier Northern Lands route",
+              "description": "September 2 narration retained with its date."
+            }
+          ]
+        },
+        {
+          "id": "guide-changes",
+          "title": "What changed in these guides",
+          "paragraphs": [
+            "September 6: added Fire Bomb, EIF, Egg Island, Boss Raids, Steampunk Sewers and the Odin Reincarnation reference. Expanded Winter Outpost, source lookup and loadout decisions.",
+            "Fire Bomb and Egg Island remain limited references because key current gameplay fields could not be established. This is a website content update, not a developer patch note."
+          ]
+        },
+        {
+          "id": "community-demonstrations",
+          "title": "Northern Lands Community Demonstrations",
+          "paragraphs": [
+            "The September 2 explanation and September 6 bonus-fight recording answer different parts of the run. Their timestamps and gear context are kept separate."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Roblox Games API",
+          "url": "https://games.roblox.com/v1/games?universeIds=9931749389",
+          "evidenceNote": "Fresh identity snapshot on September 6; update time is not patch-note content.",
+          "evidenceLevel": "Official",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "title": "Odin Reincarnation boss fight — September 6",
+          "url": "https://www.youtube.com/watch?v=zNvSBG2Vp98",
+          "evidenceNote": "Description links Reborn. Storyboard review shows a post-clear Fight prompt, a new boss bar, life icons and overlapping floor warnings. Not a controlled live test.",
+          "evidenceLevel": "Community Confirmed",
+          "lastChecked": "2026-09-06"
+        }
+      ],
+      "related": [
+        {
+          "href": "/dungeons/northern-lands/odin-reincarnation/",
+          "label": "Bonus boss",
+          "description": "Read the new reference."
+        },
+        {
+          "href": "/spells/",
+          "label": "Spells",
+          "description": "Updated source coverage."
+        },
+        {
+          "href": "/gamepasses/",
+          "label": "Gamepasses",
+          "description": "Compare purchase reports."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is this a universal recommendation?",
+          "answer": "No. Match the source date, game version and your current loadout before acting."
+        },
+        {
+          "question": "Why are some values missing?",
+          "answer": "Unknown values are not treated as zero or copied from the original game."
+        }
+      ],
+      "claims": [],
+      "updates": [
+        {
+          "id": "platform-sep6",
+          "topic": "Platform title",
+          "claim": "Official title updated",
+          "value": "[Odin Reincarnation] Dungeon Quest Reborn",
+          "claimStatus": "confirmed",
+          "confidence": "High",
+          "verifiedForVersion": "[Odin Reincarnation] Dungeon Quest Reborn",
+          "sourceURL": "https://games.roblox.com/v1/games?universeIds=9931749389",
+          "evidenceNote": "Public metadata only.",
+          "lastChecked": "2026-09-06",
+          "versionTitle": "[Odin Reincarnation] Dungeon Quest Reborn",
+          "publishedDate": "2026-09-06",
+          "actualChanges": "Title and timestamp recorded: 2026-09-06T03:39:38.6777269Z; no patch-note body inferred.",
+          "affectedPaths": [
+            "/",
+            "/dungeons/northern-lands/",
+            "/dungeons/northern-lands/odin-reincarnation/"
+          ],
+          "recordType": "metadata_signal"
+        }
+      ]
+    }
   }
-
 };

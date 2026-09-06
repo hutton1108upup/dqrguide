@@ -8,12 +8,12 @@ describe("quick lookup interactions", () => {
     render(<ContentPage page={getPageByPath("/spells/")!} />);
     const search = screen.getByRole("searchbox", { name: "Find an ability" });
     fireEvent.change(search, { target: { value: "Phantom" } });
-    expect(screen.getByText("1 of 10 abilities")).toBeInTheDocument();
+    expect(screen.getByText("1 of 12 abilities")).toBeInTheDocument();
     fireEvent.change(screen.getByLabelText("Use case"), { target: { value: "Recovery" } });
     expect(screen.getByText("No abilities match these filters.")).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "Clear filters" }));
     expect(search).toHaveValue("");
-    expect(screen.getByText("10 of 10 abilities")).toBeInTheDocument();
+    expect(screen.getByText("12 of 12 abilities")).toBeInTheDocument();
     expect(within(screen.getByRole("table", { name: "Abilities by use case" })).getByRole("link", { name: "Phantom Flames" })).toHaveAttribute("href", "/spells/phantom-flames");
   });
 

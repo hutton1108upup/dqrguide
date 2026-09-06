@@ -34,7 +34,7 @@ describe("publication gates", () => {
   it("stores fetch time and raw response summaries for API snapshots", () => {
     for (const snapshot of [officialGameSnapshot.apiSnapshot, officialGamePassSnapshot]) {
       expect(snapshot.endpoint).toMatch(/^https:\/\//);
-      expect(snapshot.fetchedAt).toMatch(/^2026-09-03T/);
+      expect(snapshot.fetchedAt).toMatch(/^2026-09-06T/);
       expect(snapshot.responseSummary.length).toBeGreaterThan(20);
     }
   });
@@ -65,15 +65,15 @@ describe("publication gates", () => {
 
     expect(indexable.length).toBeGreaterThan(0);
     for (const page of indexable) {
-      expect(page.lastVerified).toMatch(/^2026-09-0[235]$/);
+      expect(page.lastVerified).toMatch(/^2026-09-0[2356]$/);
       expect(page.sources.length).toBeGreaterThan(0);
       expect(page.sections.length).toBeGreaterThanOrEqual(3);
     }
   });
 
   it("records editorial modification dates without rewriting unchanged trust pages", () => {
-    expect(sitePages.find((page) => page.path === "/gamepasses/")?.dateModified).toBe("2026-09-03");
-    expect(sitePages.find((page) => page.path === "/dungeons/northern-lands/")?.dateModified).toBe("2026-09-05");
+    expect(sitePages.find((page) => page.path === "/gamepasses/")?.dateModified).toBe("2026-09-06");
+    expect(sitePages.find((page) => page.path === "/dungeons/northern-lands/")?.dateModified).toBe("2026-09-06");
     expect(sitePages.find((page) => page.path === "/privacy/")?.dateModified).toBe("2026-09-04");
   });
 

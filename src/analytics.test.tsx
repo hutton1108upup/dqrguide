@@ -14,11 +14,11 @@ describe("Microsoft Clarity analytics", () => {
       dangerouslySetInnerHTML: { __html: string };
     }>;
 
-    expect(MICROSOFT_CLARITY_PROJECT_ID).toBe("ycm0ef4ir4");
+    expect(MICROSOFT_CLARITY_PROJECT_ID).toBe("ydkmvn5oq2");
     expect(script.props.id).toBe("microsoft-clarity");
     expect(script.props.strategy).toBe("afterInteractive");
     expect(script.props.dangerouslySetInnerHTML.__html).toContain("https://www.clarity.ms/tag/");
-    expect(script.props.dangerouslySetInnerHTML.__html).toContain("ycm0ef4ir4");
+    expect(script.props.dangerouslySetInnerHTML.__html).toContain("ydkmvn5oq2");
   });
 
   it("mounts analytics once from the root layout", () => {

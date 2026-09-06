@@ -43,6 +43,7 @@ describe("technical SEO", () => {
     const items = itemList.itemListElement as Array<{ url: string }>;
 
     expect(items.map((item) => item.url)).toEqual([
+      absoluteUrl("/dungeons/steampunk-sewers/"),
       absoluteUrl("/dungeons/winter-outpost/"),
       absoluteUrl("/dungeons/northern-lands/")
     ]);

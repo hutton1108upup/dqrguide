@@ -1,6 +1,6 @@
 import Script from "next/script";
 
-export const MICROSOFT_CLARITY_PROJECT_ID = "ycm0ef4ir4";
+export const MICROSOFT_CLARITY_PROJECT_ID = "ydkmvn5oq2";
 
 const clarityBootstrap = `
 (function(c,l,a,r,i,t,y){

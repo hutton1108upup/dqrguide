@@ -53,13 +53,13 @@ type PageSeed =
   > & { evidenceLevel?: EvidenceLevel; confidence?: Confidence };
 
 const pageSeed: PageSeed[] = [
-  ...["/spells/phantom-flames/", "/spells/infernal-orbs/"].map((path): PageSeed => ({
+  ...["/spells/phantom-flames/", "/spells/infernal-orbs/", "/spells/fire-bomb/", "/spells/enhanced-inner-focus/", "/guides/egg-island/", "/guides/boss-raids/", "/dungeons/steampunk-sewers/", "/dungeons/northern-lands/odin-reincarnation/"].map((path): PageSeed => ({
     path,
     kind: "guide",
     title: playerGuides[path].meta.title!,
     description: playerGuides[path].meta.summary!,
     h1: playerGuides[path].meta.h1!,
-    eyebrow: "Ability guide",
+    eyebrow: playerGuides[path].meta.eyebrow ?? "Player guide",
     summary: playerGuides[path].meta.summary!,
     quickAnswer: playerGuides[path].meta.quickAnswer!,
     indexable: playerGuides[path].indexable,
@@ -487,7 +487,7 @@ const pageSeed: PageSeed[] = [
 ];
 
 function makePage(seed: (typeof pageSeed)[number]): SitePage {
-  const content = pageContentByPath[seed.path];
+  const content = playerGuides[seed.path]?.content ?? pageContentByPath[seed.path];
 
   if (!content) {
     throw new Error(`Missing page content for ${seed.path}`);
