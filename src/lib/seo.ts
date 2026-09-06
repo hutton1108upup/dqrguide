@@ -20,7 +20,7 @@ export function createPageMetadata(page: Pick<SitePage, "path" | "title" | "desc
   const socialImage = absoluteUrl(getOpenGraphImagePath(page.path));
 
   return {
-    title: page.title,
+    title: ["/trello/", "/spells/", "/drops/", "/dungeons/northern-lands/"].includes(page.path) ? { absolute: page.title } : page.title,
     description: page.description,
     metadataBase: new URL(siteConfig.url),
     alternates: {

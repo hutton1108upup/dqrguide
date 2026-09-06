@@ -4,13 +4,25 @@ import { ContentPage } from "./components/content-page";
 import { getPageByPath } from "./content/routes";
 
 describe("quick lookup interactions", () => {
+  it("combines item and dungeon filters while keeping editorial leads outside drops", () => {
+    render(<ContentPage page={getPageByPath("/drops/")!} />);
+    fireEvent.change(screen.getByLabelText("Reported location"), { target: { value: "Pirate Island" } });
+    expect(screen.getByText("2 of 4 items")).toBeInTheDocument();
+    fireEvent.change(screen.getByRole("searchbox", { name: "Find an item" }), { target: { value: "Phantom" } });
+    expect(screen.getByText("1 of 4 items")).toBeInTheDocument();
+    const table = screen.getByRole("table", { name: "Reported item locations" });
+    expect(within(table).queryByText("Fire Bomb")).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "Clear filters" }));
+    expect(screen.getByText("4 of 4 items")).toBeInTheDocument();
+  });
+
   it("combines spell name and role filters and recovers from no results", () => {
     render(<ContentPage page={getPageByPath("/spells/")!} />);
     const search = screen.getByRole("searchbox", { name: "Find an ability" });
     fireEvent.change(search, { target: { value: "Phantom" } });
     expect(screen.getByText("1 of 12 abilities")).toBeInTheDocument();
     fireEvent.change(screen.getByLabelText("Use case"), { target: { value: "Recovery" } });
-    expect(screen.getByText("No abilities match these filters.")).toBeInTheDocument();
+    expect(screen.getByText("No results match these filters.")).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "Clear filters" }));
     expect(search).toHaveValue("");
     expect(screen.getByText("12 of 12 abilities")).toBeInTheDocument();

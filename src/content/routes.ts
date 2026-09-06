@@ -1,3 +1,4 @@
+import { abilityTable } from "./ability-tables";
 import publishingManifest from "./publishing-manifest.json";
 import { EVIDENCE_LEVELS, type Confidence, type ContentType, type DataState, type EvidenceLevel, type PublicationStatus, type SitePage } from "./types";
 import { LAST_RESEARCHED } from "./game-data";
@@ -74,11 +75,11 @@ const pageSeed: PageSeed[] = [
     description:
       "A source-checked Dungeon Quest Reborn hub for progression questions, dungeons, spells, drops, codes, community links, and update status.",
     h1: "Dungeon Quest Reborn Wiki & Progression Guide",
-    eyebrow: "Field guide / evidence first",
+    eyebrow: "Independent Roblox game wiki",
     summary:
       "Pick the question you have now—where to progress, what to farm, which role to build, or whether a link is current—and go straight to the matching guide.",
     quickAnswer:
-      "Start with your current progression question: choose Dungeons to find the next run, Drops to trace an item source, or Codes, Trello, and Discord for a source-checked status.",
+      "Choose Spells to compare abilities, Drops to find a reported item location, or Northern Lands for the boss route. Trello has the latest recorded board status and useful information links.",
     indexable: true,
     verifiedForVersion: "[Northern Lands] title snapshot"
   },
@@ -517,7 +518,8 @@ function makePage(seed: (typeof pageSeed)[number]): SitePage {
     claims: content.claims ?? [],
     differenceRows: content.differenceRows ?? [],
     updates: content.updates ?? [],
-    ...content
+    ...content,
+    sections: content.sections.map(section => (seed.path === "/spells/" && section.id === "ability-list") || (seed.path === "/drops/" && section.id === "reported-locations") ? { ...section, table: abilityTable(seed.path === "/spells/" ? "spells" : "drops") } : section)
   };
 }
 

@@ -10,7 +10,7 @@ describe("player answer guides", () => {
     expect(screen.queryByText("No verified rows yet")).not.toBeInTheDocument();
     expect(screen.getByRole("table", { name: "Abilities by use case" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Phantom Flames guide/i })).toHaveAttribute("href", "/spells/phantom-flames");
-    expect(screen.getAllByText(/Community report/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/community.*source|community.*report/i).length).toBeGreaterThan(0);
   });
 
   it("keeps unverified drop rates out of the source lookup", () => {
