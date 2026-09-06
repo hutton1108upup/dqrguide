@@ -12,7 +12,9 @@ export const NAV_GROUPS = [
     items: [
       ["Dungeons Overview", "/dungeons/"],
       ["Northern Lands", "/dungeons/northern-lands/"],
-      ["Winter Outpost", "/dungeons/winter-outpost/"]
+      ["Winter Outpost", "/dungeons/winter-outpost/"],
+      ["Odin Reincarnation", "/dungeons/northern-lands/odin-reincarnation/"],
+      ["Steampunk Sewers", "/dungeons/steampunk-sewers/"]
     ]
   },
   {
@@ -46,6 +48,8 @@ export const NAV_GROUPS = [
       ["Trading Guide", "/trading/"],
       ["Trello Status", "/trello/"],
       ["Discord Status", "/discord/"],
+      ["Boss Raids", "/guides/boss-raids/"],
+      ["Egg Island", "/guides/egg-island/"],
       ["Scripts & Macros Safety", "/scripts-macros/"]
     ]
   }

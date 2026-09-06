@@ -115,7 +115,7 @@ try {
 
   await page.goto(`${baseUrl}/gamepasses/`, { waitUntil: "networkidle" });
   assert((await page.locator("body").innerText()).includes("Why the Gold Price Can Change"), "Gamepass evidence section missing");
-  assert(await page.getByRole("button", { name: /play Gamepass storefront walkthrough/i }).count() === 1, "Gamepass video facade missing");
+  assert(await page.getByRole("button", { name: /play Creator gamepass purchase route/i }).count() === 1, "Gamepass video facade missing");
   await page.screenshot({ path: path.join(artifactDir, "gamepasses-desktop.png"), fullPage: true });
 
   await page.goto(`${baseUrl}/privacy/`, { waitUntil: "networkidle" });
@@ -216,12 +216,12 @@ try {
   await page.goto(`${baseUrl}/spells/`, { waitUntil: "networkidle" });
   const abilitySearch = page.getByRole("searchbox", { name: "Find an ability" });
   await abilitySearch.fill("Phantom");
-  assert(await page.getByText("1 of 10 abilities", { exact: true }).isVisible(), "ability name filtering failed");
+  assert(await page.getByText("1 of 12 abilities", { exact: true }).isVisible(), "ability name filtering failed");
   await page.getByRole("combobox", { name: "Use case", exact: true }).selectOption("Recovery");
   assert(await page.getByText("No abilities match these filters.", { exact: true }).isVisible(), "combined filters failed");
   await page.getByRole("button", { name: "Clear filters", exact: true }).click();
   assert(await abilitySearch.inputValue() === "", "clear filters left query behind");
-  assert(await page.getByText("10 of 10 abilities", { exact: true }).isVisible(), "clear filters did not restore list");
+  assert(await page.getByText("12 of 12 abilities", { exact: true }).isVisible(), "clear filters did not restore list");
 
   await mobile.goto(`${baseUrl}/spells/`, { waitUntil: "networkidle" });
   await mobile.getByRole("searchbox", { name: "Find an ability" }).fill("Phantom");

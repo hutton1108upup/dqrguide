@@ -11,7 +11,7 @@ function EvidenceLine({ item }: { item: PageMedia }) {
     <figcaption>
       <span className="media-caption">{item.caption}</span>
       <span className="media-meta">
-        {item.evidenceLevel} · checked {item.capturedAt}
+        {item.evidenceLevel === "Community Confirmed" ? "Community source" : item.evidenceLevel} · checked {item.capturedAt}
         {item.verifiedForVersion ? ` · ${item.verifiedForVersion}` : " · version not verified"}
       </span>
       <a href={item.sourceURL} target="_blank" rel="noreferrer">

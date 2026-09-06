@@ -25,7 +25,7 @@ describe("evidence media on content pages", () => {
       ["/beginner-guide/", "If Progress Stops"],
       ["/differences/", "What Players Mean by Same as the Original"],
       ["/trading/", "Why a Trade Can Be Blocked"],
-      ["/discord/", "Community Invite Candidate"]
+      ["/discord/", "Community invite"]
     ] as const;
 
     for (const [path, heading] of expectations) {
@@ -38,24 +38,24 @@ describe("evidence media on content pages", () => {
   it("labels videos as community demonstrations rather than official proof", () => {
     render(<ContentPage page={getPageByPath("/gamepasses/")!} />);
 
-    expect(screen.getByRole("button", { name: /play Gamepass storefront walkthrough/i })).toBeInTheDocument();
-    expect(screen.getByText(/community demonstration, not a current price guarantee/i)).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /play Creator gamepass purchase route/i })).toBeInTheDocument();
+    expect(screen.getByText(/Dated community reference; read the adjacent source limits/i)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /watch on YouTube/i })).toHaveAttribute(
       "href",
-      "https://www.youtube.com/watch?v=8ZVfKMwvWoo"
+      "https://www.youtube.com/watch?v=kG2epjmNzDk"
     );
   });
 
   it("adds evidence-aware media to the database and dungeon pages", () => {
     const expectations = [
       ["/spells/", "Watch the ability explanations"],
-      ["/spell-tier-list/", "Why Video Rankings Are Not Final"],
+      ["/spell-tier-list/", "Compare the job before the grade"],
       ["/dungeons/", "What to check before moving on"],
       ["/dungeons/winter-outpost/", "Community Walkthrough Coverage"],
       ["/drops/", "Reported item locations"],
       ["/weapons/", "Community Weapon Showcase"],
-      ["/builds/mage/", "Mage Video Review Queue"],
-      ["/builds/warrior/", "Warrior Video Review Queue"]
+      ["/builds/mage/", "Stage-by-stage choices"],
+      ["/builds/warrior/", "Stage-by-stage choices"]
     ] as const;
 
     for (const [path, heading] of expectations) {

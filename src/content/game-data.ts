@@ -5,12 +5,12 @@ export const LAST_RESEARCHED = "2026-09-03";
 
 export const sources = {
   officialExperience: {
-    title: "[Northern Lands] Dungeon Quest Reborn on Roblox",
+    title: `${officialSnapshot.game.name} on Roblox`,
     url: "https://www.roblox.com/games/77649408247578/Dungeon-Quest-Reborn",
     evidenceLevel: "Official",
     evidenceNote:
       "First-party experience page naming Delta Quarters OG and stating that Dungeon Quest Reborn is officially licensed by Voldex.",
-    lastChecked: LAST_RESEARCHED
+    lastChecked: officialSnapshot.fetchedAt.slice(0, 10)
   },
   officialGameApi: {
     title: "Roblox Games API — universe 9931749389",
@@ -18,7 +18,7 @@ export const sources = {
     evidenceLevel: "Official",
     evidenceNote:
       "First-party metadata for the experience name, universe, root place, creator, description, and updated timestamp.",
-    lastChecked: LAST_RESEARCHED
+    lastChecked: officialSnapshot.fetchedAt.slice(0, 10)
   },
   officialPlacesApi: {
     title: "Roblox Universe Places API — universe 9931749389",
@@ -34,7 +34,7 @@ export const sources = {
     evidenceLevel: "Official",
     evidenceNote:
       "First-party API snapshot. Returned entries are treated as technical records, not as current purchase recommendations.",
-    lastChecked: LAST_RESEARCHED
+    lastChecked: officialSnapshot.fetchedAt.slice(0, 10)
   },
   originalExperience: {
     title: "Dungeon Quest! RPG Adventure on Roblox",
@@ -271,21 +271,21 @@ export const statusChecks = {
     label: "No official code or redemption path confirmed",
     detail:
       "The first-party Roblox experience and public metadata checked for this MVP do not provide a verified active-code list.",
-    checked: LAST_RESEARCHED
+    checked: "2026-09-06"
   },
   discord: {
     state: "Community candidate",
     label: "Working invite; first-party link still pending",
     detail:
       "discord.gg/dqr resolves to a DQR-branded community, but a public first-party link was not visible in the eligible Roblox surface available for this check. Roblox social links may be age-gated.",
-    checked: LAST_RESEARCHED
+    checked: "2026-09-06"
   },
   trello: {
     state: "Not confirmed",
     label: "No first-party Trello URL confirmed",
     detail:
       "Search-result labels are not enough to establish ownership. Use the Roblox experience page while the direct board link is unverified.",
-    checked: LAST_RESEARCHED
+    checked: "2026-09-06"
   }
 } as const;
 

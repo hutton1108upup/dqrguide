@@ -69,7 +69,7 @@ export default function HomePage() {
           <div className="hero-grid" aria-hidden="true" />
           <div className="shell hero-inner">
             <div className="hero-mark"><GateMark /></div>
-            <div className="version-pill"><span /> Current official title: Northern Lands</div>
+            <div className="version-pill"><span /> Current official title: {officialGameSnapshot.name}</div>
             <p className="eyebrow">{home.eyebrow}</p>
             <h1>{home.h1}</h1>
             <p className="hero-copy">Fast answers for dungeons, drops, spells, and live-status questions—each separated by what is official, checked, observed, or still unknown.</p>
@@ -125,7 +125,7 @@ export default function HomePage() {
                 <span>01 / VERIFIED</span>
                 <h3>What is verified right now</h3>
                 <p>
-                  The official Roblox experience record identifies the current title as [Northern Lands] Dungeon Quest Reborn, gives the experience a stable universe and root place, and names Delta Quarters OG as the creator. Those facts establish which experience this guide is about; they do not automatically prove a dungeon order, spell effect, drop rate, or player-transfer rule.
+                  The official Roblox experience record identifies the current title as {officialGameSnapshot.name}, gives the experience a stable universe and root place, and names Delta Quarters OG as the creator. Those facts establish which experience this guide is about; they do not automatically prove a dungeon order, spell effect, drop rate, or player-transfer rule.
                 </p>
                 <p>
                   The home page also records the public platform update timestamp as a metadata signal. It is displayed with its UTC time and is deliberately not rewritten as a patch note. When a page uses a community run, video, Reddit discussion, or public invite, the source card explains what that material can show and what it cannot establish.
@@ -235,7 +235,7 @@ export default function HomePage() {
 
           <section className="update-strip" aria-labelledby="updates-title">
             <div><span>05 / UPDATE SIGNAL</span><h2 id="updates-title">Latest verified platform change</h2></div>
-            <p><b>{robloxUpdatedLabel}</b> — Roblox metadata updated for <em>[Northern Lands] Dungeon Quest Reborn</em>. This timestamp is not presented as a patch note.</p>
+            <p><b>{robloxUpdatedLabel}</b> — Roblox metadata updated for <em>{officialGameSnapshot.name}</em>. This timestamp is not presented as a patch note.</p>
             <HomeLink href="/updates/" className="text-link">Read the ledger <ArrowRight size={14} /></HomeLink>
           </section>
 

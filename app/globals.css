@@ -402,6 +402,8 @@ tr:last-child td { border-bottom:0; }
 .video-dialog iframe { display:block; width:100%; aspect-ratio:16/9; border:0; background:#060a12; }
 .video-dialog a { display:inline-flex; align-items:center; gap:6px; min-height:44px; color:var(--accent-blue); }
 @media (max-width:600px) {
+  .lookup-table.two-column table { min-width:0; table-layout:fixed; }
+  .lookup-table.two-column :is(th,td) { overflow-wrap:anywhere; }
   .page-hero { padding:16px; }
   .page-hero h1 { font-size:27px; }
   .quick-jumps>a { flex:1; padding:8px 10px; font-size:13px; }

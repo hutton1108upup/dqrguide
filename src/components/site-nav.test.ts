@@ -3,11 +3,11 @@ import { describe, expect, it } from "vitest";
 import * as siteNav from "./site-nav";
 
 describe("site navigation model", () => {
-  it("covers every production non-trust page exactly once", () => {
+  it("covers the navigation destinations without duplicate links", () => {
     const paths = siteNav.getNavigationItems("production").map(([, href]) => href);
 
-    expect(paths).toHaveLength(25);
-    expect(new Set(paths).size).toBe(25);
+    expect(paths).toHaveLength(29);
+    expect(new Set(paths).size).toBe(29);
     expect(paths).toEqual(expect.arrayContaining([
       "/",
       "/dungeons/",
