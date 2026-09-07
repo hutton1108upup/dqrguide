@@ -2,10 +2,11 @@ import { HomeSearch } from "@/components/home-search";
 import { ArrowRight, BookOpen, Box, Gift, Map, Scale, ShieldCheck, Sparkles } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+import { FeaturedGuide } from "@/components/featured-guide";
 
 import { EvidenceBadge } from "@/components/evidence-badge";
 import { JsonLd } from "@/components/json-ld";
-import { GateMark } from "@/components/site-logo";
 import { officialGameSnapshot, statusChecks, tierReview } from "@/content/game-data";
 import { getPageByPath, getRuntimeEnvironment, isPageAvailable, type RuntimeEnvironment } from "@/content/routes";
 import { siteConfig } from "@/content/site";
@@ -65,19 +66,31 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={homeSchema} />
-      <main>
+      <main className="home-visual-v11">
         <section className="home-hero">
           <div className="hero-grid" aria-hidden="true" />
           <div className="shell hero-inner">
-            <div className="hero-mark"><GateMark /></div>
+            <div className="hero-composition">
+            <div className="hero-text">
             <div className="version-pill"><span /> Current official title: {officialGameSnapshot.name}</div>
             <p className="eyebrow">{home.eyebrow}</p>
-            <h1>{home.h1}</h1>
+            <h1><em>{home.h1.slice(0, "Dungeon Quest Reborn".length)}</em>{home.h1.slice("Dungeon Quest Reborn".length)}</h1>
             <p className="hero-copy">Find Dungeon Quest Reborn spells, reported item drops and dungeon walkthroughs. Start with the item you want or the boss stopping your run.</p>
-            <HomeSearch />
+            <div className="hero-actions">
+              <HomeLink href="/dungeons/" className="hero-button primary">Explore Dungeons <ArrowRight size={16} aria-hidden="true" /></HomeLink>
+              <HomeLink href="/spells/" className="hero-button secondary">Browse Spells</HomeLink>
+            </div>
             <div className="verification-line">
               <ShieldCheck size={16} aria-hidden="true" /> Official Roblox metadata checked <b>{home.lastVerified}</b><span>Universe {officialGameSnapshot.universeId}</span>
             </div>
+            </div>
+            <figure className="hero-artwork">
+              {/* Roblox promotional artwork: identifies the source, not the pictured dungeon or mechanics. */}
+              <Image src="/images/dqr/official-party-boss-arena.webp" alt="Adventurers fighting an armored enemy amid blue and orange effects in official Dungeon Quest Reborn promotional artwork" width={768} height={432} sizes="(max-width: 880px) calc(100vw - 36px), 480px" loading="eager" fetchPriority="high" />
+              <figcaption><a href="https://www.roblox.com/games/77649408247578/Dungeon-Quest-Reborn" target="_blank" rel="noreferrer">Official Dungeon Quest Reborn artwork ↗</a></figcaption>
+            </figure>
+            </div>
+            <HomeSearch />
           </div>
         </section>
 
@@ -150,15 +163,23 @@ export default function HomePage() {
           <section aria-labelledby="dungeon-title">
             <div className="section-heading"><div><span>03 / PROGRESSION</span><h2 id="dungeon-title">Dungeon routes being checked</h2></div><HomeLink href="/dungeons/" className="text-link">Open progression hub <ArrowRight size={14} /></HomeLink></div>
             <div className="dungeon-grid">
-              <HomeLink href="/dungeons/northern-lands/" className="dungeon-card current">
-                <span className="dungeon-index">NL</span><span><b>Northern Lands</b><small>Timestamped solo-route companion and boss tactics</small></span><EvidenceBadge level="Community Confirmed" />
+              <HomeLink href="/dungeons/northern-lands/" className="dungeon-card current illustrated-dungeon">
+                {/* Concept illustration, not a screenshot or evidence of the dungeon layout. */}
+                <span className="dungeon-artwork"><Image src="/images/dqr/hero-northern-lands.webp" alt="Northern Lands concept illustration: an icy stone gate under an aurora, AI-generated rather than an in-game screenshot" width={1200} height={800} sizes="(max-width: 880px) calc(100vw - 64px), 500px" /><small>AI concept illustration</small></span>
+                <span className="dungeon-index">NL</span><span className="dungeon-card-copy"><b>Northern Lands</b><small>Timestamped solo-route companion and boss tactics</small></span><EvidenceBadge level="Community Confirmed" />
               </HomeLink>
-              <HomeLink href="/dungeons/winter-outpost/" className="dungeon-card">
-                <span className="dungeon-index">WO</span><span><b>Winter Outpost</b><small>Warrior and Mage video chapters; current values unverified</small></span><EvidenceBadge level="Legacy / Unconfirmed" />
+              <HomeLink href="/dungeons/winter-outpost/" className="dungeon-card illustrated-dungeon">
+                <span className="dungeon-artwork"><Image src="/images/dqr/banner-winter-outpost.webp" alt="Winter Outpost concept illustration: a snow-covered timber fortress, AI-generated rather than an in-game screenshot" width={1200} height={800} sizes="(max-width: 880px) calc(100vw - 64px), 500px" /><small>AI concept illustration</small></span>
+                <span className="dungeon-index">WO</span><span className="dungeon-card-copy"><b>Winter Outpost</b><small>Warrior and Mage video chapters; current values unverified</small></span><EvidenceBadge level="Legacy / Unconfirmed" />
               </HomeLink>
             </div>
           </section>
 
+          <figure className="wide-game-artwork">
+            {/* A distinct official asset; existing inner-page media is intentionally untouched. */}
+            <Image src="/images/dqr/official-cavern-boss.webp" alt="A cyan-armored adventurer facing a purple creature in a cavern, from the official Dungeon Quest Reborn promotional gallery" width={768} height={432} sizes="(max-width: 1096px) calc(100vw - 36px), 1060px" />
+            <figcaption><a href="https://www.roblox.com/games/77649408247578/Dungeon-Quest-Reborn" target="_blank" rel="noreferrer">Official promotional artwork · Dungeon Quest Reborn ↗</a></figcaption>
+          </figure>
           <section aria-labelledby="status-title">
             <div className="section-heading"><div><span>04 / LIVE CHECKS</span><h2 id="status-title">Codes, Trello and Discord</h2></div><p>Checked {statusChecks.codes.checked}</p></div>
             <p className="status-note">No active code is published; no Trello board or Discord invite is labelled official without a first-party URL.</p>
@@ -171,6 +192,7 @@ export default function HomePage() {
             </div>
           </section>
 
+          <FeaturedGuide />
           <section className="update-strip" aria-labelledby="updates-title">
             <div><span>05 / UPDATE SIGNAL</span><h2 id="updates-title">Latest verified platform change</h2></div>
             <p><b>{robloxUpdatedLabel}</b> — Roblox metadata updated for <em>{officialGameSnapshot.name}</em>. This timestamp is not presented as a patch note.</p>
