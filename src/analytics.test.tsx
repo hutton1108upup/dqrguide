@@ -40,6 +40,6 @@ describe("Microsoft Clarity analytics", () => {
     expect(copy).toContain("Microsoft Clarity");
     expect(copy).toMatch(/page views|interactions/i);
     expect(copy).not.toContain("If analytics");
-    expect(privacy.dateModified).toBe("2026-09-04");
+    expect(privacy.dateModified).toBe("2026-09-08");
   });
 });
