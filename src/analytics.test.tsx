@@ -38,8 +38,9 @@ describe("Microsoft Clarity analytics", () => {
     });
 
     expect(copy).toContain("Microsoft Clarity");
+    expect(copy).toContain("PVUV.ai");
     expect(copy).toMatch(/page views|interactions/i);
     expect(copy).not.toContain("If analytics");
-    expect(privacy.dateModified).toBe("2026-09-08");
+    expect(privacy.dateModified).toBe("2026-11-19");
   });
 });

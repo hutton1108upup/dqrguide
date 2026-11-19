@@ -464,16 +464,20 @@ export const pageContentByPath: Record<string, PageContent> = {
     sections: [
       { id: "advertising", title: "Third-Party Advertising", paragraphs: ["This site uses Adsterra Popunder and Social Bar advertising, loaded from profitableratecpmnetwork.com. Popunder may open a promotional tab or window after an interaction; Social Bar may display floating ads over the page. These formats do not use fixed banner spaces in the guide content. Your browser connects to the advertising provider, which receives request information such as your IP address and browser details. Advertising scripts may use cookies or similar storage. Ad availability and behavior are controlled by the provider and can vary with your browser settings and location."] },
       { id: "analytics", title: "Microsoft Clarity Analytics", paragraphs: ["This site uses Microsoft Clarity to understand page views and interactions such as clicks, scrolling, page visibility, and performance. Clarity may also provide session playback; Microsoft states that text in privacy-sensitive input fields is masked."] },
+      { id: "pvuv-analytics", title: "PVUV.ai Analytics", paragraphs: ["PVUV.ai measures visits and traffic sources and helps identify automated traffic. The script can send page URLs, referrers, browser and device information, interaction signals, and pseudonymous visitor and session identifiers to PVUV.ai. PVUV.ai receives the IP address with the request and uses hashes in its analytics records. It can use first-party cookies and local storage to recognize visitors and track sessions and traffic sources."] },
       { id: "what-is-collected", title: "What the Site Does Not Collect Directly", paragraphs: ["The site serves guide content and source links. It does not provide accounts, comments, payments, market transactions, or a player-data upload form, and it does not ask for a Roblox login."] },
       { id: "what-not-to-share", title: "What Not to Share", paragraphs: ["Do not enter Roblox passwords, session tokens, private messages, payment details, or personal account exports into this site. Public source links should contain only information already intended for public viewing."] },
       { id: "cookies-and-consent", title: "Cookies and Consent", paragraphs: ["Clarity can use cookies and pseudonymous identifiers to connect page views and produce aggregated analytics. Cookie use and session continuity can vary with browser choices, regional consent requirements, and the Clarity project's consent settings."] }
     ],
     faq: [
       { question: "Does Dungeon Quest Reborn Guide need my Roblox login?", answer: "No. The site has no login or account connection flow." },
-      { question: "What analytics service does this site use?", answer: "Microsoft Clarity measures page views, interactions, performance signals, and session playback so the site can identify usability problems." }
+      { question: "What analytics services does this site use?", answer: "Microsoft Clarity helps identify usability problems through interaction data and session playback. PVUV.ai measures visits and traffic sources and helps identify automated traffic." }
     ],
     related: [link("/source-policy/", "Source policy", "See how editorial evidence is recorded."), link("/contact/", "Contact boundary", "Check how corrections are handled in this local release.")],
-    sources: [{ title: "Microsoft Clarity data collection", url: "https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-data", evidenceLevel: "Official", evidenceNote: "Microsoft's field-level summary of Clarity analytics and playback data.", lastChecked: "2026-09-04" }]
+    sources: [
+      { title: "Microsoft Clarity data collection", url: "https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-data", evidenceLevel: "Official", evidenceNote: "Microsoft's field-level summary of Clarity analytics and playback data.", lastChecked: "2026-09-04" },
+      { title: "PVUV.ai Privacy Policy", url: "https://www.pvuv.ai/privacy", evidenceLevel: "Official", evidenceNote: "Explains the service's website analytics data, traffic quality signals, and browser storage.", lastChecked: "2026-11-19" }
+    ]
   },
   "/contact/": {
     sections: [
