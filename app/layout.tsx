@@ -25,5 +25,20 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { themeColor: "#0B1020", colorScheme: "dark" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" className={`${inter.variable} ${cinzel.variable}`}><head><PopunderScript /></head><body><a className="skip-link" href="#main-content">Skip to content</a><SiteHeader /><div id="main-content">{children}</div><SiteFooter /><MicrosoftClarity /><SocialBarScript /></body></html>;
+  return (
+    <html lang="en" className={`${inter.variable} ${cinzel.variable}`}>
+      <head>
+        <PopunderScript />
+        <script defer src="https://www.pvuv.ai/f.js" data-site="sho2t2T5" data-api="https://in.pvuv.ai" />
+      </head>
+      <body>
+        <a className="skip-link" href="#main-content">Skip to content</a>
+        <SiteHeader />
+        <div id="main-content">{children}</div>
+        <SiteFooter />
+        <MicrosoftClarity />
+        <SocialBarScript />
+      </body>
+    </html>
+  );
 }
